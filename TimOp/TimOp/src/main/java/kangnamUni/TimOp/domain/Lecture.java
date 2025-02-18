@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import java.time.LocalTime;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,7 +26,7 @@ public class Lecture {
     private String professor;
     private int credit; //학점
     private String progress_time; //시수
-    private String time;
+    //private String time; 스크래퍼 수정
     private String syllabus;
     private String major;
     private int grade;
@@ -35,8 +37,16 @@ public class Lecture {
     @ManyToOne()
     @JoinColumn(name = "timetable_id")
     private Timetable timetable;
-
+    @OneToMany(mappedBy = "lecture", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<LectureTime> lectureTimes = new ArrayList<>(); // 여러 개의 시간 블록을 가질 수 있음
     public Lecture() {
     }
-
+    public void addLectureTime(LectureTime lectureTime){
+        lectureTimes.add(lectureTime);
+        lectureTime.setLecture(this);
+    }
+    public void removeLectureTime(LectureTime lectureTime) {
+        lectureTimes.remove(lectureTime);
+        lectureTime.setLecture(null); // 관계 해제
+    }
 }
