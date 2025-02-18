@@ -119,7 +119,7 @@ public class WebScraper {
                 lecture.setTitle(lectureInfo.get(2));
                 lecture.setNum(lectureInfo.get(0));
                 lecture.setCredit(Integer.parseInt(lectureInfo.get(4)));
-                lecture.setTime(lectureInfo.get(6));
+                //lecture.setTime(lectureInfo.get(6));
                 lecture.setProfessor(lectureInfo.get(3));
                 lecture.setDivision_class(lectureInfo.get(1));
                 lecture.setProgress_time(lectureInfo.get(5));
