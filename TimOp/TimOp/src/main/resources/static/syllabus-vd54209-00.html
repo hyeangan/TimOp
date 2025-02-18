@@ -1,0 +1,642 @@
+<html><head>
+<base target="_blank">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+	.syllabus, .syllabus_week{width:800px; border-width: 2px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:10px; table-layout: fixed;} 
+	.syllabus_sub {width:600px; border-width: 1px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:3px;margin-bottom:3px; k-layout: fixed;}
+	tr{min-height: 22px; }
+	th{border: 1px black solid; text-align: center; font-weight: bold; background-color: #EFEFEF}
+	th.no_topLine{border-top:0px black solid;}
+	th.no_botLine{border-bottom:0px black solid;}
+	td{border: 1px black solid; text-align: left; padding-left: 3px; min-height: 22px; vertical-align: middle; background-color: #FFFFFF}
+	td p{min-height: 22px;}
+	td pre{margin:auto; min-height:1px;}
+	
+	.multi-line {line-height:1.3em;padding-top:4px}
+	.majorDiv {width:800px;}
+	.syllabus_week {margin-top:5px;}
+	.syllabus_week_title {border: 1px solid gray;width:800px;height:40px;margin-top:20px;}
+	
+	
+	@media screen and (max-width: 768px) { 	
+		.syllabus, .syllabus_week, .majorDiv, .syllabus_week_title {width: 100%;}
+		.displayOff {display:none;}
+ 		.syllabus_week thead {display:none;} 
+ 		.syllabus_week, .syllabus_week tbody, .syllabus_week tr, .syllabus_week td {display: block;} 
+  		.syllabus_week tbody tr td {text-align:left;padding-left: 50%;position:relative;border-top:none;border-left:none;border-right:none; }  
+  		.syllabus_week tbody tr td nth-child(1) {text-align: left;}
+  		.syllabus_week tbody tr {border-top:1px soild black;}  
+ 		.syllabus_week td:before {content:attr(data-label); position:absolute; left: 0%;width: 50%;padding-left: 15px;text-align: left;}  
+/*  		.syllabus_week_child5 {border-bottom: 2px solid black;} */
+	}
+			
+	@media screen and (min-width: 769px) { 	
+		.displayOn {display:none;}
+		.syllabus_week_child1 {text-align: center;}
+	}
+	
+</style>
+<title>강의계획서 보기</title>
+
+<script type="text/javascript" src="../function/common.js"></script>
+<script type="text/javascript" src="../function/sortTable.js"></script>
+<script>
+	function goPrint(){
+		
+		var src = '';
+		if(isCompatibleIE()){
+			src = "../rdreport/r_designer_cs.jsp?repo_val1=2024&repo_val2=1&repo_val3=VD54209&repo_val4=00&repo_val5=103396&repo_path=../sbr/sbr3072.mrd";
+		}else{
+			src = "https://app.kangnam.ac.kr/knumis/rdreport/r_designer_cs.jsp?repo_val1=2024&repo_val2=1&repo_val3=VD54209&repo_val4=00&repo_val5=103396&repo_path=../sbr/sbr3072.mrd";
+		}
+
+		openWin('',src,850,630,0,0);
+
+		self.close();
+	}
+</script>
+</head>
+
+<body>
+
+
+<div style="font-size: 12px; text-align:center;magin-left:10px; height:12px; margin-bottom:10px;margin-top:10px">
+	최초작성일 : 2024/01/05 , 최종수정일 : 2024/01/05
+</div>
+
+<div align="center" style="margin-top: 10px;">
+	<table class="syllabus">
+		<colgroup>
+			<col width="10%">
+			<col width="7%">
+			<col width="10%">
+			<col width="20%">
+			<col width="16%">
+			<col width="8%">
+			<col width="21%">
+		</colgroup>
+		
+		<tbody>
+			<tr>
+				<th colspan="7" style="height:50px;"><span style="font-size: 24px;">강 의 계 획 서</span></th>
+			</tr>
+			<tr>
+				<th colspan="2">년 도</th>
+				<td colspan="2">2024</td>
+				<th>학 기</th>
+				<td colspan="2">1 학기</td>
+			</tr>
+			<tr>
+				<th rowspan="2">교과목명</th>
+				<th>한글</th>
+				<td colspan="2">도시설계</td>
+				<th rowspan="2">담당교수</th>
+				<td rowspan="2" colspan="2">김선영,한기호</td>
+			</tr>
+			<tr>
+				<th>영문</th>
+				<td colspan="2">Urban Design</td>
+			</tr>
+			<tr>
+				<th colspan="2">학수번호-분반</th>
+				<td colspan="2">VD54209 - 00</td>
+				<th>강의요일교시</th>
+				<td colspan="2">(주)수4ab5ab6ab7ab8ab</td>
+			</tr>
+			<tr>
+				<th colspan="2">학점<br>(시간수)</th>
+				<td colspan="2">3(5)</td>
+				<th>강의실</th>
+				<td colspan="2">이310</td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">개설(이수)구분</th>
+				<th>교양</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">계열교양<br>
+					<input type="checkbox" disabled="disabled">일반교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">균형교양: 
+				</td>
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">계열교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">일반교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">균형교양: 
+				</td>
+			</tr>
+			<tr>
+				<th>전공</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공기초<br>
+					<input type="checkbox" checked="" disabled="disabled">전공선택 ( 3 ) 학년<br>
+					<input type="checkbox" disabled="disabled">전공필수 ( &nbsp; ) 학년					
+				</td>				
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공기초
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px">전공선택 ( 3 ) 학년
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공필수 ( &nbsp; ) 학년					
+				</td>	
+			</tr>
+			<tr>
+				<th>일반선택</th>
+				<td class="displayOn" colspan="2">
+					<input type="checkbox" disabled="disabled">교직<br>
+					<input type="checkbox" disabled="disabled">자유선택
+				</td>
+				<td class="displayOff" colspan="2">
+					<input type="checkbox" disabled="disabled">교직
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">자유선택
+				</td>
+				<td colspan="2">학부(과) : 스마트도시공학전공 </td>
+			</tr>
+		
+			<tr>
+				<th rowspan="2" colspan="2">강좌특성</th>
+				<td class="displayOn" colspan="5">
+					<input type="checkbox" disabled="disabled">이론강의
+					<input type="checkbox" disabled="disabled" style="margin-left:76px">실험·실습·실기<br>
+					<input type="checkbox" checked="" disabled="disabled">이론/실험·실습병행
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+				<td class="displayOff" colspan="5">
+					<input type="checkbox" disabled="disabled">이론강의
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">실험·실습·실기
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px">이론·실습병행
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+			</tr>
+			<tr>
+				<th>학문특성</th>
+				<td>창의융합</td>
+				<th>기타특성</th>				
+				<td colspan="2"></td>
+			</tr>
+			
+			<tr class="displayOn">
+				<th rowspan="3" colspan="2">교수학습<br>방법</th>
+				<th colspan="2">표준 교과목운영 <br>기준</th>
+				<td colspan="3" style="line-height: 1.0em">
+					<input type="checkbox" disabled="disabled">강의
+					<input type="checkbox" disabled="disabled" style="margin-left: 30px;">발표<br>
+					<input type="checkbox" disabled="disabled">토론·토의
+					<input type="checkbox" disabled="disabled">협력학습<br>
+					<input type="checkbox" disabled="disabled">문제기반학습<br>
+				</td>
+			</tr>
+			<tr class="displayOn">
+				<th colspan="2">학생 자기주도식<br>수업운영</th>
+				<td colspan="3">
+					<input type="checkbox" checked="" disabled="disabled">문제기반학습(PBL)<br>
+					<input type="checkbox" checked="" disabled="disabled">프로젝트기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">플립러닝<br>
+					<input type="checkbox" disabled="disabled">K-MOOC<br>
+					<input type="checkbox" checked="" disabled="disabled">팀기반학습(TBL)<br>
+					<input type="checkbox" disabled="disabled">블랜디드러닝<br>
+					<input type="checkbox" disabled="disabled">캡스톤디자인<br>
+				</td>
+			</tr>
+			<tr class="displayOn">
+				<th colspan="2">현장 연계 방법</th>
+				<td colspan="3">
+					<input type="checkbox" disabled="disabled">현장전문가초청<br>
+					<input type="checkbox" disabled="disabled">현장탐방
+					<input type="checkbox" disabled="disabled" style="margin-left:20px;">기타<br>
+				</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th rowspan="2" colspan="2">교수학습<br>방법</th>
+				<th colspan="2">표준 교과목운영 기준</th>
+				<th colspan="2">학생 자기주도식 수업운영</th>
+				<th>현장 연계 방법</th>
+			</tr>
+			<tr class="displayOff">
+				<td colspan="2" style="line-height: 1.0em">
+					<input type="checkbox" disabled="disabled">강의<br>
+					<input type="checkbox" disabled="disabled">발표<br>
+					<input type="checkbox" disabled="disabled">토론·토의<br>
+					<input type="checkbox" disabled="disabled">협력학습<br>
+					<input type="checkbox" disabled="disabled">문제기반학습<br>
+				</td>
+				<td colspan="2">
+					<input type="checkbox" checked="" disabled="disabled">문제기반학습(PBL)<br>
+					<input type="checkbox" checked="" disabled="disabled">프로젝트기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">플립러닝<br>
+					<input type="checkbox" disabled="disabled">K-MOOC<br>
+					<input type="checkbox" checked="" disabled="disabled">팀기반학습(TBL)<br>
+					<input type="checkbox" disabled="disabled">블랜디드러닝<br>
+					<input type="checkbox" disabled="disabled">캡스톤디자인<br>
+				</td>
+				<td>
+					<input type="checkbox" disabled="disabled">현장전문가초청<br>
+					<input type="checkbox" disabled="disabled">현장탐방<br>
+					<input type="checkbox" disabled="disabled">기타<br>
+				</td>
+			</tr>
+			
+			
+			<tr>
+				<th colspan="2">전공능력</th>
+				<td colspan="5"></td>				
+			</tr>
+			<tr>
+				<th colspan="2" rowspan="2">성적평가기준</th>
+				<td colspan="5">
+					절대평가
+
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5">※성적평가기준은 최종 수강 인원, 강좌별 특성에 따라 차후 변동될 수 있습니다.</td>
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="3">연락처</th>
+				<th>연구실</th>
+				<td></td>
+				<th>E-Mail</th>
+				<td colspan="2" style="word-break:break-word;"></td>
+				
+			</tr>
+			<tr>
+				<th>휴대전화</th>
+				<td></td>
+				<th>면담가능시간</th>
+				<td colspan="2"></td>
+				
+			</tr>
+			<tr>
+				<th>연구일</th>
+				<td>목요일</td>
+				<th>관리부서</th>
+				<td colspan="2">
+					교학2팀 (031-280-3441 ~ 4)
+
+				</td>
+				
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="2">교육과정<br>참고사항</th>
+				<th>선수과목</th>
+				<td></td>
+				<th>관련<br>기초과목</th>
+				<td colspan="2"></td>
+			</tr>
+			<tr>
+				<th class="multi-line">동시수강<br>관련과목</th>
+				<td></td>
+				<th>관련<br>고급과목</th>
+				<td colspan="2"></td>
+			</tr>
+			
+			
+			<!-- ------------------------------------------------------------------------  -->
+			<tr class="displayOn">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5"></td>
+			</tr> 
+			
+			<tr class="displayOn">
+				<th colspan="2" rowspan="4">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="4">공분야 입문을 통해 습득한 기초지식과 실습한 설계 기술을 한층 전문적이고 종합적으로 발전시키고, 실무에서 적용할 수 있는 결과 도출 능력을 배양·증진 시킬 수 있는 기회 제공이 목적<br>
+기존 신도시를 대상지로 선정하여 도시계획에 대해 탐구하고 실제 계획이 실현된 현장을 탐방하여 분석한 후 대상지에 적합한 새로운 신도시 공간구상(안) 및 개발계획(안)을 제시해보고자 함</td>
+			</tr>
+			<tr class="displayOn">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="4">- 이론수업과자기주도적 설계 진행과 피드백을 통한 효율적이고 능률적으로 진행
+- 창의성 및 능률성 강화를 위한 프로젝트수업방식과 이를 위한 팀워크 (Team Work 팀작업/조작업) 수업방식</td>				
+			</tr>
+			
+			<tr class="displayOn">
+				<th style="border-right:none">평가방법</th>
+				<td colspan="4" style="padding: 0px; border-bottom:none">
+					<table style="width:100%; border-collapse:collapse; border-width: 0px; font-size: 12px;">
+						<tbody><tr>
+							<th style="border-top:none; border-left:none" width="25%">중간고사</th>
+							<th style="border-top:none" width="25%">기말고사</th>
+							<th style="border-top:none" width="25%">출석</th>
+							<th style="border-top:none; border-right:none" width="25%">과제</th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">20&nbsp;</td>
+							<td style="text-align:center;">40</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;border-right:none">20</td>
+						</tr>
+						<tr>
+							<th style="border-top:none; border-left:none" width="25%">퀴즈</th>
+							<th style="border-top:none" width="25%">토론</th>
+							<th style="border-top:none" width="25%">기타</th>
+							<th style="border-top:none; border-right:none" width="25%"></th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">&nbsp;</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;">0</td>
+							<td style="text-align:center;border-right:none"></td>
+						</tr>
+						<tr>
+							<th colspan="1" style="border-left:none; border-bottom:none">과제/퀴즈/<br>토론/기타<br>문제 및 주제</th>
+							<td colspan="3" style="border-right:none; border-bottom:none">토론 : 1,2,3기 신도시 비교분석 (정책의 차이와 현안등) </td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>		
+				
+			<tr class="displayOn">
+				<th style="line-height: 1.1em">수업운영방식 </th>
+				<td colspan="4">-</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5"></td>
+			</tr> 
+			
+			
+			
+			<tr class="displayOff">
+				<th rowspan="4">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="5">공분야 입문을 통해 습득한 기초지식과 실습한 설계 기술을 한층 전문적이고 종합적으로 발전시키고, 실무에서 적용할 수 있는 결과 도출 능력을 배양·증진 시킬 수 있는 기회 제공이 목적<br>
+기존 신도시를 대상지로 선정하여 도시계획에 대해 탐구하고 실제 계획이 실현된 현장을 탐방하여 분석한 후 대상지에 적합한 새로운 신도시 공간구상(안) 및 개발계획(안)을 제시해보고자 함</td>
+			</tr>
+			<tr class="displayOff">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="5">- 이론수업과자기주도적 설계 진행과 피드백을 통한 효율적이고 능률적으로 진행
+- 창의성 및 능률성 강화를 위한 프로젝트수업방식과 이를 위한 팀워크 (Team Work 팀작업/조작업) 수업방식</td>				
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="border-right:none">평가방법</th>
+				<td colspan="5" style="padding: 0px; border-bottom:none">
+					<table style="width:100%; border-collapse:collapse; border-width: 0px; font-size: 12px;">
+						<tbody><tr>
+							<th style="border-top:none; border-left:none" width="15%">중간고사</th>
+							<th style="border-top:none;" width="15%">기말고사</th>
+							<th style="border-top:none" width="14%">출석</th>
+							<th style="border-top:none" width="14%">과제</th>
+							<th style="border-top:none" width="14%">퀴즈</th>
+							<th style="border-top:none" width="14%">토론</th>
+							<th style="border-top:none; border-right:none" width="14%">기타</th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">20&nbsp;</td>
+							<td style="text-align:center;">40</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;">20</td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;border-right:none">0</td>
+						</tr>
+						<tr>
+							<th colspan="2" style="border-left:none; border-bottom:none">과제/퀴즈/토론/기타<br>문제 및 주제</th>
+							<td colspan="5" style="border-right:none; border-bottom:none">토론 : 1,2,3기 신도시 비교분석 (정책의 차이와 현안등) </td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="line-height: 1.1em">수업운영방식</th>
+				<td colspan="5">-</td>
+			</tr>
+			
+			<!---------------교재 ---------------------- -->
+			
+			<tr>
+				<th rowspan="2" colspan="2">교재</th>
+				<th class="multi-line">주교재<br>(저자,출판사)</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th class="multi-line">참고도서<br>(저자,출판사)</th>
+				<td colspan="4">택지개발사업 업무편람(LH)<br>
+신도시개발론(부연사)</td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">장애학생 수업&gt;<br>지원안내</th>
+				<th class="multi-line">시험시간<br>조정여부</th>
+				<td colspan="4">
+					<input type="checkbox" disabled="disabled">최소1.5배(저시력,뇌병변,기타) &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">최소1.7배(맹인학생)   					
+					
+				</td>
+			</tr>
+			
+			<tr>
+				<th class="multi-line">지원사항</th>
+				<td colspan="4">
+					<input type="checkbox" disabled="disabled">시험대필 제공여부 &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">시험문제 점역지원 여부 &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">확대문자 시험지 제공
+				</td>
+			</tr>
+			<tr>
+				<th class="multi-line">기타</th>
+				<td colspan="4"><br></td>
+			</tr>
+			
+			
+			
+			
+		</tbody>
+	</table>
+	
+	
+	<table class="syllabus_week_title">
+		<tbody><tr>
+			<th colspan="5"><span style="font-size: 18px;">주차별 강의내용</span></th>
+		</tr>
+	</tbody></table>
+	<table class="syllabus_week">
+		<colgroup>
+			<col width="5%"> 
+			<col width="32%">
+			<col width="21%">
+			<col width="17%">
+			<col width="17%">
+			<col width="8%">
+		</colgroup>
+			<thead>
+			<tr style="line-height: 1.2em">
+				<th>주차</th>
+				<th>학습주제</th>
+				<th>수업방식/<br>이용기자재</th>
+				<th>교수학습자료</th>
+				<th>과제</th>
+				<th>수업운영<br>방식</th>
+			</tr>
+			</thead>
+		<tbody>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">1</td>
+				<td data-label="학습주제">이론실무- Introduction, 신도시계획의 개념, 의의, 신도시개발 관련 법규<br>
+Orientation-도시설계와 도시계획<br>
+</td>
+				<td data-label="수업방식/이용기자재">강의</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">2</td>
+				<td data-label="학습주제">이론실무-종합절차와 계획의 실현<br>
+실습- 대상지 선정과 조편성, 타임스케줄 작성 및 대상지 개요(과정과 역사, 현안 등)</td>
+				<td data-label="수업방식/이용기자재">강의,실습</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">대상지 개요 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">3</td>
+				<td data-label="학습주제">이론실무-신도시계획의 태동(1960∼80년대)과 출발<br>
+실습-대상지 현황 상세 조사(자연환경, 인문환경 조사분석 측면), 도면작업</td>
+				<td data-label="수업방식/이용기자재">강의,실습/팀프로젝트</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">연구계획서 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">4</td>
+				<td data-label="학습주제">이론실무-신도시계획의 본격화(제1기 신도시개발)<br>
+실습-기존 도시계획 내용 검토(동선체계 및 주요 토지용도별 특성)와 실제 계획 현황 비교</td>
+				<td data-label="수업방식/이용기자재">강의,실습/팀프로젝트</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">대상지조사1 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">5</td>
+				<td data-label="학습주제">이론실무-신도시계획의 본격화(제2기 신도시개발)<br>
+실습-주요 구역 현장방문(계획의 실현, 현장 문제점 등)<br>
+</td>
+				<td data-label="수업방식/이용기자재">강의,실습/팀프로젝트</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">6</td>
+				<td data-label="학습주제">이론실무-신도시계획의 본격화(제3기 신도시개발)<br>
+실습-대상지 현황 분석(자연환경, 인문환경등)</td>
+				<td data-label="수업방식/이용기자재">강의,실습/팀프로젝트</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">대상지조사2 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">7</td>
+				<td data-label="학습주제">이론실무-신도시개발의 비교와 현안 토론<br>
+실습-현황종합분석(도면과 SWOT 분석)<br>
+</td>
+				<td data-label="수업방식/이용기자재">강의,실습/팀프로젝트</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">종합분석도 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">8</td>
+				<td data-label="학습주제">중간평가<br>
+</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">9</td>
+				<td data-label="학습주제">이론실무-해외 신도시개발 사례<br>
+실습-비전체계 수립(목표와 전략/계획지표설정)</td>
+				<td data-label="수업방식/이용기자재">강의,실습/팀프로젝트</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">비전체계 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">10</td>
+				<td data-label="학습주제">이론실무-신도시개발 사례 탐구Ⅰ(비전)<br>
+실습-토지이용계획Ⅰ(기본구상도 작성)</td>
+				<td data-label="수업방식/이용기자재">강의,실습/팀프로젝트</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">기본구상도 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">11</td>
+				<td data-label="학습주제">이론실무-신도시개발 사례 탐구Ⅱ(공간구상)<br>
+실습-토지이용계획Ⅱ(토지이용구상)</td>
+				<td data-label="수업방식/이용기자재">강의,실습/팀프로젝트</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">토지이용계획도 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">12</td>
+				<td data-label="학습주제">이론실무-토지이용계획 (개념과 사례)<br>
+실습-토지이용계획Ⅲ(가로망체계 및 동선계획, 공원계획, 주요시설계획)</td>
+				<td data-label="수업방식/이용기자재">강의,실습/팀프로젝트</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">교통계획도, 공원녹지계획도,<br>
+시설배치계획 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">13</td>
+				<td data-label="학습주제">이론실무-토지이용계획 수립과 작성 사례<br>
+실습-토지이용계획 수립(도면작성, 토지이용계획 면적 구상), 판넬작업1</td>
+				<td data-label="수업방식/이용기자재">강의,실습/팀프로젝트</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">14</td>
+				<td data-label="학습주제">이론실무-신도시 특별계획 구역<br>
+실습-주요 계획구역(특별계획구역 선정)가구 및 획지계획, 건축물배치,판넬작업2<br>
+</td>
+				<td data-label="수업방식/이용기자재">강의,실습/팀프로젝트</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">15</td>
+				<td data-label="학습주제">최종평가<br>
+</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">미니판넬 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+
+		</tbody>
+	</table>
+	
+	
+</div>
+
+
+</body></html>

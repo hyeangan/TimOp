@@ -1,0 +1,685 @@
+<html><head>
+<base target="_blank">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+	.syllabus, .syllabus_week{width:800px; border-width: 2px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:10px; table-layout: fixed;} 
+	.syllabus_sub {width:600px; border-width: 1px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:3px;margin-bottom:3px; k-layout: fixed;}
+	tr{min-height: 22px; }
+	th{border: 1px black solid; text-align: center; font-weight: bold; background-color: #EFEFEF}
+	th.no_topLine{border-top:0px black solid;}
+	th.no_botLine{border-bottom:0px black solid;}
+	td{border: 1px black solid; text-align: left; padding-left: 3px; min-height: 22px; vertical-align: middle; background-color: #FFFFFF}
+	td p{min-height: 22px;}
+	td pre{margin:auto; min-height:1px;}
+	
+	.multi-line {line-height:1.3em;padding-top:4px}
+	.majorDiv {width:800px;}
+	.syllabus_week {margin-top:5px;}
+	.syllabus_week_title {border: 1px solid gray;width:800px;height:40px;margin-top:20px;}
+	
+	
+	@media screen and (max-width: 768px) { 	
+		.syllabus, .syllabus_week, .majorDiv, .syllabus_week_title {width: 100%;}
+		.displayOff {display:none;}
+ 		.syllabus_week thead {display:none;} 
+ 		.syllabus_week, .syllabus_week tbody, .syllabus_week tr, .syllabus_week td {display: block;} 
+  		.syllabus_week tbody tr td {text-align:left;padding-left: 50%;position:relative;border-top:none;border-left:none;border-right:none; }  
+  		.syllabus_week tbody tr td nth-child(1) {text-align: left;}
+  		.syllabus_week tbody tr {border-top:1px soild black;}  
+ 		.syllabus_week td:before {content:attr(data-label); position:absolute; left: 0%;width: 50%;padding-left: 15px;text-align: left;}  
+/*  		.syllabus_week_child5 {border-bottom: 2px solid black;} */
+	}
+			
+	@media screen and (min-width: 769px) { 	
+		.displayOn {display:none;}
+		.syllabus_week_child1 {text-align: center;}
+	}
+	
+</style>
+<title>강의계획서 보기</title>
+
+<script type="text/javascript" src="../function/common.js"></script>
+<script type="text/javascript" src="../function/sortTable.js"></script>
+<script>
+	function goPrint(){
+		
+		var src = '';
+		if(isCompatibleIE()){
+			src = "../rdreport/r_designer_cs.jsp?repo_val1=2024&repo_val2=1&repo_val3=XD24210&repo_val4=00&repo_val5=108322&repo_path=../sbr/sbr3072.mrd";
+		}else{
+			src = "https://app.kangnam.ac.kr/knumis/rdreport/r_designer_cs.jsp?repo_val1=2024&repo_val2=1&repo_val3=XD24210&repo_val4=00&repo_val5=108322&repo_path=../sbr/sbr3072.mrd";
+		}
+
+		openWin('',src,850,630,0,0);
+
+		self.close();
+	}
+</script>
+</head>
+
+<body>
+
+
+<div style="font-size: 12px; text-align:center;magin-left:10px; height:12px; margin-bottom:10px;margin-top:10px">
+	최초작성일 : 2024/01/02 , 최종수정일 : 2024/03/08
+</div>
+
+<div align="center" style="margin-top: 10px;">
+	<table class="syllabus">
+		<colgroup>
+			<col width="10%">
+			<col width="7%">
+			<col width="10%">
+			<col width="20%">
+			<col width="16%">
+			<col width="8%">
+			<col width="21%">
+		</colgroup>
+		
+		<tbody>
+			<tr>
+				<th colspan="7" style="height:50px;"><span style="font-size: 24px;">강 의 계 획 서</span></th>
+			</tr>
+			<tr>
+				<th colspan="2">년 도</th>
+				<td colspan="2">2024</td>
+				<th>학 기</th>
+				<td colspan="2">1 학기</td>
+			</tr>
+			<tr>
+				<th rowspan="2">교과목명</th>
+				<th>한글</th>
+				<td colspan="2">세무회계연습</td>
+				<th rowspan="2">담당교수</th>
+				<td rowspan="2" colspan="2">김은태</td>
+			</tr>
+			<tr>
+				<th>영문</th>
+				<td colspan="2">Practice on Tax Accounting</td>
+			</tr>
+			<tr>
+				<th colspan="2">학수번호-분반</th>
+				<td colspan="2">XD24210 - 00</td>
+				<th>강의요일교시</th>
+				<td colspan="2">(야)수101112</td>
+			</tr>
+			<tr>
+				<th colspan="2">학점<br>(시간수)</th>
+				<td colspan="2">3(3)</td>
+				<th>강의실</th>
+				<td colspan="2">샬202</td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">개설(이수)구분</th>
+				<th>교양</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">계열교양<br>
+					<input type="checkbox" disabled="disabled">일반교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">균형교양: 
+				</td>
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">계열교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">일반교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">균형교양: 
+				</td>
+			</tr>
+			<tr>
+				<th>전공</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공기초<br>
+					<input type="checkbox" checked="" disabled="disabled">전공선택 ( 4 ) 학년<br>
+					<input type="checkbox" disabled="disabled">전공필수 ( &nbsp; ) 학년					
+				</td>				
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공기초
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px">전공선택 ( 4 ) 학년
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공필수 ( &nbsp; ) 학년					
+				</td>	
+			</tr>
+			<tr>
+				<th>일반선택</th>
+				<td class="displayOn" colspan="2">
+					<input type="checkbox" disabled="disabled">교직<br>
+					<input type="checkbox" disabled="disabled">자유선택
+				</td>
+				<td class="displayOff" colspan="2">
+					<input type="checkbox" disabled="disabled">교직
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">자유선택
+				</td>
+				<td colspan="2">학부(과) : 세무학전공(야) </td>
+			</tr>
+		
+			<tr>
+				<th rowspan="2" colspan="2">강좌특성</th>
+				<td class="displayOn" colspan="5">
+					<input type="checkbox" checked="" disabled="disabled">이론강의
+					<input type="checkbox" disabled="disabled" style="margin-left:76px">실험·실습·실기<br>
+					<input type="checkbox" disabled="disabled">이론/실험·실습병행
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+				<td class="displayOff" colspan="5">
+					<input type="checkbox" checked="" disabled="disabled">이론강의
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">실험·실습·실기
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">이론·실습병행
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+			</tr>
+			<tr>
+				<th>학문특성</th>
+				<td></td>
+				<th>기타특성</th>				
+				<td colspan="2"></td>
+			</tr>
+			
+			<tr class="displayOn">
+				<th rowspan="3" colspan="2">교수학습<br>방법</th>
+				<th colspan="2">표준 교과목운영 <br>기준</th>
+				<td colspan="3" style="line-height: 1.0em">
+					<input type="checkbox" checked="" disabled="disabled">강의
+					<input type="checkbox" disabled="disabled" style="margin-left: 30px;">발표<br>
+					<input type="checkbox" disabled="disabled">토론·토의
+					<input type="checkbox" disabled="disabled">협력학습<br>
+					<input type="checkbox" disabled="disabled">문제기반학습<br>
+				</td>
+			</tr>
+			<tr class="displayOn">
+				<th colspan="2">학생 자기주도식<br>수업운영</th>
+				<td colspan="3">
+					<input type="checkbox" disabled="disabled">문제기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">프로젝트기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">플립러닝<br>
+					<input type="checkbox" disabled="disabled">K-MOOC<br>
+					<input type="checkbox" disabled="disabled">팀기반학습(TBL)<br>
+					<input type="checkbox" disabled="disabled">블랜디드러닝<br>
+					<input type="checkbox" disabled="disabled">캡스톤디자인<br>
+				</td>
+			</tr>
+			<tr class="displayOn">
+				<th colspan="2">현장 연계 방법</th>
+				<td colspan="3">
+					<input type="checkbox" disabled="disabled">현장전문가초청<br>
+					<input type="checkbox" disabled="disabled">현장탐방
+					<input type="checkbox" disabled="disabled" style="margin-left:20px;">기타<br>
+				</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th rowspan="2" colspan="2">교수학습<br>방법</th>
+				<th colspan="2">표준 교과목운영 기준</th>
+				<th colspan="2">학생 자기주도식 수업운영</th>
+				<th>현장 연계 방법</th>
+			</tr>
+			<tr class="displayOff">
+				<td colspan="2" style="line-height: 1.0em">
+					<input type="checkbox" checked="" disabled="disabled">강의<br>
+					<input type="checkbox" disabled="disabled">발표<br>
+					<input type="checkbox" disabled="disabled">토론·토의<br>
+					<input type="checkbox" disabled="disabled">협력학습<br>
+					<input type="checkbox" disabled="disabled">문제기반학습<br>
+				</td>
+				<td colspan="2">
+					<input type="checkbox" disabled="disabled">문제기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">프로젝트기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">플립러닝<br>
+					<input type="checkbox" disabled="disabled">K-MOOC<br>
+					<input type="checkbox" disabled="disabled">팀기반학습(TBL)<br>
+					<input type="checkbox" disabled="disabled">블랜디드러닝<br>
+					<input type="checkbox" disabled="disabled">캡스톤디자인<br>
+				</td>
+				<td>
+					<input type="checkbox" disabled="disabled">현장전문가초청<br>
+					<input type="checkbox" disabled="disabled">현장탐방<br>
+					<input type="checkbox" disabled="disabled">기타<br>
+				</td>
+			</tr>
+			
+			
+			<tr>
+				<th colspan="2">전공능력</th>
+				<td colspan="5"></td>				
+			</tr>
+			<tr>
+				<th colspan="2" rowspan="2">성적평가기준</th>
+				<td colspan="5">
+					절대평가
+
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5">※성적평가기준은 최종 수강 인원, 강좌별 특성에 따라 차후 변동될 수 있습니다.</td>
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="3">연락처</th>
+				<th>연구실</th>
+				<td></td>
+				<th>E-Mail</th>
+				<td colspan="2" style="word-break:break-word;"></td>
+				
+			</tr>
+			<tr>
+				<th>휴대전화</th>
+				<td></td>
+				<th>면담가능시간</th>
+				<td colspan="2"></td>
+				
+			</tr>
+			<tr>
+				<th>연구일</th>
+				<td></td>
+				<th>관리부서</th>
+				<td colspan="2">
+					교학1팀 (031-280-3410 ~ 3)
+
+				</td>
+				
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="2">교육과정<br>참고사항</th>
+				<th>선수과목</th>
+				<td></td>
+				<th>관련<br>기초과목</th>
+				<td colspan="2"></td>
+			</tr>
+			<tr>
+				<th class="multi-line">동시수강<br>관련과목</th>
+				<td></td>
+				<th>관련<br>고급과목</th>
+				<td colspan="2"></td>
+			</tr>
+			
+			
+			<!-- ------------------------------------------------------------------------  -->
+			<tr class="displayOn">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5">1.세법의 기본개념의 법령의 학습에서 나아가, 세무조정계산서를 작성할 수 있다
+2. 법인세 신고 해당지식과 기술을 확실하게 습득하여 직무수행에 필요한 기술적 
+   사 고력과 문제 해결능력을 주도적으로 완벽하게 수행할 수 있다
+3. 회계사 및 세무사 등 세무관련 자격시험에 대비할 수 있다</td>
+			</tr> 
+			
+			<tr class="displayOn">
+				<th colspan="2" rowspan="4">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="4">기존에 학습한 기본개념에 본 교과목의 요약 중심의 이론과 기업회계의 차이점을 세무조정으로 사례를 중심으로 지도하여 재경관리사 등 시험을 보는 학생들과 취업 후 실무에서 법인세 결산 및 소득세 신고, 부가가치세 신고 등을 할수 있도록 학생들이 자신감을 갖도록 한다.<br>
+본 강의는 다음과 같은 목적을 추가한다. <br>
+첫째, 요약중심의 이론과 사례를 중심으로 법인세 세액산출을 할수있도록 한다.<br>
+둘째, 기존에 학습한 소득세법의 계산구조에 사례를 중심으로 소득세 과세표준과 세액을 산출        할수 있도록 한다.<br>
+셋째, 기존에 학습한 부가가치세 계산구조에 사례를 중심으로 방식으로 부가가치세액을 산출        할수 있도록 한다.  <br>
+ </td>
+			</tr>
+			<tr class="displayOn">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="4">주교재를 기준으로 이론를 강의하며, 재경관리사 기출문제 및 세무사 기출문제를 통하여 실무에 적용할수 있도록 강의를 할 것이다.</td>				
+			</tr>
+			
+			<tr class="displayOn">
+				<th style="border-right:none">평가방법</th>
+				<td colspan="4" style="padding: 0px; border-bottom:none">
+					<table style="width:100%; border-collapse:collapse; border-width: 0px; font-size: 12px;">
+						<tbody><tr>
+							<th style="border-top:none; border-left:none" width="25%">중간고사</th>
+							<th style="border-top:none" width="25%">기말고사</th>
+							<th style="border-top:none" width="25%">출석</th>
+							<th style="border-top:none; border-right:none" width="25%">과제</th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">30&nbsp;</td>
+							<td style="text-align:center;">30</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;border-right:none">20</td>
+						</tr>
+						<tr>
+							<th style="border-top:none; border-left:none" width="25%">퀴즈</th>
+							<th style="border-top:none" width="25%">토론</th>
+							<th style="border-top:none" width="25%">기타</th>
+							<th style="border-top:none; border-right:none" width="25%"></th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">10&nbsp;</td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;border-right:none"></td>
+						</tr>
+						<tr>
+							<th colspan="1" style="border-left:none; border-bottom:none">과제/퀴즈/<br>토론/기타<br>문제 및 주제</th>
+							<td colspan="3" style="border-right:none; border-bottom:none">6주차: 퇴직연금충당금(확정기여형과 확정급여형의)에대하여 비교설명하시오
+12주차:소득세법 중 근로소득에 대하여 설명하시오
+ 퀴즈는 수업 시간 별도 고지합니다</td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>		
+				
+			<tr class="displayOn">
+				<th style="line-height: 1.1em">수업운영방식 </th>
+				<td colspan="4">대면</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5">1.세법의 기본개념의 법령의 학습에서 나아가, 세무조정계산서를 작성할 수 있다
+2. 법인세 신고 해당지식과 기술을 확실하게 습득하여 직무수행에 필요한 기술적 
+   사 고력과 문제 해결능력을 주도적으로 완벽하게 수행할 수 있다
+3. 회계사 및 세무사 등 세무관련 자격시험에 대비할 수 있다</td>
+			</tr> 
+			
+			
+			
+			<tr class="displayOff">
+				<th rowspan="4">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="5">기존에 학습한 기본개념에 본 교과목의 요약 중심의 이론과 기업회계의 차이점을 세무조정으로 사례를 중심으로 지도하여 재경관리사 등 시험을 보는 학생들과 취업 후 실무에서 법인세 결산 및 소득세 신고, 부가가치세 신고 등을 할수 있도록 학생들이 자신감을 갖도록 한다.<br>
+본 강의는 다음과 같은 목적을 추가한다. <br>
+첫째, 요약중심의 이론과 사례를 중심으로 법인세 세액산출을 할수있도록 한다.<br>
+둘째, 기존에 학습한 소득세법의 계산구조에 사례를 중심으로 소득세 과세표준과 세액을 산출        할수 있도록 한다.<br>
+셋째, 기존에 학습한 부가가치세 계산구조에 사례를 중심으로 방식으로 부가가치세액을 산출        할수 있도록 한다.  <br>
+ </td>
+			</tr>
+			<tr class="displayOff">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="5">주교재를 기준으로 이론를 강의하며, 재경관리사 기출문제 및 세무사 기출문제를 통하여 실무에 적용할수 있도록 강의를 할 것이다.</td>				
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="border-right:none">평가방법</th>
+				<td colspan="5" style="padding: 0px; border-bottom:none">
+					<table style="width:100%; border-collapse:collapse; border-width: 0px; font-size: 12px;">
+						<tbody><tr>
+							<th style="border-top:none; border-left:none" width="15%">중간고사</th>
+							<th style="border-top:none;" width="15%">기말고사</th>
+							<th style="border-top:none" width="14%">출석</th>
+							<th style="border-top:none" width="14%">과제</th>
+							<th style="border-top:none" width="14%">퀴즈</th>
+							<th style="border-top:none" width="14%">토론</th>
+							<th style="border-top:none; border-right:none" width="14%">기타</th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">30&nbsp;</td>
+							<td style="text-align:center;">30</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;">20</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;border-right:none"></td>
+						</tr>
+						<tr>
+							<th colspan="2" style="border-left:none; border-bottom:none">과제/퀴즈/토론/기타<br>문제 및 주제</th>
+							<td colspan="5" style="border-right:none; border-bottom:none">6주차: 퇴직연금충당금(확정기여형과 확정급여형의)에대하여 비교설명하시오
+12주차:소득세법 중 근로소득에 대하여 설명하시오
+ 퀴즈는 수업 시간 별도 고지합니다</td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="line-height: 1.1em">수업운영방식</th>
+				<td colspan="5">대면</td>
+			</tr>
+			
+			<!---------------교재 ---------------------- -->
+			
+			<tr>
+				<th rowspan="2" colspan="2">교재</th>
+				<th class="multi-line">주교재<br>(저자,출판사)</th>
+				<td colspan="4">2024년 국가공인재경관리사 세무회계<br>
+삼일회계법인 저/ 삼일포마인/</td>
+			</tr>
+			<tr>
+				<th class="multi-line">참고도서<br>(저자,출판사)</th>
+				<td colspan="4">재경관리사 기출문제 프린트</td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">장애학생 수업&gt;<br>지원안내</th>
+				<th class="multi-line">시험시간<br>조정여부</th>
+				<td colspan="4">
+					<input type="checkbox" disabled="disabled">최소1.5배(저시력,뇌병변,기타) &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">최소1.7배(맹인학생)   					
+					
+				</td>
+			</tr>
+			
+			<tr>
+				<th class="multi-line">지원사항</th>
+				<td colspan="4">
+					<input type="checkbox" disabled="disabled">시험대필 제공여부 &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">시험문제 점역지원 여부 &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">확대문자 시험지 제공
+				</td>
+			</tr>
+			<tr>
+				<th class="multi-line">기타</th>
+				<td colspan="4"><br></td>
+			</tr>
+			
+			
+			
+			
+		</tbody>
+	</table>
+	
+	
+	<table class="syllabus_week_title">
+		<tbody><tr>
+			<th colspan="5"><span style="font-size: 18px;">주차별 강의내용</span></th>
+		</tr>
+	</tbody></table>
+	<table class="syllabus_week">
+		<colgroup>
+			<col width="5%"> 
+			<col width="32%">
+			<col width="21%">
+			<col width="17%">
+			<col width="17%">
+			<col width="8%">
+		</colgroup>
+			<thead>
+			<tr style="line-height: 1.2em">
+				<th>주차</th>
+				<th>학습주제</th>
+				<th>수업방식/<br>이용기자재</th>
+				<th>교수학습자료</th>
+				<th>과제</th>
+				<th>수업운영<br>방식</th>
+			</tr>
+			</thead>
+		<tbody>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">1</td>
+				<td data-label="학습주제">오리엔테이션<br>
+1)강의제목:조세총론 ,국세기본법(1)<br>
+2)강의주제 :조세의 개념과 분류, 조세법의 기본원칙, 국세기본법의 개요, 국세부과의 원칙<br>
+3) 강의세부내역(간략):조세의 개념, 조세의 분류와 우리나라의 과세체계, 조세법률주의와 조세평등주의, 신의성실의 원칙,국세기본법의 목적과 내용, 기간과 기한, 서류의 송달,국세부과의 원칙</td>
+				<td data-label="수업방식/이용기자재">주교재 및 빔플로젝트</td>
+				<td data-label="교수학습자료">유인물</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">2</td>
+				<td data-label="학습주제">1)강의제목:국세기본법(2)<br>
+2)강의주제:세법적용의 원칙, 과세요건, <br>
+   과세와 환급  <br>
+3)강의세부내역(간략):관할관청,수정신고와 경정청구, 기한후 신고와  납부, 가산세, 국세환급금, 국세환급가산금, 납세자권리구제,과세전적부심사</td>
+				<td data-label="수업방식/이용기자재"> 주교재 및 빔플로젝트<br>
+</td>
+				<td data-label="교수학습자료">교재 및 유인물</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">3</td>
+				<td data-label="학습주제">1)강의제목:법인세법(1)<br>
+2)강의주제:총설,각사업연도 소득에 대한법인세, <br>
+3)강의세부내역(간략):법인세의 개요.과세소득의 범위,납세의무자,사업연도,납세지,법인세의 계산구조,세무조정,소득처분.</td>
+				<td data-label="수업방식/이용기자재">주교재 및 빔플로젝트<br>
+문제풀이법인세법시행규칙[별지제16호서식]및[별지 제60호서식 작성</td>
+				<td data-label="교수학습자료">교재 및유인물<br>
+그리고 소득금액조정합계표 및 자본금과 적립금조정명세서 작성</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">4</td>
+				<td data-label="학습주제">1)강의제목:법인세법(2)<br>
+2)강의주제:익금의 계산, 손금의 계산<br>
+3)강의세부내역(간략):익금의 의의, 익금의 범위,  익금항목,익금불산입항목,손금의의의,손금의범위,손금의항목,손금불산입항목.</td>
+				<td data-label="수업방식/이용기자재">주교재 및 빔플로젝트<br>
+문제풀이</td>
+				<td data-label="교수학습자료">교재 및 유인물</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">5</td>
+				<td data-label="학습주제">1)강의제목:법인세법(3)<br>
+2)강의주제: 손익의 귀속,감가상각비 손 <br>
+   금불산입,접대비의 손금불산입<br>
+3)강의세부내역(간략):손익사업연도의 일반원칙,항목별손익귀속사업연도 자산부채의 평가,감가상각자산의 범위,감가상각비제도의 특징, 범위,결정요소,계산방법,접대비의개념, 접대비의 법위,세무조정.</td>
+				<td data-label="수업방식/이용기자재">주교재 및 빔플로젝트<br>
+문제풀이,</td>
+				<td data-label="교수학습자료">교재 및 유인물</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">6</td>
+				<td data-label="학습주제">1)강의제목:법인세법(3)<br>
+2)강의주제: 손익의 귀속,감가상각비 손금불산입 <br>
+   손금산입, <br>
+3)강의세부내역(간략): 손익사업연도의 일반원칙,항목별손익귀속사업연도, 자산부채의 평가, 감가상각자산의 범위, 감가상각비제도의 특징, 범위, 결정요소, 계상방법 <br>
+ </td>
+				<td data-label="수업방식/이용기자재">주교재 및 빔플로젝트<br>
+문제풀이</td>
+				<td data-label="교수학습자료">교재 및 유인물<br>
+</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">7</td>
+				<td data-label="학습주제">1)강의제목: 법인세법(3)<br>
+2)강의주제:감가상각비의 손금불산입, 교재문제물이, 1주차 수시평가(퀴즈)<br>
+   법인세의 신고와 납부 <br>
+3)강의세부내역(간략):감가상각비의 교재 문제풀이, 기출문제풀이(손익귀속,자산부채평가, 감가상각비)1차수시평가(퀴즈)</td>
+				<td data-label="수업방식/이용기자재">주교재 및 빔플로젝트<br>
+문제풀이</td>
+				<td data-label="교수학습자료">교재 및 유인물,1차 수시평가(퀴즈)</td>
+				<td data-label="과제">퇴직연금제도(확정기여형과 확정급여형의)에대한 비교 설명 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">8</td>
+				<td data-label="학습주제">중간고사<br>
+</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">9</td>
+				<td data-label="학습주제">1)강의제목:법인세법(4)<br>
+2)강의주제:기부금손금불산입,접대비의 손금불산입, 지급이자손금불산입<br>
+2)강의세부내역(간략): 기부금세무조정, 접대비의세무조정, 세무조정, 지급이자의 개요, 건설자금이자, 세무상처리, 업무무관자산등관련이자등 세무조정</td>
+				<td data-label="수업방식/이용기자재">주교재 및 빔플로젝트<br>
+문제풀이</td>
+				<td data-label="교수학습자료">교재 및 유인물</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">10</td>
+				<td data-label="학습주제">1)강의제목:법인세법(4)<br>
+2)강의주제:충당금손금산입,과세표준과 세액의 계산 .법인세의 신고와 납부<br>
+2)강의세부내역(간략): 퇴직충당금과 퇴직연금충당금 ,대손금과 대손충당금의 손금산입, 과세표준과 이월결손금, 비과세소득, 산출세액의 계산</td>
+				<td data-label="수업방식/이용기자재">주교재 및 빔플로젝트<br>
+문제풀이</td>
+				<td data-label="교수학습자료">교재 및 유인물</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">11</td>
+				<td data-label="학습주제">)강의제목:소득세법(1)<br>
+2)강의주제:총설,소득세의 구조, 금융소득.사업소득,연금소득 기타소득<br>
+2)강의세부내역(간략): 소득세의개요, 납세의무자, 소득의 구분, 납세지, 우리나라 소득세의 특징, 금융소득, 금융소득금액산출.기타소득 기타소득의 범위</td>
+				<td data-label="수업방식/이용기자재">주교재 및 빔플로젝트<br>
+문제풀이</td>
+				<td data-label="교수학습자료">금융소득금액산출</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">12</td>
+				<td data-label="학습주제">1)강의제목:소득세법(2)<br>
+2)강의주제:종합소득금액의 계산, 종합소득과세표준 및 세액의 계산<br>
+3)강의세부내역(간략):종합소득산출세액계산, 인적공제,외국납세액공제,재해손실세액공제, 기장세액공제 전자신고세액공제.</td>
+				<td data-label="수업방식/이용기자재">주교재 및 빔플로젝트<br>
+문제풀이</td>
+				<td data-label="교수학습자료">교재 및 유인물</td>
+				<td data-label="과제">소득세법 중 근로소득에 대하여 설명하시오 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">13</td>
+				<td data-label="학습주제">1)강의제목: 부가가치세(1)<br>
+2)강의주제: 부가가치세개요, 과세표준의 일반원칙,과세표준의 특례, 대손세액공제<br>
+2)강의세부내역(간략): 부가가치세 개요, 주사업장 총괄납부제도, 사업자단위제도, 과세표준계산의 특례(토지와 건물의 일괄공급,겸용주택,공통사용재화)</td>
+				<td data-label="수업방식/이용기자재">주교재 및 빔플로젝트<br>
+문제풀이</td>
+				<td data-label="교수학습자료">교재 및 유인물</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">14</td>
+				<td data-label="학습주제">1)강의제목: 부가가치세법(2)<br>
+2)강의주제: 대손세액공제, 의제매입세액공제, 공통매입세액의 안분계산<br>
+2)강의세부내역(간략):대손공제의의,대손사유, 대손확정기한,의제매입세액공제의의, 적용요건, 공통매입세액의 안분계산, 2차 수시평가(퀴즈)</td>
+				<td data-label="수업방식/이용기자재">주교재 및 빔플로젝트<br>
+문제풀이</td>
+				<td data-label="교수학습자료">교재 및 유인물, 2차수시평가(퀴즈)</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">15</td>
+				<td data-label="학습주제">기말고사</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+
+		</tbody>
+	</table>
+	
+	
+</div>
+
+
+</body></html>

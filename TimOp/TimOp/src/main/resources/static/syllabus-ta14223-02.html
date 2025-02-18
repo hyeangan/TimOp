@@ -1,0 +1,655 @@
+<html><head>
+<base target="_blank">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+	.syllabus, .syllabus_week{width:800px; border-width: 2px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:10px; table-layout: fixed;} 
+	.syllabus_sub {width:600px; border-width: 1px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:3px;margin-bottom:3px; k-layout: fixed;}
+	tr{min-height: 22px; }
+	th{border: 1px black solid; text-align: center; font-weight: bold; background-color: #EFEFEF}
+	th.no_topLine{border-top:0px black solid;}
+	th.no_botLine{border-bottom:0px black solid;}
+	td{border: 1px black solid; text-align: left; padding-left: 3px; min-height: 22px; vertical-align: middle; background-color: #FFFFFF}
+	td p{min-height: 22px;}
+	td pre{margin:auto; min-height:1px;}
+	
+	.multi-line {line-height:1.3em;padding-top:4px}
+	.majorDiv {width:800px;}
+	.syllabus_week {margin-top:5px;}
+	.syllabus_week_title {border: 1px solid gray;width:800px;height:40px;margin-top:20px;}
+	
+	
+	@media screen and (max-width: 768px) { 	
+		.syllabus, .syllabus_week, .majorDiv, .syllabus_week_title {width: 100%;}
+		.displayOff {display:none;}
+ 		.syllabus_week thead {display:none;} 
+ 		.syllabus_week, .syllabus_week tbody, .syllabus_week tr, .syllabus_week td {display: block;} 
+  		.syllabus_week tbody tr td {text-align:left;padding-left: 50%;position:relative;border-top:none;border-left:none;border-right:none; }  
+  		.syllabus_week tbody tr td nth-child(1) {text-align: left;}
+  		.syllabus_week tbody tr {border-top:1px soild black;}  
+ 		.syllabus_week td:before {content:attr(data-label); position:absolute; left: 0%;width: 50%;padding-left: 15px;text-align: left;}  
+/*  		.syllabus_week_child5 {border-bottom: 2px solid black;} */
+	}
+			
+	@media screen and (min-width: 769px) { 	
+		.displayOn {display:none;}
+		.syllabus_week_child1 {text-align: center;}
+	}
+	
+</style>
+<title>강의계획서 보기</title>
+
+<script type="text/javascript" src="../function/common.js"></script>
+<script type="text/javascript" src="../function/sortTable.js"></script>
+<script>
+	function goPrint(){
+		
+		var src = '';
+		if(isCompatibleIE()){
+			src = "../rdreport/r_designer_cs.jsp?repo_val1=2024&repo_val2=1&repo_val3=TA14223&repo_val4=02&repo_val5=108679&repo_path=../sbr/sbr3072.mrd";
+		}else{
+			src = "https://app.kangnam.ac.kr/knumis/rdreport/r_designer_cs.jsp?repo_val1=2024&repo_val2=1&repo_val3=TA14223&repo_val4=02&repo_val5=108679&repo_path=../sbr/sbr3072.mrd";
+		}
+
+		openWin('',src,850,630,0,0);
+
+		self.close();
+	}
+</script>
+</head>
+
+<body>
+
+
+<div style="font-size: 12px; text-align:center;magin-left:10px; height:12px; margin-bottom:10px;margin-top:10px">
+	최초작성일 : 2024/01/02 , 최종수정일 : 2024/01/02
+</div>
+
+<div align="center" style="margin-top: 10px;">
+	<table class="syllabus">
+		<colgroup>
+			<col width="10%">
+			<col width="7%">
+			<col width="10%">
+			<col width="20%">
+			<col width="16%">
+			<col width="8%">
+			<col width="21%">
+		</colgroup>
+		
+		<tbody>
+			<tr>
+				<th colspan="7" style="height:50px;"><span style="font-size: 24px;">강 의 계 획 서</span></th>
+			</tr>
+			<tr>
+				<th colspan="2">년 도</th>
+				<td colspan="2">2024</td>
+				<th>학 기</th>
+				<td colspan="2">1 학기</td>
+			</tr>
+			<tr>
+				<th rowspan="2">교과목명</th>
+				<th>한글</th>
+				<td colspan="2">유통채널론</td>
+				<th rowspan="2">담당교수</th>
+				<td rowspan="2" colspan="2">이성순</td>
+			</tr>
+			<tr>
+				<th>영문</th>
+				<td colspan="2">Distribution Channel Management</td>
+			</tr>
+			<tr>
+				<th colspan="2">학수번호-분반</th>
+				<td colspan="2">TA14223 - 02</td>
+				<th>강의요일교시</th>
+				<td colspan="2">(주)목4ab5ab6ab</td>
+			</tr>
+			<tr>
+				<th colspan="2">학점<br>(시간수)</th>
+				<td colspan="2">3(3)</td>
+				<th>강의실</th>
+				<td colspan="2">샬402</td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">개설(이수)구분</th>
+				<th>교양</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">계열교양<br>
+					<input type="checkbox" disabled="disabled">일반교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">균형교양: 
+				</td>
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">계열교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">일반교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">균형교양: 
+				</td>
+			</tr>
+			<tr>
+				<th>전공</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공기초<br>
+					<input type="checkbox" checked="" disabled="disabled">전공선택 ( 4 ) 학년<br>
+					<input type="checkbox" disabled="disabled">전공필수 ( &nbsp; ) 학년					
+				</td>				
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공기초
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px">전공선택 ( 4 ) 학년
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공필수 ( &nbsp; ) 학년					
+				</td>	
+			</tr>
+			<tr>
+				<th>일반선택</th>
+				<td class="displayOn" colspan="2">
+					<input type="checkbox" disabled="disabled">교직<br>
+					<input type="checkbox" disabled="disabled">자유선택
+				</td>
+				<td class="displayOff" colspan="2">
+					<input type="checkbox" disabled="disabled">교직
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">자유선택
+				</td>
+				<td colspan="2">학부(과) : 경영학전공 </td>
+			</tr>
+		
+			<tr>
+				<th rowspan="2" colspan="2">강좌특성</th>
+				<td class="displayOn" colspan="5">
+					<input type="checkbox" checked="" disabled="disabled">이론강의
+					<input type="checkbox" disabled="disabled" style="margin-left:76px">실험·실습·실기<br>
+					<input type="checkbox" disabled="disabled">이론/실험·실습병행
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+				<td class="displayOff" colspan="5">
+					<input type="checkbox" checked="" disabled="disabled">이론강의
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">실험·실습·실기
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">이론·실습병행
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+			</tr>
+			<tr>
+				<th>학문특성</th>
+				<td></td>
+				<th>기타특성</th>				
+				<td colspan="2"></td>
+			</tr>
+			
+			<tr class="displayOn">
+				<th rowspan="3" colspan="2">교수학습<br>방법</th>
+				<th colspan="2">표준 교과목운영 <br>기준</th>
+				<td colspan="3" style="line-height: 1.0em">
+					<input type="checkbox" checked="" disabled="disabled">강의
+					<input type="checkbox" disabled="disabled" style="margin-left: 30px;">발표<br>
+					<input type="checkbox" checked="" disabled="disabled">토론·토의
+					<input type="checkbox" disabled="disabled">협력학습<br>
+					<input type="checkbox" disabled="disabled">문제기반학습<br>
+				</td>
+			</tr>
+			<tr class="displayOn">
+				<th colspan="2">학생 자기주도식<br>수업운영</th>
+				<td colspan="3">
+					<input type="checkbox" checked="" disabled="disabled">문제기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">프로젝트기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">플립러닝<br>
+					<input type="checkbox" disabled="disabled">K-MOOC<br>
+					<input type="checkbox" checked="" disabled="disabled">팀기반학습(TBL)<br>
+					<input type="checkbox" disabled="disabled">블랜디드러닝<br>
+					<input type="checkbox" disabled="disabled">캡스톤디자인<br>
+				</td>
+			</tr>
+			<tr class="displayOn">
+				<th colspan="2">현장 연계 방법</th>
+				<td colspan="3">
+					<input type="checkbox" disabled="disabled">현장전문가초청<br>
+					<input type="checkbox" disabled="disabled">현장탐방
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px;">기타<br>
+				</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th rowspan="2" colspan="2">교수학습<br>방법</th>
+				<th colspan="2">표준 교과목운영 기준</th>
+				<th colspan="2">학생 자기주도식 수업운영</th>
+				<th>현장 연계 방법</th>
+			</tr>
+			<tr class="displayOff">
+				<td colspan="2" style="line-height: 1.0em">
+					<input type="checkbox" checked="" disabled="disabled">강의<br>
+					<input type="checkbox" disabled="disabled">발표<br>
+					<input type="checkbox" checked="" disabled="disabled">토론·토의<br>
+					<input type="checkbox" disabled="disabled">협력학습<br>
+					<input type="checkbox" disabled="disabled">문제기반학습<br>
+				</td>
+				<td colspan="2">
+					<input type="checkbox" checked="" disabled="disabled">문제기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">프로젝트기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">플립러닝<br>
+					<input type="checkbox" disabled="disabled">K-MOOC<br>
+					<input type="checkbox" checked="" disabled="disabled">팀기반학습(TBL)<br>
+					<input type="checkbox" disabled="disabled">블랜디드러닝<br>
+					<input type="checkbox" disabled="disabled">캡스톤디자인<br>
+				</td>
+				<td>
+					<input type="checkbox" disabled="disabled">현장전문가초청<br>
+					<input type="checkbox" disabled="disabled">현장탐방<br>
+					<input type="checkbox" checked="" disabled="disabled">기타<br>
+				</td>
+			</tr>
+			
+			
+			<tr>
+				<th colspan="2">전공능력</th>
+				<td colspan="5"></td>				
+			</tr>
+			<tr>
+				<th colspan="2" rowspan="2">성적평가기준</th>
+				<td colspan="5">
+					
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5">※성적평가기준은 최종 수강 인원, 강좌별 특성에 따라 차후 변동될 수 있습니다.</td>
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="3">연락처</th>
+				<th>연구실</th>
+				<td></td>
+				<th>E-Mail</th>
+				<td colspan="2" style="word-break:break-word;"></td>
+				
+			</tr>
+			<tr>
+				<th>휴대전화</th>
+				<td></td>
+				<th>면담가능시간</th>
+				<td colspan="2">  목요일 가능(주,야간)</td>
+				
+			</tr>
+			<tr>
+				<th>연구일</th>
+				<td></td>
+				<th>관리부서</th>
+				<td colspan="2">
+					교학1팀 (031-280-3410 ~ 3)
+
+				</td>
+				
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="2">교육과정<br>참고사항</th>
+				<th>선수과목</th>
+				<td></td>
+				<th>관련<br>기초과목</th>
+				<td colspan="2"></td>
+			</tr>
+			<tr>
+				<th class="multi-line">동시수강<br>관련과목</th>
+				<td></td>
+				<th>관련<br>고급과목</th>
+				<td colspan="2"></td>
+			</tr>
+			
+			
+			<!-- ------------------------------------------------------------------------  -->
+			<tr class="displayOn">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5">실무적 창의적 역량사고 발휘를 통해 학생 개개인의 도전정신을 고취시키고 
+팀별, 테마별 토의 토론을 통해 개인별 커뮤니케이션 능력을 함양토록 함</td>
+			</tr> 
+			
+			<tr class="displayOn">
+				<th colspan="2" rowspan="4">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="4">첫째, 유통채에 대한 개념과 유통에서의 주요한 이슈를 명확하게 제시하는 것이다. 즉 유통정보시스템, 상권분석, 유통마케팅,머천다이징 등을 이해한다.<br>
+<br>
+둘째, 글로벌 유통,물류 산업에서 규모의 경영과 글로벌 경영시스템을 중심으로 운영비용의 절감과 효율적인 경영체제를 구축하는 것이다. 즉 물류관리,물류정보시스템,화물운송,보관하역,국제물류 등을 이해한다.<br>
+<br>
+셋째, 유통물류업체들에 대한 기본적인 이론적 배경과 기업 현장 사례를 발굴하고 공유함으로서 실질적인 실무 현장에 바로 적용할 수 있는 실력있는 전문가(유통관리사,물류관리사)를 양성하는데 강좌의 운영목표가 있다.</td>
+			</tr>
+			<tr class="displayOn">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="4">1.중간고사 30%,기말고사 40%,과제제출 및 발표 20%,출석10%
+2.출제방식: 서술형,단답형 기술(사전 힌트 공지)
+3.수업 참여도 및 자기계발에 대한 적극성 여부에 가점 부여
+4.팀별 과제 발표(자유 토론,토의)</td>				
+			</tr>
+			
+			<tr class="displayOn">
+				<th style="border-right:none">평가방법</th>
+				<td colspan="4" style="padding: 0px; border-bottom:none">
+					<table style="width:100%; border-collapse:collapse; border-width: 0px; font-size: 12px;">
+						<tbody><tr>
+							<th style="border-top:none; border-left:none" width="25%">중간고사</th>
+							<th style="border-top:none" width="25%">기말고사</th>
+							<th style="border-top:none" width="25%">출석</th>
+							<th style="border-top:none; border-right:none" width="25%">과제</th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">30&nbsp;</td>
+							<td style="text-align:center;">40</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;border-right:none">20</td>
+						</tr>
+						<tr>
+							<th style="border-top:none; border-left:none" width="25%">퀴즈</th>
+							<th style="border-top:none" width="25%">토론</th>
+							<th style="border-top:none" width="25%">기타</th>
+							<th style="border-top:none; border-right:none" width="25%"></th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">&nbsp;</td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;border-right:none"></td>
+						</tr>
+						<tr>
+							<th colspan="1" style="border-left:none; border-bottom:none">과제/퀴즈/<br>토론/기타<br>문제 및 주제</th>
+							<td colspan="3" style="border-right:none; border-bottom:none">1. 단원별 과제 핵심내용 정리(자율학습)
+2. 테마별 팀별 토의토론발표
+3. 자기계발 라이센스 획득한 학생은 가점제 반영</td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>		
+				
+			<tr class="displayOn">
+				<th style="line-height: 1.1em">수업운영방식 </th>
+				<td colspan="4">대면</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5">실무적 창의적 역량사고 발휘를 통해 학생 개개인의 도전정신을 고취시키고 
+팀별, 테마별 토의 토론을 통해 개인별 커뮤니케이션 능력을 함양토록 함</td>
+			</tr> 
+			
+			
+			
+			<tr class="displayOff">
+				<th rowspan="4">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="5">첫째, 유통채에 대한 개념과 유통에서의 주요한 이슈를 명확하게 제시하는 것이다. 즉 유통정보시스템, 상권분석, 유통마케팅,머천다이징 등을 이해한다.<br>
+<br>
+둘째, 글로벌 유통,물류 산업에서 규모의 경영과 글로벌 경영시스템을 중심으로 운영비용의 절감과 효율적인 경영체제를 구축하는 것이다. 즉 물류관리,물류정보시스템,화물운송,보관하역,국제물류 등을 이해한다.<br>
+<br>
+셋째, 유통물류업체들에 대한 기본적인 이론적 배경과 기업 현장 사례를 발굴하고 공유함으로서 실질적인 실무 현장에 바로 적용할 수 있는 실력있는 전문가(유통관리사,물류관리사)를 양성하는데 강좌의 운영목표가 있다.</td>
+			</tr>
+			<tr class="displayOff">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="5">1.중간고사 30%,기말고사 40%,과제제출 및 발표 20%,출석10%
+2.출제방식: 서술형,단답형 기술(사전 힌트 공지)
+3.수업 참여도 및 자기계발에 대한 적극성 여부에 가점 부여
+4.팀별 과제 발표(자유 토론,토의)</td>				
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="border-right:none">평가방법</th>
+				<td colspan="5" style="padding: 0px; border-bottom:none">
+					<table style="width:100%; border-collapse:collapse; border-width: 0px; font-size: 12px;">
+						<tbody><tr>
+							<th style="border-top:none; border-left:none" width="15%">중간고사</th>
+							<th style="border-top:none;" width="15%">기말고사</th>
+							<th style="border-top:none" width="14%">출석</th>
+							<th style="border-top:none" width="14%">과제</th>
+							<th style="border-top:none" width="14%">퀴즈</th>
+							<th style="border-top:none" width="14%">토론</th>
+							<th style="border-top:none; border-right:none" width="14%">기타</th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">30&nbsp;</td>
+							<td style="text-align:center;">40</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;">20</td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;border-right:none"></td>
+						</tr>
+						<tr>
+							<th colspan="2" style="border-left:none; border-bottom:none">과제/퀴즈/토론/기타<br>문제 및 주제</th>
+							<td colspan="5" style="border-right:none; border-bottom:none">1. 단원별 과제 핵심내용 정리(자율학습)
+2. 테마별 팀별 토의토론발표
+3. 자기계발 라이센스 획득한 학생은 가점제 반영</td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="line-height: 1.1em">수업운영방식</th>
+				<td colspan="5">대면</td>
+			</tr>
+			
+			<!---------------교재 ---------------------- -->
+			
+			<tr>
+				<th rowspan="2" colspan="2">교재</th>
+				<th class="multi-line">주교재<br>(저자,출판사)</th>
+				<td colspan="4">주교재는 핵심 유통물류경영론(윤관호,우무진 공저, 도서출판 범한, 2017)</td>
+			</tr>
+			<tr>
+				<th class="multi-line">참고도서<br>(저자,출판사)</th>
+				<td colspan="4">부교재는<br>
+1.최신 유통관리론(이상윤 저, 도서출판 두남)<br>
+2.종합물류관리론(이상윤 저, 도서출판 두남)</td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">장애학생 수업&gt;<br>지원안내</th>
+				<th class="multi-line">시험시간<br>조정여부</th>
+				<td colspan="4">
+					<input type="checkbox" disabled="disabled">최소1.5배(저시력,뇌병변,기타) &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">최소1.7배(맹인학생)   					
+					
+				</td>
+			</tr>
+			
+			<tr>
+				<th class="multi-line">지원사항</th>
+				<td colspan="4">
+					<input type="checkbox" disabled="disabled">시험대필 제공여부 &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">시험문제 점역지원 여부 &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">확대문자 시험지 제공
+				</td>
+			</tr>
+			<tr>
+				<th class="multi-line">기타</th>
+				<td colspan="4">수업에 불편함이 없도록 장애학생지원센터(031-899-7179)와 긴밀히 협의하여 조치토록 함<br></td>
+			</tr>
+			
+			
+			
+			
+		</tbody>
+	</table>
+	
+	
+	<table class="syllabus_week_title">
+		<tbody><tr>
+			<th colspan="5"><span style="font-size: 18px;">주차별 강의내용</span></th>
+		</tr>
+	</tbody></table>
+	<table class="syllabus_week">
+		<colgroup>
+			<col width="5%"> 
+			<col width="32%">
+			<col width="21%">
+			<col width="17%">
+			<col width="17%">
+			<col width="8%">
+		</colgroup>
+			<thead>
+			<tr style="line-height: 1.2em">
+				<th>주차</th>
+				<th>학습주제</th>
+				<th>수업방식/<br>이용기자재</th>
+				<th>교수학습자료</th>
+				<th>과제</th>
+				<th>수업운영<br>방식</th>
+			</tr>
+			</thead>
+		<tbody>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">1</td>
+				<td data-label="학습주제">유통물류산업의 역할과 중요성(개요)<br>
+전반적인 수업진행 방식(공유)</td>
+				<td data-label="수업방식/이용기자재">강의, 토론 및 토의</td>
+				<td data-label="교수학습자료">프리젠테이션(PPT사전공지)</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">2</td>
+				<td data-label="학습주제">제1장 유통의 기본원리와 유통경로관리</td>
+				<td data-label="수업방식/이용기자재">강의, 토론 및 토의</td>
+				<td data-label="교수학습자료">프리젠테이션(PPT사전공지)</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">3</td>
+				<td data-label="학습주제">제2장 유통 상권조사와 상권분석,도소매입지</td>
+				<td data-label="수업방식/이용기자재">강의, 토론 및 토의</td>
+				<td data-label="교수학습자료">프리젠테이션(PPT사전공지)<br>
+동영상자료(공유)</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">4</td>
+				<td data-label="학습주제">제3장 유통마케팅 기본이해와 마케팅<br>
+믹스전략</td>
+				<td data-label="수업방식/이용기자재">강의, 토론 및 토의</td>
+				<td data-label="교수학습자료">디지털혁신과제특강<br>
+동영상자료(공유)</td>
+				<td data-label="과제">교재 단원별 자율학습 과제제출 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">5</td>
+				<td data-label="학습주제">제4장 유통정보와 물류정보시스템</td>
+				<td data-label="수업방식/이용기자재">강의, 토론 및 토의</td>
+				<td data-label="교수학습자료">프리젠테이션(PPT사전공지)<br>
+동영상자료(공유)</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">6</td>
+				<td data-label="학습주제">제5장 물류의 개념과 물류경영전략</td>
+				<td data-label="수업방식/이용기자재">강의, 토론 및 토의</td>
+				<td data-label="교수학습자료">프리젠테이션(PPT사전공지)<br>
+동영상자료(공유)</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">7</td>
+				<td data-label="학습주제">제6장 물류표준화, 공동화,아웃소싱</td>
+				<td data-label="수업방식/이용기자재">강의, 토론 및 토의</td>
+				<td data-label="교수학습자료">프리젠테이션(PPT사전공지)<br>
+동영상자료(공유)</td>
+				<td data-label="과제">교재 단원별 자율학습 과제제출  </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">8</td>
+				<td data-label="학습주제">중간고사</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">9</td>
+				<td data-label="학습주제">제7장 공급망관리(SCM)와 물류 조직</td>
+				<td data-label="수업방식/이용기자재">강의, 토론 및 토의</td>
+				<td data-label="교수학습자료">프리젠테이션(PPT사전공지)<br>
+동영상자료(공유)</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">10</td>
+				<td data-label="학습주제">제8장 화물운송관리와 운송시스템</td>
+				<td data-label="수업방식/이용기자재">강의, 토론 및 토의</td>
+				<td data-label="교수학습자료">프리젠테이션(PPT사전공지)<br>
+동영상자료(공유)</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">11</td>
+				<td data-label="학습주제">제9장 보관관리,구매/자재,재고관리<br>
+제10장 하역관리와 하역기기,물류포장</td>
+				<td data-label="수업방식/이용기자재">강의, 토론 및 토의</td>
+				<td data-label="교수학습자료">테마 특강<br>
+동영상자료(공유)</td>
+				<td data-label="과제">교재 단원별 자율학습 과제제출 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">12</td>
+				<td data-label="학습주제">제11장 지속가능한경영과 환경물류이해<br>
+제12장 전자상거래(e-비즈니스)와 m-비즈니스</td>
+				<td data-label="수업방식/이용기자재">강의, 토론 및 토의</td>
+				<td data-label="교수학습자료">프리젠테이션(PPT사전공지)<br>
+동영상자료(공유)</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">13</td>
+				<td data-label="학습주제">제13장 세계유통산업의 주요 이슈<br>
+-일본,중국,미국시장</td>
+				<td data-label="수업방식/이용기자재">강의, 토론 및 토의</td>
+				<td data-label="교수학습자료">프리젠테이션(PPT사전공지)<br>
+동영상자료(공유)</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">14</td>
+				<td data-label="학습주제">제14장 국가별 물류전략<br>
+-미국,일본,중국,인도,러시아,유럽,북극</td>
+				<td data-label="수업방식/이용기자재">강의, 토론 및 토의</td>
+				<td data-label="교수학습자료">프리젠테이션(PPT사전공지)<br>
+동영상자료(공유)</td>
+				<td data-label="과제">교재 단원별 자율학습 과제제출 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">15</td>
+				<td data-label="학습주제">기말고사</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+
+		</tbody>
+	</table>
+	
+	
+</div>
+
+
+</body></html>

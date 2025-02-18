@@ -1,0 +1,674 @@
+<html><head>
+<base target="_blank">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+	.syllabus, .syllabus_week{width:800px; border-width: 2px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:10px; table-layout: fixed;} 
+	.syllabus_sub {width:600px; border-width: 1px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:3px;margin-bottom:3px; k-layout: fixed;}
+	tr{min-height: 22px; }
+	th{border: 1px black solid; text-align: center; font-weight: bold; background-color: #EFEFEF}
+	th.no_topLine{border-top:0px black solid;}
+	th.no_botLine{border-bottom:0px black solid;}
+	td{border: 1px black solid; text-align: left; padding-left: 3px; min-height: 22px; vertical-align: middle; background-color: #FFFFFF}
+	td p{min-height: 22px;}
+	td pre{margin:auto; min-height:1px;}
+	
+	.multi-line {line-height:1.3em;padding-top:4px}
+	.majorDiv {width:800px;}
+	.syllabus_week {margin-top:5px;}
+	.syllabus_week_title {border: 1px solid gray;width:800px;height:40px;margin-top:20px;}
+	
+	
+	@media screen and (max-width: 768px) { 	
+		.syllabus, .syllabus_week, .majorDiv, .syllabus_week_title {width: 100%;}
+		.displayOff {display:none;}
+ 		.syllabus_week thead {display:none;} 
+ 		.syllabus_week, .syllabus_week tbody, .syllabus_week tr, .syllabus_week td {display: block;} 
+  		.syllabus_week tbody tr td {text-align:left;padding-left: 50%;position:relative;border-top:none;border-left:none;border-right:none; }  
+  		.syllabus_week tbody tr td nth-child(1) {text-align: left;}
+  		.syllabus_week tbody tr {border-top:1px soild black;}  
+ 		.syllabus_week td:before {content:attr(data-label); position:absolute; left: 0%;width: 50%;padding-left: 15px;text-align: left;}  
+/*  		.syllabus_week_child5 {border-bottom: 2px solid black;} */
+	}
+			
+	@media screen and (min-width: 769px) { 	
+		.displayOn {display:none;}
+		.syllabus_week_child1 {text-align: center;}
+	}
+	
+</style>
+<title>강의계획서 보기</title>
+
+<script type="text/javascript" src="../function/common.js"></script>
+<script type="text/javascript" src="../function/sortTable.js"></script>
+<script>
+	function goPrint(){
+		
+		var src = '';
+		if(isCompatibleIE()){
+			src = "../rdreport/r_designer_cs.jsp?repo_val1=2024&repo_val2=1&repo_val3=NE11706&repo_val4=01&repo_val5=103650&repo_path=../sbr/sbr3072.mrd";
+		}else{
+			src = "https://app.kangnam.ac.kr/knumis/rdreport/r_designer_cs.jsp?repo_val1=2024&repo_val2=1&repo_val3=NE11706&repo_val4=01&repo_val5=103650&repo_path=../sbr/sbr3072.mrd";
+		}
+
+		openWin('',src,850,630,0,0);
+
+		self.close();
+	}
+</script>
+</head>
+
+<body>
+
+
+<div style="font-size: 12px; text-align:center;magin-left:10px; height:12px; margin-bottom:10px;margin-top:10px">
+	최초작성일 : 2023/12/31 , 최종수정일 : 2023/12/31
+</div>
+
+<div align="center" style="margin-top: 10px;">
+	<table class="syllabus">
+		<colgroup>
+			<col width="10%">
+			<col width="7%">
+			<col width="10%">
+			<col width="20%">
+			<col width="16%">
+			<col width="8%">
+			<col width="21%">
+		</colgroup>
+		
+		<tbody>
+			<tr>
+				<th colspan="7" style="height:50px;"><span style="font-size: 24px;">강 의 계 획 서</span></th>
+			</tr>
+			<tr>
+				<th colspan="2">년 도</th>
+				<td colspan="2">2024</td>
+				<th>학 기</th>
+				<td colspan="2">1 학기</td>
+			</tr>
+			<tr>
+				<th rowspan="2">교과목명</th>
+				<th>한글</th>
+				<td colspan="2">철학의이해</td>
+				<th rowspan="2">담당교수</th>
+				<td rowspan="2" colspan="2">신인섭</td>
+			</tr>
+			<tr>
+				<th>영문</th>
+				<td colspan="2">Introduction to philosophy</td>
+			</tr>
+			<tr>
+				<th colspan="2">학수번호-분반</th>
+				<td colspan="2">NE11706 - 01</td>
+				<th>강의요일교시</th>
+				<td colspan="2">(주)화5b6ab,목4ab5a</td>
+			</tr>
+			<tr>
+				<th colspan="2">학점<br>(시간수)</th>
+				<td colspan="2">3(3)</td>
+				<th>강의실</th>
+				<td colspan="2">샬806</td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">개설(이수)구분</th>
+				<th>교양</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">계열교양<br>
+					<input type="checkbox" disabled="disabled">일반교양
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px">균형교양: 역사와철학(제1영역)
+				</td>
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">계열교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">일반교양
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px">균형교양: 역사와철학(제1영역)
+				</td>
+			</tr>
+			<tr>
+				<th>전공</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공기초<br>
+					<input type="checkbox" disabled="disabled">전공선택 ( &nbsp; ) 학년<br>
+					<input type="checkbox" disabled="disabled">전공필수 ( &nbsp; ) 학년					
+				</td>				
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공선택 ( &nbsp; ) 학년
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공필수 ( &nbsp; ) 학년					
+				</td>	
+			</tr>
+			<tr>
+				<th>일반선택</th>
+				<td class="displayOn" colspan="2">
+					<input type="checkbox" disabled="disabled">교직<br>
+					<input type="checkbox" disabled="disabled">자유선택
+				</td>
+				<td class="displayOff" colspan="2">
+					<input type="checkbox" disabled="disabled">교직
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">자유선택
+				</td>
+				<td colspan="2">학부(과) : 교양 </td>
+			</tr>
+		
+			<tr>
+				<th rowspan="2" colspan="2">강좌특성</th>
+				<td class="displayOn" colspan="5">
+					<input type="checkbox" checked="" disabled="disabled">이론강의
+					<input type="checkbox" disabled="disabled" style="margin-left:76px">실험·실습·실기<br>
+					<input type="checkbox" disabled="disabled">이론/실험·실습병행
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+				<td class="displayOff" colspan="5">
+					<input type="checkbox" checked="" disabled="disabled">이론강의
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">실험·실습·실기
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">이론·실습병행
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+			</tr>
+			<tr>
+				<th>학문특성</th>
+				<td></td>
+				<th>기타특성</th>				
+				<td colspan="2"></td>
+			</tr>
+			
+			<tr class="displayOn">
+				<th rowspan="3" colspan="2">교수학습<br>방법</th>
+				<th colspan="2">표준 교과목운영 <br>기준</th>
+				<td colspan="3" style="line-height: 1.0em">
+					<input type="checkbox" checked="" disabled="disabled">강의
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left: 30px;">발표<br>
+					<input type="checkbox" checked="" disabled="disabled">토론·토의
+					<input type="checkbox" disabled="disabled">협력학습<br>
+					<input type="checkbox" disabled="disabled">문제기반학습<br>
+				</td>
+			</tr>
+			<tr class="displayOn">
+				<th colspan="2">학생 자기주도식<br>수업운영</th>
+				<td colspan="3">
+					<input type="checkbox" checked="" disabled="disabled">문제기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">프로젝트기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">플립러닝<br>
+					<input type="checkbox" disabled="disabled">K-MOOC<br>
+					<input type="checkbox" disabled="disabled">팀기반학습(TBL)<br>
+					<input type="checkbox" disabled="disabled">블랜디드러닝<br>
+					<input type="checkbox" disabled="disabled">캡스톤디자인<br>
+				</td>
+			</tr>
+			<tr class="displayOn">
+				<th colspan="2">현장 연계 방법</th>
+				<td colspan="3">
+					<input type="checkbox" disabled="disabled">현장전문가초청<br>
+					<input type="checkbox" disabled="disabled">현장탐방
+					<input type="checkbox" disabled="disabled" style="margin-left:20px;">기타<br>
+				</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th rowspan="2" colspan="2">교수학습<br>방법</th>
+				<th colspan="2">표준 교과목운영 기준</th>
+				<th colspan="2">학생 자기주도식 수업운영</th>
+				<th>현장 연계 방법</th>
+			</tr>
+			<tr class="displayOff">
+				<td colspan="2" style="line-height: 1.0em">
+					<input type="checkbox" checked="" disabled="disabled">강의<br>
+					<input type="checkbox" checked="" disabled="disabled">발표<br>
+					<input type="checkbox" checked="" disabled="disabled">토론·토의<br>
+					<input type="checkbox" disabled="disabled">협력학습<br>
+					<input type="checkbox" disabled="disabled">문제기반학습<br>
+				</td>
+				<td colspan="2">
+					<input type="checkbox" checked="" disabled="disabled">문제기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">프로젝트기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">플립러닝<br>
+					<input type="checkbox" disabled="disabled">K-MOOC<br>
+					<input type="checkbox" disabled="disabled">팀기반학습(TBL)<br>
+					<input type="checkbox" disabled="disabled">블랜디드러닝<br>
+					<input type="checkbox" disabled="disabled">캡스톤디자인<br>
+				</td>
+				<td>
+					<input type="checkbox" disabled="disabled">현장전문가초청<br>
+					<input type="checkbox" disabled="disabled">현장탐방<br>
+					<input type="checkbox" disabled="disabled">기타<br>
+				</td>
+			</tr>
+			
+			
+			<tr>
+				<th colspan="2">핵심역량</th>
+				<td colspan="5">창의융합, 자기주도</td>				
+			</tr>
+			<tr>
+				<th colspan="2" rowspan="2">성적평가기준</th>
+				<td colspan="5">
+					
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5">※성적평가기준은 최종 수강 인원, 강좌별 특성에 따라 차후 변동될 수 있습니다.</td>
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="3">연락처</th>
+				<th>연구실</th>
+				<td></td>
+				<th>E-Mail</th>
+				<td colspan="2" style="word-break:break-word;"></td>
+				
+			</tr>
+			<tr>
+				<th>휴대전화</th>
+				<td></td>
+				<th>면담가능시간</th>
+				<td colspan="2">메일로 신청하여 약속</td>
+				
+			</tr>
+			<tr>
+				<th>연구일</th>
+				<td>목요일</td>
+				<th>관리부서</th>
+				<td colspan="2">
+					
+				</td>
+				
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="2">교육과정<br>참고사항</th>
+				<th>선수과목</th>
+				<td></td>
+				<th>관련<br>기초과목</th>
+				<td colspan="2"></td>
+			</tr>
+			<tr>
+				<th class="multi-line">동시수강<br>관련과목</th>
+				<td></td>
+				<th>관련<br>고급과목</th>
+				<td colspan="2"></td>
+			</tr>
+			
+			
+			<!-- ------------------------------------------------------------------------  -->
+			<tr class="displayOn">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5">1. 비판적 사고를 통한 창의력 개발에 중점을 둔다.
+2. 합리적인 의사소통을 위해 토론자의 자질을 함양한다.
+3. 실존적 문제의식과 역사의식을 함양한다.</td>
+			</tr> 
+			
+			<tr class="displayOn">
+				<th colspan="2" rowspan="4">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="4"> 근대성과 탈근대성 즉 &lt;모던 사상&gt;과 &lt;포스트모던 사유&gt;의 차이를 이해하는데도 중점을 두려고 한다. 모던은 질서와 이성의 체계이고 포스트모던은 저러한 질서와 이성의 모태를 발견하는 것이다. 그런데 이러한 포스트모던의 가치는 근대(17-19세기) 시대에만 있었던 것이 아니라 고대 그리스시대에도 나타났었다. 본 강의는 자연철학(신화철학 포함)과 정신철학(소크라테스/플라톤) 사이를 포스트모던과 모던의 관계로 적용해보고 난 뒤,  19세기에 탄생한 의심의 철학자 3인에서 시작하여 20세기 주요 장르의 철학을 탐색해간다. 인간과 사회의 진보적 가치를 중요하게 여기는 이 수업은 오픈 마인드의 학생들에게 관심이 있을 것으로 본다.</td>
+			</tr>
+			<tr class="displayOn">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="4"></td>				
+			</tr>
+			
+			<tr class="displayOn">
+				<th style="border-right:none">평가방법</th>
+				<td colspan="4" style="padding: 0px; border-bottom:none">
+					<table style="width:100%; border-collapse:collapse; border-width: 0px; font-size: 12px;">
+						<tbody><tr>
+							<th style="border-top:none; border-left:none" width="25%">중간고사</th>
+							<th style="border-top:none" width="25%">기말고사</th>
+							<th style="border-top:none" width="25%">출석</th>
+							<th style="border-top:none; border-right:none" width="25%">과제</th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">40&nbsp;</td>
+							<td style="text-align:center;">40</td>
+							<td style="text-align:center;">20</td>
+							<td style="text-align:center;border-right:none"></td>
+						</tr>
+						<tr>
+							<th style="border-top:none; border-left:none" width="25%">퀴즈</th>
+							<th style="border-top:none" width="25%">토론</th>
+							<th style="border-top:none" width="25%">기타</th>
+							<th style="border-top:none; border-right:none" width="25%"></th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">&nbsp;</td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;border-right:none"></td>
+						</tr>
+						<tr>
+							<th colspan="1" style="border-left:none; border-bottom:none">과제/퀴즈/<br>토론/기타<br>문제 및 주제</th>
+							<td colspan="3" style="border-right:none; border-bottom:none">결석 3주를 하면 A학점 받을 수 없다. 5주 결석하면 자동으로 F학점이다.</td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>		
+				
+			<tr class="displayOn">
+				<th style="line-height: 1.1em">수업운영방식 </th>
+				<td colspan="4">-</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5">1. 비판적 사고를 통한 창의력 개발에 중점을 둔다.
+2. 합리적인 의사소통을 위해 토론자의 자질을 함양한다.
+3. 실존적 문제의식과 역사의식을 함양한다.</td>
+			</tr> 
+			
+			
+			
+			<tr class="displayOff">
+				<th rowspan="4">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="5"> 근대성과 탈근대성 즉 &lt;모던 사상&gt;과 &lt;포스트모던 사유&gt;의 차이를 이해하는데도 중점을 두려고 한다. 모던은 질서와 이성의 체계이고 포스트모던은 저러한 질서와 이성의 모태를 발견하는 것이다. 그런데 이러한 포스트모던의 가치는 근대(17-19세기) 시대에만 있었던 것이 아니라 고대 그리스시대에도 나타났었다. 본 강의는 자연철학(신화철학 포함)과 정신철학(소크라테스/플라톤) 사이를 포스트모던과 모던의 관계로 적용해보고 난 뒤,  19세기에 탄생한 의심의 철학자 3인에서 시작하여 20세기 주요 장르의 철학을 탐색해간다. 인간과 사회의 진보적 가치를 중요하게 여기는 이 수업은 오픈 마인드의 학생들에게 관심이 있을 것으로 본다.</td>
+			</tr>
+			<tr class="displayOff">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="5"></td>				
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="border-right:none">평가방법</th>
+				<td colspan="5" style="padding: 0px; border-bottom:none">
+					<table style="width:100%; border-collapse:collapse; border-width: 0px; font-size: 12px;">
+						<tbody><tr>
+							<th style="border-top:none; border-left:none" width="15%">중간고사</th>
+							<th style="border-top:none;" width="15%">기말고사</th>
+							<th style="border-top:none" width="14%">출석</th>
+							<th style="border-top:none" width="14%">과제</th>
+							<th style="border-top:none" width="14%">퀴즈</th>
+							<th style="border-top:none" width="14%">토론</th>
+							<th style="border-top:none; border-right:none" width="14%">기타</th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">40&nbsp;</td>
+							<td style="text-align:center;">40</td>
+							<td style="text-align:center;">20</td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;border-right:none"></td>
+						</tr>
+						<tr>
+							<th colspan="2" style="border-left:none; border-bottom:none">과제/퀴즈/토론/기타<br>문제 및 주제</th>
+							<td colspan="5" style="border-right:none; border-bottom:none">결석 3주를 하면 A학점 받을 수 없다. 5주 결석하면 자동으로 F학점이다.</td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="line-height: 1.1em">수업운영방식</th>
+				<td colspan="5">-</td>
+			</tr>
+			
+			<!---------------교재 ---------------------- -->
+			
+			<tr>
+				<th rowspan="2" colspan="2">교재</th>
+				<th class="multi-line">주교재<br>(저자,출판사)</th>
+				<td colspan="4">현대철학 로드맵, 유이치로 저(전경아 역), 아르테</td>
+			</tr>
+			<tr>
+				<th class="multi-line">참고도서<br>(저자,출판사)</th>
+				<td colspan="4">세계철학사, 슈퇴리히, 이룸출판사</td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">장애학생 수업&gt;<br>지원안내</th>
+				<th class="multi-line">시험시간<br>조정여부</th>
+				<td colspan="4">
+					<input type="checkbox" disabled="disabled">최소1.5배(저시력,뇌병변,기타) &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">최소1.7배(맹인학생)   					
+					
+				</td>
+			</tr>
+			
+			<tr>
+				<th class="multi-line">지원사항</th>
+				<td colspan="4">
+					<input type="checkbox" disabled="disabled">시험대필 제공여부 &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">시험문제 점역지원 여부 &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">확대문자 시험지 제공
+				</td>
+			</tr>
+			<tr>
+				<th class="multi-line">기타</th>
+				<td colspan="4">중간 및 기말 고사에 시간적 여유를 더 가질 수 있도록 배려함.<br></td>
+			</tr>
+			
+			
+			
+			
+			<tr>
+				<th rowspan="10">권장도서</th>
+				<th rowspan="2">1</th>
+				<th>도서명</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th>활용방법</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th rowspan="2">2</th>
+				<th>도서명</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th>활용방법</th>
+				<td colspan="4">철학의 기본지평인 역사의식을 세우기 위한 필독서</td>
+			</tr>
+			<tr>
+				<th rowspan="2">3</th>
+				<th>도서명</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th>활용방법</th>
+				<td colspan="4">과학철학서로 가장 중요한 저술 중 하나</td>
+			</tr>
+			<tr>
+				<th rowspan="2">4</th>
+				<th>도서명</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th>활용방법</th>
+				<td colspan="4">프롬의 대표작으로 대학생들의 일독을 권함</td>
+			</tr>
+			<tr>
+				<th rowspan="2">5</th>
+				<th>도서명</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th>활용방법</th>
+				<td colspan="4"></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+	
+	<table class="syllabus_week_title">
+		<tbody><tr>
+			<th colspan="5"><span style="font-size: 18px;">주차별 강의내용</span></th>
+		</tr>
+	</tbody></table>
+	<table class="syllabus_week">
+		<colgroup>
+			<col width="5%"> 
+			<col width="32%">
+			<col width="21%">
+			<col width="17%">
+			<col width="17%">
+			<col width="8%">
+		</colgroup>
+			<thead>
+			<tr style="line-height: 1.2em">
+				<th>주차</th>
+				<th>학습주제</th>
+				<th>수업방식/<br>이용기자재</th>
+				<th>교수학습자료</th>
+				<th>과제</th>
+				<th>수업운영<br>방식</th>
+			</tr>
+			</thead>
+		<tbody>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">1</td>
+				<td data-label="학습주제">서양철학사의 기본 구조 : 고대철학 4단계로부터 중세의 두 개념 그리고 르네상스까지</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">2</td>
+				<td data-label="학습주제"> 카오스 : 코스모스 = 포스트모던 : 모던<br>
+ = 르네상스 : 스콜라 </td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">3</td>
+				<td data-label="학습주제">카오스의 철학자 니체(비주류)는 왜 현재의 세계를 긍정하는가?</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">4</td>
+				<td data-label="학습주제">마르크스와 서양 철학의 위선 <br>
+= 부르주아는 왜 도덕을 강조하는가?</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">5</td>
+				<td data-label="학습주제">프로이트의 카오스, 무의식<br>
+(헤도니즘 - 에피쿠로스 - 공리주의)</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">6</td>
+				<td data-label="학습주제">비트겐슈타인 철학 : 의식에서 언어로 패러다임 전환</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">7</td>
+				<td data-label="학습주제">철학사에서 3대 전환 : 선험적 전회(주체), 언어적 전회(체계), 신체적 전회(존재)</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">8</td>
+				<td data-label="학습주제">중간고사 : 막스 베버의 사회학 = 근대 비판</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">9</td>
+				<td data-label="학습주제">구조주의 철학 = 주체로서 인간의 사망</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">10</td>
+				<td data-label="학습주제">레비스트로스와 원시사회의 의미<br>
+: 다름과 틀림의 차이</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">11</td>
+				<td data-label="학습주제">롤랑 바르트 : 저자의 죽음<br>
+존재의 저작권이 소멸 (형이상학 불가)</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">12</td>
+				<td data-label="학습주제">들뢰즈: 자본주의와 분열분석<br>
+</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">13</td>
+				<td data-label="학습주제">푸코와 바우만: 액체 같은 근대성</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">14</td>
+				<td data-label="학습주제">부르디유의 아비투스 사회학 :<br>
+주체성이 상실된 현대인 <br>
+</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">15</td>
+				<td data-label="학습주제">기말고사 :  철학의 타자와 타자의 철학</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+
+		</tbody>
+	</table>
+	
+	
+</div>
+
+
+</body></html>

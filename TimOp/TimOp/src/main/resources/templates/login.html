@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+</head>
+<body>
+<h1>로그인</h1>
+<form th:action="@{/login}" method="post">
+    <div>
+        <label for="studentId">학번:</label>
+        <input type="text" id="studentId" name="studentId" required>
+    </div>
+    <div>
+        <label for="password">비밀번호:</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+    <div>
+        <button type="submit">로그인</button>
+    </div>
+</form>
+</body>
+</html>

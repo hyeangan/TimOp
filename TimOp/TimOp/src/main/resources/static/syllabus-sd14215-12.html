@@ -1,0 +1,681 @@
+<html><head>
+<base target="_blank">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+	.syllabus, .syllabus_week{width:800px; border-width: 2px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:10px; table-layout: fixed;} 
+	.syllabus_sub {width:600px; border-width: 1px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:3px;margin-bottom:3px; k-layout: fixed;}
+	tr{min-height: 22px; }
+	th{border: 1px black solid; text-align: center; font-weight: bold; background-color: #EFEFEF}
+	th.no_topLine{border-top:0px black solid;}
+	th.no_botLine{border-bottom:0px black solid;}
+	td{border: 1px black solid; text-align: left; padding-left: 3px; min-height: 22px; vertical-align: middle; background-color: #FFFFFF}
+	td p{min-height: 22px;}
+	td pre{margin:auto; min-height:1px;}
+	
+	.multi-line {line-height:1.3em;padding-top:4px}
+	.majorDiv {width:800px;}
+	.syllabus_week {margin-top:5px;}
+	.syllabus_week_title {border: 1px solid gray;width:800px;height:40px;margin-top:20px;}
+	
+	
+	@media screen and (max-width: 768px) { 	
+		.syllabus, .syllabus_week, .majorDiv, .syllabus_week_title {width: 100%;}
+		.displayOff {display:none;}
+ 		.syllabus_week thead {display:none;} 
+ 		.syllabus_week, .syllabus_week tbody, .syllabus_week tr, .syllabus_week td {display: block;} 
+  		.syllabus_week tbody tr td {text-align:left;padding-left: 50%;position:relative;border-top:none;border-left:none;border-right:none; }  
+  		.syllabus_week tbody tr td nth-child(1) {text-align: left;}
+  		.syllabus_week tbody tr {border-top:1px soild black;}  
+ 		.syllabus_week td:before {content:attr(data-label); position:absolute; left: 0%;width: 50%;padding-left: 15px;text-align: left;}  
+/*  		.syllabus_week_child5 {border-bottom: 2px solid black;} */
+	}
+			
+	@media screen and (min-width: 769px) { 	
+		.displayOn {display:none;}
+		.syllabus_week_child1 {text-align: center;}
+	}
+	
+</style>
+<title>강의계획서 보기</title>
+
+<script type="text/javascript" src="../function/common.js"></script>
+<script type="text/javascript" src="../function/sortTable.js"></script>
+<script>
+	function goPrint(){
+		
+		var src = '';
+		if(isCompatibleIE()){
+			src = "../rdreport/r_designer_cs.jsp?repo_val1=2024&repo_val2=1&repo_val3=SD14215&repo_val4=12&repo_val5=109162&repo_path=../sbr/sbr3072.mrd";
+		}else{
+			src = "https://app.kangnam.ac.kr/knumis/rdreport/r_designer_cs.jsp?repo_val1=2024&repo_val2=1&repo_val3=SD14215&repo_val4=12&repo_val5=109162&repo_path=../sbr/sbr3072.mrd";
+		}
+
+		openWin('',src,850,630,0,0);
+
+		self.close();
+	}
+</script>
+</head>
+
+<body>
+
+
+<div style="font-size: 12px; text-align:center;magin-left:10px; height:12px; margin-bottom:10px;margin-top:10px">
+	최초작성일 : 2024/01/07 , 최종수정일 : 2024/01/07
+</div>
+
+<div align="center" style="margin-top: 10px;">
+	<table class="syllabus">
+		<colgroup>
+			<col width="10%">
+			<col width="7%">
+			<col width="10%">
+			<col width="20%">
+			<col width="16%">
+			<col width="8%">
+			<col width="21%">
+		</colgroup>
+		
+		<tbody>
+			<tr>
+				<th colspan="7" style="height:50px;"><span style="font-size: 24px;">강 의 계 획 서</span></th>
+			</tr>
+			<tr>
+				<th colspan="2">년 도</th>
+				<td colspan="2">2024</td>
+				<th>학 기</th>
+				<td colspan="2">1 학기</td>
+			</tr>
+			<tr>
+				<th rowspan="2">교과목명</th>
+				<th>한글</th>
+				<td colspan="2">전공실기VII</td>
+				<th rowspan="2">담당교수</th>
+				<td rowspan="2" colspan="2">김미령</td>
+			</tr>
+			<tr>
+				<th>영문</th>
+				<td colspan="2">Major VII</td>
+			</tr>
+			<tr>
+				<th colspan="2">학수번호-분반</th>
+				<td colspan="2">SD14215 - 12</td>
+				<th>강의요일교시</th>
+				<td colspan="2">별도배정</td>
+			</tr>
+			<tr>
+				<th colspan="2">학점<br>(시간수)</th>
+				<td colspan="2">2(2)</td>
+				<th>강의실</th>
+				<td colspan="2"></td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">개설(이수)구분</th>
+				<th>교양</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">계열교양<br>
+					<input type="checkbox" disabled="disabled">일반교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">균형교양: 
+				</td>
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">계열교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">일반교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">균형교양: 
+				</td>
+			</tr>
+			<tr>
+				<th>전공</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공기초<br>
+					<input type="checkbox" checked="" disabled="disabled">전공선택 ( 4 ) 학년<br>
+					<input type="checkbox" disabled="disabled">전공필수 ( &nbsp; ) 학년					
+				</td>				
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공기초
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px">전공선택 ( 4 ) 학년
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공필수 ( &nbsp; ) 학년					
+				</td>	
+			</tr>
+			<tr>
+				<th>일반선택</th>
+				<td class="displayOn" colspan="2">
+					<input type="checkbox" disabled="disabled">교직<br>
+					<input type="checkbox" disabled="disabled">자유선택
+				</td>
+				<td class="displayOff" colspan="2">
+					<input type="checkbox" disabled="disabled">교직
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">자유선택
+				</td>
+				<td colspan="2">학부(과) : 음악학전공 </td>
+			</tr>
+		
+			<tr>
+				<th rowspan="2" colspan="2">강좌특성</th>
+				<td class="displayOn" colspan="5">
+					<input type="checkbox" disabled="disabled">이론강의
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:76px">실험·실습·실기<br>
+					<input type="checkbox" disabled="disabled">이론/실험·실습병행
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+				<td class="displayOff" colspan="5">
+					<input type="checkbox" disabled="disabled">이론강의
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px">실험·실습·실기
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">이론·실습병행
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+			</tr>
+			<tr>
+				<th>학문특성</th>
+				<td></td>
+				<th>기타특성</th>				
+				<td colspan="2"></td>
+			</tr>
+			
+			<tr class="displayOn">
+				<th rowspan="3" colspan="2">교수학습<br>방법</th>
+				<th colspan="2">표준 교과목운영 <br>기준</th>
+				<td colspan="3" style="line-height: 1.0em">
+					<input type="checkbox" checked="" disabled="disabled">강의
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left: 30px;">발표<br>
+					<input type="checkbox" disabled="disabled">토론·토의
+					<input type="checkbox" disabled="disabled">협력학습<br>
+					<input type="checkbox" disabled="disabled">문제기반학습<br>
+				</td>
+			</tr>
+			<tr class="displayOn">
+				<th colspan="2">학생 자기주도식<br>수업운영</th>
+				<td colspan="3">
+					<input type="checkbox" disabled="disabled">문제기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">프로젝트기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">플립러닝<br>
+					<input type="checkbox" disabled="disabled">K-MOOC<br>
+					<input type="checkbox" disabled="disabled">팀기반학습(TBL)<br>
+					<input type="checkbox" disabled="disabled">블랜디드러닝<br>
+					<input type="checkbox" disabled="disabled">캡스톤디자인<br>
+				</td>
+			</tr>
+			<tr class="displayOn">
+				<th colspan="2">현장 연계 방법</th>
+				<td colspan="3">
+					<input type="checkbox" disabled="disabled">현장전문가초청<br>
+					<input type="checkbox" disabled="disabled">현장탐방
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px;">기타<br>
+				</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th rowspan="2" colspan="2">교수학습<br>방법</th>
+				<th colspan="2">표준 교과목운영 기준</th>
+				<th colspan="2">학생 자기주도식 수업운영</th>
+				<th>현장 연계 방법</th>
+			</tr>
+			<tr class="displayOff">
+				<td colspan="2" style="line-height: 1.0em">
+					<input type="checkbox" checked="" disabled="disabled">강의<br>
+					<input type="checkbox" checked="" disabled="disabled">발표<br>
+					<input type="checkbox" disabled="disabled">토론·토의<br>
+					<input type="checkbox" disabled="disabled">협력학습<br>
+					<input type="checkbox" disabled="disabled">문제기반학습<br>
+				</td>
+				<td colspan="2">
+					<input type="checkbox" disabled="disabled">문제기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">프로젝트기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">플립러닝<br>
+					<input type="checkbox" disabled="disabled">K-MOOC<br>
+					<input type="checkbox" disabled="disabled">팀기반학습(TBL)<br>
+					<input type="checkbox" disabled="disabled">블랜디드러닝<br>
+					<input type="checkbox" disabled="disabled">캡스톤디자인<br>
+				</td>
+				<td>
+					<input type="checkbox" disabled="disabled">현장전문가초청<br>
+					<input type="checkbox" disabled="disabled">현장탐방<br>
+					<input type="checkbox" checked="" disabled="disabled">기타<br>
+				</td>
+			</tr>
+			
+			
+			<tr>
+				<th colspan="2">전공능력</th>
+				<td colspan="5"></td>				
+			</tr>
+			<tr>
+				<th colspan="2" rowspan="2">성적평가기준</th>
+				<td colspan="5">
+					절대평가
+
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5">※성적평가기준은 최종 수강 인원, 강좌별 특성에 따라 차후 변동될 수 있습니다.</td>
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="3">연락처</th>
+				<th>연구실</th>
+				<td></td>
+				<th>E-Mail</th>
+				<td colspan="2" style="word-break:break-word;"></td>
+				
+			</tr>
+			<tr>
+				<th>휴대전화</th>
+				<td></td>
+				<th>면담가능시간</th>
+				<td colspan="2"></td>
+				
+			</tr>
+			<tr>
+				<th>연구일</th>
+				<td></td>
+				<th>관리부서</th>
+				<td colspan="2">
+					교학1팀 (031-280-3410 ~ 3)
+
+				</td>
+				
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="2">교육과정<br>참고사항</th>
+				<th>선수과목</th>
+				<td></td>
+				<th>관련<br>기초과목</th>
+				<td colspan="2"></td>
+			</tr>
+			<tr>
+				<th class="multi-line">동시수강<br>관련과목</th>
+				<td></td>
+				<th>관련<br>고급과목</th>
+				<td colspan="2"></td>
+			</tr>
+			
+			
+			<!-- ------------------------------------------------------------------------  -->
+			<tr class="displayOn">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5">개인의 자질과 실력에 부합하는 밀착 지도를 통해 실력 있는 음악인으로 성장시킨다.</td>
+			</tr> 
+			
+			<tr class="displayOn">
+				<th colspan="2" rowspan="4">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="4">본 수업은 바이올린 전공 학생을 위한 수업으로 매학기 1:1 레슨으로 개인 연주 능력 향상을 위해 여러 곡을 공부함으로써, 테크닉의 향상, 곡에 대한 이해 그리고 실제 연주를 위한 능력들을 향상시키고자 한다. </td>
+			</tr>
+			<tr class="displayOn">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="4">본 수업에서는 학생 각자의 능력에 맞는 자유곡 및 학교 커리큘럼에 따른 곡을 선택하여 연주하며, 개인지도를 통하여 다양한 작품을 직접 배우고 연주하여 연주가로서 요구되는 기교를 비롯하여 악곡의 해석 및 표현을 연구하여 독립된 연주가를 양성한다.
+매주 학생들과 소통하여 연주의 기술적, 음악적 어려움에 대한 해결책을 모색한다. 매시간 왼손과 오른손 활쓰기의 훈련을 위한 스케일과 연습곡이 과제로 주어지며, 다양한 유형의 악곡을 통해 다양한 테크닉을 배운다. 
+평가는 출석과 매 시간의 과제에 대한 수시평가와 학기말의 실기 시험으로 이루어진다.</td>				
+			</tr>
+			
+			<tr class="displayOn">
+				<th style="border-right:none">평가방법</th>
+				<td colspan="4" style="padding: 0px; border-bottom:none">
+					<table style="width:100%; border-collapse:collapse; border-width: 0px; font-size: 12px;">
+						<tbody><tr>
+							<th style="border-top:none; border-left:none" width="25%">중간고사</th>
+							<th style="border-top:none" width="25%">기말고사</th>
+							<th style="border-top:none" width="25%">출석</th>
+							<th style="border-top:none; border-right:none" width="25%">과제</th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">&nbsp;</td>
+							<td style="text-align:center;">90</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;border-right:none"></td>
+						</tr>
+						<tr>
+							<th style="border-top:none; border-left:none" width="25%">퀴즈</th>
+							<th style="border-top:none" width="25%">토론</th>
+							<th style="border-top:none" width="25%">기타</th>
+							<th style="border-top:none; border-right:none" width="25%"></th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">&nbsp;</td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;border-right:none"></td>
+						</tr>
+						<tr>
+							<th colspan="1" style="border-left:none; border-bottom:none">과제/퀴즈/<br>토론/기타<br>문제 및 주제</th>
+							<td colspan="3" style="border-right:none; border-bottom:none"></td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>		
+				
+			<tr class="displayOn">
+				<th style="line-height: 1.1em">수업운영방식 </th>
+				<td colspan="4">대면</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5">개인의 자질과 실력에 부합하는 밀착 지도를 통해 실력 있는 음악인으로 성장시킨다.</td>
+			</tr> 
+			
+			
+			
+			<tr class="displayOff">
+				<th rowspan="4">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="5">본 수업은 바이올린 전공 학생을 위한 수업으로 매학기 1:1 레슨으로 개인 연주 능력 향상을 위해 여러 곡을 공부함으로써, 테크닉의 향상, 곡에 대한 이해 그리고 실제 연주를 위한 능력들을 향상시키고자 한다. </td>
+			</tr>
+			<tr class="displayOff">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="5">본 수업에서는 학생 각자의 능력에 맞는 자유곡 및 학교 커리큘럼에 따른 곡을 선택하여 연주하며, 개인지도를 통하여 다양한 작품을 직접 배우고 연주하여 연주가로서 요구되는 기교를 비롯하여 악곡의 해석 및 표현을 연구하여 독립된 연주가를 양성한다.
+매주 학생들과 소통하여 연주의 기술적, 음악적 어려움에 대한 해결책을 모색한다. 매시간 왼손과 오른손 활쓰기의 훈련을 위한 스케일과 연습곡이 과제로 주어지며, 다양한 유형의 악곡을 통해 다양한 테크닉을 배운다. 
+평가는 출석과 매 시간의 과제에 대한 수시평가와 학기말의 실기 시험으로 이루어진다.</td>				
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="border-right:none">평가방법</th>
+				<td colspan="5" style="padding: 0px; border-bottom:none">
+					<table style="width:100%; border-collapse:collapse; border-width: 0px; font-size: 12px;">
+						<tbody><tr>
+							<th style="border-top:none; border-left:none" width="15%">중간고사</th>
+							<th style="border-top:none;" width="15%">기말고사</th>
+							<th style="border-top:none" width="14%">출석</th>
+							<th style="border-top:none" width="14%">과제</th>
+							<th style="border-top:none" width="14%">퀴즈</th>
+							<th style="border-top:none" width="14%">토론</th>
+							<th style="border-top:none; border-right:none" width="14%">기타</th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">&nbsp;</td>
+							<td style="text-align:center;">90</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;border-right:none"></td>
+						</tr>
+						<tr>
+							<th colspan="2" style="border-left:none; border-bottom:none">과제/퀴즈/토론/기타<br>문제 및 주제</th>
+							<td colspan="5" style="border-right:none; border-bottom:none"></td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="line-height: 1.1em">수업운영방식</th>
+				<td colspan="5">대면</td>
+			</tr>
+			
+			<!---------------교재 ---------------------- -->
+			
+			<tr>
+				<th rowspan="2" colspan="2">교재</th>
+				<th class="multi-line">주교재<br>(저자,출판사)</th>
+				<td colspan="4">커리큘럼에 기재된 작품들의 악보, 교칙본, 연습곡, 오케스트라 악보 및 이론적 교재 등 다양한 교재사용<br>
+바른 테크닉을 위한 스케일과 에튜드를 연습해야 하고 무반주곡과 협주곡, 소나타등은 에디션에 상관없이 공부할수 있으나 지도강사와 협의 후에 개인에게 적합한 에디션의 교재를 정할수 있음.;<br>
+<br>
+-Scale: Carl Flesh(단조, 장조, 음계와 아르페지오,3도,6도,8도,10도,하모닉스)<br>
+-Etude: Dont, Kreuzer, Gavinies<br>
+-Piece: 낭만주의 작곡가의 곡<br>
+-무반주:1)Bach(바흐) 무반주 Solo Sonata and Partita(Galamian, Szeryng Edition/Barenreiter Urtext)<br>
+       2)Ysaye(이자이) Solo Violin Sonatas<br>
+       3)Pagagnini(파가니니) 카프리스<br>
+-협주곡/소나타</td>
+			</tr>
+			<tr>
+				<th class="multi-line">참고도서<br>(저자,출판사)</th>
+				<td colspan="4"></td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">장애학생 수업&gt;<br>지원안내</th>
+				<th class="multi-line">시험시간<br>조정여부</th>
+				<td colspan="4">
+					<input type="checkbox" disabled="disabled">최소1.5배(저시력,뇌병변,기타) &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">최소1.7배(맹인학생)   					
+					
+				</td>
+			</tr>
+			
+			<tr>
+				<th class="multi-line">지원사항</th>
+				<td colspan="4">
+					<input type="checkbox" disabled="disabled">시험대필 제공여부 &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">시험문제 점역지원 여부 &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">확대문자 시험지 제공
+				</td>
+			</tr>
+			<tr>
+				<th class="multi-line">기타</th>
+				<td colspan="4">상황에 맞는 맞춤식 교육<br></td>
+			</tr>
+			
+			
+			
+			
+		</tbody>
+	</table>
+	
+	
+	<table class="syllabus_week_title">
+		<tbody><tr>
+			<th colspan="5"><span style="font-size: 18px;">주차별 강의내용</span></th>
+		</tr>
+	</tbody></table>
+	<table class="syllabus_week">
+		<colgroup>
+			<col width="5%"> 
+			<col width="32%">
+			<col width="21%">
+			<col width="17%">
+			<col width="17%">
+			<col width="8%">
+		</colgroup>
+			<thead>
+			<tr style="line-height: 1.2em">
+				<th>주차</th>
+				<th>학습주제</th>
+				<th>수업방식/<br>이용기자재</th>
+				<th>교수학습자료</th>
+				<th>과제</th>
+				<th>수업운영<br>방식</th>
+			</tr>
+			</thead>
+		<tbody>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">1</td>
+				<td data-label="학습주제">오리엔테이션:과제곡 정하기/수업방식 설명;</td>
+				<td data-label="수업방식/이용기자재">1:1 레슨</td>
+				<td data-label="교수학습자료">정확한 음정과 박자 구사와 탄탄한 소리및 음악적인 아이디어의 발전을 꾀함.</td>
+				<td data-label="과제">- Scales: Ab major /f minor (3옥타브)<br>
+- 자유곡 - 전악장 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">2</td>
+				<td data-label="학습주제">정확한 음정과 박자 구사와 탄탄한 소리를 위해 스케일과 연습곡을 연마하고 실기고사를 위한 곡을 준비한다.</td>
+				<td data-label="수업방식/이용기자재">1:1 레슨</td>
+				<td data-label="교수학습자료">작품을 통해 연주기본자세, 음정, 테크닉관련에 대한 강의<br>
+</td>
+				<td data-label="과제">- Scales: Ab major /f minor (3옥타브)<br>
+- 자유곡 - 전악장 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">3</td>
+				<td data-label="학습주제">다양한 유형의 테크닉 및 음악적 표현력에 대한 강의 <br>
+</td>
+				<td data-label="수업방식/이용기자재">1:1 레슨</td>
+				<td data-label="교수학습자료">왼손, 오른손 테크닉</td>
+				<td data-label="과제">- Scales: Ab major /f minor (3옥타브)<br>
+- 자유곡 - 전악장 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">4</td>
+				<td data-label="학습주제">구체적인 연습방법 등을 제시하여 효율적인 연주에 대한 강의</td>
+				<td data-label="수업방식/이용기자재">1:1 레슨</td>
+				<td data-label="교수학습자료">다양한 유형의 테크닉 및 음악적 표현력에 대한 강의 </td>
+				<td data-label="과제">- Scales: Ab major /f minor (3옥타브)<br>
+- 자유곡 - 전악장 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">5</td>
+				<td data-label="학습주제">협주곡(또는 소나타)연주에 필요한 <br>
+테크닉주법<br>
+<br>
+</td>
+				<td data-label="수업방식/이용기자재">1:1 레슨</td>
+				<td data-label="교수학습자료">작품을 통해 Bowing Technique에 대한 강의</td>
+				<td data-label="과제">- Scales: Ab major /f minor (3옥타브)<br>
+- 자유곡 - 전악장 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">6</td>
+				<td data-label="학습주제">표현력을 위한<br>
+기초주법<br>
+</td>
+				<td data-label="수업방식/이용기자재">1:1 레슨</td>
+				<td data-label="교수학습자료">기초테크닉과 Sonata나Concerto 곡을 통한 음악 표현력의 발전 훈련</td>
+				<td data-label="과제">- Scales: Ab major /f minor (3옥타브)<br>
+- 자유곡 - 전악장 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">7</td>
+				<td data-label="학습주제">Concerto표현력<br>
+신장</td>
+				<td data-label="수업방식/이용기자재">1:1 레슨</td>
+				<td data-label="교수학습자료">협주곡<br>
+연주에 필요한<br>
+테크닉과 표현력 육성</td>
+				<td data-label="과제">- Scales: Ab major /f minor (3옥타브)<br>
+- 자유곡 - 전악장 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">8</td>
+				<td data-label="학습주제">곡의 유려한 <br>
+표현력 연마<br>
+</td>
+				<td data-label="수업방식/이용기자재">1:1 레슨</td>
+				<td data-label="교수학습자료">S o n a t a ,Concerto에 필요한 다양한 비브라토 등 표현력  신장<br>
+</td>
+				<td data-label="과제">- Scales: Ab major /f minor (3옥타브)<br>
+- 자유곡 - 전악장 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">9</td>
+				<td data-label="학습주제">스스로의 연습법<br>
+구축</td>
+				<td data-label="수업방식/이용기자재">1:1 레슨</td>
+				<td data-label="교수학습자료">Sonata 또는 Concerto: <br>
+레슨실 밖에서도 스스로 연습이 되게 계속되게 돕는다.</td>
+				<td data-label="과제">- Scales: Ab major /f minor (3옥타브)<br>
+- 자유곡 - 전악장 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">10</td>
+				<td data-label="학습주제">다양한 테크닉<br>
+연마</td>
+				<td data-label="수업방식/이용기자재">1:1 레슨</td>
+				<td data-label="교수학습자료">소리 잘 듣고 만들기<br>
+화려함과 섬세함을 표현하기</td>
+				<td data-label="과제">- Scales: Ab major /f minor (3옥타브)<br>
+- 자유곡 - 전악장 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">11</td>
+				<td data-label="학습주제">실기곡을 위한<br>
+기초주법 다시<br>
+다지기<br>
+</td>
+				<td data-label="수업방식/이용기자재">1:1 레슨</td>
+				<td data-label="교수학습자료">기말시험실기곡 작품을 통해 <br>
+음악 표현력의 발전에 대한 강의<br>
+</td>
+				<td data-label="과제">- Scales: Ab major /f minor (3옥타브)<br>
+- 자유곡 - 전악장 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">12</td>
+				<td data-label="학습주제">테크닉 및 음악<br>
+적 표현력 연마<br>
+</td>
+				<td data-label="수업방식/이용기자재">1:1 레슨</td>
+				<td data-label="교수학습자료">기말시험실기곡 작품을 통해 <br>
+화려하고 섬세한 연주에 대한 강의<br>
+</td>
+				<td data-label="과제">- Scales: Ab major /f minor (3옥타브)<br>
+- 자유곡 - 전악장 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">13</td>
+				<td data-label="학습주제">기말실기곡:피아<br>
+니스트와 반주레<br>
+슨<br>
+</td>
+				<td data-label="수업방식/이용기자재">1:1 레슨</td>
+				<td data-label="교수학습자료">마스터클래스 연주발표 준비와 기말시험실기곡에 대한 강의<br>
+(피아니스트 대동)<br>
+</td>
+				<td data-label="과제">마스터클래스와 기말실기곡을 위한 준비 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">14</td>
+				<td data-label="학습주제">기말실기곡 테크<br>
+닉 및 음악표현<br>
+력 점검<br>
+</td>
+				<td data-label="수업방식/이용기자재">1:1 레슨</td>
+				<td data-label="교수학습자료">마스터클래스 연주발표 준비와 기말시험실기곡에 대한 강의<br>
+(피아니스트 대동)<br>
+</td>
+				<td data-label="과제">마스터클래스와 기말실기곡을 위한 준비 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">15</td>
+				<td data-label="학습주제">연주 및 studio토<br>
+론<br>
+</td>
+				<td data-label="수업방식/이용기자재">마스터클래스</td>
+				<td data-label="교수학습자료">기말실기곡 정리<br>
+</td>
+				<td data-label="과제">마스터클래스 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+
+		</tbody>
+	</table>
+	
+	
+</div>
+
+
+</body></html>

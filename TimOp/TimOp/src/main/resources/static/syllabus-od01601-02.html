@@ -1,0 +1,702 @@
+<html><head>
+<base target="_blank">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+	.syllabus, .syllabus_week{width:800px; border-width: 2px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:10px; table-layout: fixed;} 
+	.syllabus_sub {width:600px; border-width: 1px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:3px;margin-bottom:3px; k-layout: fixed;}
+	tr{min-height: 22px; }
+	th{border: 1px black solid; text-align: center; font-weight: bold; background-color: #EFEFEF}
+	th.no_topLine{border-top:0px black solid;}
+	th.no_botLine{border-bottom:0px black solid;}
+	td{border: 1px black solid; text-align: left; padding-left: 3px; min-height: 22px; vertical-align: middle; background-color: #FFFFFF}
+	td p{min-height: 22px;}
+	td pre{margin:auto; min-height:1px;}
+	
+	.multi-line {line-height:1.3em;padding-top:4px}
+	.majorDiv {width:800px;}
+	.syllabus_week {margin-top:5px;}
+	.syllabus_week_title {border: 1px solid gray;width:800px;height:40px;margin-top:20px;}
+	
+	
+	@media screen and (max-width: 768px) { 	
+		.syllabus, .syllabus_week, .majorDiv, .syllabus_week_title {width: 100%;}
+		.displayOff {display:none;}
+ 		.syllabus_week thead {display:none;} 
+ 		.syllabus_week, .syllabus_week tbody, .syllabus_week tr, .syllabus_week td {display: block;} 
+  		.syllabus_week tbody tr td {text-align:left;padding-left: 50%;position:relative;border-top:none;border-left:none;border-right:none; }  
+  		.syllabus_week tbody tr td nth-child(1) {text-align: left;}
+  		.syllabus_week tbody tr {border-top:1px soild black;}  
+ 		.syllabus_week td:before {content:attr(data-label); position:absolute; left: 0%;width: 50%;padding-left: 15px;text-align: left;}  
+/*  		.syllabus_week_child5 {border-bottom: 2px solid black;} */
+	}
+			
+	@media screen and (min-width: 769px) { 	
+		.displayOn {display:none;}
+		.syllabus_week_child1 {text-align: center;}
+	}
+	
+</style>
+<title>강의계획서 보기</title>
+
+<script type="text/javascript" src="../function/common.js"></script>
+<script type="text/javascript" src="../function/sortTable.js"></script>
+<script>
+	function goPrint(){
+		
+		var src = '';
+		if(isCompatibleIE()){
+			src = "../rdreport/r_designer_cs.jsp?repo_val1=2024&repo_val2=1&repo_val3=OD01601&repo_val4=02&repo_val5=107959&repo_path=../sbr/sbr3072.mrd";
+		}else{
+			src = "https://app.kangnam.ac.kr/knumis/rdreport/r_designer_cs.jsp?repo_val1=2024&repo_val2=1&repo_val3=OD01601&repo_val4=02&repo_val5=107959&repo_path=../sbr/sbr3072.mrd";
+		}
+
+		openWin('',src,850,630,0,0);
+
+		self.close();
+	}
+</script>
+</head>
+
+<body>
+
+
+<div style="font-size: 12px; text-align:center;magin-left:10px; height:12px; margin-bottom:10px;margin-top:10px">
+	최초작성일 : 2024/01/11 , 최종수정일 : 2024/01/11
+</div>
+
+<div align="center" style="margin-top: 10px;">
+	<table class="syllabus">
+		<colgroup>
+			<col width="10%">
+			<col width="7%">
+			<col width="10%">
+			<col width="20%">
+			<col width="16%">
+			<col width="8%">
+			<col width="21%">
+		</colgroup>
+		
+		<tbody>
+			<tr>
+				<th colspan="7" style="height:50px;"><span style="font-size: 24px;">강 의 계 획 서</span></th>
+			</tr>
+			<tr>
+				<th colspan="2">년 도</th>
+				<td colspan="2">2024</td>
+				<th>학 기</th>
+				<td colspan="2">1 학기</td>
+			</tr>
+			<tr>
+				<th rowspan="2">교과목명</th>
+				<th>한글</th>
+				<td colspan="2">기독교와현대사회</td>
+				<th rowspan="2">담당교수</th>
+				<td rowspan="2" colspan="2">윤성민</td>
+			</tr>
+			<tr>
+				<th>영문</th>
+				<td colspan="2">Christianity &amp; Contemporary World</td>
+			</tr>
+			<tr>
+				<th colspan="2">학수번호-분반</th>
+				<td colspan="2">OD01601 - 02</td>
+				<th>강의요일교시</th>
+				<td colspan="2">(야)금1314</td>
+			</tr>
+			<tr>
+				<th colspan="2">학점<br>(시간수)</th>
+				<td colspan="2">2(2)</td>
+				<th>강의실</th>
+				<td colspan="2">샬709</td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">개설(이수)구분</th>
+				<th>교양</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" checked="" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">계열교양<br>
+					<input type="checkbox" disabled="disabled">일반교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">균형교양: 
+				</td>
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" checked="" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">계열교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">일반교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">균형교양: 
+				</td>
+			</tr>
+			<tr>
+				<th>전공</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공기초<br>
+					<input type="checkbox" disabled="disabled">전공선택 ( &nbsp; ) 학년<br>
+					<input type="checkbox" disabled="disabled">전공필수 ( &nbsp; ) 학년					
+				</td>				
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공선택 ( &nbsp; ) 학년
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공필수 ( &nbsp; ) 학년					
+				</td>	
+			</tr>
+			<tr>
+				<th>일반선택</th>
+				<td class="displayOn" colspan="2">
+					<input type="checkbox" disabled="disabled">교직<br>
+					<input type="checkbox" disabled="disabled">자유선택
+				</td>
+				<td class="displayOff" colspan="2">
+					<input type="checkbox" disabled="disabled">교직
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">자유선택
+				</td>
+				<td colspan="2">학부(과) : 교양(야) </td>
+			</tr>
+		
+			<tr>
+				<th rowspan="2" colspan="2">강좌특성</th>
+				<td class="displayOn" colspan="5">
+					<input type="checkbox" checked="" disabled="disabled">이론강의
+					<input type="checkbox" disabled="disabled" style="margin-left:76px">실험·실습·실기<br>
+					<input type="checkbox" disabled="disabled">이론/실험·실습병행
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+				<td class="displayOff" colspan="5">
+					<input type="checkbox" checked="" disabled="disabled">이론강의
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">실험·실습·실기
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">이론·실습병행
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+			</tr>
+			<tr>
+				<th>학문특성</th>
+				<td></td>
+				<th>기타특성</th>				
+				<td colspan="2"></td>
+			</tr>
+			
+			<tr class="displayOn">
+				<th rowspan="3" colspan="2">교수학습<br>방법</th>
+				<th colspan="2">표준 교과목운영 <br>기준</th>
+				<td colspan="3" style="line-height: 1.0em">
+					<input type="checkbox" checked="" disabled="disabled">강의
+					<input type="checkbox" disabled="disabled" style="margin-left: 30px;">발표<br>
+					<input type="checkbox" checked="" disabled="disabled">토론·토의
+					<input type="checkbox" disabled="disabled">협력학습<br>
+					<input type="checkbox" disabled="disabled">문제기반학습<br>
+				</td>
+			</tr>
+			<tr class="displayOn">
+				<th colspan="2">학생 자기주도식<br>수업운영</th>
+				<td colspan="3">
+					<input type="checkbox" disabled="disabled">문제기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">프로젝트기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">플립러닝<br>
+					<input type="checkbox" disabled="disabled">K-MOOC<br>
+					<input type="checkbox" disabled="disabled">팀기반학습(TBL)<br>
+					<input type="checkbox" disabled="disabled">블랜디드러닝<br>
+					<input type="checkbox" disabled="disabled">캡스톤디자인<br>
+				</td>
+			</tr>
+			<tr class="displayOn">
+				<th colspan="2">현장 연계 방법</th>
+				<td colspan="3">
+					<input type="checkbox" disabled="disabled">현장전문가초청<br>
+					<input type="checkbox" disabled="disabled">현장탐방
+					<input type="checkbox" disabled="disabled" style="margin-left:20px;">기타<br>
+				</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th rowspan="2" colspan="2">교수학습<br>방법</th>
+				<th colspan="2">표준 교과목운영 기준</th>
+				<th colspan="2">학생 자기주도식 수업운영</th>
+				<th>현장 연계 방법</th>
+			</tr>
+			<tr class="displayOff">
+				<td colspan="2" style="line-height: 1.0em">
+					<input type="checkbox" checked="" disabled="disabled">강의<br>
+					<input type="checkbox" disabled="disabled">발표<br>
+					<input type="checkbox" checked="" disabled="disabled">토론·토의<br>
+					<input type="checkbox" disabled="disabled">협력학습<br>
+					<input type="checkbox" disabled="disabled">문제기반학습<br>
+				</td>
+				<td colspan="2">
+					<input type="checkbox" disabled="disabled">문제기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">프로젝트기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">플립러닝<br>
+					<input type="checkbox" disabled="disabled">K-MOOC<br>
+					<input type="checkbox" disabled="disabled">팀기반학습(TBL)<br>
+					<input type="checkbox" disabled="disabled">블랜디드러닝<br>
+					<input type="checkbox" disabled="disabled">캡스톤디자인<br>
+				</td>
+				<td>
+					<input type="checkbox" disabled="disabled">현장전문가초청<br>
+					<input type="checkbox" disabled="disabled">현장탐방<br>
+					<input type="checkbox" disabled="disabled">기타<br>
+				</td>
+			</tr>
+			
+			
+			<tr>
+				<th colspan="2">핵심역량</th>
+				<td colspan="5">종합적사고, 글로벌시민</td>				
+			</tr>
+			<tr>
+				<th colspan="2" rowspan="2">성적평가기준</th>
+				<td colspan="5">
+					
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5">※성적평가기준은 최종 수강 인원, 강좌별 특성에 따라 차후 변동될 수 있습니다.</td>
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="3">연락처</th>
+				<th>연구실</th>
+				<td></td>
+				<th>E-Mail</th>
+				<td colspan="2" style="word-break:break-word;"></td>
+				
+			</tr>
+			<tr>
+				<th>휴대전화</th>
+				<td></td>
+				<th>면담가능시간</th>
+				<td colspan="2"></td>
+				
+			</tr>
+			<tr>
+				<th>연구일</th>
+				<td>요일</td>
+				<th>관리부서</th>
+				<td colspan="2">
+					
+				</td>
+				
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="2">교육과정<br>참고사항</th>
+				<th>선수과목</th>
+				<td></td>
+				<th>관련<br>기초과목</th>
+				<td colspan="2"></td>
+			</tr>
+			<tr>
+				<th class="multi-line">동시수강<br>관련과목</th>
+				<td></td>
+				<th>관련<br>고급과목</th>
+				<td colspan="2"></td>
+			</tr>
+			
+			
+			<!-- ------------------------------------------------------------------------  -->
+			<tr class="displayOn">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5">1. 이 교과목은 본교 창학이념을 구현하기 위한 교육과정이다. 기독교에 대한 이해와 기독교 정신을 바탕으로 경천애인을 실천할 인재 양성에 그 목적을 둔다. 
+2. 본인의 종교를 떠나서 세상을 이롭게 하는 기독교 정신과 4차 산업혁명을 이끌어갈 융복합의 교육으로 사회공헌적 인재를 양성한다. 특히, 기독교가 강조하는 타자를 위한 삶을 강조하고 자신의 전공으로 세상을 어떻게 섬길 것인가에 관한 안목을 키운다. 
+3. 고등종교로서의 기독교 세계관으로 현대사회를 이해하고 더불어 살아가는 법을 배운다. 학습자는 나 혼자 잘 사는 것이 아니라 우리 함께 잘 살고 행복하게 살 수 있는 법을 배우고 한국사회와 글로벌 시대에서 실천이성가의 삶이 무엇인지를 깨달아 간다.</td>
+			</tr> 
+			
+			<tr class="displayOn">
+				<th colspan="2" rowspan="4">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="4">1. 성서란 어떤 책인가? 기독교의 경전이라고 말할 수 있다. 인류사에 가장 큰 영향력을 끼친 책 그리고 세계베스트셀러 1위인 성서는 어떤 책이며 어떤 내용을 담고 있는지에 대한 지식과 이해를 갖는다. 2. 기독교 정신은 무엇을 추구하는가? 그리고 무엇을 배울 수 있는가? 본인의 종교와 상관없이 학습자는 수업을 통해서 기독교 정신을 살펴보고 삶의 훈과 방향을 찾고 자신의 삶에 적용해 본다. 3. 이 시대의 지성인으로 살아갈 때 필요한 현대사회에 대한 지식과 시대적 역사적 양심을 배운다. 4. 강남대학교 창학정신을 배워서 이 시대가 요구하는 참된 인재상을 갖는다.  5. 이번 수업을 통해서 드림 에이지(Dream age)에 도전한다.  </td>
+			</tr>
+			<tr class="displayOn">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="4"></td>				
+			</tr>
+			
+			<tr class="displayOn">
+				<th style="border-right:none">평가방법</th>
+				<td colspan="4" style="padding: 0px; border-bottom:none">
+					<table style="width:100%; border-collapse:collapse; border-width: 0px; font-size: 12px;">
+						<tbody><tr>
+							<th style="border-top:none; border-left:none" width="25%">중간고사</th>
+							<th style="border-top:none" width="25%">기말고사</th>
+							<th style="border-top:none" width="25%">출석</th>
+							<th style="border-top:none; border-right:none" width="25%">과제</th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">&nbsp;</td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;border-right:none"></td>
+						</tr>
+						<tr>
+							<th style="border-top:none; border-left:none" width="25%">퀴즈</th>
+							<th style="border-top:none" width="25%">토론</th>
+							<th style="border-top:none" width="25%">기타</th>
+							<th style="border-top:none; border-right:none" width="25%"></th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">&nbsp;</td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;border-right:none"></td>
+						</tr>
+						<tr>
+							<th colspan="1" style="border-left:none; border-bottom:none">과제/퀴즈/<br>토론/기타<br>문제 및 주제</th>
+							<td colspan="3" style="border-right:none; border-bottom:none">중간시험 25%, 기말시험25%, 과제 및 실습 40%, 출석10%</td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>		
+				
+			<tr class="displayOn">
+				<th style="line-height: 1.1em">수업운영방식 </th>
+				<td colspan="4">-</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5">1. 이 교과목은 본교 창학이념을 구현하기 위한 교육과정이다. 기독교에 대한 이해와 기독교 정신을 바탕으로 경천애인을 실천할 인재 양성에 그 목적을 둔다. 
+2. 본인의 종교를 떠나서 세상을 이롭게 하는 기독교 정신과 4차 산업혁명을 이끌어갈 융복합의 교육으로 사회공헌적 인재를 양성한다. 특히, 기독교가 강조하는 타자를 위한 삶을 강조하고 자신의 전공으로 세상을 어떻게 섬길 것인가에 관한 안목을 키운다. 
+3. 고등종교로서의 기독교 세계관으로 현대사회를 이해하고 더불어 살아가는 법을 배운다. 학습자는 나 혼자 잘 사는 것이 아니라 우리 함께 잘 살고 행복하게 살 수 있는 법을 배우고 한국사회와 글로벌 시대에서 실천이성가의 삶이 무엇인지를 깨달아 간다.</td>
+			</tr> 
+			
+			
+			
+			<tr class="displayOff">
+				<th rowspan="4">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="5">1. 성서란 어떤 책인가? 기독교의 경전이라고 말할 수 있다. 인류사에 가장 큰 영향력을 끼친 책 그리고 세계베스트셀러 1위인 성서는 어떤 책이며 어떤 내용을 담고 있는지에 대한 지식과 이해를 갖는다. 2. 기독교 정신은 무엇을 추구하는가? 그리고 무엇을 배울 수 있는가? 본인의 종교와 상관없이 학습자는 수업을 통해서 기독교 정신을 살펴보고 삶의 훈과 방향을 찾고 자신의 삶에 적용해 본다. 3. 이 시대의 지성인으로 살아갈 때 필요한 현대사회에 대한 지식과 시대적 역사적 양심을 배운다. 4. 강남대학교 창학정신을 배워서 이 시대가 요구하는 참된 인재상을 갖는다.  5. 이번 수업을 통해서 드림 에이지(Dream age)에 도전한다.  </td>
+			</tr>
+			<tr class="displayOff">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="5"></td>				
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="border-right:none">평가방법</th>
+				<td colspan="5" style="padding: 0px; border-bottom:none">
+					<table style="width:100%; border-collapse:collapse; border-width: 0px; font-size: 12px;">
+						<tbody><tr>
+							<th style="border-top:none; border-left:none" width="15%">중간고사</th>
+							<th style="border-top:none;" width="15%">기말고사</th>
+							<th style="border-top:none" width="14%">출석</th>
+							<th style="border-top:none" width="14%">과제</th>
+							<th style="border-top:none" width="14%">퀴즈</th>
+							<th style="border-top:none" width="14%">토론</th>
+							<th style="border-top:none; border-right:none" width="14%">기타</th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">&nbsp;</td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;border-right:none"></td>
+						</tr>
+						<tr>
+							<th colspan="2" style="border-left:none; border-bottom:none">과제/퀴즈/토론/기타<br>문제 및 주제</th>
+							<td colspan="5" style="border-right:none; border-bottom:none">중간시험 25%, 기말시험25%, 과제 및 실습 40%, 출석10%</td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="line-height: 1.1em">수업운영방식</th>
+				<td colspan="5">-</td>
+			</tr>
+			
+			<!---------------교재 ---------------------- -->
+			
+			<tr>
+				<th rowspan="2" colspan="2">교재</th>
+				<th class="multi-line">주교재<br>(저자,출판사)</th>
+				<td colspan="4">데일 카네기/ 유태진 역, 『자기관리론』 (서울: 다른상상, 2022) <br>
+신영복, 『처음처럼』 (파주: 돌배개, 2016)<br>
+이소윤, 이진주 『9번째 지능』 (서울: 청림출판, 2015)</td>
+			</tr>
+			<tr>
+				<th class="multi-line">참고도서<br>(저자,출판사)</th>
+				<td colspan="4">이준우 외 2인, 『기독교 이해 그리고 삶』 (고양: 서현사, 2015)<br>
+김미경, 『드림 온(Dream On)드림워커로 살아라』 (파주: 쌤앤파커스, 2013)</td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">장애학생 수업&gt;<br>지원안내</th>
+				<th class="multi-line">시험시간<br>조정여부</th>
+				<td colspan="4">
+					<input type="checkbox" disabled="disabled">최소1.5배(저시력,뇌병변,기타) &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">최소1.7배(맹인학생)   					
+					
+				</td>
+			</tr>
+			
+			<tr>
+				<th class="multi-line">지원사항</th>
+				<td colspan="4">
+					<input type="checkbox" disabled="disabled">시험대필 제공여부 &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">시험문제 점역지원 여부 &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">확대문자 시험지 제공
+				</td>
+			</tr>
+			<tr>
+				<th class="multi-line">기타</th>
+				<td colspan="4"><br></td>
+			</tr>
+			
+			
+			
+			
+			<tr>
+				<th rowspan="10">권장도서</th>
+				<th rowspan="2">1</th>
+				<th>도서명</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th>활용방법</th>
+				<td colspan="4">내가 생각하는 내가 묶여있는 줄의 길이는?</td>
+			</tr>
+			<tr>
+				<th rowspan="2">2</th>
+				<th>도서명</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th>활용방법</th>
+				<td colspan="4">윤동주 시를 통해서 기독교 신앙과 민족 정신에 대해서 배우는 데 활용한다.  </td>
+			</tr>
+			<tr>
+				<th rowspan="2">3</th>
+				<th>도서명</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th>활용방법</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th rowspan="2">4</th>
+				<th>도서명</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th>활용방법</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th rowspan="2">5</th>
+				<th>도서명</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th>활용방법</th>
+				<td colspan="4"></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+	
+	<table class="syllabus_week_title">
+		<tbody><tr>
+			<th colspan="5"><span style="font-size: 18px;">주차별 강의내용</span></th>
+		</tr>
+	</tbody></table>
+	<table class="syllabus_week">
+		<colgroup>
+			<col width="5%"> 
+			<col width="32%">
+			<col width="21%">
+			<col width="17%">
+			<col width="17%">
+			<col width="8%">
+		</colgroup>
+			<thead>
+			<tr style="line-height: 1.2em">
+				<th>주차</th>
+				<th>학습주제</th>
+				<th>수업방식/<br>이용기자재</th>
+				<th>교수학습자료</th>
+				<th>과제</th>
+				<th>수업운영<br>방식</th>
+			</tr>
+			</thead>
+		<tbody>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">1</td>
+				<td data-label="학습주제">강의 일정 소개/ <br>
+기초 강의</td>
+				<td data-label="수업방식/이용기자재"> <br>
+<br>
+강의/ PT </td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">2</td>
+				<td data-label="학습주제">창조 이야기: <br>
+자연과 더불어 살아라.  </td>
+				<td data-label="수업방식/이용기자재"> <br>
+<br>
+강의/ PT </td>
+				<td data-label="교수학습자료">생태 신학: 플라스틱의 역습</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">3</td>
+				<td data-label="학습주제">요셉 이야기: <br>
+꿈은 고난을 먹고 자란다. <br>
+「A+보다 중요한 것은 꿈이다」</td>
+				<td data-label="수업방식/이용기자재"> <br>
+<br>
+강의/ PT </td>
+				<td data-label="교수학습자료">나의 꿈 찾기:<br>
+버킷 리스트와 인생계획표 작성</td>
+				<td data-label="과제">버킷 리스트에 최소한 40~50개 정도의 자신의 소망을 쓰고 인생의 주기별로 나누어 보기<br>
+  </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">4</td>
+				<td data-label="학습주제">출애굽 이야기: <br>
+벽도 밀면 문이 된다. 「역경, 그것은 가면을 쓴 축복이다」</td>
+				<td data-label="수업방식/이용기자재"> <br>
+<br>
+강의/ PT </td>
+				<td data-label="교수학습자료">하워드 가드너의 다중지능과 간단한 테스트</td>
+				<td data-label="과제">다중지능 검사 http://www.multiiqtest.com/<br>
+본인의 강점지능과 약점지능 찾기  </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">5</td>
+				<td data-label="학습주제">KBS &lt;세상을 바꾸는 9번째 지능&gt; </td>
+				<td data-label="수업방식/이용기자재"> <br>
+<br>
+강의/ PT </td>
+				<td data-label="교수학습자료">영성지능, 영성지능 테스트</td>
+				<td data-label="과제">영성지능 테스트 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">6</td>
+				<td data-label="학습주제">잘 사는 길이란? <br>
+더불어 살기</td>
+				<td data-label="수업방식/이용기자재"> <br>
+<br>
+강의/ PT </td>
+				<td data-label="교수학습자료">사회와 이웃을 위한 꿈 설계 (사회공헌적 인재상 제시) </td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">7</td>
+				<td data-label="학습주제">강남대학교의 교훈 <br>
+「경천애인(敬天愛人) 강의」</td>
+				<td data-label="수업방식/이용기자재"> <br>
+<br>
+강의/ PT </td>
+				<td data-label="교수학습자료">강남대학교가 추구하는 인재상</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">8</td>
+				<td data-label="학습주제">중간고사</td>
+				<td data-label="수업방식/이용기자재">강의/ PT</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">9</td>
+				<td data-label="학습주제">예수의 밥상공동체: 차별이 없는 삶 </td>
+				<td data-label="수업방식/이용기자재"> <br>
+강의/ PT</td>
+				<td data-label="교수학습자료">사회적 분배, 복지, 그리고 평등한 사회</td>
+				<td data-label="과제"> 조별과제:<br>
+한국사회의 문제점 찾기 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">10</td>
+				<td data-label="학습주제">바울의 예수 운동: <br>
+사회적 재통합</td>
+				<td data-label="수업방식/이용기자재"> <br>
+강의/ PT</td>
+				<td data-label="교수학습자료">인권, 다문화 사회, 더불어 숲(고 신영복 선생님)</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">11</td>
+				<td data-label="학습주제">꿈을 찾아라! (버킷리스트 1)</td>
+				<td data-label="수업방식/이용기자재"> <br>
+강의/ PT</td>
+				<td data-label="교수학습자료">인생설계도(포트폴리오) 작성 1</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">12</td>
+				<td data-label="학습주제">꿈을 찾아라!(버킷리스트 2)</td>
+				<td data-label="수업방식/이용기자재"> <br>
+강의/ PT</td>
+				<td data-label="교수학습자료">인생설계도(포트폴리오) 작성 2</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">13</td>
+				<td data-label="학습주제">네 마음의 무한한 가능성을 발견하여라!  공부해서 남 주자!</td>
+				<td data-label="수업방식/이용기자재"> <br>
+강의/ PT</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">학습자 자신의 전공과 사회공헌적 요소를 함께 구성해 보기 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">14</td>
+				<td data-label="학습주제">총평 </td>
+				<td data-label="수업방식/이용기자재"> <br>
+강의/ PT</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">15</td>
+				<td data-label="학습주제">기말고사</td>
+				<td data-label="수업방식/이용기자재">시험</td>
+				<td data-label="교수학습자료"> <br>
+ 학생 모범 답안 </td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+
+		</tbody>
+	</table>
+	
+	
+</div>
+
+
+</body></html>

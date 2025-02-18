@@ -1,0 +1,714 @@
+<html><head>
+<base target="_blank">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+	.syllabus, .syllabus_week{width:800px; border-width: 2px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:10px; table-layout: fixed;} 
+	.syllabus_sub {width:600px; border-width: 1px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:3px;margin-bottom:3px; k-layout: fixed;}
+	tr{min-height: 22px; }
+	th{border: 1px black solid; text-align: center; font-weight: bold; background-color: #EFEFEF}
+	th.no_topLine{border-top:0px black solid;}
+	th.no_botLine{border-bottom:0px black solid;}
+	td{border: 1px black solid; text-align: left; padding-left: 3px; min-height: 22px; vertical-align: middle; background-color: #FFFFFF}
+	td p{min-height: 22px;}
+	td pre{margin:auto; min-height:1px;}
+	
+	.multi-line {line-height:1.3em;padding-top:4px}
+	.majorDiv {width:800px;}
+	.syllabus_week {margin-top:5px;}
+	.syllabus_week_title {border: 1px solid gray;width:800px;height:40px;margin-top:20px;}
+	
+	
+	@media screen and (max-width: 768px) { 	
+		.syllabus, .syllabus_week, .majorDiv, .syllabus_week_title {width: 100%;}
+		.displayOff {display:none;}
+ 		.syllabus_week thead {display:none;} 
+ 		.syllabus_week, .syllabus_week tbody, .syllabus_week tr, .syllabus_week td {display: block;} 
+  		.syllabus_week tbody tr td {text-align:left;padding-left: 50%;position:relative;border-top:none;border-left:none;border-right:none; }  
+  		.syllabus_week tbody tr td nth-child(1) {text-align: left;}
+  		.syllabus_week tbody tr {border-top:1px soild black;}  
+ 		.syllabus_week td:before {content:attr(data-label); position:absolute; left: 0%;width: 50%;padding-left: 15px;text-align: left;}  
+/*  		.syllabus_week_child5 {border-bottom: 2px solid black;} */
+	}
+			
+	@media screen and (min-width: 769px) { 	
+		.displayOn {display:none;}
+		.syllabus_week_child1 {text-align: center;}
+	}
+	
+</style>
+<title>강의계획서 보기</title>
+
+<script type="text/javascript" src="../function/common.js"></script>
+<script type="text/javascript" src="../function/sortTable.js"></script>
+<script>
+	function goPrint(){
+		
+		var src = '';
+		if(isCompatibleIE()){
+			src = "../rdreport/r_designer_cs.jsp?repo_val1=2024&repo_val2=1&repo_val3=NE21703&repo_val4=00&repo_val5=107958&repo_path=../sbr/sbr3072.mrd";
+		}else{
+			src = "https://app.kangnam.ac.kr/knumis/rdreport/r_designer_cs.jsp?repo_val1=2024&repo_val2=1&repo_val3=NE21703&repo_val4=00&repo_val5=107958&repo_path=../sbr/sbr3072.mrd";
+		}
+
+		openWin('',src,850,630,0,0);
+
+		self.close();
+	}
+</script>
+</head>
+
+<body>
+
+
+<div style="font-size: 12px; text-align:center;magin-left:10px; height:12px; margin-bottom:10px;margin-top:10px">
+	최초작성일 : 2024/01/04 , 최종수정일 : 2024/01/15
+</div>
+
+<div align="center" style="margin-top: 10px;">
+	<table class="syllabus">
+		<colgroup>
+			<col width="10%">
+			<col width="7%">
+			<col width="10%">
+			<col width="20%">
+			<col width="16%">
+			<col width="8%">
+			<col width="21%">
+		</colgroup>
+		
+		<tbody>
+			<tr>
+				<th colspan="7" style="height:50px;"><span style="font-size: 24px;">강 의 계 획 서</span></th>
+			</tr>
+			<tr>
+				<th colspan="2">년 도</th>
+				<td colspan="2">2024</td>
+				<th>학 기</th>
+				<td colspan="2">1 학기</td>
+			</tr>
+			<tr>
+				<th rowspan="2">교과목명</th>
+				<th>한글</th>
+				<td colspan="2">우리시대의서정과서사</td>
+				<th rowspan="2">담당교수</th>
+				<td rowspan="2" colspan="2">노춘기</td>
+			</tr>
+			<tr>
+				<th>영문</th>
+				<td colspan="2">Lyric and Narrative of Our Time</td>
+			</tr>
+			<tr>
+				<th colspan="2">학수번호-분반</th>
+				<td colspan="2">NE21703 - 00</td>
+				<th>강의요일교시</th>
+				<td colspan="2"></td>
+			</tr>
+			<tr>
+				<th colspan="2">학점<br>(시간수)</th>
+				<td colspan="2">3(3)</td>
+				<th>강의실</th>
+				<td colspan="2"></td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">개설(이수)구분</th>
+				<th>교양</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">계열교양<br>
+					<input type="checkbox" disabled="disabled">일반교양
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px">균형교양: 언어와문학(제2영역)
+				</td>
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">계열교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">일반교양
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px">균형교양: 언어와문학(제2영역)
+				</td>
+			</tr>
+			<tr>
+				<th>전공</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공기초<br>
+					<input type="checkbox" disabled="disabled">전공선택 ( &nbsp; ) 학년<br>
+					<input type="checkbox" disabled="disabled">전공필수 ( &nbsp; ) 학년					
+				</td>				
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공선택 ( &nbsp; ) 학년
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공필수 ( &nbsp; ) 학년					
+				</td>	
+			</tr>
+			<tr>
+				<th>일반선택</th>
+				<td class="displayOn" colspan="2">
+					<input type="checkbox" disabled="disabled">교직<br>
+					<input type="checkbox" disabled="disabled">자유선택
+				</td>
+				<td class="displayOff" colspan="2">
+					<input type="checkbox" disabled="disabled">교직
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">자유선택
+				</td>
+				<td colspan="2">학부(과) : 교양 </td>
+			</tr>
+		
+			<tr>
+				<th rowspan="2" colspan="2">강좌특성</th>
+				<td class="displayOn" colspan="5">
+					<input type="checkbox" checked="" disabled="disabled">이론강의
+					<input type="checkbox" disabled="disabled" style="margin-left:76px">실험·실습·실기<br>
+					<input type="checkbox" disabled="disabled">이론/실험·실습병행
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+				<td class="displayOff" colspan="5">
+					<input type="checkbox" checked="" disabled="disabled">이론강의
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">실험·실습·실기
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">이론·실습병행
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+			</tr>
+			<tr>
+				<th>학문특성</th>
+				<td></td>
+				<th>기타특성</th>				
+				<td colspan="2">S러닝</td>
+			</tr>
+			
+			<tr class="displayOn">
+				<th rowspan="3" colspan="2">교수학습<br>방법</th>
+				<th colspan="2">표준 교과목운영 <br>기준</th>
+				<td colspan="3" style="line-height: 1.0em">
+					<input type="checkbox" checked="" disabled="disabled">강의
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left: 30px;">발표<br>
+					<input type="checkbox" checked="" disabled="disabled">토론·토의
+					<input type="checkbox" disabled="disabled">협력학습<br>
+					<input type="checkbox" disabled="disabled">문제기반학습<br>
+				</td>
+			</tr>
+			<tr class="displayOn">
+				<th colspan="2">학생 자기주도식<br>수업운영</th>
+				<td colspan="3">
+					<input type="checkbox" disabled="disabled">문제기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">프로젝트기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">플립러닝<br>
+					<input type="checkbox" disabled="disabled">K-MOOC<br>
+					<input type="checkbox" disabled="disabled">팀기반학습(TBL)<br>
+					<input type="checkbox" disabled="disabled">블랜디드러닝<br>
+					<input type="checkbox" disabled="disabled">캡스톤디자인<br>
+				</td>
+			</tr>
+			<tr class="displayOn">
+				<th colspan="2">현장 연계 방법</th>
+				<td colspan="3">
+					<input type="checkbox" disabled="disabled">현장전문가초청<br>
+					<input type="checkbox" disabled="disabled">현장탐방
+					<input type="checkbox" disabled="disabled" style="margin-left:20px;">기타<br>
+				</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th rowspan="2" colspan="2">교수학습<br>방법</th>
+				<th colspan="2">표준 교과목운영 기준</th>
+				<th colspan="2">학생 자기주도식 수업운영</th>
+				<th>현장 연계 방법</th>
+			</tr>
+			<tr class="displayOff">
+				<td colspan="2" style="line-height: 1.0em">
+					<input type="checkbox" checked="" disabled="disabled">강의<br>
+					<input type="checkbox" checked="" disabled="disabled">발표<br>
+					<input type="checkbox" checked="" disabled="disabled">토론·토의<br>
+					<input type="checkbox" disabled="disabled">협력학습<br>
+					<input type="checkbox" disabled="disabled">문제기반학습<br>
+				</td>
+				<td colspan="2">
+					<input type="checkbox" disabled="disabled">문제기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">프로젝트기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">플립러닝<br>
+					<input type="checkbox" disabled="disabled">K-MOOC<br>
+					<input type="checkbox" disabled="disabled">팀기반학습(TBL)<br>
+					<input type="checkbox" disabled="disabled">블랜디드러닝<br>
+					<input type="checkbox" disabled="disabled">캡스톤디자인<br>
+				</td>
+				<td>
+					<input type="checkbox" disabled="disabled">현장전문가초청<br>
+					<input type="checkbox" disabled="disabled">현장탐방<br>
+					<input type="checkbox" disabled="disabled">기타<br>
+				</td>
+			</tr>
+			
+			
+			<tr>
+				<th colspan="2">핵심역량</th>
+				<td colspan="5">정보·자원·기술 활용, 글로벌시민</td>				
+			</tr>
+			<tr>
+				<th colspan="2" rowspan="2">성적평가기준</th>
+				<td colspan="5">
+					
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5">※성적평가기준은 최종 수강 인원, 강좌별 특성에 따라 차후 변동될 수 있습니다.</td>
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="3">연락처</th>
+				<th>연구실</th>
+				<td></td>
+				<th>E-Mail</th>
+				<td colspan="2" style="word-break:break-word;"></td>
+				
+			</tr>
+			<tr>
+				<th>휴대전화</th>
+				<td></td>
+				<th>면담가능시간</th>
+				<td colspan="2"></td>
+				
+			</tr>
+			<tr>
+				<th>연구일</th>
+				<td>월요일</td>
+				<th>관리부서</th>
+				<td colspan="2">
+					
+				</td>
+				
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="2">교육과정<br>참고사항</th>
+				<th>선수과목</th>
+				<td></td>
+				<th>관련<br>기초과목</th>
+				<td colspan="2"></td>
+			</tr>
+			<tr>
+				<th class="multi-line">동시수강<br>관련과목</th>
+				<td></td>
+				<th>관련<br>고급과목</th>
+				<td colspan="2"></td>
+			</tr>
+			
+			
+			<!-- ------------------------------------------------------------------------  -->
+			<tr class="displayOn">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5">1. 전문성(60%) : 문학 및 문화 텍스트를 능동적으로 분석하고 비평하는 과정을 통해 논리적인 사고력과 인문학적 직관력을 함양
+2. 글로벌(40%) : 문학과 사회의 양상과 감수성을 이해하고, 컨텍스트에 대한 공감능력을 키워 지역과 세계에 대한 깊이 있는 이해을 도모</td>
+			</tr> 
+			
+			<tr class="displayOn">
+				<th colspan="2" rowspan="4">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="4">최종 목표 : <br>
+-이 강좌를 통해 학생들은 동시대 문학의 양상과 감수성을 이해하게 되며, 문학적 공감능력을 키워서 타자에 대한 깊이 있는 이해에 도달할 수 있다. <br>
+<br>
+단위 목표:<br>
+1. 동시대 문학을 통해 우리 시대의 욕망과 가능성을 이해하고 탐색할 수 있다.<br>
+2. 문학뿐만 아니라 우리 시대의 문화적인 지평을 이해할 수 있다. <br>
+3. 작품 분석과 비평을 통해 논리적인 사고력과 심리적인 이해력을 함양할 수 있다.<br>
+4. 작품에 대한 이해를 글로 표현하고 발표함으로써 자신의 생각을 설득력 있게 전개하는 방법을 배울 수 있다.    </td>
+			</tr>
+			<tr class="displayOn">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="4">발표와토론30% : 매주 수업시간에 다루어지는 작품에 대한 평가 및 견해 표현에 학생들은 빠짐없이 참여해야 한다. 해당 작품에 대한 자율적인 개인 발표 및 그에 대한 질의/토론은 선택으로 두되, 발표와 토론에 참여하지 못한 학생들은 개인 감상문으로 대체할 수 있도록 한다. 자율적 참여에 대해서는 수업참여 가산점을 부여하여 적극적 참여의 인센티브를 제공한다.
+중간시험30%+기말시험30%: 수업 중에 직접 다루어진 작품에 대하여 자신의 평가와 그 견해를 논리적으로 서술하는 비평적 글쓰기의 문제가 다수 주어진다. 오픈북 테스트로 교재 및 수업중 배포된 모든 온라인, 오프라인의 자료를 참고할 수 있다. 다만, 페이퍼로 인쇄된 자료만 참고할 수 있다. 분량의 제한은 없으나, 시간의 제한은 엄수함으로써 형평성을 고려한다.
+출석10% : 다른 과목과 마찬가지로 학교의 교칙 상의 평가 원칙을 따른다. 
+</td>				
+			</tr>
+			
+			<tr class="displayOn">
+				<th style="border-right:none">평가방법</th>
+				<td colspan="4" style="padding: 0px; border-bottom:none">
+					<table style="width:100%; border-collapse:collapse; border-width: 0px; font-size: 12px;">
+						<tbody><tr>
+							<th style="border-top:none; border-left:none" width="25%">중간고사</th>
+							<th style="border-top:none" width="25%">기말고사</th>
+							<th style="border-top:none" width="25%">출석</th>
+							<th style="border-top:none; border-right:none" width="25%">과제</th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">30&nbsp;</td>
+							<td style="text-align:center;">30</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;border-right:none">30</td>
+						</tr>
+						<tr>
+							<th style="border-top:none; border-left:none" width="25%">퀴즈</th>
+							<th style="border-top:none" width="25%">토론</th>
+							<th style="border-top:none" width="25%">기타</th>
+							<th style="border-top:none; border-right:none" width="25%"></th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">0&nbsp;</td>
+							<td style="text-align:center;">0</td>
+							<td style="text-align:center;">0</td>
+							<td style="text-align:center;border-right:none"></td>
+						</tr>
+						<tr>
+							<th colspan="1" style="border-left:none; border-bottom:none">과제/퀴즈/<br>토론/기타<br>문제 및 주제</th>
+							<td colspan="3" style="border-right:none; border-bottom:none"> 출석10%+ 과제와 발표30%+ 중간시험30%+ 기말시험30%
+
+※ 이 강의는 기존의 &lt;우리시대의문학&gt;과 동일한 과목입니다. 기존의 강의를 수강한 학생은 커리큘럼이 동일하니 수강할 수 없습니다. </td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>		
+				
+			<tr class="displayOn">
+				<th style="line-height: 1.1em">수업운영방식 </th>
+				<td colspan="4">원격강좌</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5">1. 전문성(60%) : 문학 및 문화 텍스트를 능동적으로 분석하고 비평하는 과정을 통해 논리적인 사고력과 인문학적 직관력을 함양
+2. 글로벌(40%) : 문학과 사회의 양상과 감수성을 이해하고, 컨텍스트에 대한 공감능력을 키워 지역과 세계에 대한 깊이 있는 이해을 도모</td>
+			</tr> 
+			
+			
+			
+			<tr class="displayOff">
+				<th rowspan="4">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="5">최종 목표 : <br>
+-이 강좌를 통해 학생들은 동시대 문학의 양상과 감수성을 이해하게 되며, 문학적 공감능력을 키워서 타자에 대한 깊이 있는 이해에 도달할 수 있다. <br>
+<br>
+단위 목표:<br>
+1. 동시대 문학을 통해 우리 시대의 욕망과 가능성을 이해하고 탐색할 수 있다.<br>
+2. 문학뿐만 아니라 우리 시대의 문화적인 지평을 이해할 수 있다. <br>
+3. 작품 분석과 비평을 통해 논리적인 사고력과 심리적인 이해력을 함양할 수 있다.<br>
+4. 작품에 대한 이해를 글로 표현하고 발표함으로써 자신의 생각을 설득력 있게 전개하는 방법을 배울 수 있다.    </td>
+			</tr>
+			<tr class="displayOff">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="5">발표와토론30% : 매주 수업시간에 다루어지는 작품에 대한 평가 및 견해 표현에 학생들은 빠짐없이 참여해야 한다. 해당 작품에 대한 자율적인 개인 발표 및 그에 대한 질의/토론은 선택으로 두되, 발표와 토론에 참여하지 못한 학생들은 개인 감상문으로 대체할 수 있도록 한다. 자율적 참여에 대해서는 수업참여 가산점을 부여하여 적극적 참여의 인센티브를 제공한다.
+중간시험30%+기말시험30%: 수업 중에 직접 다루어진 작품에 대하여 자신의 평가와 그 견해를 논리적으로 서술하는 비평적 글쓰기의 문제가 다수 주어진다. 오픈북 테스트로 교재 및 수업중 배포된 모든 온라인, 오프라인의 자료를 참고할 수 있다. 다만, 페이퍼로 인쇄된 자료만 참고할 수 있다. 분량의 제한은 없으나, 시간의 제한은 엄수함으로써 형평성을 고려한다.
+출석10% : 다른 과목과 마찬가지로 학교의 교칙 상의 평가 원칙을 따른다. 
+</td>				
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="border-right:none">평가방법</th>
+				<td colspan="5" style="padding: 0px; border-bottom:none">
+					<table style="width:100%; border-collapse:collapse; border-width: 0px; font-size: 12px;">
+						<tbody><tr>
+							<th style="border-top:none; border-left:none" width="15%">중간고사</th>
+							<th style="border-top:none;" width="15%">기말고사</th>
+							<th style="border-top:none" width="14%">출석</th>
+							<th style="border-top:none" width="14%">과제</th>
+							<th style="border-top:none" width="14%">퀴즈</th>
+							<th style="border-top:none" width="14%">토론</th>
+							<th style="border-top:none; border-right:none" width="14%">기타</th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">30&nbsp;</td>
+							<td style="text-align:center;">30</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;">30</td>
+							<td style="text-align:center;">0</td>
+							<td style="text-align:center;">0</td>
+							<td style="text-align:center;border-right:none">0</td>
+						</tr>
+						<tr>
+							<th colspan="2" style="border-left:none; border-bottom:none">과제/퀴즈/토론/기타<br>문제 및 주제</th>
+							<td colspan="5" style="border-right:none; border-bottom:none"> 출석10%+ 과제와 발표30%+ 중간시험30%+ 기말시험30%
+
+※ 이 강의는 기존의 &lt;우리시대의문학&gt;과 동일한 과목입니다. 기존의 강의를 수강한 학생은 커리큘럼이 동일하니 수강할 수 없습니다. </td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="line-height: 1.1em">수업운영방식</th>
+				<td colspan="5">원격강좌</td>
+			</tr>
+			
+			<!---------------교재 ---------------------- -->
+			
+			<tr>
+				<th rowspan="2" colspan="2">교재</th>
+				<th class="multi-line">주교재<br>(저자,출판사)</th>
+				<td colspan="4">"문학에 이르는 길"(송하춘 외, 서정시학, 2014)(교재절판으로 PDF 자료로 대체)</td>
+			</tr>
+			<tr>
+				<th class="multi-line">참고도서<br>(저자,출판사)</th>
+				<td colspan="4">“문학의 새로운 이해”(김행숙/박진, 민음사, 2013) “젊은 작가상 수상 작품집”(문학동네)</td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">장애학생 수업&gt;<br>지원안내</th>
+				<th class="multi-line">시험시간<br>조정여부</th>
+				<td colspan="4">
+					<input type="checkbox" disabled="disabled">최소1.5배(저시력,뇌병변,기타) &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">최소1.7배(맹인학생)   					
+					
+				</td>
+			</tr>
+			
+			<tr>
+				<th class="multi-line">지원사항</th>
+				<td colspan="4">
+					<input type="checkbox" disabled="disabled">시험대필 제공여부 &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">시험문제 점역지원 여부 &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">확대문자 시험지 제공
+				</td>
+			</tr>
+			<tr>
+				<th class="multi-line">기타</th>
+				<td colspan="4">시험시간 150% 지원. 기타 필요한 지원은 수시로 요청바랍니다.<br></td>
+			</tr>
+			
+			
+			
+			
+			<tr>
+				<th rowspan="10">권장도서</th>
+				<th rowspan="2">1</th>
+				<th>도서명</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th>활용방법</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th rowspan="2">2</th>
+				<th>도서명</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th>활용방법</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th rowspan="2">3</th>
+				<th>도서명</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th>활용방법</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th rowspan="2">4</th>
+				<th>도서명</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th>활용방법</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th rowspan="2">5</th>
+				<th>도서명</th>
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<th>활용방법</th>
+				<td colspan="4"></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+	
+	<table class="syllabus_week_title">
+		<tbody><tr>
+			<th colspan="5"><span style="font-size: 18px;">주차별 강의내용</span></th>
+		</tr>
+	</tbody></table>
+	<table class="syllabus_week">
+		<colgroup>
+			<col width="5%"> 
+			<col width="32%">
+			<col width="21%">
+			<col width="17%">
+			<col width="17%">
+			<col width="8%">
+		</colgroup>
+			<thead>
+			<tr style="line-height: 1.2em">
+				<th>주차</th>
+				<th>학습주제</th>
+				<th>수업방식/<br>이용기자재</th>
+				<th>교수학습자료</th>
+				<th>과제</th>
+				<th>수업운영<br>방식</th>
+			</tr>
+			</thead>
+		<tbody>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">1</td>
+				<td data-label="학습주제">21세기 세상과 문학의 양상 </td>
+				<td data-label="수업방식/이용기자재">강의와 토론</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">내 인생의 노래 1편 선정하여 가사 비평하기 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">비대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">2</td>
+				<td data-label="학습주제">현대시의 모험(1)<br>
+현대시의새로운목소리와시적모험들</td>
+				<td data-label="수업방식/이용기자재">강의와 토론</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">사랑에 관한 짧은시쓰기 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">비대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">3</td>
+				<td data-label="학습주제">현대시의 모험(2)<br>
+고백의문학적감수성과우리시대의자화상</td>
+				<td data-label="수업방식/이용기자재">강의와 발표</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">김수영 시 &lt;사랑&gt;의 화자 분석하기 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">비대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">4</td>
+				<td data-label="학습주제">현대시의 모험(3)<br>
+은유적세계와환유적세계,은유적상상력과환유적상상력</td>
+				<td data-label="수업방식/이용기자재">강의와 토론 </td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">시 작품을 자신만의 평가기준으로 비평하기 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">비대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">5</td>
+				<td data-label="학습주제">서사의 이해 - 서사란 무엇인가?<br>
+서사와문학의관계,스토리텔링과문화콘텐츠그리고문학</td>
+				<td data-label="수업방식/이용기자재">강의와 발표, 토론</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">홍길동전의 화소를 재구성하여 새로운 플롯 만들기 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">비대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">6</td>
+				<td data-label="학습주제">서사분석연습(1)<br>
+서사적욕망과플롯<br>
+영화가 된 소설 - 영화와 소설의 플롯/표현형식</td>
+				<td data-label="수업방식/이용기자재">강의와 발표</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">황순원 &lt;소나기&gt;와 영화 &lt;소나기&gt;의 형식과 내용 비교하기 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">비대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">7</td>
+				<td data-label="학습주제">서사분석연습(2)<br>
+상상력과환상의가능성<br>
+소설에서 서술자의 위치</td>
+				<td data-label="수업방식/이용기자재">강의와 발표 </td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">성석제 소설&lt;내인생마지막4.5초&gt;에 대하여 평점을 부여하고 논리적으로 비평하기 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">비대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">8</td>
+				<td data-label="학습주제">맛보고 즐기는 문학을 위하여<br>
+- ‘나’라는 시인의 탄생<br>
+- 전반부 수업 강평 <br>
+- 학생글 강평</td>
+				<td data-label="수업방식/이용기자재">강의와 질의 응답 </td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">전반기 수업 돌아보기 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">비대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">9</td>
+				<td data-label="학습주제">서사작품 비교 분석<br>
+그림이 된 소설<br>
+우화와동화그리고환상적소설의상징성</td>
+				<td data-label="수업방식/이용기자재">강의와 토론</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">소설 &lt;나무를 심은 사람&gt;의 묘사과 애니메이션의 장면 비교하기 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">비대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">10</td>
+				<td data-label="학습주제">시와 현실<br>
+- 시는 현실을 노래한다.</td>
+				<td data-label="수업방식/이용기자재">강의와 발표와 토론</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">우리시대의 현실을 반영한 시/노래 찾아서 그 의미를 소개하기 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">비대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">11</td>
+				<td data-label="학습주제">시와 소설의 시간<br>
+- 시는 본질적으로 현재시제. <br>
+- 소설은 본질적으로 과거시제. <br>
+- 고래의 도약</td>
+				<td data-label="수업방식/이용기자재">강의와 발표와 토론 </td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">애니메이션 &lt;고래의 도약&gt;에 나타난 시간관 분석하기 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">비대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">12</td>
+				<td data-label="학습주제">시는 운율의 예술이다.<br>
+- 한국어의 특성과 운율<br>
+- 라임보다 더 큰 리듬</td>
+				<td data-label="수업방식/이용기자재">강의와 토론 </td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">운율이 있는 시/노래 창작하기 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">비대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">13</td>
+				<td data-label="학습주제">소설의 시점이 문장을 결정한다.<br>
+- 다양한 소설의 시점<br>
+- 상황 묘사와 심리 묘사</td>
+				<td data-label="수업방식/이용기자재">강의와 토론</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">소설 1편 선정하여 시점 선택의 적합성 평가하기 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">비대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">14</td>
+				<td data-label="학습주제">소설의 작가는 어디있는가<br>
+- 작가 / 내포작가 / 서술자<br>
+- 이상, 날개, 꼼꼼히 읽기</td>
+				<td data-label="수업방식/이용기자재">강의와 발표 </td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">이상 ｢날개｣의 ‘프롤로그’ 다시 쓰기(개작) </td>
+				<td data-label="강의형태" class="syllabus_week_child6">비대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">15</td>
+				<td data-label="학습주제">우리 시대의 문학을 위하여<br>
+- ‘나’라는 비평가의 탄생<br>
+- 후반부 수업 강평 <br>
+- 학생글 강평</td>
+				<td data-label="수업방식/이용기자재">강평 및 기말고사</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제">전체 수업 돌아보기 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">비대면</td>
+			</tr>
+
+		</tbody>
+	</table>
+	
+	
+</div>
+
+
+</body></html>

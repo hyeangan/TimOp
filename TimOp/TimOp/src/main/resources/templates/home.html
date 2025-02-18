@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>TimOp</title>
+    <style>
+        #title{
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        td {
+            background-color: #e7e7e7;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .section {
+            flex: 1;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin: 10px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+
+        input[type="text"], select {
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        input[type="checkbox"], input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        .scrollable-list {
+            height: 600px;
+            overflow-y: auto;
+            border: 2px solid #ccc;
+            padding: 10px;
+        }
+        /* 탭 스타일 */
+        .tab-container {
+            display: flex;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+        .tab, .stab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            background-color: #f9f9f9;
+        }
+        .tab.active, .stab.active {
+            background-color: #fff;
+            font-weight: bold;
+            border-top: 2px solid #007BFF;
+            border-right: 2px solid #007BFF;
+            border-left: 2px solid #007BFF;
+        }
+        .tab-content, .stab-content {
+            display: none;
+        }
+        .tab-content.active, .stab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1 id="title">TimOp</h1>
+</header>
+<div th:text="${member.studentId +'님 환영합니다!'}"></div>
+<div class="container">
+    <section class="section" id="section1">
+        <div class="tab-container">
+            <div class="tab active" data-tab="tab1-1">검색 결과</div>
+            <div class="tab" data-tab="tab1-2">시간표</div>
+            <div class="tab" data-tab="tab1-3">탭 3</div>
+        </div>
+        <div class="tab-content active" id="tab1-1">
+            <ul class="scrollable-list">
+                <li th:each="lecture : ${lectures}">
+                    <div>
+                        <div>
+                            <strong th:text="${lecture.title}"></strong>
+                            <a th:href="@{/{param}(param=${lecture.syllabus + '.html'})}" target="_blank">강의계획서 열기</a>
+                        </div>
+                        <div th:text="${lecture.professor}"></div>
+                        <div th:text="${lecture.time}"></div>
+                        <div style="display:inline" th:text="${lecture.grade} + '학년  '"></div>
+                        <div style="display:inline" th:text="${lecture.credit} + '학점'"></div>
+                        <div style="display:inline" th:text="${lecture.num} + '  '"></div><br><br>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content" id="tab1-2">
+            <p>시간표 내용</p>
+        </div>
+        <div class="tab-content" id="tab1-3">
+            <p>탭 3 내용</p>
+        </div>
+    </section>
+
+    <section class="section" id="section2">
+        <input type="text" id="timetable-name" placeholder="시간표 이름을 입력하세요">
+        <button id="add-timetable-btn">시간표 추가</button>
+        <button id="delete-timetable-btn">시간표 삭제</button>
+        <div class="tab-container" id="stab-container">
+            <!--
+            Initially empty, new tabs will be added here -->
+
+        </div>
+        <div id="timetable-container">
+            <!-- Initially empty, new timetable contents will be added here -->
+        </div>
+    </section>
+    <section class="section">
+        <form action="#" th:action="@{/search}" method="get">
+            <div class="form-group" style="display:inline;" >
+                <label for="title">강의 이름으로 검색:</label>
+                <input type="text" id="searchBox" name="title">
+            </div>
+            <div class="form-group"  style="display:inline;" >
+                <button type="submit">검색</button>
+            </div>
+        </form>
+        <form id="searchForm" action="#" th:action="@{/search/condition}" method="get" onsubmit="removeEmptyFields(event)">
+            <div class="form-group">
+                <label for="categoryDropdown">학부/전공:</label>
+                <select id="categoryDropdown" name="major">
+                    <option value=''>----</option>
+                    <Option value='ICT융합공학부 (공과대학)'>	ICT융합공학부 (공과대학)</option>
+                    <Option value='IoT전자공학전공 (ICT공학부)'>	IoT전자공학전공 (ICT공학부)</option>
+                    <Option value='Wel-Tech융합전공 (복지융합대학)'>	Wel-Tech융합전공 (복지융합대학)</option>
+                    <Option value='가상현실전공 (ICT공학부)'>	가상현실전공 (ICT공학부)</option>
+                    <Option value='가상현실전공 (ICT융합공학부)'>	가상현실전공 (ICT융합공학부)</option>
+                    <Option value='건축공학전공 (부동산건설학부)'>	건축공학전공 (부동산건설학부)</option>
+                    <Option value='경영학전공 (글로벌경영학부)'>	경영학전공 (글로벌경영학부)</option>
+                    <Option value='경영학전공(야) (글로벌경영학부(야))'>	경영학전공(야) (글로벌경영학부(야))</option>
+                    <Option value='경제금융전공 (정경학부)'>	경제금융전공 (정경학부)</option>
+                    <Option value='경제금융전공(야) (정경학부(야))'>	경제금융전공(야) (정경학부(야))</option>
+                    <Option value='공공인재학전공 (정경학부)'>	공공인재학전공 (정경학부)</option>
+                    <Option value='공공인재학전공(야) (정경학부(야))'>	공공인재학전공(야) (정경학부(야))</option>
+                    <Option value='교양 (대학)'>	교양 (대학)</option>
+                    <Option value='교양(야) (교양)'>	교양(야) (교양)</option>
+                    <Option value='교육학과 (사범대학)'>	교육학과 (사범대학)</option>
+                    <Option value='국제지역학전공 (글로벌문화학부)'>	국제지역학전공 (글로벌문화학부)</option>
+                    <Option value='국제통상학전공 (글로벌경영학부)'>	국제통상학전공 (글로벌경영학부)</option>
+                    <Option value='글로벌경영학부 (경영관리대학)'>	글로벌경영학부 (경영관리대학)</option>
+                    <Option value='글로벌경영학부(야) (경영관리대학)'>	글로벌경영학부(야) (경영관리대학)</option>
+                    <Option value='글로벌문화학부 (글로벌인재대학)'>	글로벌문화학부 (글로벌인재대학)</option>
+                    <Option value='기독교학과 (글로벌인재대학)'>	기독교학과 (글로벌인재대학)</option>
+                    <Option value='기독교학전공 (글로벌문화학부)'>	기독교학전공 (글로벌문화학부)</option>
+                    <Option value='데이터사이언스전공 (ICT공학부)'>	데이터사이언스전공 (ICT공학부)</option>
+                    <Option value='데이터사이언스전공 (인공지능융합공학부)'>	데이터사이언스전공 (인공지능융합공학부)</option>
+                    <Option value='도시건축융합공학전공 (부동산건설학부)'>	도시건축융합공학전공 (부동산건설학부)</option>
+                    <Option value='도시공학전공 (부동산건설학부)'>	도시공학전공 (부동산건설학부)</option>
+                    <Option value='미술문화복지전공 (복지융합인재학부)'>	미술문화복지전공 (복지융합인재학부)</option>
+                    <Option value='반도체시스템융합전공'>	반도체시스템융합전공 </option>
+                    <Option value='부동산건설학부 (ICT건설공과대학)'>	부동산건설학부 (ICT건설공과대학)</option>
+                    <Option value='부동산학전공 (ICT건설공과대학>부동산건설학부)'>	부동산학전공 (ICT건설공과대학>부동산건설학부)</option>
+                    <Option value='사회복지학부 (복지융합대학)'>	사회복지학부 (복지융합대학)</option>
+                    <Option value='사회복지학부(야) (복지융합대학)'>	사회복지학부(야) (복지융합대학)</option>
+                    <Option value='사회사업학전공 (사회복지학부)'>	사회사업학전공 (사회복지학부)</option>
+                    <Option value='사회사업학전공(야) (사회복지학부(야))'>	사회사업학전공(야) (사회복지학부(야))</option>
+                    <Option value='사회서비스정책학전공 (사회복지학부)'>	사회서비스정책학전공 (사회복지학부)</option>
+                    <Option value='산업경영공학전공 (ICT공학부)'>	산업경영공학전공 (ICT공학부)</option>
+                    <Option value='산업경영공학전공 (인공지능융합공학부)'>	산업경영공학전공 (인공지능융합공학부)</option>
+                    <Option value='산업공학전공 (인공지능융합공학부)'>	산업공학전공 (인공지능융합공학부)</option>
+                    <Option value='세무학전공 (정경학부)'>	세무학전공 (정경학부)</option>
+                    <Option value='세무학전공(야) (정경학부(야))'>	세무학전공(야) (정경학부(야))</option>
+                    <Option value='소프트웨어전공 (ICT공학부)'>	소프트웨어전공 (ICT공학부)</option>
+                    <Option value='소프트웨어전공 (ICT융합공학부)'>	소프트웨어전공 (ICT융합공학부)</option>
+                    <Option value='스마트도시공학전공 (부동산건설학부)'>	스마트도시공학전공 (부동산건설학부)</option>
+                    <Option value='스포츠복지전공 (복지융합인재학부)'>	스포츠복지전공 (복지융합인재학부)</option>
+                    <Option value='스포츠복지전공 (예체능학부)'>	스포츠복지전공 (예체능학부)</option>
+                    <Option value='스포츠복지학과 (복지융합대학)'>	스포츠복지학과 (복지융합대학)</option>
+                    <Option value='실버산업학과 (복지융합대학)'>	실버산업학과 (복지융합대학)</option>
+                    <Option value='유니버설비주얼디자인전공 (복지융합인재학부)'>	유니버설비주얼디자인전공 (복지융합인재학부)</option>
+                    <Option value='유니버설아트디자인전공 (예체능학부)'>	유니버설아트디자인전공 (예체능학부)</option>
+                    <Option value='유니버설아트디자인학과 (복지융합대학)'>	유니버설아트디자인학과 (복지융합대학)</option>
+                    <Option value='유아교육과 (사범대학)'>	유아교육과 (사범대학)</option>
+                    <Option value='음악학과 (복지융합대학)'>	음악학과 (복지융합대학)</option>
+                    <Option value='음악학전공 (예체능학부)'>	음악학전공 (예체능학부)</option>
+                    <Option value='인공지능전공 (인공지능융합공학부)'>	인공지능융합공학부 (공과대학)</option>
+                    <Option value='5451'>	인공지능전공 (인공지능융합공학부)</option>
+                    <Option value='전자공학전공 (ICT융합공학부)'>	전자공학전공 (ICT융합공학부)</option>
+                    <Option value='정경학부 (경영관리대학)'>	정경학부 (경영관리대학)</option>
+                    <Option value='정경학부(야) (경영관리대학)'>	정경학부(야) (경영관리대학)</option>
+                    <Option value='중국지역학전공 (글로벌문화학부)'>	중국지역학전공 (글로벌문화학부)</option>
+                    <Option value='중등특수교육과 (사범대학)'>	중등특수교육과 (사범대학)</option>
+                    <Option value='초등특수교육과 (사범대학)'>	초등특수교육과 (사범대학)</option>
+                    <Option value='한국어문학전공 (글로벌문화학부)'>	한국어문학전공 (글로벌문화학부)</option>
+                    <Option value='한영문화콘텐츠전공 (글로벌문화학부)'>	한영문화콘텐츠전공 (글로벌문화학부)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <fieldset>
+                    <legend>학년</legend>
+                    <label><input type="checkbox" class="otherCheckboxes" name="grade" value="0"> 0학년</label>
+                    <label><input type="checkbox" class="otherCheckboxes" name="grade" value="1"> 1학년</label>
+                    <label><input type="checkbox" class="otherCheckboxes" name="grade" value="2"> 2학년</label>
+                    <label><input type="checkbox" class="otherCheckboxes" name="grade" value="3"> 3학년</label>
+                    <label><input type="checkbox" class="otherCheckboxes" name="grade" value="4"> 4학년</label>
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <fieldset>
+                    <legend>학점</legend>
+                    <label><input type="checkbox" name="credit" value="0"> 0학점</label>
+                    <label><input type="checkbox" name="credit" value="1"> 1학점</label>
+                    <label><input type="checkbox" name="credit" value="2"> 2학점</label>
+                    <label><input type="checkbox" name="credit" value="3"> 3학점</label>
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <fieldset>
+                    <legend>균형/자선</legend>
+                    <label><input type="checkbox" class="liberalArtsCheckboxes" name="liberalArts" value="1영역"> 1영역</label>
+                    <label><input type="checkbox" class="liberalArtsCheckboxes" name="liberalArts" value="2영역"> 2영역</label>
+                    <label><input type="checkbox" class="liberalArtsCheckboxes" name="liberalArts" value="3영역"> 3영역</label>
+                    <label><input type="checkbox" class="liberalArtsCheckboxes" name="liberalArts" value="4영역"> 4영역</label>
+                    <label><input type="checkbox" class="liberalArtsCheckboxes" name="liberalArts" value="5영역"> 5영역</label>
+                    <label><input type="checkbox" class="liberalArtsCheckboxes" name="liberalArts" value="자선"> 자선</label>
+                    <label><input type="checkbox" class="liberalArtsCheckboxes" name="liberalArts" value="일반"> 일반</label>
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <fieldset>
+                    <legend>시간대 검색</legend>
+                    <label><input type="radio" name="availability" value=""> 빈 시간대 검색</label>
+                    <label><input type="radio" name="availability" value=""> 시간대 직접 검색</label>
+                </fieldset>
+            </div>
+            <div>
+                <button type="submit">검색</button>
+            </div>
+        </form>
+    </section>
+</div>
+<script>
+    function removeEmptyFields(event) {
+        const form = event.target;
+        const elements = form.elements;
+
+        for (let i = elements.length - 1; i >= 0; i--) {
+            const element = elements[i];
+            if (element.tagName === 'SELECT' && element.value === '') {
+                element.name = '';
+            }
+        }
+    }
+    document.querySelectorAll('.liberalArtsCheckboxes').forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {
+                // Reset dropdown menu
+                document.getElementById('categoryDropdown').selectedIndex = 0;
+
+                // Uncheck other checkboxes
+                document.querySelectorAll('.otherCheckboxes').forEach(function(otherCheckbox) {
+                    otherCheckbox.checked = false;
+                });
+            }
+        });
+    });
+    // Dropdown menu change event
+    document.getElementById('categoryDropdown').addEventListener('change', function() {
+        // Uncheck all liberal arts checkboxes
+        document.querySelectorAll('.liberalArtsCheckboxes').forEach(function(checkbox) {
+            checkbox.checked = false;
+        });
+    });
+
+    // Other checkboxes change event
+    document.querySelectorAll('.otherCheckboxes').forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {
+                // Uncheck all liberal arts checkboxes
+                document.querySelectorAll('.liberalArtsCheckboxes').forEach(function(libCheckbox) {
+                    libCheckbox.checked = false;
+                });
+            }
+        });
+    });
+    function setupTabEvents(sectionId) {
+        const section = document.getElementById(sectionId);
+        const tabs = section.querySelectorAll('.tab, .stab');
+        const contents = section.querySelectorAll('.tab-content, .stab-content');
+
+        tabs.forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                // 모든 탭과 콘텐츠를 비활성화
+                tabs.forEach(function(t) { t.classList.remove('active'); });
+                contents.forEach(function(c) { c.classList.remove('active'); });
+
+                // 클릭된 탭과 연결된 콘텐츠를 활성화
+                tab.classList.add('active');
+                const content = section.querySelector(`#${tab.dataset.tab}`);
+                if (content) {
+                    content.classList.add('active');
+                }
+            });
+        });
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+    setupTabEvents('section1');
+    setupTabEvents('section2');
+
+    document.getElementById('add-timetable-btn').addEventListener('click', function() {
+        const timetableName = document.getElementById('timetable-name').value;
+        if (!timetableName) {
+            alert('시간표 이름을 입력하세요');
+            return;
+        }
+
+        fetch('/timetables', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name: timetableName }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(error => { throw new Error(error.message); });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Success:', data);
+
+            const stabContainer = document.getElementById('stab-container');
+            const timetableContainer = document.getElementById('timetable-container');
+            const tabCount = stabContainer.children.length;
+
+            const newTab = document.createElement('div');
+            newTab.className = 'stab';
+            newTab.dataset.tab = 'stab' + (tabCount + 1);
+            newTab.textContent = timetableName;
+            stabContainer.appendChild(newTab);
+
+            const newTabContent = document.createElement('div');
+            newTabContent.className = 'stab-content';
+            newTabContent.id = 'stab' + (tabCount + 1);
+
+            const newTable = document.createElement('table');
+            newTable.className = 'timetable';
+            newTable.innerHTML = `
+                <thead>
+                    <tr>
+                        <th>시간 / 요일</th>
+                        <th>월</th>
+                        <th>화</th>
+                        <th>수</th>
+                        <th>목</th>
+                        <th>금</th>
+                        <th>시간</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>09:00 - 09:25</td><td></td><td></td><td></td><td></td><td></td><td>1a</td></tr>
+                    <tr><td>09:25 - 09:50</td><td></td><td></td><td></td><td></td><td></td><td>1b</td></tr>
+                    <tr><td>09:50 - 10:15</td><td></td><td></td><td></td><td></td><td></td><td>2a</td></tr>
+                    <tr><td>10:25 - 10:50</td><td></td><td></td><td></td><td></td><td></td><td>2b</td></tr>
+                    <tr><td>10:50 - 11:15</td><td></td><td></td><td></td><td></td><td></td><td>3a</td></tr>
+                    <tr><td>11:15 - 11:40</td><td></td><td></td><td></td><td></td><td></td><td>3b</td></tr>
+                    <tr><td>11:50 - 12:15</td><td></td><td></td><td></td><td></td><td></td><td>4a</td></tr>
+                    <tr><td>12:15 - 12:40</td><td></td><td></td><td></td><td></td><td></td><td>4b</td></tr>
+                    <tr><td>12:40 - 13:05</td><td></td><td></td><td></td><td></td><td></td><td>5a</td></tr>
+                    <tr><td>13:15 - 13:40</td><td></td><td></td><td></td><td></td><td></td><td>5b</td></tr>
+                    <tr><td>13:40 - 14:05</td><td></td><td></td><td></td><td></td><td></td><td>6a</td></tr>
+                    <tr><td>14:05 - 14:30</td><td></td><td></td><td></td><td></td><td></td><td>6b</td></tr>
+                    <tr><td>14:40 - 15:05</td><td></td><td></td><td></td><td></td><td></td><td>7a</td></tr>
+                    <tr><td>15:05 - 15:30</td><td></td><td></td><td></td><td></td><td></td><td>7b</td></tr>
+                    <tr><td>15:30 - 15:55</td><td></td><td></td><td></td><td></td><td></td><td>8a</td></tr>
+                    <tr><td>16:05 - 16:30</td><td></td><td></td><td></td><td></td><td></td><td>8b</td></tr>
+                    <tr><td>16:30 - 16:55</td><td></td><td></td><td></td><td></td><td></td><td>9a</td></tr>
+                    <tr><td>16:55 - 17:20</td><td></td><td></td><td></td><td></td><td></td><td>9b</td></tr>
+                </tbody>
+            `;
+            newTabContent.appendChild(newTable);
+            timetableContainer.appendChild(newTabContent);
+
+            newTab.addEventListener('click', function() {
+                stabContainer.querySelectorAll('.stab').forEach(function(t) { t.classList.remove('active'); });
+                timetableContainer.querySelectorAll('.stab-content').forEach(function(c) { c.classList.remove('active'); });
+
+                newTab.classList.add('active');
+                newTabContent.classList.add('active');
+            });
+
+            newTab.click();
+        })
+        .catch((error) => {
+            alert('Error: ' + error.message);
+        });
+    });
+
+    document.getElementById('delete-timetable-btn').addEventListener('click', function() {
+        const activeTab = document.querySelector('#stab-container .stab.active');
+        if (!activeTab) {
+            alert('삭제할 시간표를 선택하세요');
+            return;
+        }
+
+        const timetableName = activeTab.textContent;
+
+        fetch('/timetables', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name: timetableName }),
+        })
+        .then(response => {
+            if (response.status === 204) {
+                return null;  // 응답 본문이 비어 있음을 명시적으로 처리
+            } else if (!response.ok) {
+                return response.json().then(error => { throw new Error(error.message); });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Deleted:', data);
+
+            const contentId = activeTab.dataset.tab;
+            activeTab.remove();
+            document.getElementById(contentId).remove();
+
+            const firstTab = document.querySelector('#stab-container .stab');
+            if (firstTab) {
+                firstTab.click();
+            }
+        })
+        .catch((error) => {
+            alert('Error: ' + error.message);
+        });
+    });
+});
+
+
+
+</script>
+</body>
+</html>
