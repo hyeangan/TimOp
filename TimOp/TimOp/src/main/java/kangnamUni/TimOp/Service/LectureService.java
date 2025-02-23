@@ -60,7 +60,7 @@ public class LectureService {
         return lectureRepository.findLectures(filterDTO);
     }
 
-    public Lecture getLectureById(Long lectureId) {
+    public Lecture findById(Long lectureId) {
         Optional<Lecture> lecture = lectureRepository.findById(lectureId);
         return lecture.orElseThrow(() -> new RuntimeException("Lecture not found with id: " + lectureId));
     }
