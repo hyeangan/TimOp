@@ -1,5 +1,6 @@
 package kangnamUni.TimOp.Service;
 
+import jakarta.transaction.Transactional;
 import kangnamUni.TimOp.domain.Lecture;
 import kangnamUni.TimOp.domain.Member;
 import kangnamUni.TimOp.domain.Timetable;
@@ -21,20 +22,21 @@ public class TimetableService {
     private MemberRepository memberRepository;
     @Autowired
     private LectureRepository lectureRepository;
-    public Timetable createTimetableForMember(Long memberId, String name) {
+    public void createTimetableForMember(Long memberId, String timetableName) {
         Member member = memberRepository.findById(memberId)
                 .orElseThrow(() -> new RuntimeException("Member not found"));
-
         // 중복 이름 검사
-        boolean exists = timetableRepository.existsByMemberAndName(member, name);
+        boolean exists = timetableRepository.existsByMemberAndName(member, timetableName);
         if (exists) {
             throw new RuntimeException("시간표 이름이 중복됩니다.");
         }
 
         Timetable newTimetable = new Timetable();
-        newTimetable.setMember(member);
-        newTimetable.setName(name); // 설정한 시간표 이름 추가
-        return timetableRepository.save(newTimetable);
+        newTimetable.setName(timetableName); // 설정한 시간표 이름 추가
+
+        member.addTimetable(newTimetable);
+        memberRepository.save(member);
+
     }
     public void deleteTimetableForMember(Long memberId, String timetableName) {
         Member member = memberRepository.findById(memberId)
@@ -42,7 +44,7 @@ public class TimetableService {
 
         Timetable timetable = timetableRepository.findByNameAndMember(timetableName, member)
                 .orElseThrow(() -> new RuntimeException("Timetable not found"));
-
+        member.removeTimetable(timetable);
         timetableRepository.delete(timetable);
     }
     //개인 시간표에 강의 추가

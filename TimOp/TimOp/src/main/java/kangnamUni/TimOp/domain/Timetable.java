@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,7 +22,7 @@ public class Timetable {
     private Member member;
 
     @OneToMany(mappedBy = "timetable", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Lecture> lectures;
+    private List<Lecture> lectures = new ArrayList<>();;
 
     private String name;
     public void addLecture(Lecture lecture) {
