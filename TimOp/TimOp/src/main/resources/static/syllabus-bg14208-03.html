@@ -1,0 +1,678 @@
+<html><head>
+<base target="_blank">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+	.syllabus, .syllabus_week{width:800px; border-width: 2px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:10px; table-layout: fixed;} 
+	.syllabus_sub {width:600px; border-width: 1px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:3px;margin-bottom:3px; k-layout: fixed;}
+	tr{min-height: 22px; }
+	th{border: 1px black solid; text-align: center; font-weight: bold; background-color: #EFEFEF}
+	th.no_topLine{border-top:0px black solid;}
+	th.no_botLine{border-bottom:0px black solid;}
+	td{border: 1px black solid; text-align: left; padding-left: 3px; min-height: 22px; vertical-align: middle; background-color: #FFFFFF}
+	td p{min-height: 22px;}
+	td pre{margin:auto; min-height:1px;}
+	
+	.multi-line {line-height:1.3em;padding-top:4px}
+	.majorDiv {width:800px;}
+	.syllabus_week {margin-top:5px;}
+	.syllabus_week_title {border: 1px solid gray;width:800px;height:40px;margin-top:20px;}
+	
+	
+	@media screen and (max-width: 768px) { 	
+		.syllabus, .syllabus_week, .majorDiv, .syllabus_week_title {width: 100%;}
+		.displayOff {display:none;}
+ 		.syllabus_week thead {display:none;} 
+ 		.syllabus_week, .syllabus_week tbody, .syllabus_week tr, .syllabus_week td {display: block;} 
+  		.syllabus_week tbody tr td {text-align:left;padding-left: 50%;position:relative;border-top:none;border-left:none;border-right:none; }  
+  		.syllabus_week tbody tr td nth-child(1) {text-align: left;}
+  		.syllabus_week tbody tr {border-top:1px soild black;}  
+ 		.syllabus_week td:before {content:attr(data-label); position:absolute; left: 0%;width: 50%;padding-left: 15px;text-align: left;}  
+/*  		.syllabus_week_child5 {border-bottom: 2px solid black;} */
+	}
+			
+	@media screen and (min-width: 769px) { 	
+		.displayOn {display:none;}
+		.syllabus_week_child1 {text-align: center;}
+	}
+	
+</style>
+<title>강의계획서 보기</title>
+
+<script type="text/javascript" src="../function/common.js"></script>
+<script type="text/javascript" src="../function/sortTable.js"></script>
+<script>
+	function goPrint(){
+		
+		var src = '';
+		if(isCompatibleIE()){
+			src = "../rdreport/r_designer_cs.jsp?repo_val1=2025&repo_val2=1&repo_val3=BG14208&repo_val4=03&repo_val5=109473&repo_path=../sbr/sbr3072.mrd";
+		}else{
+			src = "https://app.kangnam.ac.kr/knumis/rdreport/r_designer_cs.jsp?repo_val1=2025&repo_val2=1&repo_val3=BG14208&repo_val4=03&repo_val5=109473&repo_path=../sbr/sbr3072.mrd";
+		}
+
+		openWin('',src,850,630,0,0);
+
+		self.close();
+	}
+</script>
+</head>
+
+<body>
+
+
+<div style="font-size: 12px; text-align:center;magin-left:10px; height:12px; margin-bottom:10px;margin-top:10px">
+	최초작성일 : 2025/01/07 , 최종수정일 : 2025/01/07
+</div>
+
+<div align="center" style="margin-top: 10px;">
+	<table class="syllabus">
+		<colgroup>
+			<col width="10%">
+			<col width="7%">
+			<col width="10%">
+			<col width="20%">
+			<col width="16%">
+			<col width="8%">
+			<col width="21%">
+		</colgroup>
+		
+		<tbody>
+			<tr>
+				<th colspan="7" style="height:50px;"><span style="font-size: 24px;">강 의 계 획 서</span></th>
+			</tr>
+			<tr>
+				<th colspan="2">년 도</th>
+				<td colspan="2">2025</td>
+				<th>학 기</th>
+				<td colspan="2">1 학기</td>
+			</tr>
+			<tr>
+				<th rowspan="2">교과목명</th>
+				<th>한글</th>
+				<td colspan="2">모션그래픽디자인</td>
+				<th rowspan="2">담당교수</th>
+				<td rowspan="2" colspan="2">SANG GUANGLIANG</td>
+			</tr>
+			<tr>
+				<th>영문</th>
+				<td colspan="2">Motion Graphics Design</td>
+			</tr>
+			<tr>
+				<th colspan="2">학수번호-분반</th>
+				<td colspan="2">BG14208 - 03</td>
+				<th>강의요일교시</th>
+				<td colspan="2">(주)금7ab8ab9ab</td>
+			</tr>
+			<tr>
+				<th colspan="2">학점<br>(시간수)</th>
+				<td colspan="2">3(3)</td>
+				<th>강의실</th>
+				<td colspan="2">인307</td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">개설(이수)구분</th>
+				<th>교양</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">계열교양<br>
+					<input type="checkbox" disabled="disabled">일반교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">균형교양: 
+				</td>
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">계열교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">일반교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">균형교양: 
+				</td>
+			</tr>
+			<tr>
+				<th>전공</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공기초<br>
+					<input type="checkbox" checked="" disabled="disabled">전공선택 ( 3 ) 학년<br>
+					<input type="checkbox" disabled="disabled">전공필수 ( &nbsp; ) 학년					
+				</td>				
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공기초
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px">전공선택 ( 3 ) 학년
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공필수 ( &nbsp; ) 학년					
+				</td>	
+			</tr>
+			<tr>
+				<th>일반선택</th>
+				<td class="displayOn" colspan="2">
+					<input type="checkbox" disabled="disabled">교직<br>
+					<input type="checkbox" disabled="disabled">자유선택
+				</td>
+				<td class="displayOff" colspan="2">
+					<input type="checkbox" disabled="disabled">교직
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">자유선택
+				</td>
+				<td colspan="2">학부(과) : 유니버설아트디자인학과 </td>
+			</tr>
+		
+			<tr>
+				<th rowspan="2" colspan="2">강좌특성</th>
+				<td class="displayOn" colspan="5">
+					<input type="checkbox" disabled="disabled">이론강의
+					<input type="checkbox" disabled="disabled" style="margin-left:76px">실험·실습·실기<br>
+					<input type="checkbox" checked="" disabled="disabled">이론/실험·실습병행
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+				<td class="displayOff" colspan="5">
+					<input type="checkbox" disabled="disabled">이론강의
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">실험·실습·실기
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px">이론·실습병행
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+			</tr>
+			<tr>
+				<th>학문특성</th>
+				<td></td>
+				<th>기타특성</th>				
+				<td colspan="2">이중언어과정전용</td>
+			</tr>
+			
+			<tr class="displayOn">
+				<th rowspan="3" colspan="2">교수학습<br>방법</th>
+				<th colspan="2">표준 교과목운영 <br>기준</th>
+				<td colspan="3" style="line-height: 1.0em">
+					<input type="checkbox" checked="" disabled="disabled">강의
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left: 30px;">발표<br>
+					<input type="checkbox" disabled="disabled">토론·토의
+					<input type="checkbox" disabled="disabled">협력학습<br>
+					<input type="checkbox" checked="" disabled="disabled">문제기반학습<br>
+				</td>
+			</tr>
+			<tr class="displayOn">
+				<th colspan="2">학생 자기주도식<br>수업운영</th>
+				<td colspan="3">
+					<input type="checkbox" disabled="disabled">문제기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">프로젝트기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">플립러닝<br>
+					<input type="checkbox" disabled="disabled">K-MOOC<br>
+					<input type="checkbox" disabled="disabled">팀기반학습(TBL)<br>
+					<input type="checkbox" disabled="disabled">블랜디드러닝<br>
+					<input type="checkbox" disabled="disabled">캡스톤디자인<br>
+				</td>
+			</tr>
+			<tr class="displayOn">
+				<th colspan="2">현장 연계 방법</th>
+				<td colspan="3">
+					<input type="checkbox" disabled="disabled">현장전문가초청<br>
+					<input type="checkbox" disabled="disabled">현장탐방
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px;">기타<br>
+				</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th rowspan="2" colspan="2">교수학습<br>방법</th>
+				<th colspan="2">표준 교과목운영 기준</th>
+				<th colspan="2">학생 자기주도식 수업운영</th>
+				<th>현장 연계 방법</th>
+			</tr>
+			<tr class="displayOff">
+				<td colspan="2" style="line-height: 1.0em">
+					<input type="checkbox" checked="" disabled="disabled">강의<br>
+					<input type="checkbox" checked="" disabled="disabled">발표<br>
+					<input type="checkbox" disabled="disabled">토론·토의<br>
+					<input type="checkbox" disabled="disabled">협력학습<br>
+					<input type="checkbox" checked="" disabled="disabled">문제기반학습<br>
+				</td>
+				<td colspan="2">
+					<input type="checkbox" disabled="disabled">문제기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">프로젝트기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">플립러닝<br>
+					<input type="checkbox" disabled="disabled">K-MOOC<br>
+					<input type="checkbox" disabled="disabled">팀기반학습(TBL)<br>
+					<input type="checkbox" disabled="disabled">블랜디드러닝<br>
+					<input type="checkbox" disabled="disabled">캡스톤디자인<br>
+				</td>
+				<td>
+					<input type="checkbox" disabled="disabled">현장전문가초청<br>
+					<input type="checkbox" disabled="disabled">현장탐방<br>
+					<input type="checkbox" checked="" disabled="disabled">기타<br>
+				</td>
+			</tr>
+			
+			
+			<tr>
+				<th colspan="2">전공능력</th>
+				<td colspan="5"></td>				
+			</tr>
+			<tr>
+				<th colspan="2" rowspan="2">성적평가기준</th>
+				<td colspan="5">
+					상대평가 유형 1
+
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5">※성적평가기준은 최종 수강 인원, 강좌별 특성에 따라 차후 변동될 수 있습니다.</td>
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="3">연락처</th>
+				<th>연구실</th>
+				<td></td>
+				<th>E-Mail</th>
+				<td colspan="2" style="word-break:break-word;"></td>
+				
+			</tr>
+			<tr>
+				<th>휴대전화</th>
+				<td></td>
+				<th>면담가능시간</th>
+				<td colspan="2">10:00-18:00</td>
+				
+			</tr>
+			<tr>
+				<th>연구일</th>
+				<td></td>
+				<th>관리부서</th>
+				<td colspan="2">
+					교학1팀 (031-280-3410 ~ 3)
+
+				</td>
+				
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="2">교육과정<br>참고사항</th>
+				<th>선수과목</th>
+				<td>none</td>
+				<th>관련<br>기초과목</th>
+				<td colspan="2">none</td>
+			</tr>
+			<tr>
+				<th class="multi-line">동시수강<br>관련과목</th>
+				<td>none</td>
+				<th>관련<br>고급과목</th>
+				<td colspan="2">none</td>
+			</tr>
+			
+			
+			<!-- ------------------------------------------------------------------------  -->
+			<tr class="displayOn">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5">이론과 실습을 통해 Adobe After Effects를 활용한 모션 그래픽 및 시각효과 디자인 지식, 기술, 태도를 습득한다.</td>
+			</tr> 
+			
+			<tr class="displayOn">
+				<th colspan="2" rowspan="4">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="4">기본 지식과 기술 습득: 학생들은 동태 그래픽 디자인의 기본 원리, 개념, 및 기술을 이해하고, Adobe After Effects, Illustrator, Cinema 4D 등의 전문 소프트웨어를 능숙하게 사용할 수 있도록 훈련됩니다.<br>
+창의력 향상: 창의력과 상상력을 길러내며, 흥미로운 동태 그래픽 작품을 디자인할 수 있는 능력을 길러냅니다. 이를 통해 정보, 감정, 이야기를 효과적으로 전달할 수 있는 능력도 향상됩니다.<br>
+산업 동향 이해: 학생들은 동태 그래픽 디자인이 광고, 미디어, 영화, 게임 등 다양한 산업에서의 최신 동향을 이해하고, 이러한 지식을 실제 프로젝트에 응용할 수 있는 능력을 길러냅니다.<br>
+팀 작업 능력 길러내기: 팀 프로젝트를 통해 협력과 커뮤니케이션 능력을 향상시키며, 효과적인 팀 워크를 수행할 수 있는 능력을 길러냅니다.<br>
+비판적 사고 및 문제 해결 능력: 학생들은 디자인 문제를 분석하고, 효과적인 솔루션을 찾아내며, 지속적으로 디자인을 개선할 수 있는 비판적 사고 및 문제 해결 능력을 길러냅니다.</td>
+			</tr>
+			<tr class="displayOn">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="4">이론 교육
+동태 그래픽 디자인의 기본 개념, 원리, 색채 및 구도 원칙을 설명합니다.
+전문 설계 소프트웨어(예: Adobe 시리즈)의 조작 기법을 가르치며, 기초부터 고급 기능까지 커버합니다.
+
+실습 연습
+케이스 스터디: 성공적인 케이스를 분석하여 디자인 접근 방식과 기술 실현을 학습합니다.
+프로젝트 과제: 고객 요구 사항 또는 주제에 따라 동태 그래픽을 디자인하며, 초안, 제작, 후기 조정 등을 포함합니다.
+팀 작업: 그룹으로 디자인 작업을 완성하여 협력과 커뮤니케이션 능력을 향상시킵니다.
+비판적 반성: 학생들에게 자신의 작품에 대한 자기 평가를 촉구하여 개선 공간을 분석합니다.
+
+평가 및 피드백
+과제 평가: 디자인 품질, 창의성 및 소프트웨어 기능에 따라 점수를 부여하고, 구체적인 개선 제안을 제공합니다. 기말 시험, 프로젝트 발표 또는 디자인 경쟁을 통해 학습 성과를 종합 평가합니다.</td>				
+			</tr>
+			
+			<tr class="displayOn">
+				<th style="border-right:none">평가방법</th>
+				<td colspan="4" style="padding: 0px; border-bottom:none">
+					<table style="width:100%; border-collapse:collapse; border-width: 0px; font-size: 12px;">
+						<tbody><tr>
+							<th style="border-top:none; border-left:none" width="25%">중간고사</th>
+							<th style="border-top:none" width="25%">기말고사</th>
+							<th style="border-top:none" width="25%">출석</th>
+							<th style="border-top:none; border-right:none" width="25%">과제</th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">20&nbsp;</td>
+							<td style="text-align:center;">30</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;border-right:none">10</td>
+						</tr>
+						<tr>
+							<th style="border-top:none; border-left:none" width="25%">퀴즈</th>
+							<th style="border-top:none" width="25%">토론</th>
+							<th style="border-top:none" width="25%">기타</th>
+							<th style="border-top:none; border-right:none" width="25%"></th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">10&nbsp;</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;border-right:none"></td>
+						</tr>
+						<tr>
+							<th colspan="1" style="border-left:none; border-bottom:none">과제/퀴즈/<br>토론/기타<br>문제 및 주제</th>
+							<td colspan="3" style="border-right:none; border-bottom:none">none</td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>		
+				
+			<tr class="displayOn">
+				<th style="line-height: 1.1em">수업운영방식 </th>
+				<td colspan="4">-</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5">이론과 실습을 통해 Adobe After Effects를 활용한 모션 그래픽 및 시각효과 디자인 지식, 기술, 태도를 습득한다.</td>
+			</tr> 
+			
+			
+			
+			<tr class="displayOff">
+				<th rowspan="4">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="5">기본 지식과 기술 습득: 학생들은 동태 그래픽 디자인의 기본 원리, 개념, 및 기술을 이해하고, Adobe After Effects, Illustrator, Cinema 4D 등의 전문 소프트웨어를 능숙하게 사용할 수 있도록 훈련됩니다.<br>
+창의력 향상: 창의력과 상상력을 길러내며, 흥미로운 동태 그래픽 작품을 디자인할 수 있는 능력을 길러냅니다. 이를 통해 정보, 감정, 이야기를 효과적으로 전달할 수 있는 능력도 향상됩니다.<br>
+산업 동향 이해: 학생들은 동태 그래픽 디자인이 광고, 미디어, 영화, 게임 등 다양한 산업에서의 최신 동향을 이해하고, 이러한 지식을 실제 프로젝트에 응용할 수 있는 능력을 길러냅니다.<br>
+팀 작업 능력 길러내기: 팀 프로젝트를 통해 협력과 커뮤니케이션 능력을 향상시키며, 효과적인 팀 워크를 수행할 수 있는 능력을 길러냅니다.<br>
+비판적 사고 및 문제 해결 능력: 학생들은 디자인 문제를 분석하고, 효과적인 솔루션을 찾아내며, 지속적으로 디자인을 개선할 수 있는 비판적 사고 및 문제 해결 능력을 길러냅니다.</td>
+			</tr>
+			<tr class="displayOff">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="5">이론 교육
+동태 그래픽 디자인의 기본 개념, 원리, 색채 및 구도 원칙을 설명합니다.
+전문 설계 소프트웨어(예: Adobe 시리즈)의 조작 기법을 가르치며, 기초부터 고급 기능까지 커버합니다.
+
+실습 연습
+케이스 스터디: 성공적인 케이스를 분석하여 디자인 접근 방식과 기술 실현을 학습합니다.
+프로젝트 과제: 고객 요구 사항 또는 주제에 따라 동태 그래픽을 디자인하며, 초안, 제작, 후기 조정 등을 포함합니다.
+팀 작업: 그룹으로 디자인 작업을 완성하여 협력과 커뮤니케이션 능력을 향상시킵니다.
+비판적 반성: 학생들에게 자신의 작품에 대한 자기 평가를 촉구하여 개선 공간을 분석합니다.
+
+평가 및 피드백
+과제 평가: 디자인 품질, 창의성 및 소프트웨어 기능에 따라 점수를 부여하고, 구체적인 개선 제안을 제공합니다. 기말 시험, 프로젝트 발표 또는 디자인 경쟁을 통해 학습 성과를 종합 평가합니다.</td>				
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="border-right:none">평가방법</th>
+				<td colspan="5" style="padding: 0px; border-bottom:none">
+					<table style="width:100%; border-collapse:collapse; border-width: 0px; font-size: 12px;">
+						<tbody><tr>
+							<th style="border-top:none; border-left:none" width="15%">중간고사</th>
+							<th style="border-top:none;" width="15%">기말고사</th>
+							<th style="border-top:none" width="14%">출석</th>
+							<th style="border-top:none" width="14%">과제</th>
+							<th style="border-top:none" width="14%">퀴즈</th>
+							<th style="border-top:none" width="14%">토론</th>
+							<th style="border-top:none; border-right:none" width="14%">기타</th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">20&nbsp;</td>
+							<td style="text-align:center;">30</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;border-right:none">10</td>
+						</tr>
+						<tr>
+							<th colspan="2" style="border-left:none; border-bottom:none">과제/퀴즈/토론/기타<br>문제 및 주제</th>
+							<td colspan="5" style="border-right:none; border-bottom:none">none</td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="line-height: 1.1em">수업운영방식</th>
+				<td colspan="5">-</td>
+			</tr>
+			
+			<!---------------교재 ---------------------- -->
+			
+			<tr>
+				<th rowspan="2" colspan="2">교재</th>
+				<th class="multi-line">주교재<br>(저자,출판사)</th>
+				<td colspan="4">1.Motion Graphic Design: The Definitive Guide to Creating Dynamic Visual Content<br>
+2.Dynamic Graphics with Adobe After Effects<br>
+3.The Art and Science of Motion Graphics</td>
+			</tr>
+			<tr>
+				<th class="multi-line">참고도서<br>(저자,출판사)</th>
+				<td colspan="4">none</td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">장애학생 수업&gt;<br>지원안내</th>
+				<th class="multi-line">시험시간<br>조정여부</th>
+				<td colspan="4">
+					<input type="checkbox" checked="" disabled="disabled">최소1.5배(저시력,뇌병변,기타) &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">최소1.7배(맹인학생)   					
+					
+				</td>
+			</tr>
+			
+			<tr>
+				<th class="multi-line">지원사항</th>
+				<td colspan="4">
+					<input type="checkbox" disabled="disabled">시험대필 제공여부 &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">시험문제 점역지원 여부 &nbsp;&nbsp;
+					<input type="checkbox" checked="" disabled="disabled">확대문자 시험지 제공
+				</td>
+			</tr>
+			<tr>
+				<th class="multi-line">기타</th>
+				<td colspan="4"><br></td>
+			</tr>
+			
+			
+			
+			
+		</tbody>
+	</table>
+	
+	
+	<table class="syllabus_week_title">
+		<tbody><tr>
+			<th colspan="5"><span style="font-size: 18px;">주차별 강의내용</span></th>
+		</tr>
+	</tbody></table>
+	<table class="syllabus_week">
+		<colgroup>
+			<col width="5%"> 
+			<col width="32%">
+			<col width="21%">
+			<col width="17%">
+			<col width="17%">
+			<col width="8%">
+		</colgroup>
+			<thead>
+			<tr style="line-height: 1.2em">
+				<th>주차</th>
+				<th>학습주제</th>
+				<th>수업방식/<br>이용기자재</th>
+				<th>교수학습자료</th>
+				<th>과제</th>
+				<th>수업운영<br>방식</th>
+			</tr>
+			</thead>
+		<tbody>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">1</td>
+				<td data-label="학습주제">1주차: 과정 소개 및 기초개념<br>
+내용: 과정의 개요, 학습목표, 평가기준, 및 필요한 학습자료를 소개합니다. 동태 그래픽 디자인의 기본개념, 발전과정, 및 중요성을 설명합니다.<br>
+활동: 그룹별로 동태 그래픽 디자인의 일상생활 응용에 대해 토론을 진행, 개인의 동태 그래픽 이해와 흥미를 공유합니다.</td>
+				<td data-label="수업방식/이용기자재">그룹별로 동태 그래픽 디자인의 일상생활 응용에 대해 토론을 진행, 개인의 동태 그래픽 이해와 흥미를 공유합니다.</td>
+				<td data-label="교수학습자료">ppt,video,books</td>
+				<td data-label="과제">과정 소개 및 기초개념 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">2</td>
+				<td data-label="학습주제">2주차: 소프트웨어 도구 입문<br>
+내용: 널리 쓰이는 동태 그래픽 디자인 소프트웨어(예: Adobe After Effects)의 기본조작인터페이스, 툴바, 패널, 및 기능을 소개 및 시연합니다.<br>
+</td>
+				<td data-label="수업방식/이용기자재">학생들은 소프트웨어를 자체설치 후, 간단한 인터페이스 숙지와 툴시용을 수행합니다.</td>
+				<td data-label="교수학습자료">ppt,video,books</td>
+				<td data-label="과제">소프트웨어 도구 입문 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">3</td>
+				<td data-label="학습주제">3주차: 색채와 구도원칙<br>
+내용: 색채이론, 색채조합책, 및 구도원칙을 동태 그래픽 디자인에 적용하는 방법을 설명합니다.<br>
+활동: 그룹별로 간단한 색채조합책을 설계, 동태 그래픽의 소규모 연습에 적용합니다.</td>
+				<td data-label="수업방식/이용기자재">그룹별로 간단한 색채조합책을 설계, 동태 그래픽의 소규모 연습에 적용합니다.</td>
+				<td data-label="교수학습자료">ppt,video,books</td>
+				<td data-label="과제">색채와 구도원칙 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">4</td>
+				<td data-label="학습주제">4주차: 애니메이션원리와 핵심프레임애니메이션<br>
+내용: 애니메이션의 기본원리를 소개, 압축과 뻗짐, 준비동작, 측정과 중첩 등을 커버합니다. 핵심프레임애니메이션의 제작방법과 솜씨를 설명합니다.<br>
+활동: 학생들은 간단한 핵심프레임애니메이션, 윙구체의 탄기효과 또는 캐릭터의 이동을 제작합니다.</td>
+				<td data-label="수업방식/이용기자재">학생들은 간단한 핵심프레임애니메이션, 윙구체의 탄기효과 또는 캐릭터의 이동을 제작합니다.</td>
+				<td data-label="교수학습자료">ppt,video,books</td>
+				<td data-label="과제">애니메이션원리와 핵심프레임애니메이션 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">5</td>
+				<td data-label="학습주제">5주차: 레이어와 합성기술<br>
+내용: 레이어의 개념, 유형, 및 관리방법을 깊이 살펴봅니다. 합성기술, 믹스モ드, 마스크, 及 キーイング 등을 소개합니다.<br>
+활동: 학생들은 레이어와 합성기술을 이용, 간단한 동태 그래픽효과를 제작합니다.</td>
+				<td data-label="수업방식/이용기자재">학생들은 레이어와 합성기술을 이용, 간단한 동태 그래픽효과를 제작합니다.</td>
+				<td data-label="교수학습자료">ppt,video,books</td>
+				<td data-label="과제">레이어와 합성기술 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">6</td>
+				<td data-label="학습주제">6주차: 텍스트와 도형애니메이션<br>
+내용: 텍스트애니메이션의 제작방법과 솜씨, 텍스트의 등장, 소멸, 움뚜듦효과 등을 소개합니다. 동시에, 도형애니메이션의 기본개념과 제작방법을 소개합니다.</td>
+				<td data-label="수업방식/이용기자재">학생들은 레이어와 합성기술을 이용, 간단한 동태 그래픽효과를 제작합니다.</td>
+				<td data-label="교수학습자료">ppt,video,books</td>
+				<td data-label="과제">텍스트와 도형애니메이션 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">7</td>
+				<td data-label="학습주제">7주차: 중간 검토와 피드백<br>
+컨텐츠: 학생들의 학습진도와 작품의 품질을 검토합니다. 구체적인 피드백과 개선사항을 제시합니다. 학생들에게 논의를 조직하여 서로의 학습경험과 도전을 공유합니다.<br>
+</td>
+				<td data-label="수업방식/이용기자재">학생들은 중간과제를 제출하고, 교사 및 동료의 리뷰를 받아 학습을 검토합니다.</td>
+				<td data-label="교수학습자료">ppt,video,books</td>
+				<td data-label="과제">7주차: 중간 검토와 피드백 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">8</td>
+				<td data-label="학습주제">8주차: 케이스 스터디와 모방<br>
+컨텐츠: 탁월한 동적 그래픽 디자인 케이스를 분석합니다. 창의적인 디자인 접근, 기술적 실현, 및 케이스의 효과를 탐구합니다. 학생들에게 이러한 케이스를 모방하여 익히는 것을 권장합니다.<br>
+</td>
+				<td data-label="수업방식/이용기자재">학생들은 케이스 하나를 선택하여 모방을 수행합니다. 모방과정과 학습 경험을 팀 내에서 공유합니다.</td>
+				<td data-label="교수학습자료">ppt,video,books</td>
+				<td data-label="과제">케이스 스터디와 모방 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">9</td>
+				<td data-label="학습주제">9주차: 창의적 컨셉 개발<br>
+컨텐츠: 창의적 컨셉 개발의 기본 절차와 솜씨를 소개합니다. 뇌스토밍, 창의적 발산, 및 새로운 아이디어를 탐구하는 훈련을 제공합니다.<br>
+</td>
+				<td data-label="수업방식/이용기자재">학생들은 주제 혹은 고객 요구에 맞는 창의적 컨셉을 개발합니다. 새로운 디자인 아이디어를 논의하고, 팀 내에서 피드백을 받습니다.</td>
+				<td data-label="교수학습자료">ppt,video,books</td>
+				<td data-label="과제">창의적 컨셉 개발 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">10</td>
+				<td data-label="학습주제">10주차: 스케치와 프로토타이핑<br>
+컨텐츠: 스케치와 프로토타이핑의 중요성과 절차를 설명합니다. 창의적 컨셉을 시각화하는 훈련을 제공합니다.</td>
+				<td data-label="수업방식/이용기자재">학생들은 창의적 컨셉을 기반으로 스케치와 프로토타이핑을 수행합니다. 팀 내에서 스케치와 프로토타이핑 결과를 공유하고, 피드백을 받습니다.</td>
+				<td data-label="교수학습자료">ppt,video,books</td>
+				<td data-label="과제">스케치와 프로토타이핑 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">11</td>
+				<td data-label="학습주제">11주차: 고급 동적 그래픽 제작<br>
+컨텐츠: 고급 동적 그래픽 제작 기술과 효과, 3D 애니메이션, 참송 효과, 및 특수 효과 애니메이션 등을 소개합니다.<br>
+</td>
+				<td data-label="수업방식/이용기자재">학생들은 고급 기술을 익히고, 자신의 작품에 적용합니다. 팀 내에서 고급 효과를 논의하고, 피드백을 받습니다.</td>
+				<td data-label="교수학습자료">ppt,video,books</td>
+				<td data-label="과제">고급 동적 그래픽 제작 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">12</td>
+				<td data-label="학습주제">12주차: 협업과 프로젝트 관리<br>
+컨텐츠: 협업의 중요성과 절차, 팀워크, 커뮤니케이션, 및 프로젝트 관리 기법을 소개합니다.<br>
+활동: 학생들은 팀으로 프로젝트를 수행합니다. 팀 멤버의 역할과 책임을 분배하고, 협업과 커뮤니케이션을 향상시킵니다.</td>
+				<td data-label="수업방식/이용기자재">학생들은 팀으로 프로젝트를 수행합니다. 팀 멤버의 역할과 책임을 분배하고, 협업과 커뮤니케이션을 향상시킵니다.</td>
+				<td data-label="교수학습자료">ppt,video,books</td>
+				<td data-label="과제">협업과 프로젝트 관리 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">13</td>
+				<td data-label="학습주제">13주차: 프로젝트 실행과 중기 보고<br>
+컨텐츠: 프로젝트 실행을 지도하고, 절차와 효율성을 검토합니다. 중기 보고를 준비하고, 팀 내에서 검토합니다.<br>
+학생들은 프로젝트를 수행하고, 중기 보고를 제출합니다. 팀 내에서 검토를 수행하고, 피드백을 받습니다.</td>
+				<td data-label="수업방식/이용기자재">학생들은 프로젝트를 수행하고, 중기 보고를 제출합니다. 팀 내에서 검토를 수행하고, 피드백을 받습니다.</td>
+				<td data-label="교수학습자료">ppt,video,books</td>
+				<td data-label="과제">프로젝트 실행과 중기 보고 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">14</td>
+				<td data-label="학습주제">14주차: 후기 조정과 최적화<br>
+컨텐츠: 후기 조정과 최적화의 절차와 솜씨를 소개합니다. 완성도, 퀄리티, 및 효율성을 향상시키는 훈련을 제공합니다.<br>
+활동: 학생들은 자신의 프로젝트를 검토하고, 필요한 조정과 최적화를 수행합니다. 팀 내에서 검토를 수행하고, 피드백을 받습니다.</td>
+				<td data-label="수업방식/이용기자재">학생들은 자신의 프로젝트를 검토하고, 필요한 조정과 최적화를 수행합니다. 팀 내에서 검토를 수행하고, 피드백을 받습니다.</td>
+				<td data-label="교수학습자료">ppt,video,books</td>
+				<td data-label="과제">후기 조정과 최적화 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">15</td>
+				<td data-label="학습주제">15주차: 최종 전시와 과정 검토<br>
+컨텐츠: 최종 전시회를 준비하고, 학생들에게 작품을 전시하고 설명을 촉구합니다. 과정을 돌아보고, 학습 경험과 수확을 검토합니다.<br>
+활동: 학생들은 최종 작품을 전시합니다. 팀 멤버와 교사의 피드백을 받아, 학습 경험을 검토합니다.<br>
+</td>
+				<td data-label="수업방식/이용기자재">학생들은 최종 작품을 전시합니다. 팀 멤버와 교사의 피드백을 받아, 학습 경험을 검토합니다.</td>
+				<td data-label="교수학습자료">ppt,video,books</td>
+				<td data-label="과제">최종 전시와 과정 검토 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+
+		</tbody>
+	</table>
+	
+	
+</div>
+
+
+</body></html>

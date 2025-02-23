@@ -1,21 +1,28 @@
 package kangnamUni.TimOp.Service;
+import kangnamUni.TimOp.domain.DayOfWeekEnum;
 import kangnamUni.TimOp.domain.Lecture;
+import kangnamUni.TimOp.domain.LectureTime;
+import kangnamUni.TimOp.domain.TimeRangeConverter;
+import kangnamUni.TimOp.repository.LectureTimeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.openqa.selenium.chrome.ChromeDriver;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
+
+import java.time.Duration;
+import java.time.LocalTime;
+import java.util.*;
 
 //강남대학교 강의 스크래핑
 //전공, 학년을 선택하고 조회해서 (개설 과목별 학수번호 분반 과목명 담당교수 학점 시수 강의시간) + 강의 계획서(HTML) 자동 수집
 
-//@Service
+@Service
 @Slf4j
 public class WebScraper {
     String url = "https://app.kangnam.ac.kr/knumis/sbr/sbr1010.jsp";
@@ -23,7 +30,7 @@ public class WebScraper {
     private WebDriver driver;
     private String parentHandle;
     private final LectureService lectureService;
-    int currentYear = 2024;
+    int currentYear = 2025;
     String currentSemester = "1학기";
     @Autowired
     public WebScraper(LectureService lectureService) throws InterruptedException{
@@ -87,18 +94,32 @@ public class WebScraper {
             navigateFrame(1);
             liberalArts = map.get(slicedArea.getAttribute("value")); //value 값을 가져와서 map에서 대응시킴
             slicedArea.click(); //1~5영역 선택
+            log.warn("영역" + slicedArea.toString());
             inquiryButton.click(); //조회
             navigateFrame(2);
             // 데이터 저장
+            log.warn("저장전");
             saveLectureInfo(year, semester);
+            log.warn("저장후");
         }
     }
 
     //강의 정보 저장
     private boolean saveLectureInfo(int year, String semester) throws InterruptedException {
+        //되니까 그냥 놔둬 일단 ^^
         try {
-            String classCounts = driver.findElement(By.name("data_rowcount")).getAttribute("value"); //개설교과목 수
+            String classCounts;
+            //log.warn(driver.getPageSource());
+            try{
+                classCounts = driver.findElement(By.name("data_rowcount")).getAttribute("value"); //개설교과목 수
+            }
+            catch (NoSuchElementException e){
+                Thread.sleep(2000);
+            }
+            classCounts = driver.findElement(By.name("data_rowcount")).getAttribute("value"); //개설교과목 수
+            log.warn("어디야2" + classCounts);
             int classCount = Integer.parseInt(classCounts);
+            log.warn("어디야3");
             //클래스 수만큼 돌면서 정보 가져오기
             for (int i = 1; i < classCount + 1; i++) {
                 String row = "row" + Integer.toString(i);
@@ -112,14 +133,63 @@ public class WebScraper {
                 log.info("새로운 lectureInfo = {}", lectureInfo);
                 //String[] lectureInfo = lectureInfos.split(" "); //학수번호 분반 과목명 담당교수 학점 시수 강의시간
                 //현재창 저장 후 강의 계획서 팝업 열었다 닫기
-                String syllabusName = saveSyllabus(row, lectureInfo);//해당 열에 있는 강의계획서 다운
+                //String syllabusName = saveSyllabus(row, lectureInfo);//해당 열에 있는 강의계획서 다운
+                String syllabusName = null;
+                List<WebElement> buttons = driver.findElement(By.id(row)).findElements(By.className("btn1_center")); //강의계획서가 없을때 버튼이 없는 경우 예외처리
+                if (!buttons.isEmpty()) {
+                    syllabusName = saveSyllabus(row, lectureInfo);
+                } else {
+                    log.warn("Row {}에 버튼 없음. 강의 계획서 다운로드 생략.", i);
+                }
                 log.info("강의 정보 저장 = {}", lectureInfos); // 강의 정보 저장 = ND01603 11 컴퓨터프로그래밍 심정연 3 3 (주)목1ab2ab3ab
                 //강의 정보 저장 = ND01612 09 Academic English R&W(Intro) KIM HYUN JUNG 2 2 (주)화7ab8ab 해결 해야함 + 학부/학년, 전공 정보 추가
                 Lecture lecture = new Lecture();
                 lecture.setTitle(lectureInfo.get(2));
                 lecture.setNum(lectureInfo.get(0));
                 lecture.setCredit(Integer.parseInt(lectureInfo.get(4)));
-                //lecture.setTime(lectureInfo.get(6));
+
+                //lecture.setTime(lectureInfo.get(6));(주)목1ab2ab3ab
+
+                //스플릿 된 애는 addLectureTime 2번 때리고 lecture 저장하도록 해야할듯
+
+
+                LectureTime lectureTime = new LectureTime();
+                String lt = lectureInfo.get(6);
+                lectureTime.setTime(lt);
+                // 별도배정 or null 확인 주야 확인
+                if (lt.startsWith("(주)")){
+                    lt = lt.substring(3); //(주) 삭제
+                    if (lt.indexOf(',') != -1) { // 2개 타임으로 나눠진 강의 (주)화7ab8a,수7b8ab
+                        String[] lts = lt.split(",");
+                        //lectureTime 에 요일, 시작시간, 끝나는 시간 세팅
+                        for(String s : lts){
+                            convertLectureTime(s, lectureTime, lecture);
+                        }
+                    }
+                    else{
+                        convertLectureTime(lt, lectureTime, lecture);
+                    }
+                }
+
+                else if(lt.startsWith("(야)")){
+                    lt = lt.substring(3);  // "(야)" 제거
+                    StringBuilder sb = new StringBuilder();
+                    sb.append(lt.charAt(0)); //요일 넣고 숫자만 남김
+                    lt = lt.substring(1);
+                    int count = 1;
+                    for(int j = 0; j < lt.length(); j++){
+                        sb.append(lt.charAt(j)); // 문자 추가
+                        if(count % 2 == 0) { // 2번째마다 "ab" 추가
+                            sb.append("ab");
+                        }
+                        count++;
+                    }
+                    String str = sb.toString();
+                    for(int k = 0; k < str.length(); k++){
+                    }
+                    convertLectureTime(str, lectureTime, lecture);
+                }
+
                 lecture.setProfessor(lectureInfo.get(3));
                 lecture.setDivision_class(lectureInfo.get(1));
                 lecture.setProgress_time(lectureInfo.get(5));
@@ -135,15 +205,46 @@ public class WebScraper {
                 navigateFrame(2);
             }
         } catch (NoSuchElementException e) {
+            log.warn("nosuchelement");
             return true;
         }
         return false;
     }
+
+    //7ab8ab9a -> 9:00~11:15
+    private static void convertLectureTime(String s, LectureTime lectureTime, Lecture lecture) {
+        Map<String, String> dayStartTimeEndTime = TimeRangeConverter.convertTimeRanges(s);
+        lectureTime.setDayOfWeek(DayOfWeekEnum.valueOf(dayStartTimeEndTime.get("day")));
+
+        String startTime = dayStartTimeEndTime.get("startTime");
+        String[] startHourMin = startTime.split(":");
+        LocalTime startlocalTime = LocalTime.of(Integer.parseInt(startHourMin[0]), Integer.parseInt(startHourMin[1]));
+        lectureTime.setStartTime(startlocalTime);
+
+        String endTime = dayStartTimeEndTime.get("endTime");
+        String[] endHourMin = endTime.split(":");
+        LocalTime endlocalTime = LocalTime.of(Integer.parseInt(endHourMin[0]), Integer.parseInt(endHourMin[1]));
+        lectureTime.setEndTime(endlocalTime);
+
+        lecture.addLectureTime(lectureTime);
+    }
+
     //강의계획서 저장
     //강의계획서 조회 버튼 클릭 후 강의계획서 html을 저장하고 원래 탭으로 돌아오기
     private String saveSyllabus(String row, List<String> lectureInfo) throws InterruptedException {
         String syllabusName = "";
-        driver.findElement(By.id(row)).findElement(By.className("btn1_center")).click(); //강의계획서 버튼 클릭
+        //버튼 클릭전 미입력인지 확인 미입력이면 리턴 치고 null값저장
+        if(!driver.findElement(By.id(row)).findElement(By.className("btn1_center")).getText().equals("강의계획서보기")){
+            return null;
+        }
+        log.warn(driver.findElement(By.id(row)).findElement(By.className("btn1_center")).getText());
+
+        try{
+            driver.findElement(By.id(row)).findElement(By.className("btn1_center")).click(); //강의계획서 버튼 클릭
+        }
+        catch (Exception e){
+            log.error(e.getMessage());
+        }
         Set<String> windowHandles = driver.getWindowHandles(); //브라주저 각 탭에 대한 고유 식별자 리턴
         for (String windowHandle : windowHandles) {
             if(parentHandle.equals(windowHandle)){
