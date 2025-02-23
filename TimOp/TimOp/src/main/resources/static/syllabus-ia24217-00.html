@@ -1,0 +1,319 @@
+<html><head>
+<base target="_blank">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+	.syllabus, .syllabus_week{width:800px; border-width: 2px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:10px; table-layout: fixed;} 
+	.syllabus_sub {width:600px; border-width: 1px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:3px;margin-bottom:3px; k-layout: fixed;}
+	tr{min-height: 22px; }
+	th{border: 1px black solid; text-align: center; font-weight: bold; background-color: #EFEFEF}
+	th.no_topLine{border-top:0px black solid;}
+	th.no_botLine{border-bottom:0px black solid;}
+	td{border: 1px black solid; text-align: left; padding-left: 3px; min-height: 22px; vertical-align: middle; background-color: #FFFFFF}
+	td p{min-height: 22px;}
+	td pre{margin:auto; min-height:1px;}
+	
+	.multi-line {line-height:1.3em;padding-top:4px}
+	.majorDiv {width:800px;}
+	.syllabus_week {margin-top:5px;}
+	.syllabus_week_title {border: 1px solid gray;width:800px;height:40px;margin-top:20px;}
+	
+	
+	@media screen and (max-width: 768px) { 	
+		.syllabus, .syllabus_week, .majorDiv, .syllabus_week_title {width: 100%;}
+		.displayOff {display:none;}
+ 		.syllabus_week thead {display:none;} 
+ 		.syllabus_week, .syllabus_week tbody, .syllabus_week tr, .syllabus_week td {display: block;} 
+  		.syllabus_week tbody tr td {text-align:left;padding-left: 50%;position:relative;border-top:none;border-left:none;border-right:none; }  
+  		.syllabus_week tbody tr td nth-child(1) {text-align: left;}
+  		.syllabus_week tbody tr {border-top:1px soild black;}  
+ 		.syllabus_week td:before {content:attr(data-label); position:absolute; left: 0%;width: 50%;padding-left: 15px;text-align: left;}  
+/*  		.syllabus_week_child5 {border-bottom: 2px solid black;} */
+	}
+			
+	@media screen and (min-width: 769px) { 	
+		.displayOn {display:none;}
+		.syllabus_week_child1 {text-align: center;}
+	}
+	
+</style>
+<title>강의계획서 보기</title>
+
+<script type="text/javascript" src="../function/common.js"></script>
+<script type="text/javascript" src="../function/sortTable.js"></script>
+<script>
+	function goPrint(){
+		
+		var src = '';
+		if(isCompatibleIE()){
+			src = "../rdreport/r_designer_cs.jsp?repo_val1=2025&repo_val2=1&repo_val3=IA24217&repo_val4=00&repo_val5=105646&repo_path=../sbr/sbr3072S.mrd";
+		}else{
+			src = "https://app.kangnam.ac.kr/knumis/rdreport/r_designer_cs.jsp?repo_val1=2025&repo_val2=1&repo_val3=IA24217&repo_val4=00&repo_val5=105646&repo_path=../sbr/sbr3072S.mrd";
+		}
+
+		openWin('',src,850,630,0,0);
+
+		self.close();
+	}
+</script>
+</head>
+
+<body>
+
+
+<div style="font-size: 12px; text-align:center;magin-left:10px; height:12px; margin-bottom:10px;margin-top:10px">
+	최초작성일 : 2025/01/16 , 최종수정일 : 2025/01/16
+</div>
+
+<div align="center" style="margin-top: 10px;">
+	<table class="syllabus">
+		<colgroup>
+			<col width="10%">
+			<col width="7%">
+			<col width="10%">
+			<col width="20%">
+			<col width="16%">
+			<col width="8%">
+			<col width="21%">
+		</colgroup>
+		
+		<tbody>
+			<tr>
+				<th colspan="7" style="height:50px;"><span style="font-size: 24px;">강 의 계 획 서</span></th>
+			</tr>
+			<tr>
+				<th colspan="2">년 도</th>
+				<td colspan="2">2025</td>
+				<th>학 기</th>
+				<td colspan="2">1 학기</td>
+			</tr>
+			<tr>
+				<th rowspan="2">교과목명</th>
+				<th>한글</th>
+				<td colspan="2">현장실습(장기)IV</td>
+				<th rowspan="2">담당교수</th>
+				<td rowspan="2" colspan="2">최희철</td>
+			</tr>
+			<tr>
+				<th>영문</th>
+				<td colspan="2">Long-term Field Internship</td>
+			</tr>
+			<tr>
+				<th colspan="2">학수번호-분반</th>
+				<td colspan="2">IA24217 - 00</td>
+				<th>강의요일교시</th>
+				<td colspan="2"></td>
+			</tr>
+			<tr>
+				<th colspan="2">학점<br>(시간수)</th>
+				<td colspan="2">3(0)</td>
+				<th>강의실</th>
+				<td colspan="2"></td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">개설(이수)구분</th>
+				<th>교양</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">계열교양<br>
+					<input type="checkbox" disabled="disabled">일반교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">균형교양: 
+				</td>
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">계열교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">일반교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">균형교양: 
+				</td>
+			</tr>
+			<tr>
+				<th>전공</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공기초<br>
+					<input type="checkbox" checked="" disabled="disabled">전공선택 ( 4 ) 학년<br>
+					<input type="checkbox" disabled="disabled">전공필수 ( &nbsp; ) 학년					
+				</td>				
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공기초
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px">전공선택 ( 4 ) 학년
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공필수 ( &nbsp; ) 학년					
+				</td>	
+			</tr>
+			<tr>
+				<th>일반선택</th>
+				<td class="displayOn" colspan="2">
+					<input type="checkbox" disabled="disabled">교직<br>
+					<input type="checkbox" disabled="disabled">자유선택
+				</td>
+				<td class="displayOff" colspan="2">
+					<input type="checkbox" disabled="disabled">교직
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">자유선택
+				</td>
+				<td colspan="2">학부(과) : 사회사업학전공(야) </td>
+			</tr>
+		
+			<tr>
+				<th rowspan="2" colspan="2">강좌특성</th>
+				<td class="displayOn" colspan="5">
+					<input type="checkbox" disabled="disabled">이론강의
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:76px">실험·실습·실기<br>
+					<input type="checkbox" disabled="disabled">이론/실험·실습병행
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+				<td class="displayOff" colspan="5">
+					<input type="checkbox" disabled="disabled">이론강의
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px">실험·실습·실기
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">이론·실습병행
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+			</tr>
+			<tr>
+				<th>학문특성</th>
+				<td></td>
+				<th>기타특성</th>				
+				<td colspan="2"></td>
+			</tr>
+			
+			
+			<tr>
+				<th colspan="2">전공능력</th>
+				<td colspan="5"></td>				
+			</tr>
+			<tr>
+				<th colspan="2" rowspan="2">성적평가기준</th>
+				<td colspan="5">
+					패스강좌
+
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5">※성적평가기준은 최종 수강 인원, 강좌별 특성에 따라 차후 변동될 수 있습니다.</td>
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="3">연락처</th>
+				<th>연구실</th>
+				<td></td>
+				<th>E-Mail</th>
+				<td colspan="2" style="word-break:break-word;"></td>
+				
+			</tr>
+			<tr>
+				<th>휴대전화</th>
+				<td></td>
+				<th>면담가능시간</th>
+				<td colspan="2"></td>
+				
+			</tr>
+			<tr>
+				<th>연구일</th>
+				<td>금요일</td>
+				<th>관리부서</th>
+				<td colspan="2">
+					교학1팀 (031-280-3410 ~ 3)
+
+				</td>
+				
+			</tr>
+			
+			
+			<!-- ------------------------------------------------------------------------  -->
+			<tr class="displayOn">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5"></td>
+			</tr> 
+			
+			<tr class="displayOn">
+				<th colspan="2">수강신청 대상</th>
+				<td colspan="5">현장실습학기제 참여 대상 학생 전용 교과목으로 해당 학생 외 신청 불가 (현장실습학기제 참여에 관한 문의는 현장실습지원센터(031-280-3139)로 문의)</td>
+			</tr> 
+			
+			<tr class="displayOn">
+				<th colspan="2" rowspan="3">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="4">1.현장에서의 실제적인 요구 증력 파악 및 함양<br>
+2.현장근무환경에 대한 적응력 제고<br>
+3.현장에서 요구하는 기술 및 학습능력 배양</td>
+			</tr>
+			<tr class="displayOn">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="4">본 과목은 연수기관에 최종합격된 학생들을 대상으로 현장실습지원센터의 요청으로 수강신청 할 수 있는 과목입니다.
+
+*신청절차
+1.본교에서 모집한 현장실습학기제 참여기관을 대상으로 참여학생을 모집함(개강 6주 전)
+2. 연수생은 참여기관과 면접 등을 통해 선발함
+3. 연수생은 현장실습 수강신청예정학과(주전공,부전공,복수전공 중 학생 선택)에 학점인정 가능여부(실습내용과 학점신청학과의 학습 연계성을 검토) 확인한 후 현장실습지원센터에서 직권으로 수강신청함
+
+*운영절차
+1.연수생은 본교와 현장실습학기제를 위한 협약을 체결한 기업(기관)에서 현장실습함(인정시간은 운영규정을 참고)
+2.현장실습학기제에 대한 성적평가를 위해 연수생은 주간보고서, 종합보고서를 작성 제출해야함
+3.지도교수는 연수기관을 방문하여 연수기업 및 연수생의 교육현황등을 청취하고, 위의 보고서들의 점검 등을 수행하며, 연수생과 연수기관의 애로점 및 요구사항에 대하여 적절한 조치를 함
+
+*운영방법에 명시되지 않은 사항은 현장실습학기제 운영규정을 준용하여 운영함</td>				
+			</tr>
+				
+			<tr class="displayOn">
+				<th style="line-height: 1.1em">평가방법 </th>
+				<td colspan="4">학점신청학과의 학과장은 P 또는 F로 성적을 부여하고, 다음과 같은 내용을 종합적으로 판단함
+참인재시스템에 작성된 주간보고서, 종합보고서, 근무상황부 등을 검토(단, 국고보조사업경우 상기 기재된 서류에 준하는 사업지원 기관의 자체양식이 사용됨)</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5"></td>
+			</tr> 
+			
+			
+			<tr class="displayOff">
+				<th colspan="2">수강신청 대상</th>
+				<td colspan="5">현장실습학기제 참여 대상 학생 전용 교과목으로 해당 학생 외 신청 불가 (현장실습학기제 참여에 관한 문의는 현장실습지원센터(031-280-3139)로 문의)</td>
+			</tr> 
+			
+			
+			<tr class="displayOff">
+				<th rowspan="3">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="5">1.현장에서의 실제적인 요구 증력 파악 및 함양<br>
+2.현장근무환경에 대한 적응력 제고<br>
+3.현장에서 요구하는 기술 및 학습능력 배양</td>
+			</tr>
+			<tr class="displayOff">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="5">본 과목은 연수기관에 최종합격된 학생들을 대상으로 현장실습지원센터의 요청으로 수강신청 할 수 있는 과목입니다.
+
+*신청절차
+1.본교에서 모집한 현장실습학기제 참여기관을 대상으로 참여학생을 모집함(개강 6주 전)
+2. 연수생은 참여기관과 면접 등을 통해 선발함
+3. 연수생은 현장실습 수강신청예정학과(주전공,부전공,복수전공 중 학생 선택)에 학점인정 가능여부(실습내용과 학점신청학과의 학습 연계성을 검토) 확인한 후 현장실습지원센터에서 직권으로 수강신청함
+
+*운영절차
+1.연수생은 본교와 현장실습학기제를 위한 협약을 체결한 기업(기관)에서 현장실습함(인정시간은 운영규정을 참고)
+2.현장실습학기제에 대한 성적평가를 위해 연수생은 주간보고서, 종합보고서를 작성 제출해야함
+3.지도교수는 연수기관을 방문하여 연수기업 및 연수생의 교육현황등을 청취하고, 위의 보고서들의 점검 등을 수행하며, 연수생과 연수기관의 애로점 및 요구사항에 대하여 적절한 조치를 함
+
+*운영방법에 명시되지 않은 사항은 현장실습학기제 운영규정을 준용하여 운영함</td>				
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="line-height: 1.1em">평가방법</th>
+				<td colspan="5">학점신청학과의 학과장은 P 또는 F로 성적을 부여하고, 다음과 같은 내용을 종합적으로 판단함
+참인재시스템에 작성된 주간보고서, 종합보고서, 근무상황부 등을 검토(단, 국고보조사업경우 상기 기재된 서류에 준하는 사업지원 기관의 자체양식이 사용됨)</td>
+			</tr>
+			
+			<!---------------교재 ---------------------- -->
+			
+			
+			
+			
+		</tbody>
+	</table>
+	
+	
+	
+</div>
+
+
+</body></html>
