@@ -22,7 +22,7 @@ import java.util.*;
 //강남대학교 강의 스크래핑
 //전공, 학년을 선택하고 조회해서 (개설 과목별 학수번호 분반 과목명 담당교수 학점 시수 강의시간) + 강의 계획서(HTML) 자동 수집
 
-@Service
+//@Service
 @Slf4j
 public class WebScraper {
     String url = "https://app.kangnam.ac.kr/knumis/sbr/sbr1010.jsp";

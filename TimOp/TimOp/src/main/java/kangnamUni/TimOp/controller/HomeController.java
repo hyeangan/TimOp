@@ -48,6 +48,8 @@ public class HomeController {
         //List<Timetable> timetables = member.getTimetables();
         //model.addAttribute("timetables", timetables);
         model.addAttribute("member", member);
+        List<Timetable> timetables = timetableRepository.findByMember((Member) session.getAttribute("loginMember"));
+        model.addAttribute("timeTables", timetables);
 
         return "home";
     }
@@ -102,18 +104,29 @@ public class HomeController {
 
 
         // 리다이렉트 또는 뷰 이름 반환
-        return "redirect:/lectures"; // 강의 목록 페이지로 리다이렉트
+        return ""; // 강의 목록 페이지로 리다이렉트
     }
     @PostMapping("/timetables")
-    public ResponseEntity<?> addTimetable(@RequestBody TimetableDTO timetableDTD, HttpSession session) {
-        try {
-            Member member = (Member) session.getAttribute("loginMember");
-            Long memberId = member.getId();
-            Timetable newTimetable = timetableService.createTimetableForMember(memberId, timetableDTD.getName());
-            return ResponseEntity.ok(newTimetable);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(new ErrorResponse(e.getMessage()));
-        }
+    public String addTimetable(@RequestBody TimetableDTO timetableDTD, Model model, HttpSession session) {
+        Member member = (Member) session.getAttribute("loginMember");
+        timetableService.createTimetableForMember(member.getId(), timetableDTD.getName());
+
+        model.addAttribute("member", member);
+        List<Timetable> timetables = timetableRepository.findByMember((Member) session.getAttribute("loginMember"));
+        model.addAttribute("timeTables", timetables);
+
+        return "home";
+    }
+    @DeleteMapping("/timetables")
+    public String deleteTimetable(@RequestBody TimetableDTO timetableDTD, Model model, HttpSession session) {
+        Member member = (Member) session.getAttribute("loginMember");
+        timetableService.deleteTimetableForMember(member.getId(), timetableDTD.getName());
+
+        model.addAttribute("member", member);
+        List<Timetable> timetables = timetableRepository.findByMember((Member) session.getAttribute("loginMember"));
+        model.addAttribute("timeTables", timetables);
+
+        return "home";
     }
     //시간표에 강의 추가
     @PostMapping("/timetables/{timetableId}/lectures")
@@ -135,17 +148,7 @@ public class HomeController {
             return ResponseEntity.badRequest().body(new ErrorResponse(e.getMessage()));
         }
     }
-    @DeleteMapping("/timetables")
-    public ResponseEntity<?> deleteTimetable(@RequestBody TimetableDTO timetableDTD, HttpSession session) {
-        try {
-            Member member = (Member) session.getAttribute("loginMember");
-            Long memberId = member.getId();
-            timetableService.deleteTimetableForMember(memberId, timetableDTD.getName());
-            return ResponseEntity.noContent().build();
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(new ErrorResponse(e.getMessage()));
-        }
-    }
+
     private static class ErrorResponse {
         private String message;
 

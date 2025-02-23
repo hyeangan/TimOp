@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
+import java.sql.Time;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,8 +27,15 @@ public class Member {
     private String name;
     private String major;
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true) //mappedBy = "member" -> Timetable 에 member필드가 관계의 주인(외래키)
     @JsonManagedReference
-    private List<Timetable> timetables;
-
+    private List<Timetable> timetables = new ArrayList<>();
+    public void addTimetable(Timetable timetable){
+        timetables.add(timetable);
+        timetable.setMember(this);
+    }
+    public void removeTimetable(Timetable timetable){
+        timetables.remove(timetable);
+        timetable.setMember(null);
+    }
 }

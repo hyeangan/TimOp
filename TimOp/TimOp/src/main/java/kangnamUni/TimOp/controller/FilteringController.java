@@ -6,7 +6,9 @@ import kangnamUni.TimOp.domain.Lecture;
 import kangnamUni.TimOp.domain.LectureFilterDTO;
 import kangnamUni.TimOp.domain.Member;
 import kangnamUni.TimOp.domain.Timetable;
+import kangnamUni.TimOp.repository.TimetableRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,9 +22,12 @@ import java.util.List;
 @Controller
 public class FilteringController {
     private final LectureService lectureService;
+    private final TimetableRepository timetableRepository;
 
-    public FilteringController(LectureService lectureService) {
+    @Autowired
+    public FilteringController(LectureService lectureService, TimetableRepository timetableRepository) {
         this.lectureService = lectureService;
+        this.timetableRepository = timetableRepository;
     }
 
     @GetMapping("/search")
@@ -34,7 +39,8 @@ public class FilteringController {
         //model.addAttribute("timetables", timetables);
         model.addAttribute("member", member);
         model.addAttribute("lectures", lectures);
-
+        List<Timetable> timetables = timetableRepository.findByMember((Member) session.getAttribute("loginMember"));
+        model.addAttribute("timeTables", timetables);
         return "home";
     }
 
@@ -47,6 +53,8 @@ public class FilteringController {
         //model.addAttribute("timetables", timetables);
         model.addAttribute("member", member);
         model.addAttribute("lectures", lectures);
+        List<Timetable> timetables = timetableRepository.findByMember((Member) session.getAttribute("loginMember"));
+        model.addAttribute("timeTables", timetables);
         return "home";
 
     }

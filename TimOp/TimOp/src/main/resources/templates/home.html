@@ -117,7 +117,6 @@
                             <a th:href="@{/{param}(param=${lecture.syllabus + '.html'})}" target="_blank">강의계획서 열기</a>
                         </div>
                         <div th:text="${lecture.professor}"></div>
-                        <div th:text="${lecture.time}"></div>
                         <div style="display:inline" th:text="${lecture.grade} + '학년  '"></div>
                         <div style="display:inline" th:text="${lecture.credit} + '학점'"></div>
                         <div style="display:inline" th:text="${lecture.num} + '  '"></div><br><br>
