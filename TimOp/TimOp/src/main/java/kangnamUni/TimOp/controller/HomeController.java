@@ -48,7 +48,7 @@ public class HomeController {
         //List<Timetable> timetables = member.getTimetables();
         //model.addAttribute("timetables", timetables);
         model.addAttribute("member", member);
-        List<Timetable> timetables = timetableRepository.findByMember((Member) session.getAttribute("loginMember"));
+        List<Timetable> timetables = timetableService.findByMemberId(member.getId());
         model.addAttribute("timeTables", timetables);
 
         return "home";
@@ -90,21 +90,20 @@ public class HomeController {
         }
     }
     //DB 시간표에 강의 저장
-    @PostMapping("/lectures")
-    public String addLecture(@RequestBody LectureDTO lectureDTO, HttpSession session) {
+    @PostMapping("/timetables/lectures")
+    public String addLecture(@RequestParam("id") Long lectureId, @RequestParam("timetableName") String timetableName, Model model, HttpSession session) {
         // lectureId를 사용하여 필요한 작업 수행
         // 예: lectureId를 사용하여 데이터베이스에서 강의 정보 조회 및 처리
         Member member = (Member) session.getAttribute("loginMember");
 
-        Lecture lecture = lectureService.getLectureById(lectureDTO.getId());
+        timetableService.addLectureToTimetable(member.getId(), timetableName, lectureId);
 
-        // 필요한 경우, 모델에 데이터를 추가하여 뷰로 전달
-        //model.addAttribute("message", "Lecture added successfully!");
-        //db 시간표에 저장
-
-
+        model.addAttribute("member", member);
+        List<Timetable> timetables = timetableService.findByMemberId(member.getId());
+        model.addAttribute("timeTables", timetables);
+        log.info("강의 저장");
         // 리다이렉트 또는 뷰 이름 반환
-        return ""; // 강의 목록 페이지로 리다이렉트
+        return "home"; // 강의 목록 페이지로 리다이렉트
     }
     @PostMapping("/timetables")
     public String addTimetable(@RequestBody TimetableDTO timetableDTD, Model model, HttpSession session) {
@@ -112,7 +111,7 @@ public class HomeController {
         timetableService.createTimetableForMember(member.getId(), timetableDTD.getName());
 
         model.addAttribute("member", member);
-        List<Timetable> timetables = timetableRepository.findByMember((Member) session.getAttribute("loginMember"));
+        List<Timetable> timetables = timetableService.findByMemberId(member.getId());
         model.addAttribute("timeTables", timetables);
 
         return "home";
@@ -123,31 +122,12 @@ public class HomeController {
         timetableService.deleteTimetableForMember(member.getId(), timetableDTD.getName());
 
         model.addAttribute("member", member);
-        List<Timetable> timetables = timetableRepository.findByMember((Member) session.getAttribute("loginMember"));
+        List<Timetable> timetables = timetableService.findByMemberId(member.getId());
         model.addAttribute("timeTables", timetables);
 
         return "home";
     }
-    //시간표에 강의 추가
-    @PostMapping("/timetables/{timetableId}/lectures")
-    public ResponseEntity<?> addTimetable(@PathVariable("timetableId") Long timetableId, @RequestBody Lecture lecture, HttpSession session) {
-        try {
 
-            Optional<Timetable> optionalTimetable = timetableRepository.findById(timetableId);
-            if(optionalTimetable.isPresent()){
-                Timetable timetable = optionalTimetable.get();
-                Member member = (Member) session.getAttribute("loginMember");
-                timetableService.addLectureToTimetable(member.getId(), timetable.getName(), lecture.getId());
-                return ResponseEntity.ok(timetable);
-            }
-            else{
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("Timetable not found"));
-            }
-
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(new ErrorResponse(e.getMessage()));
-        }
-    }
 
     private static class ErrorResponse {
         private String message;

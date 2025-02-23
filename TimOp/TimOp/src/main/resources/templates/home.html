@@ -120,6 +120,13 @@
                         <div style="display:inline" th:text="${lecture.grade} + '학년  '"></div>
                         <div style="display:inline" th:text="${lecture.credit} + '학점'"></div>
                         <div style="display:inline" th:text="${lecture.num} + '  '"></div><br><br>
+                        <div>
+                            <form th:action="@{/timetables/lectures}" method="post">
+                                <input type="hidden" name="id" th:value="${lecture.id}" />
+                                <input type="hidden" name="timetableName" value = "sol" />
+                                <button type="submit">시간표에 추가</button>
+                            </form>
+                        </div>
                     </div>
                 </li>
             </ul>
