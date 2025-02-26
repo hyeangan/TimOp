@@ -34,9 +34,10 @@ public class Lecture {
     private String semester;
     private String liberalArts;
 
-    @ManyToOne()
-    @JoinColumn(name = "timetable_id")
-    private Timetable timetable;
+    @ManyToMany(mappedBy = "lectures") // Timetable이 주인이므로 mappedBy 사용
+    private List<Timetable> timetables = new ArrayList<>();
+
+
     @OneToMany(mappedBy = "lecture", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<LectureTime> lectureTimes = new ArrayList<>(); // 여러 개의 시간 블록을 가질 수 있음
     public Lecture() {

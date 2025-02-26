@@ -94,7 +94,7 @@ public class HomeController {
         // lectureId를 사용하여 필요한 작업 수행
         // 예: lectureId를 사용하여 데이터베이스에서 강의 정보 조회 및 처리
         Member member = (Member) session.getAttribute("loginMember");
-
+        log.info(timetableName);
         timetableService.addLectureToTimetable(member.getId(), timetableName, lectureId);
 
         model.addAttribute("member", member);
@@ -102,14 +102,19 @@ public class HomeController {
         model.addAttribute("timetables", timetables);
         log.info("강의 저장");
         // 리다이렉트 또는 뷰 이름 반환
-        return "home"; // 강의 목록 페이지로 리다이렉트
+        return "redirect:/home"; // 강의 목록 페이지로 리다이렉트
     }
     @PostMapping("/timetables")
     public String addTimetable(@RequestParam ("name") String timetableName, Model model, HttpSession session) {
         Member member = (Member) session.getAttribute("loginMember");
 
         if(timetableService.existsByName(timetableName, member.getId())){
-            //예외처리
+            //예외처리 알림 추가
+            model.addAttribute("member", member);
+            List<Timetable> timetables = timetableService.findByMemberId(member.getId());
+            model.addAttribute("timetables", timetables);
+
+            return "redirect:/home";
         }
         Timetable newTimetable = timetableService.createTimetableForMember(member.getId(), timetableName);
 
@@ -117,7 +122,7 @@ public class HomeController {
         List<Timetable> timetables = timetableService.findByMemberId(member.getId());
         model.addAttribute("timetables", timetables);
 
-        return "home";
+        return "redirect:/home";
     }
     @DeleteMapping("/timetables/{name}")
     public ResponseEntity<?> deleteTimetable(@ModelAttribute TimetableDTO timetableDTD, Model model, HttpSession session) {
