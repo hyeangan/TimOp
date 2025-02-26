@@ -93,6 +93,11 @@
         .tab-content.active, .stab-content.active {
             display: block;
         }
+
+        /* 시간표 스타일 */
+        .timetable { width: 100%; border-collapse: collapse; }
+        .timetable th, .timetable td { border: 1px solid #ddd; text-align: center; padding: 10px; }
+
     </style>
 </head>
 <body>
@@ -140,17 +145,50 @@
     </section>
 
     <section class="section" id="section2">
-        <input type="text" id="timetable-name" placeholder="시간표 이름을 입력하세요">
-        <button id="add-timetable-btn">시간표 추가</button>
-        <button id="delete-timetable-btn">시간표 삭제</button>
-        <div class="tab-container" id="stab-container">
-            <!--
-            Initially empty, new tabs will be added here -->
+        <div>
+            <form th:action="@{/timetables}" method="post" style="display: inline-block; margin-right: 3px;">
+                <input type="text" name="name" placeholder="새 시간표 이름 입력" required>
+                <button type="submit">시간표 추가</button>
+            </form>
+            <button onclick="deleteActiveTimetable()">시간표 삭제</button>
+        </div>
 
+        <div class="tab-container" id="stab-container">
+            <div th:each="timetable, stat : ${timetables}"
+                 class="stab"
+                 th:classappend="${stat.first} ? 'active'"
+                 th:data-tab="'stab' + ${stat.index + 1}"
+                 th:text="${timetable.name}">
+            </div>
         </div>
+
         <div id="timetable-container">
-            <!-- Initially empty, new timetable contents will be added here -->
+            <div th:each="timetable, stat : ${timetables}"
+                 class="stab-content"
+                 th:id="'stab' + ${stat.index + 1}"
+                 th:classappend="${stat.first} ? 'active'">
+
+                <table class="timetable">
+                    <thead>
+                    <tr>
+                        <th>시간 / 요일</th>
+                        <th>월</th><th>화</th><th>수</th><th>목</th><th>금</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="hour : ${#numbers.sequence(9, 22)}">
+                        <td th:text="|${hour}:00 - ${hour+1}:00|"></td>
+                        <td th:each="day : ${ {'월', '화', '수', '목', '금'} }">
+                    </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
         </div>
+
+
     </section>
     <section class="section">
         <form action="#" th:action="@{/search}" method="get">
@@ -288,6 +326,7 @@
             }
         }
     }
+
     document.querySelectorAll('.liberalArtsCheckboxes').forEach(function(checkbox) {
         checkbox.addEventListener('change', function() {
             if (this.checked) {
@@ -301,6 +340,7 @@
             }
         });
     });
+
     // Dropdown menu change event
     document.getElementById('categoryDropdown').addEventListener('change', function() {
         // Uncheck all liberal arts checkboxes
@@ -320,8 +360,11 @@
             }
         });
     });
+
     function setupTabEvents(sectionId) {
         const section = document.getElementById(sectionId);
+        if (!section) return; // 섹션이 존재하는지 확인
+
         const tabs = section.querySelectorAll('.tab, .stab');
         const contents = section.querySelectorAll('.tab-content, .stab-content');
 
@@ -333,6 +376,7 @@
 
                 // 클릭된 탭과 연결된 콘텐츠를 활성화
                 tab.classList.add('active');
+
                 const content = section.querySelector(`#${tab.dataset.tab}`);
                 if (content) {
                     content.classList.add('active');
@@ -340,144 +384,51 @@
             });
         });
     }
+
     document.addEventListener('DOMContentLoaded', function() {
-    setupTabEvents('section1');
-    setupTabEvents('section2');
-
-    document.getElementById('add-timetable-btn').addEventListener('click', function() {
-        const timetableName = document.getElementById('timetable-name').value;
-        if (!timetableName) {
-            alert('시간표 이름을 입력하세요');
-            return;
-        }
-
-        fetch('/timetables', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ name: timetableName }),
-        })
-        .then(response => {
-            if (!response.ok) {
-                return response.json().then(error => { throw new Error(error.message); });
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Success:', data);
-
-            const stabContainer = document.getElementById('stab-container');
-            const timetableContainer = document.getElementById('timetable-container');
-            const tabCount = stabContainer.children.length;
-
-            const newTab = document.createElement('div');
-            newTab.className = 'stab';
-            newTab.dataset.tab = 'stab' + (tabCount + 1);
-            newTab.textContent = timetableName;
-            stabContainer.appendChild(newTab);
-
-            const newTabContent = document.createElement('div');
-            newTabContent.className = 'stab-content';
-            newTabContent.id = 'stab' + (tabCount + 1);
-
-            const newTable = document.createElement('table');
-            newTable.className = 'timetable';
-            newTable.innerHTML = `
-                <thead>
-                    <tr>
-                        <th>시간 / 요일</th>
-                        <th>월</th>
-                        <th>화</th>
-                        <th>수</th>
-                        <th>목</th>
-                        <th>금</th>
-                        <th>시간</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>09:00 - 09:25</td><td></td><td></td><td></td><td></td><td></td><td>1a</td></tr>
-                    <tr><td>09:25 - 09:50</td><td></td><td></td><td></td><td></td><td></td><td>1b</td></tr>
-                    <tr><td>09:50 - 10:15</td><td></td><td></td><td></td><td></td><td></td><td>2a</td></tr>
-                    <tr><td>10:25 - 10:50</td><td></td><td></td><td></td><td></td><td></td><td>2b</td></tr>
-                    <tr><td>10:50 - 11:15</td><td></td><td></td><td></td><td></td><td></td><td>3a</td></tr>
-                    <tr><td>11:15 - 11:40</td><td></td><td></td><td></td><td></td><td></td><td>3b</td></tr>
-                    <tr><td>11:50 - 12:15</td><td></td><td></td><td></td><td></td><td></td><td>4a</td></tr>
-                    <tr><td>12:15 - 12:40</td><td></td><td></td><td></td><td></td><td></td><td>4b</td></tr>
-                    <tr><td>12:40 - 13:05</td><td></td><td></td><td></td><td></td><td></td><td>5a</td></tr>
-                    <tr><td>13:15 - 13:40</td><td></td><td></td><td></td><td></td><td></td><td>5b</td></tr>
-                    <tr><td>13:40 - 14:05</td><td></td><td></td><td></td><td></td><td></td><td>6a</td></tr>
-                    <tr><td>14:05 - 14:30</td><td></td><td></td><td></td><td></td><td></td><td>6b</td></tr>
-                    <tr><td>14:40 - 15:05</td><td></td><td></td><td></td><td></td><td></td><td>7a</td></tr>
-                    <tr><td>15:05 - 15:30</td><td></td><td></td><td></td><td></td><td></td><td>7b</td></tr>
-                    <tr><td>15:30 - 15:55</td><td></td><td></td><td></td><td></td><td></td><td>8a</td></tr>
-                    <tr><td>16:05 - 16:30</td><td></td><td></td><td></td><td></td><td></td><td>8b</td></tr>
-                    <tr><td>16:30 - 16:55</td><td></td><td></td><td></td><td></td><td></td><td>9a</td></tr>
-                    <tr><td>16:55 - 17:20</td><td></td><td></td><td></td><td></td><td></td><td>9b</td></tr>
-                </tbody>
-            `;
-            newTabContent.appendChild(newTable);
-            timetableContainer.appendChild(newTabContent);
-
-            newTab.addEventListener('click', function() {
-                stabContainer.querySelectorAll('.stab').forEach(function(t) { t.classList.remove('active'); });
-                timetableContainer.querySelectorAll('.stab-content').forEach(function(c) { c.classList.remove('active'); });
-
-                newTab.classList.add('active');
-                newTabContent.classList.add('active');
-            });
-
-            newTab.click();
-        })
-        .catch((error) => {
-            alert('Error: ' + error.message);
-        });
+        setupTabEvents('section1');
+        setupTabEvents('section2');
     });
 
-    document.getElementById('delete-timetable-btn').addEventListener('click', function() {
-        const activeTab = document.querySelector('#stab-container .stab.active');
+    function deleteActiveTimetable() {
+        const activeTab = document.querySelector('.stab.active');
         if (!activeTab) {
-            alert('삭제할 시간표를 선택하세요');
+            alert("삭제할 시간표를 선택하세요.");
             return;
         }
 
-        const timetableName = activeTab.textContent;
+        // 시간표 이름 가져오기
+        const timetableName = activeTab.textContent.trim();
 
-        fetch('/timetables', {
+        // 서버로 DELETE 요청 보내기
+        fetch('/timetables/' + encodeURIComponent(timetableName), {
             method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ name: timetableName }),
         })
         .then(response => {
-            if (response.status === 204) {
-                return null;  // 응답 본문이 비어 있음을 명시적으로 처리
-            } else if (!response.ok) {
-                return response.json().then(error => { throw new Error(error.message); });
+            if (response.ok) {
+                alert("시간표가 삭제되었습니다.");
+
+                // 삭제된 탭을 UI에서 제거
+                activeTab.remove();
+
+                // 첫 번째 탭 자동 활성화
+                const firstTab = document.querySelector('.stab');
+                if (firstTab) {
+                    firstTab.classList.add('active');
+                    const firstTabContent = document.getElementById(firstTab.dataset.tab);
+                    //if (firstTabContent) {
+                    //    firstTabContent.classList.add('active');
+                    //}
+                }
+            } else {
+                alert("삭제 실패!");
             }
-            return response.json();
         })
-        .then(data => {
-            console.log('Deleted:', data);
-
-            const contentId = activeTab.dataset.tab;
-            activeTab.remove();
-            document.getElementById(contentId).remove();
-
-            const firstTab = document.querySelector('#stab-container .stab');
-            if (firstTab) {
-                firstTab.click();
-            }
-        })
-        .catch((error) => {
-            alert('Error: ' + error.message);
-        });
-    });
-});
-
+        .catch(error => console.error('Error:', error));
+    }
 
 
 </script>
+
 </body>
 </html>

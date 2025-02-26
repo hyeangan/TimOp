@@ -19,10 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 @Slf4j
@@ -49,7 +46,7 @@ public class HomeController {
         //model.addAttribute("timetables", timetables);
         model.addAttribute("member", member);
         List<Timetable> timetables = timetableService.findByMemberId(member.getId());
-        model.addAttribute("timeTables", timetables);
+        model.addAttribute("timetables", timetables);
 
         return "home";
     }
@@ -84,6 +81,8 @@ public class HomeController {
         if (member != null) {
             session.setAttribute("loginMember", member);
             model.addAttribute("member", member);
+            List<Timetable> timetables = timetableService.findByMemberId(member.getId());
+            model.addAttribute("timetables", timetables);
             return "home";
         } else {
             return "login";
@@ -100,32 +99,33 @@ public class HomeController {
 
         model.addAttribute("member", member);
         List<Timetable> timetables = timetableService.findByMemberId(member.getId());
-        model.addAttribute("timeTables", timetables);
+        model.addAttribute("timetables", timetables);
         log.info("강의 저장");
         // 리다이렉트 또는 뷰 이름 반환
         return "home"; // 강의 목록 페이지로 리다이렉트
     }
     @PostMapping("/timetables")
-    public String addTimetable(@RequestBody TimetableDTO timetableDTD, Model model, HttpSession session) {
+    public String addTimetable(@RequestParam ("name") String timetableName, Model model, HttpSession session) {
         Member member = (Member) session.getAttribute("loginMember");
-        timetableService.createTimetableForMember(member.getId(), timetableDTD.getName());
+
+        if(timetableService.existsByName(timetableName, member.getId())){
+            //예외처리
+        }
+        Timetable newTimetable = timetableService.createTimetableForMember(member.getId(), timetableName);
 
         model.addAttribute("member", member);
         List<Timetable> timetables = timetableService.findByMemberId(member.getId());
-        model.addAttribute("timeTables", timetables);
+        model.addAttribute("timetables", timetables);
 
         return "home";
     }
-    @DeleteMapping("/timetables")
-    public String deleteTimetable(@RequestBody TimetableDTO timetableDTD, Model model, HttpSession session) {
+    @DeleteMapping("/timetables/{name}")
+    public ResponseEntity<?> deleteTimetable(@ModelAttribute TimetableDTO timetableDTD, Model model, HttpSession session) {
+        log.info("삭제 시간표 이름" + timetableDTD.getName());
         Member member = (Member) session.getAttribute("loginMember");
         timetableService.deleteTimetableForMember(member.getId(), timetableDTD.getName());
 
-        model.addAttribute("member", member);
-        List<Timetable> timetables = timetableService.findByMemberId(member.getId());
-        model.addAttribute("timeTables", timetables);
-
-        return "home";
+        return ResponseEntity.noContent().build(); // 204 No Content 반환
     }
 
 

@@ -2,6 +2,7 @@ package kangnamUni.TimOp.controller;
 
 import jakarta.servlet.http.HttpSession;
 import kangnamUni.TimOp.Service.LectureService;
+import kangnamUni.TimOp.Service.TimetableService;
 import kangnamUni.TimOp.domain.Lecture;
 import kangnamUni.TimOp.domain.LectureFilterDTO;
 import kangnamUni.TimOp.domain.Member;
@@ -22,12 +23,12 @@ import java.util.List;
 @Controller
 public class FilteringController {
     private final LectureService lectureService;
-    private final TimetableRepository timetableRepository;
+    private final TimetableService timetableService;
 
     @Autowired
-    public FilteringController(LectureService lectureService, TimetableRepository timetableRepository) {
+    public FilteringController(LectureService lectureService, TimetableService timetableService) {
         this.lectureService = lectureService;
-        this.timetableRepository = timetableRepository;
+        this.timetableService = timetableService;
     }
 
     @GetMapping("/search")
@@ -39,8 +40,8 @@ public class FilteringController {
         //model.addAttribute("timetables", timetables);
         model.addAttribute("member", member);
         model.addAttribute("lectures", lectures);
-        List<Timetable> timetables = timetableRepository.findByMember((Member) session.getAttribute("loginMember"));
-        model.addAttribute("timeTables", timetables);
+        List<Timetable> timetables = timetableService.findByMemberId(member.getId());
+        model.addAttribute("timetables", timetables);
         return "home";
     }
 
@@ -53,8 +54,8 @@ public class FilteringController {
         //model.addAttribute("timetables", timetables);
         model.addAttribute("member", member);
         model.addAttribute("lectures", lectures);
-        List<Timetable> timetables = timetableRepository.findByMember((Member) session.getAttribute("loginMember"));
-        model.addAttribute("timeTables", timetables);
+        List<Timetable> timetables = timetableService.findByMemberId(member.getId());
+        model.addAttribute("timetables", timetables);
         return "home";
 
     }

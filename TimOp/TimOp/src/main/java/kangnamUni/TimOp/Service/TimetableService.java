@@ -29,7 +29,7 @@ public class TimetableService {
         Optional<Timetable> timetable = timetableRepository.findByNameAndMember(timetableName, member);
         return timetable.orElseThrow(() -> new RuntimeException("Lecture not found with id: " + timetableName));
     }
-    public void createTimetableForMember(Long memberId, String timetableName) {
+    public Timetable createTimetableForMember(Long memberId, String timetableName) {
         Member member = memberRepository.findById(memberId)
                 .orElseThrow(() -> new RuntimeException("Member not found"));
         // 중복 이름 검사
@@ -43,7 +43,7 @@ public class TimetableService {
 
         member.addTimetable(newTimetable);
         memberRepository.save(member);
-
+        return newTimetable;
     }
     public void deleteTimetableForMember(Long memberId, String timetableName) {
         Member member = memberRepository.findById(memberId)
@@ -95,5 +95,13 @@ public class TimetableService {
         }
         Member member = optionalMember.get();
         return timetableRepository.findByMember(member);
+    }
+    public boolean existsByName(String name, Long memberId){
+        Optional<Member> optionalMember = memberRepository.findById(memberId);
+        if(optionalMember.isEmpty()){
+            throw new RuntimeException("Member not found");
+        }
+        Member member = optionalMember.get();
+        return timetableRepository.existsByMemberAndName(member, name);
     }
 }
