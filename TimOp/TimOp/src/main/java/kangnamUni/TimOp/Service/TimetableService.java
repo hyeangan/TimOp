@@ -30,6 +30,7 @@ public class TimetableService {
         return timetable.orElseThrow(() -> new RuntimeException("Lecture not found with id: " + timetableName));
     }
     public Timetable createTimetableForMember(Long memberId, String timetableName) {
+
         Member member = memberRepository.findById(memberId)
                 .orElseThrow(() -> new RuntimeException("Member not found"));
         // 중복 이름 검사
@@ -45,16 +46,40 @@ public class TimetableService {
         memberRepository.save(member);
         return newTimetable;
     }
+    /*
+    @Transactional
     public void deleteTimetableForMember(Long memberId, String timetableName) {
         Member member = memberRepository.findById(memberId)
                 .orElseThrow(() -> new RuntimeException("Member not found"));
 
         Timetable timetable = timetableRepository.findByNameAndMember(timetableName, member)
                 .orElseThrow(() -> new RuntimeException("Timetable not found"));
+
+
+        timetable.getLectures().forEach(lecture -> lecture.getTimetables().remove(timetable));
+        timetable.getLectures().clear(); // 중간 테이블에서 관계 제거
+
+        timetableRepository.save(timetable); // 관계 변경 사항 저장
+        timetableRepository.flush();
+
         member.removeTimetable(timetable);
+        memberRepository.save(member);
         timetableRepository.delete(timetable);
     }
+     */
     @Transactional
+    public void deleteTimetableForMember(Long memberId, String timetableName) {
+        Member member = memberRepository.findById(memberId)
+                .orElseThrow(() -> new RuntimeException("Member not found"));
+
+        Timetable timetable = timetableRepository.findByNameAndMember(timetableName, member)
+                .orElseThrow(() -> new RuntimeException("Timetable not found"));
+
+        member.removeTimetable(timetable); //orphanRemoval = true DELETE실행 변경감지로 save
+        timetableRepository.delete(timetable); // manytomany에서 delete호출시 중간 관계가 자동 삭제됨
+    }
+
+
     //개인 시간표에 강의 추가
     // member에 시간표 이름으로 시간표 조회하고 시간표 list에 너어야해
     //리턴 home
@@ -83,10 +108,8 @@ public class TimetableService {
         }
 
         // 강의를 시간표에 추가
-        timetable.addLecture(lecture);
-
+        timetable.getLectures().add(lecture);
         timetableRepository.save(timetable);  // 시간표 변경 사항 저장
-        lectureRepository.save(lecture);      // 강의 변경 사항 저장
     }
     public List<Timetable> findByMemberId(Long memberId){
         Optional<Member> optionalMember = memberRepository.findById(memberId);

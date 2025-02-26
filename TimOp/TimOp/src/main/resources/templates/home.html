@@ -126,9 +126,9 @@
                         <div style="display:inline" th:text="${lecture.credit} + '학점'"></div>
                         <div style="display:inline" th:text="${lecture.num} + '  '"></div><br><br>
                         <div>
-                            <form th:action="@{/timetables/lectures}" method="post">
+                            <form class="lectureForm" th:action="@{/timetables/lectures}" method="post">
                                 <input type="hidden" name="id" th:value="${lecture.id}" />
-                                <input type="hidden" name="timetableName" value = "sol" />
+                                <input type="hidden" class="timetableName" id="timetableName" name="timetableName" />
                                 <button type="submit">시간표에 추가</button>
                             </form>
                         </div>
@@ -384,10 +384,38 @@
             });
         });
     }
+    function getActiveTimetableName() {
+    console.log("getActiveTimetableName 실행됨");
+
+    const forms = document.querySelectorAll(".lectureForm"); // 모든 lectureForm 찾기
+
+    forms.forEach(form => {
+        const timetableNameInput = form.querySelector(".timetableName"); // 해당 폼 내부의 input 찾기
+        if (!timetableNameInput){
+            console.log("dasd");
+            return;
+        }
+
+
+        form.addEventListener("submit", function (event) {
+            const activeTab = document.querySelector(".stab.active"); // 활성화된 시간표 찾기
+
+            if (activeTab) {
+                console.log("Active Tab Found:", activeTab.textContent.trim());
+                timetableNameInput.value = activeTab.textContent.trim();
+            } else {
+                console.warn("No active tab found.");
+                timetableNameInput.value = "";
+            }
+        });
+    });
+}
+
 
     document.addEventListener('DOMContentLoaded', function() {
         setupTabEvents('section1');
         setupTabEvents('section2');
+        getActiveTimetableName();
     });
 
     function deleteActiveTimetable() {
