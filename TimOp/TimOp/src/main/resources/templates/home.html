@@ -21,6 +21,11 @@
         td {
             background-color: #e7e7e7;
         }
+        th:first-child, td:first-child {
+            min-width: 50px; /* ✅ 최소 너비 설정 */
+            width: 20%; /* ✅ 전체 테이블 대비 비율 설정 */
+            max-width: 80px; /* ✅ 너무 커지지 않도록 제한 */
+        }
         .container {
             display: flex;
             justify-content: space-between;
@@ -94,9 +99,52 @@
             display: block;
         }
 
-        /* 시간표 스타일 */
-        .timetable { width: 100%; border-collapse: collapse; }
-        .timetable th, .timetable td { border: 1px solid #ddd; text-align: center; padding: 10px; }
+        /* 시간표 전체 스타일 */
+        .timetable-container {
+            position: relative;
+            width: 100%;
+            height: 700px;
+            border: 1px solid #ddd;
+            overflow: hidden;
+        }
+
+        /* 강의 블록 컨테이너 */
+        .lecture-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+
+    /* 강의 블록 */
+    .lecture-block {
+        position: absolute;
+        width: calc(100% - 10px); /* ✅ 요일별 크기 맞춤 */
+        min-height: 20px; /* ✅ 최소 높이 설정 */
+        border-radius: 5px;
+        background-color: white; /* ✅ 배경색 */
+        color: black; /* ✅ 텍스트 색상을 검은색으로 변경 */
+        text-align: center;
+        font-weight: bold;
+        font-size: 12px; /* ✅ 폰트 크기 축소 */
+        line-height: 1.2; /* ✅ 줄 간격 조정 */
+        padding: 2px 5px; /* ✅ 패딩 최소화 */
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+
+        /* ✅ 텍스트를 정중앙 배치 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        overflow: hidden; /* ✅ 내용이 넘치면 자르기 */
+        text-overflow: ellipsis; /* ✅ 넘치는 텍스트 '...' 표시 */
+        word-wrap: break-word; /* ✅ 긴 단어 자동 줄바꿈 */
+    }
+
+
+
 
     </style>
 </head>
@@ -154,38 +202,11 @@
         </div>
 
         <div class="tab-container" id="stab-container">
-            <div th:each="timetable, stat : ${timetables}"
-                 class="stab"
-                 th:classappend="${stat.first} ? 'active'"
-                 th:data-tab="'stab' + ${stat.index + 1}"
-                 th:text="${timetable.name}">
-            </div>
+
         </div>
 
         <div id="timetable-container">
-            <div th:each="timetable, stat : ${timetables}"
-                 class="stab-content"
-                 th:id="'stab' + ${stat.index + 1}"
-                 th:classappend="${stat.first} ? 'active'">
 
-                <table class="timetable">
-                    <thead>
-                    <tr>
-                        <th>시간 / 요일</th>
-                        <th>월</th><th>화</th><th>수</th><th>목</th><th>금</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    <tr th:each="hour : ${#numbers.sequence(9, 22)}">
-                        <td th:text="|${hour}:00 - ${hour+1}:00|"></td>
-                        <td th:each="day : ${ {'월', '화', '수', '목', '금'} }">
-                    </tr>
-
-
-                    </tbody>
-                </table>
-            </div>
         </div>
 
 
@@ -416,6 +437,8 @@
         setupTabEvents('section1');
         setupTabEvents('section2');
         getActiveTimetableName();
+
+        fetchTimetables();
     });
 
     function deleteActiveTimetable() {
@@ -454,6 +477,181 @@
         })
         .catch(error => console.error('Error:', error));
     }
+
+    function fetchTimetables() {
+        fetch('/timetables')
+            .then(response => response.json())
+            .then(data => {
+                timetables = data;
+                renderTabs(data);
+                if (data.length > 0) {
+                    renderLectures(data[0]); // 첫 번째 시간표의 강의 정보 표시
+                }
+            })
+            .catch(error => console.error("시간표 불러오기 오류:", error));
+    }
+    function renderTabs(timetables) {
+    const tabContainer = document.getElementById("stab-container");
+    const timetableContainer = document.getElementById("timetable-container");
+    tabContainer.innerHTML = "";
+    timetableContainer.innerHTML = "";
+
+    timetables.forEach((timetable, index) => {
+
+            // 🔹 탭 생성
+            let tab = document.createElement("div");
+            tab.className = "stab" + (index === 0 ? " active" : "");
+            tab.dataset.tab = "stab" + (index + 1);
+            tab.textContent = timetable.name;
+            tab.onclick = () => {
+                document.querySelectorAll(".stab").forEach(t => t.classList.remove("active"));
+                document.querySelectorAll(".stab-content").forEach(c => c.classList.remove("active"));
+                tab.classList.add("active");
+                document.getElementById("stab" + (index + 1)).classList.add("active");
+
+                renderLectures(timetable);
+            };
+            tabContainer.appendChild(tab);
+
+            // 🔹 시간표 및 강의 블록 컨테이너 추가
+            let tableContent = `
+                <div class="stab-content ${index === 0 ? "active" : ""}" id="stab${index + 1}">
+                    <div class="timetable-container">
+                        <table class="timetable">
+                            <thead>
+                                <tr>
+                                    <th>시간 / 요일</th>
+                                    <th>월</th><th>화</th><th>수</th><th>목</th><th>금</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${Array.from({length: 14}, (_, i) => {
+                                    let hour = i + 9;
+                                    return `
+                                        <tr data-hour="${hour}">
+                                            <td>${hour}:00</td>
+                                            <td></td><td></td><td></td><td></td><td></td>
+                                        </tr>`;
+                                }).join('')}
+                            </tbody>
+                        </table>
+                        <div class="lecture-container"></div> <!-- 🔹 강의 블록 컨테이너 -->
+                    </div>
+                </div>`;
+            timetableContainer.innerHTML += tableContent;
+        });
+    }
+
+function renderLectures(timetable) {
+    const days = { "월": 1, "화": 2, "수": 3, "목": 4, "금": 5 };
+    const startHour = 9; // 시간표 시작 시간
+
+    let activeTab = document.querySelector('.stab-content.active');
+    if (!activeTab) return;
+
+    let container = activeTab.querySelector(".lecture-container");
+    if (!container) return;
+
+    let table = activeTab.querySelector(".timetable");
+    if (!table) return;
+
+    let timetableHeaderCells = activeTab.querySelectorAll(".timetable thead th");
+
+    let timetableBody = activeTab.querySelector(".timetable tbody");
+
+
+    if (timetableHeaderCells.length < 6 || !timetableBody) return;
+
+    // ✅ 요일(월~금) 영역의 높이를 가져오기
+    let theadHeight = activeTab.querySelector(".timetable thead").offsetHeight;
+    console.log("헤더");
+    console.log(theadHeight);
+    // ✅ 요일 칼럼 크기 계산 (2열부터 적용)
+    let columnWidth = timetableHeaderCells[1].offsetWidth;
+
+
+    // ✅ 동적으로 시간당 높이 계산 (tbody 높이 ÷ 시간 개수)
+    let totalHours = timetableBody.querySelectorAll("tr").length; // 총 시간 개수
+    let timetableHeight = timetableBody.offsetHeight; // tbody 높이
+    let hourHeight = timetableHeight / totalHours; // 한 시간당 높이
+
+
+    container.innerHTML = ""; // 기존 강의 블록 제거 후 다시 그리기
+
+    timetable.lectures.forEach(lecture => {
+        lecture.lectureTimes.forEach(lt => {
+            let dayIndex = days[lt.dayOfWeek];
+            if (dayIndex === undefined) return;
+            console.log(lt);
+            let { hour: startHourValue, minute: startMinuteValue } = parseTime(lt.startTime);
+            let { hour: endHourValue, minute: endMinuteValue } = parseTime(lt.endTime);
+            console.log("startHourValue");
+            console.log(startHourValue);
+            console.log("startMinuteValue");
+            console.log(startMinuteValue);
+            console.log("endHourValue");
+            console.log(endHourValue);
+            console.log("endMinuteValue");
+            console.log(endMinuteValue);
+            // ✅ 시작 위치 계산 (thead 높이 고려)
+            let startOffset = theadHeight + ((startHourValue - startHour) * hourHeight) + (startMinuteValue / 60 * hourHeight);
+            console.log("startOffset");
+            console.log(startOffset);
+            // ✅ 강의 길이 계산 (비율 적용)
+            let durationInMinutes = (endHourValue * 60 + endMinuteValue) - (startHourValue * 60 + startMinuteValue);
+            let blockHeight = (durationInMinutes / 60) * hourHeight;
+            console.log("blockHeight");
+            console.log(blockHeight);
+            // ✅ 강의 블록 생성
+            let lectureBlock = document.createElement("div");
+            lectureBlock.classList.add("lecture-block");
+            lectureBlock.style.top = `${startOffset}px`; // ✅ 요일 부분을 가리지 않도록 보정
+            lectureBlock.style.height = `${blockHeight}px`; // ✅ 높이 자동 계산
+
+            // "시간 / 요일" 칼럼의 너비 가져오기
+            let timeColumnWidth = timetableHeaderCells[0].offsetWidth;
+            lectureBlock.style.left = `${timeColumnWidth + (dayIndex - 1) * columnWidth}px`;
+
+            lectureBlock.style.width = `${columnWidth - 10}px`; // ✅ 칼럼 크기 맞춤
+            lectureBlock.style.backgroundColor = getLectureColor(lecture.title);
+            lectureBlock.textContent = lecture.title;
+
+            container.appendChild(lectureBlock);
+        });
+    });
+}
+
+function parseTime(timeString) {
+    let [hour, minute] = timeString.split(":").map(Number); // "15:30:00" → [15, 30]
+    return { hour, minute };
+}
+
+let timetables = [];
+
+window.addEventListener("resize", () => {
+    let activeTab = document.querySelector(".stab-content.active");
+    if (activeTab) {
+
+        let timetableIndex = Array.from(document.querySelectorAll(".stab-content")).indexOf(activeTab) + 1;
+        console.log(timetableIndex);
+        let timetableData = timetables[timetableIndex - 1];
+        renderLectures(timetableData);
+    }
+});
+
+
+// 🔹 강의마다 고유한 색상 적용
+const colors = ["#FFC0CB", "#FFD700", "#87CEFA", "#90EE90", "#FF6347", "#DA70D6", "#40E0D0", "#FFA07A"];
+const lectureColors = {};
+
+function getLectureColor(lectureTitle) {
+    if (!lectureColors[lectureTitle]) {
+        let index = Object.keys(lectureColors).length % colors.length;
+        lectureColors[lectureTitle] = colors[index];
+    }
+    return lectureColors[lectureTitle];
+}
+
 
 
 </script>
