@@ -104,12 +104,20 @@ public class HomeController {
         // 리다이렉트 또는 뷰 이름 반환
         return "redirect:/home"; // 강의 목록 페이지로 리다이렉트
     }
+    //시간표 표시
+    @GetMapping("/timetables")
+    @ResponseBody
+    public ResponseEntity<List<TimetableDTO>> getAllTimetables() {
+        return ResponseEntity.ok(timetableService.getAllTimetablesInfo());
+    }
+
+    //시간표 추가
     @PostMapping("/timetables")
     public String addTimetable(@RequestParam ("name") String timetableName, Model model, HttpSession session) {
         Member member = (Member) session.getAttribute("loginMember");
 
         if(timetableService.existsByName(timetableName, member.getId())){
-            //예외처리 알림 추가
+            //예외처리 알림 추가해
             model.addAttribute("member", member);
             List<Timetable> timetables = timetableService.findByMemberId(member.getId());
             model.addAttribute("timetables", timetables);

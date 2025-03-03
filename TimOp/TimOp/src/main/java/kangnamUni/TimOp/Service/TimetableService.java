@@ -1,10 +1,7 @@
 package kangnamUni.TimOp.Service;
 
 import jakarta.transaction.Transactional;
-import kangnamUni.TimOp.domain.Lecture;
-import kangnamUni.TimOp.domain.Member;
-import kangnamUni.TimOp.domain.QMember;
-import kangnamUni.TimOp.domain.Timetable;
+import kangnamUni.TimOp.domain.*;
 import kangnamUni.TimOp.repository.LectureRepository;
 import kangnamUni.TimOp.repository.MemberRepository;
 import kangnamUni.TimOp.repository.TimetableRepository;
@@ -13,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static kangnamUni.TimOp.domain.QMember.member;
 
@@ -126,5 +124,28 @@ public class TimetableService {
         }
         Member member = optionalMember.get();
         return timetableRepository.existsByMemberAndName(member, name);
+    }
+    //시간표 표시를 위한
+    public List<TimetableDTO> getAllTimetablesInfo() {
+        List<Timetable> timetables = timetableRepository.findAll();
+
+        return timetables.stream()
+                .map(timetable -> new TimetableDTO(
+                        timetable.getId(),
+                        timetable.getName(),
+                        timetable.getLectures().stream()
+                                .map(lecture -> new LectureDTO(
+                                        lecture.getTitle(),
+                                        lecture.getProfessor(),
+                                        lecture.getLectureTimes().stream()
+                                                .map(lt -> new LectureTimeDTO(
+                                                        lt.getDayOfWeek().toString(),
+                                                        lt.getStartTime(),
+                                                        lt.getEndTime()))
+                                                .collect(Collectors.toList())
+                                ))
+                                .collect(Collectors.toList())
+                ))
+                .collect(Collectors.toList());
     }
 }
