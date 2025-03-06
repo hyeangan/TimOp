@@ -1,0 +1,46 @@
+
+<html>
+<script>
+    //시간표 이름으로 DB에서 시간표 조회 후 시간표에 포함된 강의 리스트 받기
+    function getTimetableLectures(){
+        const activeTab = document.querySelector('.stab.active');
+        if (!activeTab) {
+            return;
+        }
+
+    // 시간표 이름 가져오기
+    const timetableName = activeTab.textContent.trim();
+
+    // 서버로 GET 요청 보내기
+    fetch('/timetables/lectures' + encodeURIComponent(timetableName), {
+    method: 'GET',
+    })
+    .then(response => response.json())
+    .then(data => {
+            console.log("불러온 강의 리스트:", data);
+
+            // 시간표 내용을 업데이트할 컨테이너 찾기
+            const tabContent = document.getElementById('tab1-2-content');
+            if (!tabContent) {
+                console.error("시간표 컨텐츠 영역을 찾을 수 없습니다.");
+                return;
+            }
+
+            // 기존 목록 삭제
+            tabContent.innerHTML = "";
+
+            // 새로운 강의 목록 추가
+            const ul = document.createElement("ul");
+            data.forEach(lecture => {
+                const li = document.createElement("li");
+                li.textContent = lecture.title;  // 강의 이름 추가
+                ul.appendChild(li);
+            });
+
+            tabContent.appendChild(ul);
+        })
+        .catch(error => console.error("탭 시간표 오류:", error));
+    }
+}
+</script>
+</html>

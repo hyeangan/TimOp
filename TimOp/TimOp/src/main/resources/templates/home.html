@@ -72,12 +72,13 @@
             border: 2px solid #ccc;
             padding: 10px;
         }
-        /* 탭 스타일 */
+
         .tab-container {
             display: flex;
             border-bottom: 1px solid #ccc;
             margin-bottom: 20px;
         }
+
         .tab, .stab {
             padding: 10px 20px;
             cursor: pointer;
@@ -156,9 +157,9 @@
 <div class="container">
     <section class="section" id="section1">
         <div class="tab-container">
-            <h1>깃 테스트</h1>
             <div class="tab active" data-tab="tab1-1">검색 결과</div>
             <div class="tab" data-tab="tab1-2">시간표</div>
+
             <div class="tab" data-tab="tab1-3">탭 3</div>
         </div>
         <div class="tab-content active" id="tab1-1">
@@ -477,7 +478,7 @@
         })
         .catch(error => console.error('Error:', error));
     }
-
+    //섹션2 시간표 탭과 시간표 강의 표시
     function fetchTimetables() {
         fetch('/timetables')
             .then(response => response.json())
@@ -486,6 +487,7 @@
                 renderTabs(data);
                 if (data.length > 0) {
                     renderLectures(data[0]); // 첫 번째 시간표의 강의 정보 표시
+                    getTimetableLectures();
                 }
             })
             .catch(error => console.error("시간표 불러오기 오류:", error));
@@ -510,6 +512,8 @@
                 document.getElementById("stab" + (index + 1)).classList.add("active");
 
                 renderLectures(timetable);
+
+                getTimetableLectures();
             };
             tabContainer.appendChild(tab);
 
@@ -564,8 +568,6 @@ function renderLectures(timetable) {
 
     // ✅ 요일(월~금) 영역의 높이를 가져오기
     let theadHeight = activeTab.querySelector(".timetable thead").offsetHeight;
-    console.log("헤더");
-    console.log(theadHeight);
     // ✅ 요일 칼럼 크기 계산 (2열부터 적용)
     let columnWidth = timetableHeaderCells[1].offsetWidth;
 
@@ -585,23 +587,14 @@ function renderLectures(timetable) {
             console.log(lt);
             let { hour: startHourValue, minute: startMinuteValue } = parseTime(lt.startTime);
             let { hour: endHourValue, minute: endMinuteValue } = parseTime(lt.endTime);
-            console.log("startHourValue");
-            console.log(startHourValue);
-            console.log("startMinuteValue");
-            console.log(startMinuteValue);
-            console.log("endHourValue");
-            console.log(endHourValue);
-            console.log("endMinuteValue");
-            console.log(endMinuteValue);
+
             // ✅ 시작 위치 계산 (thead 높이 고려)
             let startOffset = theadHeight + ((startHourValue - startHour) * hourHeight) + (startMinuteValue / 60 * hourHeight);
-            console.log("startOffset");
-            console.log(startOffset);
+
             // ✅ 강의 길이 계산 (비율 적용)
             let durationInMinutes = (endHourValue * 60 + endMinuteValue) - (startHourValue * 60 + startMinuteValue);
             let blockHeight = (durationInMinutes / 60) * hourHeight;
-            console.log("blockHeight");
-            console.log(blockHeight);
+
             // ✅ 강의 블록 생성
             let lectureBlock = document.createElement("div");
             lectureBlock.classList.add("lecture-block");
@@ -627,6 +620,7 @@ function parseTime(timeString) {
 }
 
 let timetables = [];
+let tabLectures = [];
 
 window.addEventListener("resize", () => {
     let activeTab = document.querySelector(".stab-content.active");
@@ -652,6 +646,46 @@ function getLectureColor(lectureTitle) {
     return lectureColors[lectureTitle];
 }
 
+//시간표 이름으로 DB에서 시간표 조회 후 시간표에 포함된 강의 리스트 받기
+function getTimetableLectures() {
+    const activeTab = document.querySelector('.stab.active');
+    if (!activeTab) {
+        return;
+    }
+
+    // 시간표 이름 가져오기
+    const timetableName = activeTab.textContent.trim();
+
+    // 서버로 GET 요청 보내기
+    fetch('/timetable/' + encodeURIComponent(timetableName)+ '/lectures', {
+        method: 'GET',
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("불러온 강의 리스트:", data);
+
+        // 시간표 내용을 업데이트할 컨테이너 찾기
+        const tabContent = document.getElementById('tab1-2');
+        if (!tabContent) {
+            console.error("시간표 컨텐츠 영역을 찾을 수 없습니다.");
+            return;
+        }
+
+        // 기존 목록 삭제
+        tabContent.innerHTML = "";
+
+        // 새로운 강의 목록 추가
+        const ul = document.createElement("ul");
+        data.forEach(lecture => {
+            const li = document.createElement("li");
+            li.textContent = lecture.title;  // 강의 이름 추가
+            ul.appendChild(li);
+        });
+
+        tabContent.appendChild(ul);
+    })
+    .catch(error => console.error("탭 시간표 오류:", error));
+}
 
 
 </script>
