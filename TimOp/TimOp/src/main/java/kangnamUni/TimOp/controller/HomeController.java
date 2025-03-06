@@ -20,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 @Slf4j
@@ -88,6 +89,26 @@ public class HomeController {
             return "login";
         }
     }
+    //section1 tab2에 시간표에 저장된 강의 리스트 보내기
+    @GetMapping("/timetable/{timetableName}/lectures")
+    public ResponseEntity<List<LectureDTO>> getTimetableLectures(@PathVariable("timetableName") String timetableName, HttpSession session){
+        Member member = (Member) session.getAttribute("loginMember");
+        Timetable timetable = timetableService.findByNameAndMember(timetableName, member);
+        List<Lecture> lectures = timetable.getLectures();
+        log.info("tab2 lectures=" + lectures);
+        List<LectureDTO> lectureDTOs = timetable.getLectures().stream()
+                .map(lecture -> new LectureDTO(
+                        lecture.getTitle(),
+                        lecture.getProfessor(),
+                        lecture.getLectureTimes().stream()
+                                .map(lectureTime -> new LectureTimeDTO(lectureTime.getDayOfWeek().toString(), lectureTime.getStartTime(), lectureTime.getEndTime()))
+                                .collect(Collectors.toList()) // ✅ `List<LectureTimeDTO>` 변환 후 저장
+                ))
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(lectureDTOs);
+    }
+
     //DB 시간표에 강의 저장
     @PostMapping("/timetables/lectures")
     public String addLecture(@RequestParam("id") Long lectureId, @RequestParam("timetableName") String timetableName, Model model, HttpSession session) {
