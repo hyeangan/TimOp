@@ -122,6 +122,7 @@ public class TimetableService {
         Member member = optionalMember.get();
         return timetableRepository.existsByMemberAndName(member, name);
     }
+
     //시간표 표시를 위한
     public List<TimetableDTO> getAllTimetablesInfo() {
         List<Timetable> timetables = timetableRepository.findAll();

@@ -134,6 +134,31 @@ public class HomeController {
         return ResponseEntity.ok(timetable);
     }
     //시간표 표시
+    @GetMapping("/timetable/{timetableName}")
+    @ResponseBody
+    public ResponseEntity<TimetableDTO> getTimetable(@PathVariable("timetableName") String timetableName, HttpSession session) {
+        Member member = (Member) session.getAttribute("loginMember");
+        Timetable timetable = timetableService.findByNameAndMember(timetableName, member);
+        TimetableDTO timetableDTO = new TimetableDTO(
+                timetable.getId(),
+                timetable.getName(),
+                timetable.getLectures().stream()
+                        .map(lecture -> new LectureDTO(
+                                lecture.getId(),
+                                lecture.getTitle(),
+                                lecture.getProfessor(),
+                                lecture.getLectureTimes().stream()
+                                        .map(lt -> new LectureTimeDTO(
+                                                lt.getDayOfWeek().toString(),
+                                                lt.getStartTime(),
+                                                lt.getEndTime()
+                                        ))
+                                        .collect(Collectors.toList())
+                        ))
+                        .collect(Collectors.toList())
+        );
+        return ResponseEntity.ok(timetableDTO);
+    }
     @GetMapping("/timetables")
     @ResponseBody
     public ResponseEntity<List<TimetableDTO>> getAllTimetables() {
