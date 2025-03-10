@@ -31,4 +31,5 @@ public class Timetable {
     private List<Lecture> lectures = new ArrayList<>();
 
     private String name;
+
 }
