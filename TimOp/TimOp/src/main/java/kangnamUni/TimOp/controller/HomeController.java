@@ -98,6 +98,7 @@ public class HomeController {
         log.info("tab2 lectures=" + lectures);
         List<LectureDTO> lectureDTOs = timetable.getLectures().stream()
                 .map(lecture -> new LectureDTO(
+                        lecture.getId(),
                         lecture.getTitle(),
                         lecture.getProfessor(),
                         lecture.getLectureTimes().stream()
@@ -124,6 +125,13 @@ public class HomeController {
         log.info("강의 저장");
         // 리다이렉트 또는 뷰 이름 반환
         return "redirect:/home"; // 강의 목록 페이지로 리다이렉트
+    }
+    @DeleteMapping("/timetables/{timetableName}/lectures/{lectureId}")
+    @ResponseBody
+    public ResponseEntity<Timetable> deleteTimetableLecture(@PathVariable("timetableName") String timetableName, @PathVariable("lectureId") Long lectureId, HttpSession session){
+        Member member = (Member) session.getAttribute("loginMember");
+        Timetable timetable = timetableService.deleteTimetableLecture(member.getId(), timetableName, lectureId);
+        return ResponseEntity.ok(timetable);
     }
     //시간표 표시
     @GetMapping("/timetables")

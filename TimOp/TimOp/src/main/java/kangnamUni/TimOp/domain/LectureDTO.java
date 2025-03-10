@@ -11,7 +11,8 @@ public class LectureDTO {
     private String professor;
     private List<LectureTimeDTO> lectureTimes;
 
-    public LectureDTO(String title, String professor, List<LectureTimeDTO> collect) {
+    public LectureDTO(Long id, String title, String professor, List<LectureTimeDTO> collect) {
+        this.id = id;
         this.title = title;
         this.professor = professor;
         this.lectureTimes = collect;

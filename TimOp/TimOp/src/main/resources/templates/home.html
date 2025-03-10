@@ -442,6 +442,8 @@
         fetchTimetables();
     });
 
+
+
     function deleteActiveTimetable() {
         const activeTab = document.querySelector('.stab.active');
         if (!activeTab) {
@@ -584,7 +586,7 @@ function renderLectures(timetable) {
         lecture.lectureTimes.forEach(lt => {
             let dayIndex = days[lt.dayOfWeek];
             if (dayIndex === undefined) return;
-            console.log(lt);
+            console.log(lecture);
             let { hour: startHourValue, minute: startMinuteValue } = parseTime(lt.startTime);
             let { hour: endHourValue, minute: endMinuteValue } = parseTime(lt.endTime);
 
@@ -597,6 +599,7 @@ function renderLectures(timetable) {
 
             // ✅ 강의 블록 생성
             let lectureBlock = document.createElement("div");
+            lectureBlock.id = "lb" + lecture.id;
             lectureBlock.classList.add("lecture-block");
             lectureBlock.style.top = `${startOffset}px`; // ✅ 요일 부분을 가리지 않도록 보정
             lectureBlock.style.height = `${blockHeight}px`; // ✅ 높이 자동 계산
@@ -679,9 +682,55 @@ function getTimetableLectures() {
         data.forEach(lecture => {
             const li = document.createElement("li");
             li.textContent = lecture.title;  // 강의 이름 추가
+
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "시간표에서 삭제";
+            deleteButton.style.marginLeft = "10px";
+            deleteButton.dataset.id = lecture.id; // 데이터 ID 저장
+
+            deleteButton.addEventListener("click", function () {
+                const activeTab = document.querySelector('.stab.active');
+                if (!activeTab) {
+                    alert("삭제할 시간표를 선택하세요.");
+                    return;
+                }
+                const timetableName = activeTab.textContent.trim();
+
+                const lectureId = this.dataset.id;
+                const apiUrl = `/timetables/${timetableName}/lectures/${lectureId}`;
+
+                fetch(apiUrl, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`삭제 실패: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(() => {
+                    alert(`${lecture.title} 삭제 완료!`);
+                    li.remove(); // 목록에서 제거
+                })
+                .catch(error => {
+                    alert("삭제 요청 중 오류 발생!");
+                    console.error("Error:", error);
+                });
+                //섹션 2 시간표에서 삭제
+                const lb = document.getElementById("lb" + lectureId);
+                if(lb){
+                    lb.remove()
+                }
+                else{
+                    console.error("시간표 블록 삭제 에러");
+                }
+            });
+            li.appendChild(deleteButton);
             ul.appendChild(li);
         });
-
         tabContent.appendChild(ul);
     })
     .catch(error => console.error("탭 시간표 오류:", error));

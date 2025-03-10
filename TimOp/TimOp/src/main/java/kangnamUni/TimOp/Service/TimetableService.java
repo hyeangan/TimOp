@@ -44,27 +44,24 @@ public class TimetableService {
         memberRepository.save(member);
         return newTimetable;
     }
-    /*
     @Transactional
-    public void deleteTimetableForMember(Long memberId, String timetableName) {
+    public Timetable deleteTimetableLecture(Long memberId, String timetableName, Long lectureId){
         Member member = memberRepository.findById(memberId)
                 .orElseThrow(() -> new RuntimeException("Member not found"));
-
         Timetable timetable = timetableRepository.findByNameAndMember(timetableName, member)
                 .orElseThrow(() -> new RuntimeException("Timetable not found"));
+        Lecture lecture = lectureRepository.findById(lectureId).orElseThrow(() -> new RuntimeException("Lecture not found"));
+        // ManyToMany 관계에서 강의를 제거
+        timetable.getLectures().remove(lecture);
+        lecture.getTimetables().remove(timetable); // 반대 방향에서도 제거
 
+        // 변경 사항 저장
+        timetableRepository.save(timetable);
+        lectureRepository.save(lecture);
 
-        timetable.getLectures().forEach(lecture -> lecture.getTimetables().remove(timetable));
-        timetable.getLectures().clear(); // 중간 테이블에서 관계 제거
-
-        timetableRepository.save(timetable); // 관계 변경 사항 저장
-        timetableRepository.flush();
-
-        member.removeTimetable(timetable);
-        memberRepository.save(member);
-        timetableRepository.delete(timetable);
+        return timetable;
     }
-     */
+
     @Transactional
     public void deleteTimetableForMember(Long memberId, String timetableName) {
         Member member = memberRepository.findById(memberId)
@@ -135,6 +132,7 @@ public class TimetableService {
                         timetable.getName(),
                         timetable.getLectures().stream()
                                 .map(lecture -> new LectureDTO(
+                                        lecture.getId(),
                                         lecture.getTitle(),
                                         lecture.getProfessor(),
                                         lecture.getLectureTimes().stream()
