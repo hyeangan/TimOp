@@ -512,8 +512,19 @@
                 document.querySelectorAll(".stab-content").forEach(c => c.classList.remove("active"));
                 tab.classList.add("active");
                 document.getElementById("stab" + (index + 1)).classList.add("active");
+                const activeTab = document.querySelector('.stab.active');
+                if (!activeTab) {
+                    return;
+                }
+                const timetableName = activeTab.textContent.trim();
 
-                renderLectures(timetable);
+                fetch('/timetable/' + encodeURIComponent(timetableName))
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("getTimetable:", data);
+                        renderLectures(data);
+                    })
+                    .catch(error => console.error("시간표 탭 클릭 에러:", error));
 
                 getTimetableLectures();
             };
@@ -649,7 +660,7 @@ function getLectureColor(lectureTitle) {
     return lectureColors[lectureTitle];
 }
 
-//시간표 이름으로 DB에서 시간표 조회 후 시간표에 포함된 강의 리스트 받기
+//시간표 이름으로 DB에서 시간표 조회 후 시간표에 포함된 강의 리스트 받아서 section1 시간표 부분에 리스트 뿌리기
 function getTimetableLectures() {
     const activeTab = document.querySelector('.stab.active');
     if (!activeTab) {
@@ -691,7 +702,6 @@ function getTimetableLectures() {
             deleteButton.addEventListener("click", function () {
                 const activeTab = document.querySelector('.stab.active');
                 if (!activeTab) {
-                    alert("삭제할 시간표를 선택하세요.");
                     return;
                 }
                 const timetableName = activeTab.textContent.trim();
@@ -714,6 +724,7 @@ function getTimetableLectures() {
                 .then(() => {
                     alert(`${lecture.title} 삭제 완료!`);
                     li.remove(); // 목록에서 제거
+                    //여기
                 })
                 .catch(error => {
                     alert("삭제 요청 중 오류 발생!");
