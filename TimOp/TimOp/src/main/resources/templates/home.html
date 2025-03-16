@@ -160,30 +160,10 @@
             <div class="tab active" data-tab="tab1-1">검색 결과</div>
             <div class="tab" data-tab="tab1-2">시간표</div>
 
-            <div class="tab" data-tab="tab1-3">탭 3</div>
+            <div class="tab" data-tab="tab1-3">장바구니</div>
         </div>
         <div class="tab-content active" id="tab1-1">
-            <ul class="scrollable-list">
-                <li th:each="lecture : ${lectures}">
-                    <div>
-                        <div>
-                            <strong th:text="${lecture.title}"></strong>
-                            <a th:href="@{/{param}(param=${lecture.syllabus + '.html'})}" target="_blank">강의계획서 열기</a>
-                        </div>
-                        <div th:text="${lecture.professor}"></div>
-                        <div style="display:inline" th:text="${lecture.grade} + '학년  '"></div>
-                        <div style="display:inline" th:text="${lecture.credit} + '학점'"></div>
-                        <div style="display:inline" th:text="${lecture.num} + '  '"></div><br><br>
-                        <div>
-                            <form class="lectureForm" th:action="@{/timetables/lectures}" method="post">
-                                <input type="hidden" name="id" th:value="${lecture.id}" />
-                                <input type="hidden" class="timetableName" id="timetableName" name="timetableName" />
-                                <button type="submit">시간표에 추가</button>
-                            </form>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+
         </div>
         <div class="tab-content" id="tab1-2">
             <p>시간표 내용</p>
@@ -213,7 +193,7 @@
 
     </section>
     <section class="section">
-        <form action="#" th:action="@{/search}" method="get">
+        <form id="titleSearchForm">
             <div class="form-group" style="display:inline;" >
                 <label for="title">강의 이름으로 검색:</label>
                 <input type="text" id="searchBox" name="title">
@@ -414,7 +394,6 @@
     forms.forEach(form => {
         const timetableNameInput = form.querySelector(".timetableName"); // 해당 폼 내부의 input 찾기
         if (!timetableNameInput){
-            console.log("dasd");
             return;
         }
 
@@ -443,7 +422,7 @@
     });
 
 
-
+    //시간표 탭에서 활성화된 시간표 이름 가져온 후 DELETE 비동기 요청 보내고 탭 삭제 후 첫 탭으로
     function deleteActiveTimetable() {
         const activeTab = document.querySelector('.stab.active');
         if (!activeTab) {
@@ -593,11 +572,13 @@ function renderLectures(timetable) {
 
     container.innerHTML = ""; // 기존 강의 블록 제거 후 다시 그리기
 
+    console.log("renderLectures timetable", timetable);
+
     timetable.lectures.forEach(lecture => {
         lecture.lectureTimes.forEach(lt => {
             let dayIndex = days[lt.dayOfWeek];
             if (dayIndex === undefined) return;
-            console.log(lecture);
+            console.log("블록 강의:", lecture);
             let { hour: startHourValue, minute: startMinuteValue } = parseTime(lt.startTime);
             let { hour: endHourValue, minute: endMinuteValue } = parseTime(lt.endTime);
 
@@ -661,6 +642,7 @@ function getLectureColor(lectureTitle) {
 }
 
 //시간표 이름으로 DB에서 시간표 조회 후 시간표에 포함된 강의 리스트 받아서 section1 시간표 부분에 리스트 뿌리기
+
 function getTimetableLectures() {
     const activeTab = document.querySelector('.stab.active');
     if (!activeTab) {
@@ -690,6 +672,7 @@ function getTimetableLectures() {
 
         // 새로운 강의 목록 추가
         const ul = document.createElement("ul");
+        ul.className = "scrollable-list";
         data.forEach(lecture => {
             const li = document.createElement("li");
             li.textContent = lecture.title;  // 강의 이름 추가
@@ -746,6 +729,77 @@ function getTimetableLectures() {
     })
     .catch(error => console.error("탭 시간표 오류:", error));
 }
+    document.getElementById('titleSearchForm').addEventListener('submit', function(event){
+        event.preventDefault(); // 기본 폼 제출 방지
+
+        const searchBox = document.getElementById('searchBox');
+
+        fetch(`/search?title=${encodeURIComponent(searchBox.value)}`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        //List<lectureDTO> 넘어올꺼고
+        .then(data => {
+            renderSearchLectures(data);
+        })
+        .catch(error => {
+            console.error('검색 오류:', error);
+        });
+    });
+    function renderSearchLectures(lectures) {
+        const resultDiv = document.getElementById('tab1-1');
+        resultDiv.innerHTML = '';
+
+        if (lectures.length === 0) {
+            resultDiv.innerHTML = '<p>검색 결과가 없습니다.</p>';
+            return;
+        }
+
+        const list = document.createElement('ul');
+        list.classList.add("scrollable-list");
+
+        lectures.forEach(lecture => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `
+                <strong>${lecture.title}</strong> - ${lecture.instructor}
+                <br> 교수: ${lecture.professor}
+            `;
+            const applyButton = document.createElement('button');
+            applyButton.textContent = '시간표에 강의 추가';
+            applyButton.style.marginLeft = '10px';
+            applyButton.addEventListener('click', function(){
+                applyLecture(lecture.id);
+            });
+            list.appendChild(applyButton);
+            list.appendChild(listItem);
+        });
+
+        resultDiv.appendChild(list);
+    }
+    //시간표에 강의 추가
+    function applyLecture(lectureId) {
+        const activeTab = document.querySelector(".stab.active");
+        const timetableName = activeTab.textContent.trim();
+        fetch(`/timetables/lectures?id=${encodeURIComponent(lectureId)}&timetableName=${encodeURIComponent(timetableName)}`, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(response => response.json())
+        .then(data => {
+            //section1 tab2 내용 / section2 시간표 내용 변경
+            renderLectures(data);
+            alert(`강의 신청 성공: ${data.message}`);
+
+            getTimetableLectures(); // tab1-2 시간표 리스트
+        })
+        .catch(error => {
+            console.error('강의 신청 오류:', error);
+            alert('강의 신청 중 오류가 발생.');
+        });
+    }
 
 
 </script>

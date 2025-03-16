@@ -112,26 +112,61 @@ public class HomeController {
 
     //DB 시간표에 강의 저장
     @PostMapping("/timetables/lectures")
-    public String addLecture(@RequestParam("id") Long lectureId, @RequestParam("timetableName") String timetableName, Model model, HttpSession session) {
+    @ResponseBody
+    public ResponseEntity<TimetableDTO> addLecture(@RequestParam("id") Long lectureId, @RequestParam("timetableName") String timetableName, Model model, HttpSession session) {
         // lectureId를 사용하여 필요한 작업 수행
         // 예: lectureId를 사용하여 데이터베이스에서 강의 정보 조회 및 처리
         Member member = (Member) session.getAttribute("loginMember");
-        log.info(timetableName);
+
         timetableService.addLectureToTimetable(member.getId(), timetableName, lectureId);
+        Timetable timetable = timetableService.findByNameAndMember(timetableName, member);
+        TimetableDTO timetableDTO = new TimetableDTO(
+                timetable.getId(),
+                timetable.getName(),
+                timetable.getLectures().stream()
+                        .map(lecture -> new LectureDTO(
+                                lecture.getId(),
+                                lecture.getTitle(),
+                                lecture.getProfessor(),
+                                lecture.getLectureTimes().stream()
+                                        .map(lt -> new LectureTimeDTO(
+                                                lt.getDayOfWeek().toString(),
+                                                lt.getStartTime(),
+                                                lt.getEndTime()
+                                        ))
+                                        .collect(Collectors.toList())
+                        ))
+                        .collect(Collectors.toList())
+        );
 
         model.addAttribute("member", member);
-        List<Timetable> timetables = timetableService.findByMemberId(member.getId());
-        model.addAttribute("timetables", timetables);
-        log.info("강의 저장");
         // 리다이렉트 또는 뷰 이름 반환
-        return "redirect:/home"; // 강의 목록 페이지로 리다이렉트
+        return ResponseEntity.ok(timetableDTO);
     }
     @DeleteMapping("/timetables/{timetableName}/lectures/{lectureId}")
     @ResponseBody
-    public ResponseEntity<Timetable> deleteTimetableLecture(@PathVariable("timetableName") String timetableName, @PathVariable("lectureId") Long lectureId, HttpSession session){
+    public ResponseEntity<TimetableDTO> deleteTimetableLecture(@PathVariable("timetableName") String timetableName, @PathVariable("lectureId") Long lectureId, HttpSession session){
         Member member = (Member) session.getAttribute("loginMember");
         Timetable timetable = timetableService.deleteTimetableLecture(member.getId(), timetableName, lectureId);
-        return ResponseEntity.ok(timetable);
+        TimetableDTO timetableDTO = new TimetableDTO(
+                timetable.getId(),
+                timetable.getName(),
+                timetable.getLectures().stream()
+                        .map(lecture -> new LectureDTO(
+                                lecture.getId(),
+                                lecture.getTitle(),
+                                lecture.getProfessor(),
+                                lecture.getLectureTimes().stream()
+                                        .map(lt -> new LectureTimeDTO(
+                                                lt.getDayOfWeek().toString(),
+                                                lt.getStartTime(),
+                                                lt.getEndTime()
+                                        ))
+                                        .collect(Collectors.toList())
+                        ))
+                        .collect(Collectors.toList())
+        );
+        return ResponseEntity.ok(timetableDTO);
     }
     //시간표 표시
     @GetMapping("/timetable/{timetableName}")
