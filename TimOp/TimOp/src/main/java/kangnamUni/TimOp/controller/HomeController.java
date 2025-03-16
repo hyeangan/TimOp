@@ -5,10 +5,7 @@ import kangnamUni.TimOp.Service.LectureService;
 import kangnamUni.TimOp.Service.MemberService;
 import kangnamUni.TimOp.Service.TimetableService;
 import kangnamUni.TimOp.domain.*;
-import kangnamUni.TimOp.repository.LectureRepository;
-import kangnamUni.TimOp.repository.LectureRepositoryCustomImpl;
 import kangnamUni.TimOp.repository.MemberRepository;
-import kangnamUni.TimOp.repository.TimetableRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,11 +28,7 @@ public class HomeController {
     private MemberService memberService;
 
     @Autowired
-    private LectureRepository lectureRepository;
-    @Autowired
     private LectureService lectureService;
-    @Autowired
-    private TimetableRepository timetableRepository;
     @Autowired
     private TimetableService timetableService;
 
@@ -43,12 +36,8 @@ public class HomeController {
     public String home(Model model, HttpSession session){
 
         Member member = (Member) session.getAttribute("loginMember");
-        //List<Timetable> timetables = member.getTimetables();
-        //model.addAttribute("timetables", timetables);
         model.addAttribute("member", member);
         List<Timetable> timetables = timetableService.findByMemberId(member.getId());
-        model.addAttribute("timetables", timetables);
-
         return "home";
     }
 
@@ -83,29 +72,18 @@ public class HomeController {
             session.setAttribute("loginMember", member);
             model.addAttribute("member", member);
             List<Timetable> timetables = timetableService.findByMemberId(member.getId());
-            model.addAttribute("timetables", timetables);
             return "home";
         } else {
             return "login";
         }
     }
     //section1 tab2에 시간표에 저장된 강의 리스트 보내기
-    @GetMapping("/timetable/{timetableName}/lectures")
+    @GetMapping("/timetables/{timetableName}/lectures")
     public ResponseEntity<List<LectureDTO>> getTimetableLectures(@PathVariable("timetableName") String timetableName, HttpSession session){
         Member member = (Member) session.getAttribute("loginMember");
         Timetable timetable = timetableService.findByNameAndMember(timetableName, member);
-        List<Lecture> lectures = timetable.getLectures();
-        log.info("tab2 lectures=" + lectures);
-        List<LectureDTO> lectureDTOs = timetable.getLectures().stream()
-                .map(lecture -> new LectureDTO(
-                        lecture.getId(),
-                        lecture.getTitle(),
-                        lecture.getProfessor(),
-                        lecture.getLectureTimes().stream()
-                                .map(lectureTime -> new LectureTimeDTO(lectureTime.getDayOfWeek().toString(), lectureTime.getStartTime(), lectureTime.getEndTime()))
-                                .collect(Collectors.toList()) // ✅ `List<LectureTimeDTO>` 변환 후 저장
-                ))
-                .collect(Collectors.toList());
+
+        List<LectureDTO> lectureDTOs = timetableService.convertTimetableLectureDTOs(timetable);
 
         return ResponseEntity.ok(lectureDTOs);
     }
@@ -120,24 +98,7 @@ public class HomeController {
 
         timetableService.addLectureToTimetable(member.getId(), timetableName, lectureId);
         Timetable timetable = timetableService.findByNameAndMember(timetableName, member);
-        TimetableDTO timetableDTO = new TimetableDTO(
-                timetable.getId(),
-                timetable.getName(),
-                timetable.getLectures().stream()
-                        .map(lecture -> new LectureDTO(
-                                lecture.getId(),
-                                lecture.getTitle(),
-                                lecture.getProfessor(),
-                                lecture.getLectureTimes().stream()
-                                        .map(lt -> new LectureTimeDTO(
-                                                lt.getDayOfWeek().toString(),
-                                                lt.getStartTime(),
-                                                lt.getEndTime()
-                                        ))
-                                        .collect(Collectors.toList())
-                        ))
-                        .collect(Collectors.toList())
-        );
+        TimetableDTO timetableDTO = timetableService.convertTimetableDTO(timetable);
 
         model.addAttribute("member", member);
         // 리다이렉트 또는 뷰 이름 반환
@@ -148,50 +109,17 @@ public class HomeController {
     public ResponseEntity<TimetableDTO> deleteTimetableLecture(@PathVariable("timetableName") String timetableName, @PathVariable("lectureId") Long lectureId, HttpSession session){
         Member member = (Member) session.getAttribute("loginMember");
         Timetable timetable = timetableService.deleteTimetableLecture(member.getId(), timetableName, lectureId);
-        TimetableDTO timetableDTO = new TimetableDTO(
-                timetable.getId(),
-                timetable.getName(),
-                timetable.getLectures().stream()
-                        .map(lecture -> new LectureDTO(
-                                lecture.getId(),
-                                lecture.getTitle(),
-                                lecture.getProfessor(),
-                                lecture.getLectureTimes().stream()
-                                        .map(lt -> new LectureTimeDTO(
-                                                lt.getDayOfWeek().toString(),
-                                                lt.getStartTime(),
-                                                lt.getEndTime()
-                                        ))
-                                        .collect(Collectors.toList())
-                        ))
-                        .collect(Collectors.toList())
-        );
+        TimetableDTO timetableDTO = timetableService.convertTimetableDTO(timetable);
         return ResponseEntity.ok(timetableDTO);
     }
     //시간표 표시
-    @GetMapping("/timetable/{timetableName}")
+    @GetMapping("/timetables/{timetableName}")
     @ResponseBody
     public ResponseEntity<TimetableDTO> getTimetable(@PathVariable("timetableName") String timetableName, HttpSession session) {
         Member member = (Member) session.getAttribute("loginMember");
         Timetable timetable = timetableService.findByNameAndMember(timetableName, member);
-        TimetableDTO timetableDTO = new TimetableDTO(
-                timetable.getId(),
-                timetable.getName(),
-                timetable.getLectures().stream()
-                        .map(lecture -> new LectureDTO(
-                                lecture.getId(),
-                                lecture.getTitle(),
-                                lecture.getProfessor(),
-                                lecture.getLectureTimes().stream()
-                                        .map(lt -> new LectureTimeDTO(
-                                                lt.getDayOfWeek().toString(),
-                                                lt.getStartTime(),
-                                                lt.getEndTime()
-                                        ))
-                                        .collect(Collectors.toList())
-                        ))
-                        .collect(Collectors.toList())
-        );
+        TimetableDTO timetableDTO = timetableService.convertTimetableDTO(timetable);
+
         return ResponseEntity.ok(timetableDTO);
     }
     @GetMapping("/timetables")
@@ -209,7 +137,6 @@ public class HomeController {
             //예외처리 알림 추가해
             model.addAttribute("member", member);
             List<Timetable> timetables = timetableService.findByMemberId(member.getId());
-            model.addAttribute("timetables", timetables);
 
             return "redirect:/home";
         }
@@ -217,7 +144,6 @@ public class HomeController {
 
         model.addAttribute("member", member);
         List<Timetable> timetables = timetableService.findByMemberId(member.getId());
-        model.addAttribute("timetables", timetables);
 
         return "redirect:/home";
     }

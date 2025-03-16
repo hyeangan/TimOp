@@ -37,9 +37,7 @@ public class FilteringController {
         List<Lecture> lectures = lectureService.findLecturesByTitleContaining(title);
         Member member = (Member) session.getAttribute("loginMember");
         model.addAttribute("member", member);
-        model.addAttribute("lectures", lectures);
         List<Timetable> timetables = timetableService.findByMemberId(member.getId());
-        model.addAttribute("timetables", timetables);
         List<LectureDTO> lectureDTOs = lectures.stream()
                 .map(lecture -> new LectureDTO(
                         lecture.getId(),
@@ -56,16 +54,26 @@ public class FilteringController {
 
     //처음 @RequestParam 으로 모든 경우의 수에 대해 만들다 -> 변경
     @GetMapping("/search/condition")
-    public String searchByCondition(@ModelAttribute LectureFilterDTO filterDTO, Model model, HttpSession session) {
+    public ResponseEntity<List<LectureDTO>> searchByCondition(@ModelAttribute LectureFilterDTO filterDTO, Model model, HttpSession session) {
         List<Lecture> lectures = lectureService.findLectures(filterDTO);
-        Member member = (Member) session.getAttribute("loginMember");
-        //List<Timetable> timetables = member.getTimetables();
-        //model.addAttribute("timetables", timetables);
-        model.addAttribute("member", member);
-        model.addAttribute("lectures", lectures);
-        List<Timetable> timetables = timetableService.findByMemberId(member.getId());
-        model.addAttribute("timetables", timetables);
-        return "home";
+        List<LectureDTO> lectureDTOs = lectures.stream()
+                .map(lecture -> new LectureDTO(
+                        lecture.getId(),
+                        lecture.getTitle(),
+                        lecture.getProfessor(),
+                        lecture.getLectureTimes().stream()
+                                .map(lectureTime -> new LectureTimeDTO(
+                                        lectureTime.getDayOfWeek().toString(),
+                                        lectureTime.getStartTime(),
+                                        lectureTime.getEndTime()))
+                                .collect(Collectors.toList())
+                ))
+                .collect(Collectors.toList());
 
+        Member member = (Member) session.getAttribute("loginMember");
+        model.addAttribute("member", member);
+        List<Timetable> timetables = timetableService.findByMemberId(member.getId());
+
+        return ResponseEntity.ok(lectureDTOs);
     }
 }
