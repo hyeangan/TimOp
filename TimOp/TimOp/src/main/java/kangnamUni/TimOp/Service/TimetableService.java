@@ -147,4 +147,40 @@ public class TimetableService {
                 ))
                 .collect(Collectors.toList());
     }
+    public TimetableDTO convertTimetableDTO(Timetable timetable){
+        TimetableDTO timetableDTO = new TimetableDTO(
+                timetable.getId(),
+                timetable.getName(),
+                timetable.getLectures().stream()
+                        .map(lecture -> new LectureDTO(
+                                lecture.getId(),
+                                lecture.getTitle(),
+                                lecture.getProfessor(),
+                                lecture.getLectureTimes().stream()
+                                        .map(lt -> new LectureTimeDTO(
+                                                lt.getDayOfWeek().toString(),
+                                                lt.getStartTime(),
+                                                lt.getEndTime()
+                                        ))
+                                        .collect(Collectors.toList())
+                        ))
+                        .collect(Collectors.toList())
+        );
+        return timetableDTO;
+    }
+    public List<LectureDTO> convertTimetableLectureDTOs(Timetable timetable){
+        List<LectureDTO> lectureDTOs = timetable.getLectures().stream()
+                .map(lecture -> new LectureDTO(
+                        lecture.getId(),
+                        lecture.getTitle(),
+                        lecture.getProfessor(),
+                        lecture.getLectureTimes().stream()
+                                .map(lectureTime -> new LectureTimeDTO(lectureTime.getDayOfWeek().toString(),
+                                        lectureTime.getStartTime(),
+                                        lectureTime.getEndTime()))
+                                .collect(Collectors.toList()) // ✅ `List<LectureTimeDTO>` 변환 후 저장
+                ))
+                .collect(Collectors.toList());
+        return lectureDTOs;
+    }
 }
