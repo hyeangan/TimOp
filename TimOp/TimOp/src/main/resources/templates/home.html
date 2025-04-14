@@ -97,6 +97,9 @@
             display: none;
         }
         .tab-content.active, .stab-content.active {
+            width: 100%;
+            height: 700px;
+            border: 1px solid #ddd;
             display: block;
         }
 
@@ -144,6 +147,24 @@
         word-wrap: break-word; /* ✅ 긴 단어 자동 줄바꿈 */
     }
 
+    #timeGrid th, #timeGrid td {
+        border: 1px solid #999;
+        width: 80px;
+        height: 40px;
+        text-align: center;
+        cursor: pointer;
+    }
+    #timeGrid td.selected {
+        background-color: #4CAF50;
+        color: white;
+        font-weight: bold;
+    }
+    .range-block {
+        margin: 5px 0;
+        padding: 8px;
+        background: #f1f1f1;
+        border-left: 5px solid #4CAF50;
+    }
     </style>
 </head>
 <body>
@@ -303,8 +324,10 @@
             <div class="form-group">
                 <fieldset>
                     <legend>시간대 검색</legend>
-                    <label><input type="radio" name="availability" value=""> 빈 시간대 검색</label>
-                    <label><input type="radio" name="availability" value=""> 시간대 직접 검색</label>
+                    <label><input type="radio" name="availability" value="empty"> 빈 시간대 검색</label>
+                    <label><input type="radio" name="availability" value="custom"> 시간대 직접 검색</label>
+                    <button type="button" id="openTimePicker" disabled>시간대 선택창</button>
+
                 </fieldset>
             </div>
             <div>
@@ -313,6 +336,30 @@
         </form>
     </section>
 </div>
+
+<div id="timePickerModal" style="display:none; position:fixed; top:10%; left:50%; transform:translateX(-50%);
+    background:white; border:1px solid #ccc; padding:20px; z-index:1000; box-shadow:0 0 10px #999;">
+    <h3>시간대 선택 (드래그로 블록 생성)</h3>
+    <div id="gridWrapper" style="overflow-x:auto;">
+        <table id="timeGrid" style="border-collapse:collapse;">
+            <thead>
+            <tr>
+                <th>시간 / 요일</th>
+                <th>월</th><th>화</th><th>수</th><th>목</th><th>금</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- JavaScript로 9시~22시 행 생성 -->
+            </tbody>
+        </table>
+    </div>
+
+    <div id="rangeList"></div>
+
+    <button onclick="applyBlocks()">확인</button>
+    <button onclick="closeTimePicker()">닫기</button>
+</div>
+
 <script>
     document.getElementById('searchForm').addEventListener('submit', async function(event) {
         event.preventDefault(); // 기본 폼 제출 방지
@@ -820,7 +867,149 @@ function getTimetableLectures() {
             alert('강의 신청 중 오류가 발생.');
         });
     }
+    const openBtn = document.getElementById("openTimePicker");
+    const modal = document.getElementById("timePickerModal");
+    const tbody = document.querySelector("#timeGrid tbody");
+    let isDragging = false;
+    let dragStart = null;
+    let isErasing = false;
 
+    const days = ["월", "화", "수", "목", "금"];
+
+    const radios = document.querySelectorAll('input[name="availability"]');
+    radios.forEach(radio => {
+        radio.addEventListener("change", () => {
+            openBtn.disabled = (radio.value !== "custom");
+        });
+    });
+
+    openBtn.addEventListener("click", () => {
+        modal.style.display = "block";
+        generateGrid();
+    });
+
+    function closeTimePicker() {
+        modal.style.display = "none";
+        document.getElementById("rangeList").innerHTML = "";
+    }
+
+    function generateGrid() {
+        tbody.innerHTML = "";
+        for (let h = 9; h <= 21; h++) {
+            const row = document.createElement("tr");
+            const timeCell = document.createElement("td");
+            timeCell.textContent = `${h}:00`;
+            row.appendChild(timeCell);
+
+            days.forEach(day => {
+                const cell = document.createElement("td");
+                cell.dataset.day = day;
+                cell.dataset.hour = h;
+
+                cell.addEventListener("mousedown", () => {
+                    isDragging = true;
+                    dragStart = cell;
+                    isErasing = cell.classList.contains("selected");
+                    updateDragSelection(cell);
+                });
+
+                cell.addEventListener("mouseover", () => {
+                    if (isDragging && dragStart) {
+                        updateDragSelection(cell);
+                    }
+                });
+
+                cell.addEventListener("mouseup", () => {
+                    isDragging = false;
+                    dragStart = null;
+                    updateRangeListFromGrid();
+                });
+
+                row.appendChild(cell);
+            });
+            tbody.appendChild(row);
+        }
+        document.addEventListener("mouseup", () => isDragging = false);
+    }
+
+    function updateDragSelection(current) {
+        const startHour = parseInt(dragStart.dataset.hour);
+        const endHour = parseInt(current.dataset.hour);
+        const hourMin = Math.min(startHour, endHour);
+        const hourMax = Math.max(startHour, endHour);
+
+        const startDayIndex = days.indexOf(dragStart.dataset.day);
+        const endDayIndex = days.indexOf(current.dataset.day);
+        const dayMin = Math.min(startDayIndex, endDayIndex);
+        const dayMax = Math.max(startDayIndex, endDayIndex);
+
+        for (let h = hourMin; h <= hourMax; h++) {
+            for (let d = dayMin; d <= dayMax; d++) {
+                const cell = document.querySelector(`#timeGrid td[data-day='${days[d]}'][data-hour='${h}']`);
+                if (cell) {
+                    if (isErasing) {
+                        cell.classList.remove("selected");
+                    } else {
+                        cell.classList.add("selected");
+                    }
+                }
+            }
+        }
+    }
+
+    function updateRangeListFromGrid() {
+        const rangeList = document.getElementById("rangeList");
+        rangeList.innerHTML = "";
+        const selected = {};
+
+        document.querySelectorAll("#timeGrid td.selected").forEach(cell => {
+            const day = cell.dataset.day;
+            const hour = parseInt(cell.dataset.hour);
+            if (!selected[day]) selected[day] = [];
+            selected[day].push(hour);
+        });
+
+        Object.entries(selected).forEach(([day, hours]) => {
+            hours.sort((a, b) => a - b);
+
+            let start = null;
+            for (let i = 0; i < hours.length; i++) {
+                if (start === null) {
+                    start = hours[i];
+                }
+
+                const next = hours[i + 1];
+                if (next !== hours[i] + 1) {
+                    const end = hours[i] + 1;
+                    addRangeBlock(day, start, end);
+                    start = null;
+                }
+            }
+        });
+    }
+
+    function addRangeBlock(day, start, end) {
+        const div = document.createElement("div");
+        div.className = "range-block";
+        div.innerHTML = `
+            <span>${day} ${start}:00 ~ ${end}:00</span>
+            <input type='hidden' name='days' value='${day}'>
+            <input type='hidden' name='startTimes' value='${String(start).padStart(2, '0')}:00'>
+            <input type='hidden' name='endTimes' value='${String(end).padStart(2, '0')}:00'>
+        `;
+        document.getElementById("rangeList").appendChild(div);
+    }
+
+    function applyBlocks() {
+        const form = document.getElementById("searchForm");
+        form.querySelectorAll("input[name='days'], input[name='startTimes'], input[name='endTimes']").forEach(e => e.remove());
+
+        document.querySelectorAll("#rangeList input").forEach(input => {
+            const clone = input.cloneNode(true);
+            form.appendChild(clone);
+        });
+        closeTimePicker();
+    }
 
 </script>
 

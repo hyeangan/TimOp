@@ -31,7 +31,7 @@ dependencies {
 
 	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.33'
 
-	//implementation 'org.springframework.boot:spring-boot-starter-security' //localhost8080-> 로그인창이동;;
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
