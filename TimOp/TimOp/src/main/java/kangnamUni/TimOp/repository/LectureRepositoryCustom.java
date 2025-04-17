@@ -1,7 +1,7 @@
 package kangnamUni.TimOp.repository;
 
 import kangnamUni.TimOp.domain.Lecture;
-import kangnamUni.TimOp.domain.LectureFilterDTO;
+import kangnamUni.TimOp.dto.LectureFilterDTO;
 
 import java.util.List;
 

@@ -15,17 +15,16 @@ import java.util.List;
 @Getter
 @Setter
 @Slf4j
-// 회원 카트 1:다
-// 카트 강의 1:다
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(unique=true)
     private String studentId;
     private String password;
     private String name;
     private String major;
+    private String role;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true) //mappedBy = "member" -> Timetable 에 member필드가 관계의 주인(외래키)
     @JsonManagedReference

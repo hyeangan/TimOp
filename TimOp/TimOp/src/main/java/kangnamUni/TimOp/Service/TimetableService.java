@@ -2,6 +2,9 @@ package kangnamUni.TimOp.Service;
 
 import jakarta.transaction.Transactional;
 import kangnamUni.TimOp.domain.*;
+import kangnamUni.TimOp.dto.LectureDTO;
+import kangnamUni.TimOp.dto.LectureTimeDTO;
+import kangnamUni.TimOp.dto.TimetableDTO;
 import kangnamUni.TimOp.repository.LectureRepository;
 import kangnamUni.TimOp.repository.MemberRepository;
 import kangnamUni.TimOp.repository.TimetableRepository;
@@ -11,8 +14,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import static kangnamUni.TimOp.domain.QMember.member;
 
 @Service
 public class TimetableService {

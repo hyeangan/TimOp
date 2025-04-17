@@ -5,9 +5,8 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import kangnamUni.TimOp.domain.Lecture;
-import kangnamUni.TimOp.domain.LectureFilterDTO;
+import kangnamUni.TimOp.dto.LectureFilterDTO;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static kangnamUni.TimOp.domain.QLecture.lecture;

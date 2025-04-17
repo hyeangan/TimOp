@@ -1,4 +1,4 @@
-package kangnamUni.TimOp.domain;
+package kangnamUni.TimOp.dto;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
