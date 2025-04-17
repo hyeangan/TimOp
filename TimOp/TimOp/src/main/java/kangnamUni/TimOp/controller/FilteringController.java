@@ -4,7 +4,9 @@ import jakarta.servlet.http.HttpSession;
 import kangnamUni.TimOp.Service.LectureService;
 import kangnamUni.TimOp.Service.TimetableService;
 import kangnamUni.TimOp.domain.*;
-import kangnamUni.TimOp.repository.TimetableRepository;
+import kangnamUni.TimOp.dto.LectureDTO;
+import kangnamUni.TimOp.dto.LectureFilterDTO;
+import kangnamUni.TimOp.dto.LectureTimeDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +17,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.stream.Collectors;
 

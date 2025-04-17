@@ -5,19 +5,17 @@ import kangnamUni.TimOp.Service.LectureService;
 import kangnamUni.TimOp.Service.MemberService;
 import kangnamUni.TimOp.Service.TimetableService;
 import kangnamUni.TimOp.domain.*;
+import kangnamUni.TimOp.dto.LectureDTO;
+import kangnamUni.TimOp.dto.TimetableDTO;
 import kangnamUni.TimOp.repository.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Controller
 @Slf4j
@@ -45,38 +43,7 @@ public class HomeController {
     public String frontPage(){
         return "front";
     }
-    @GetMapping("/signup")
-    public String signup(Model model){
-        model.addAttribute("member", new Member());
-        return "signup";
-    }
-    @PostMapping("/signup")
-    public String signUp(@ModelAttribute Member member) {
 
-        if (memberService.checkStudentIdDuplicate(member.getStudentId())){
-            return "signup";
-        };
-        memberRepository.save(member);
-        return "redirect:/";
-    }
-
-    @GetMapping("/login")
-    public String loginForm() {
-        return "login";
-    }
-
-    @PostMapping("/login")
-    public String login(@RequestParam("studentId") String studentId, @RequestParam("password") String password, Model model, HttpSession session) {
-        Member member = memberService.login(studentId, password);
-        if (member != null) {
-            session.setAttribute("loginMember", member);
-            model.addAttribute("member", member);
-            List<Timetable> timetables = timetableService.findByMemberId(member.getId());
-            return "home";
-        } else {
-            return "login";
-        }
-    }
     //section1 tab2에 시간표에 저장된 강의 리스트 보내기
     @GetMapping("/timetables/{timetableName}/lectures")
     public ResponseEntity<List<LectureDTO>> getTimetableLectures(@PathVariable("timetableName") String timetableName, HttpSession session){

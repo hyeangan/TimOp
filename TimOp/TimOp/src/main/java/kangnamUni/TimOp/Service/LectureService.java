@@ -1,12 +1,9 @@
 package kangnamUni.TimOp.Service;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
 import jakarta.transaction.Transactional;
 import kangnamUni.TimOp.domain.Lecture;
 //import kangnamUni.TimOp.repository.LectureRepository;
-import kangnamUni.TimOp.domain.LectureFilterDTO;
+import kangnamUni.TimOp.dto.LectureFilterDTO;
 import kangnamUni.TimOp.repository.LectureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
