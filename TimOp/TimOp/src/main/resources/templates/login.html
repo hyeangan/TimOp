@@ -1,22 +1,60 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <title>로그인</title>
 </head>
 <body>
-<h1>로그인</h1>
-<form th:action="@{/login}" method="post">
-    <div>
-        <label for="studentId">학번:</label>
-        <input type="text" id="studentId" name="studentId" required>
-    </div>
-    <div>
-        <label for="password">비밀번호:</label>
-        <input type="password" id="password" name="password" required>
-    </div>
-    <div>
-        <button type="submit">로그인</button>
-    </div>
+<h2>로그인</h2>
+<form id="loginForm">
+    <label for="studentId">아이디:</label>
+    <input type="text" id="studentId" required><br><br>
+
+    <label for="password">비밀번호:</label>
+    <input type="password" id="password" required><br><br>
+
+    <button type="submit">로그인</button>
 </form>
+
+<script>
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const studentId = document.getElementById("studentId").value;
+      const password = document.getElementById("password").value;
+
+      try {
+        const response = await fetch("/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ studentId, password })
+        });
+
+        if (!response.ok) {
+          throw new Error("로그인 실패");
+        }
+
+        const token = response.headers.get("Authorization");
+        console.log(token);
+        //토큰 저장 및 리디렉션
+        localStorage.setItem("token", token);
+
+         location.href = "/home";
+
+        /*
+        fetch("/home", {
+          method: "GET",
+          headers: {
+            "Authorization": localStorage.getItem("token")
+          }
+        });
+        */
+
+      } catch (err) {
+        alert("로그인에 실패했습니다.");
+        console.error(err);
+      }
+    });
+</script>
 </body>
 </html>

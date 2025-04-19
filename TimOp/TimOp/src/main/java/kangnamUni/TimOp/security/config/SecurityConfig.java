@@ -19,6 +19,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -57,7 +58,9 @@ public class SecurityConfig {
         LoginFilter loginFilter = new LoginFilter(authenticationManager(authenticationConfiguration));
         loginFilter.setAuthenticationSuccessHandler(loginSuccessHandler);
         loginFilter.setAuthenticationFailureHandler(loginFailureHandler);
-        loginFilter.setFilterProcessesUrl("/login");
+        loginFilter.setRequiresAuthenticationRequestMatcher(
+                new AntPathRequestMatcher("/login", "POST")
+        );
 
         // 1. http는 Spring Security가 자동으로 주입
         // 2. http.xxx() 로 설정 조립
