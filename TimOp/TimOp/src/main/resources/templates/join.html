@@ -103,7 +103,7 @@
       };
 
       try {
-        const response = await fetch("/signup", {
+        const response = await fetch("/join", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -117,7 +117,7 @@
         }
 
         alert("회원가입이 완료되었습니다.");
-        window.location.href = "/login.html"; // 로그인 페이지로 이동
+        window.location.href = "/login"; // 로그인 페이지로 이동
       } catch (error) {
         console.error("에러 발생:", error);
         alert("회원가입에 실패했습니다.");

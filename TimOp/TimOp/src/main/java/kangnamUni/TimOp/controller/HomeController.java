@@ -6,11 +6,15 @@ import kangnamUni.TimOp.Service.MemberService;
 import kangnamUni.TimOp.Service.TimetableService;
 import kangnamUni.TimOp.domain.*;
 import kangnamUni.TimOp.dto.LectureDTO;
+import kangnamUni.TimOp.dto.MemberDTO;
+import kangnamUni.TimOp.dto.MemberDetails;
 import kangnamUni.TimOp.dto.TimetableDTO;
 import kangnamUni.TimOp.repository.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,12 +35,18 @@ public class HomeController {
     private TimetableService timetableService;
 
     @GetMapping("/home")
-    public String home(Model model, HttpSession session){
-
-        Member member = (Member) session.getAttribute("loginMember");
-        model.addAttribute("member", member);
-        List<Timetable> timetables = timetableService.findByMemberId(member.getId());
-        return "home";
+    public String home(Model model){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.isAuthenticated()) {
+            /*
+            MemberDetails memberDetails = (MemberDetails) auth.getPrincipal();
+            Member member = memberDetails.getMember();
+            model.addAttribute("member", member);
+            List<Timetable> timetables = timetableService.findByMemberId(member.getId());
+             */
+            return "home";
+        }
+        return"home";
     }
 
     @GetMapping("/")
@@ -54,7 +64,14 @@ public class HomeController {
 
         return ResponseEntity.ok(lectureDTOs);
     }
-
+    @GetMapping("/login")
+    public String loginPage(){
+        return "login";
+    }
+    @GetMapping("/join")
+    public String joinPage(){
+        return "join";
+    }
     //DB 시간표에 강의 저장
     @PostMapping("/timetables/lectures")
     @ResponseBody

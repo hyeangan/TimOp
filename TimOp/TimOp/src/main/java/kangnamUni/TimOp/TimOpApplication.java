@@ -2,11 +2,8 @@ package kangnamUni.TimOp;
 
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import kangnamUni.TimOp.Service.LectureService;
-import kangnamUni.TimOp.domain.JpaConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import kangnamUni.TimOp.Service.WebScraper;
 
 @SpringBootApplication
 public class TimOpApplication {
