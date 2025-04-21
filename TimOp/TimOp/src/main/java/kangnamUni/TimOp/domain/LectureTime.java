@@ -22,6 +22,7 @@ public class LectureTime {
 
     @Enumerated(EnumType.STRING)
     private DayOfWeekEnum dayOfWeek; // "월", "화", "수", "목", "금"
+
     private LocalTime startTime;  // 시작 시간 (09:00)
     private LocalTime endTime;    // 종료 시간 (10:15)
 
