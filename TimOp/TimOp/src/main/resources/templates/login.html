@@ -34,12 +34,16 @@
           throw new Error("로그인 실패");
         }
 
-        const token = response.headers.get("Authorization");
-        console.log(token);
-        //토큰 저장 및 리디렉션
-        localStorage.setItem("token", token);
+        const authHeader = response.headers.get("Authorization");
 
-         location.href = "/home";
+        if (authHeader && authHeader.startsWith("Bearer ")) {
+          const token = authHeader.split(" ")[1]; // 또는 .replace("Bearer ", "")
+          localStorage.setItem("accessToken", token);
+        } else {
+          alert("인증 토큰이 없습니다.");
+        }
+
+        location.href = "/home";
 
         /*
         fetch("/home", {

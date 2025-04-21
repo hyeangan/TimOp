@@ -73,7 +73,7 @@ public class SecurityConfig {
                 .httpBasic(AbstractHttpConfigurer::disable) //브라우저 지원 로그인 방식 비활성화
                 //경로별 인가
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/join", "/login").permitAll()
+                        .requestMatchers("/", "/join", "/login", "/home").permitAll()
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .requestMatchers("/member").hasRole("MEMBER")
                         .anyRequest().authenticated()

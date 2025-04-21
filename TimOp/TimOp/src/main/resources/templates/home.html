@@ -193,8 +193,9 @@
 
     <section class="section" id="section2">
         <div>
-            <form th:action="@{/timetables}" method="post" style="display: inline-block; margin-right: 3px;">
-                <input type="text" name="name" placeholder="새 시간표 이름 입력" required>
+
+            <form id="addTimetableForm">
+                <input type="text" name="name" placeholder="새 시간표 이름 입력" required style="display: inline-block; margin-right: 3px;"/>
                 <button type="submit">시간표 추가</button>
             </form>
             <button onclick="deleteActiveTimetable()">시간표 삭제</button>
@@ -380,7 +381,8 @@
         try {
             const response = await fetch(url, {
                 method: 'GET',
-                headers: { 'Accept': 'application/json' }
+                headers: { "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("accessToken")}
             });
 
             if (!response.ok) {
@@ -499,11 +501,14 @@
 
         // 시간표 이름 가져오기
         const timetableName = activeTab.textContent.trim();
-
+        const token = localStorage.getItem("accessToken");
         // 서버로 DELETE 요청 보내기
         fetch('/timetables/' + encodeURIComponent(timetableName), {
             method: 'DELETE',
-        })
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + localStorage.getItem("accessToken"),
+            }})
         .then(response => {
             if (response.ok) {
                 alert("시간표가 삭제되었습니다.");
@@ -528,8 +533,10 @@
     }
     //섹션2 시간표 탭과 시간표 강의 표시
     function fetchTimetables() {
-        fetch('/timetables')
-            .then(response => response.json())
+        fetch('/timetables', {method: "GET",
+          headers: {
+            "Authorization": "Bearer " + localStorage.getItem("accessToken")
+          }}).then(response => response.json())
             .then(data => {
                 timetables = data;
                 renderTabs(data);
@@ -540,6 +547,7 @@
             })
             .catch(error => console.error("시간표 불러오기 오류:", error));
     }
+
     function renderTabs(timetables) {
     const tabContainer = document.getElementById("stab-container");
     const timetableContainer = document.getElementById("timetable-container");
@@ -564,7 +572,12 @@
                 }
                 const timetableName = activeTab.textContent.trim();
 
-                fetch('/timetables/' + encodeURIComponent(timetableName))
+                fetch('/timetables/' + encodeURIComponent(timetableName),
+                 {  method: "GET",
+                    headers: {
+                      "Content-Type": "application/json",
+                      "Authorization": "Bearer " + localStorage.getItem("accessToken"),
+                    }})
                     .then(response => response.json())
                     .then(data => {
                         console.log("getTimetable:", data);
@@ -722,6 +735,8 @@ function getTimetableLectures() {
     // 서버로 GET 요청 보내기
     fetch('/timetables/' + encodeURIComponent(timetableName)+ '/lectures', {
         method: 'GET',
+        headers: {
+        "Authorization": "Bearer " + localStorage.getItem("accessToken")}
     })
     .then(response => response.json())
     .then(data => {
@@ -763,6 +778,7 @@ function getTimetableLectures() {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json",
+                        "Authorization": "Bearer " + localStorage.getItem("accessToken"),
                     },
                 })
                 .then(response => {
@@ -804,7 +820,8 @@ function getTimetableLectures() {
         fetch(`/search?title=${encodeURIComponent(searchBox.value)}`, {
             method: 'GET',
             headers: {
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                "Authorization": "Bearer " + localStorage.getItem("accessToken"),
             }
         })
         .then(response => response.json())
@@ -852,7 +869,8 @@ function getTimetableLectures() {
         const timetableName = activeTab.textContent.trim();
         fetch(`/timetables/lectures?id=${encodeURIComponent(lectureId)}&timetableName=${encodeURIComponent(timetableName)}`, {
             method: 'POST',
-            headers: { 'Accept': 'application/json' }
+            headers: { 'Accept': 'application/json',
+             "Authorization": "Bearer " + localStorage.getItem("accessToken")}
         })
         .then(response => response.json())
         .then(data => {
@@ -1010,7 +1028,26 @@ function getTimetableLectures() {
         });
         closeTimePicker();
     }
+    document.getElementById("addTimetableForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = e.target.name.value;
 
+      const res = await fetch("/timetables", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + localStorage.getItem("accessToken"),
+        },
+        body: JSON.stringify({ name }),
+      });
+
+      if (res.ok) {
+        alert("시간표 추가 성공!");
+        fetchTimetables(); // 새로고침 또는 UI 갱신
+      } else {
+        alert("시간표 추가 실패!");
+      }
+    });
 </script>
 
 </body>
