@@ -152,10 +152,8 @@ public class WebScraper {
 
                 //스플릿 된 애는 addLectureTime 2번 때리고 lecture 저장하도록 해야할듯
 
-
-                LectureTime lectureTime = new LectureTime();
                 String lt = lectureInfo.get(6);
-                lectureTime.setTime(lt);
+
                 // 별도배정 or null 확인 주야 확인
                 if (lt.startsWith("(주)")){
                     lt = lt.substring(3); //(주) 삭제
@@ -163,10 +161,14 @@ public class WebScraper {
                         String[] lts = lt.split(",");
                         //lectureTime 에 요일, 시작시간, 끝나는 시간 세팅
                         for(String s : lts){
+                            LectureTime lectureTime = new LectureTime();
+                            lectureTime.setTime(s);
                             convertLectureTime(s, lectureTime, lecture);
                         }
                     }
                     else{
+                        LectureTime lectureTime = new LectureTime();
+                        lectureTime.setTime(lt);
                         convertLectureTime(lt, lectureTime, lecture);
                     }
                 }
@@ -185,8 +187,8 @@ public class WebScraper {
                         count++;
                     }
                     String str = sb.toString();
-                    for(int k = 0; k < str.length(); k++){
-                    }
+                    LectureTime lectureTime = new LectureTime();
+                    lectureTime.setTime(str);
                     convertLectureTime(str, lectureTime, lecture);
                 }
 

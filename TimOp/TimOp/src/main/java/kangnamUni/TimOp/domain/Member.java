@@ -26,9 +26,20 @@ public class Member {
     private String major;
     private String role;
 
+    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Cart cart;
+
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true) //mappedBy = "member" -> Timetable 에 member필드가 관계의 주인(외래키)
     @JsonManagedReference
     private List<Timetable> timetables = new ArrayList<>();
+
+    @PrePersist
+    private void initCart() {
+        if (cart == null) {
+            cart = new Cart(this);
+        }
+    }
+
     public void addTimetable(Timetable timetable){
         timetables.add(timetable);
         timetable.setMember(this);

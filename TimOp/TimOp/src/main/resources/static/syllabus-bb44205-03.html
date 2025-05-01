@@ -1,0 +1,657 @@
+<html><head>
+<base target="_blank">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+	.syllabus, .syllabus_week{width:800px; border-width: 2px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:10px; table-layout: fixed;} 
+	.syllabus_sub {width:600px; border-width: 1px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:3px;margin-bottom:3px; k-layout: fixed;}
+	tr{min-height: 22px; }
+	th{border: 1px black solid; text-align: center; font-weight: bold; background-color: #EFEFEF}
+	th.no_topLine{border-top:0px black solid;}
+	th.no_botLine{border-bottom:0px black solid;}
+	td{border: 1px black solid; text-align: left; padding-left: 3px; min-height: 22px; vertical-align: middle; background-color: #FFFFFF}
+	td p{min-height: 22px;}
+	td pre{margin:auto; min-height:1px;}
+	
+	.multi-line {line-height:1.3em;padding-top:4px}
+	.majorDiv {width:800px;}
+	.syllabus_week {margin-top:5px;}
+	.syllabus_week_title {border: 1px solid gray;width:800px;height:40px;margin-top:20px;}
+	
+	
+	@media screen and (max-width: 768px) { 	
+		.syllabus, .syllabus_week, .majorDiv, .syllabus_week_title {width: 100%;}
+		.displayOff {display:none;}
+ 		.syllabus_week thead {display:none;} 
+ 		.syllabus_week, .syllabus_week tbody, .syllabus_week tr, .syllabus_week td {display: block;} 
+  		.syllabus_week tbody tr td {text-align:left;padding-left: 50%;position:relative;border-top:none;border-left:none;border-right:none; }  
+  		.syllabus_week tbody tr td nth-child(1) {text-align: left;}
+  		.syllabus_week tbody tr {border-top:1px soild black;}  
+ 		.syllabus_week td:before {content:attr(data-label); position:absolute; left: 0%;width: 50%;padding-left: 15px;text-align: left;}  
+/*  		.syllabus_week_child5 {border-bottom: 2px solid black;} */
+	}
+			
+	@media screen and (min-width: 769px) { 	
+		.displayOn {display:none;}
+		.syllabus_week_child1 {text-align: center;}
+	}
+	
+</style>
+<title>강의계획서 보기</title>
+
+<script type="text/javascript" src="../function/common.js"></script>
+<script type="text/javascript" src="../function/sortTable.js"></script>
+<script>
+	function goPrint(){
+		
+		var src = '';
+		if(isCompatibleIE()){
+			src = "../rdreport/r_designer_cs.jsp?repo_val1=2025&repo_val2=1&repo_val3=BB44205&repo_val4=03&repo_val5=109584&repo_path=../sbr/sbr3072.mrd";
+		}else{
+			src = "https://app.kangnam.ac.kr/knumis/rdreport/r_designer_cs.jsp?repo_val1=2025&repo_val2=1&repo_val3=BB44205&repo_val4=03&repo_val5=109584&repo_path=../sbr/sbr3072.mrd";
+		}
+
+		openWin('',src,850,630,0,0);
+
+		self.close();
+	}
+</script>
+</head>
+
+<body>
+
+
+<div style="font-size: 12px; text-align:center;magin-left:10px; height:12px; margin-bottom:10px;margin-top:10px">
+	최초작성일 : 2025/02/28 , 최종수정일 : 2025/03/05
+</div>
+
+<div align="center" style="margin-top: 10px;">
+	<table class="syllabus">
+		<colgroup>
+			<col width="10%">
+			<col width="7%">
+			<col width="10%">
+			<col width="20%">
+			<col width="16%">
+			<col width="8%">
+			<col width="21%">
+		</colgroup>
+		
+		<tbody>
+			<tr>
+				<th colspan="7" style="height:50px;"><span style="font-size: 24px;">강 의 계 획 서</span></th>
+			</tr>
+			<tr>
+				<th colspan="2">년 도</th>
+				<td colspan="2">2025</td>
+				<th>학 기</th>
+				<td colspan="2">1 학기</td>
+			</tr>
+			<tr>
+				<th rowspan="2">교과목명</th>
+				<th>한글</th>
+				<td colspan="2">가족복지론 </td>
+				<th rowspan="2">담당교수</th>
+				<td rowspan="2" colspan="2">김유진</td>
+			</tr>
+			<tr>
+				<th>영문</th>
+				<td colspan="2">Social Work With Families</td>
+			</tr>
+			<tr>
+				<th colspan="2">학수번호-분반</th>
+				<td colspan="2">BB44205 - 03</td>
+				<th>강의요일교시</th>
+				<td colspan="2">(주)수7ab8ab9ab</td>
+			</tr>
+			<tr>
+				<th colspan="2">학점<br>(시간수)</th>
+				<td colspan="2">3(3)</td>
+				<th>강의실</th>
+				<td colspan="2">샬308</td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">개설(이수)구분</th>
+				<th>교양</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:15px">계열교양<br>
+					<input type="checkbox" disabled="disabled">일반교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">균형교양: 
+				</td>
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:12px">계열교양
+					<input type="checkbox" disabled="disabled" style="margin-left:12px">일반교양
+					<input type="checkbox" disabled="disabled" style="margin-left:12px">균형교양: 
+				</td>
+			</tr>
+			<tr>
+				<th>전공</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공탐색
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공기초<br>
+					<input type="checkbox" checked="" disabled="disabled">전공선택 ( 3 ) 학년
+					<input type="checkbox" disabled="disabled">전공필수 ( &nbsp; ) 학년					
+				</td>				
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:12px">전공탐색
+					<input type="checkbox" disabled="disabled" style="margin-left:12px">전공기초
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:12px">전공선택 ( 3 ) 학년
+					<input type="checkbox" disabled="disabled" style="margin-left:12px">전공필수 ( &nbsp; ) 학년					
+				</td>	
+			</tr>
+			<tr>
+				<th>일반선택</th>
+				<td class="displayOn" colspan="2">
+					<input type="checkbox" disabled="disabled">교직<br>
+					<input type="checkbox" disabled="disabled">자유선택
+				</td>
+				<td class="displayOff" colspan="2">
+					<input type="checkbox" disabled="disabled">교직
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">자유선택
+				</td>
+				<td colspan="2">학부(과) : 사회사업학전공 </td>
+			</tr>
+		
+			<tr>
+				<th rowspan="2" colspan="2">강좌특성</th>
+				<td class="displayOn" colspan="5">
+					<input type="checkbox" checked="" disabled="disabled">이론강의
+					<input type="checkbox" disabled="disabled" style="margin-left:76px">실험·실습·실기<br>
+					<input type="checkbox" disabled="disabled">이론/실험·실습병행
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+				<td class="displayOff" colspan="5">
+					<input type="checkbox" checked="" disabled="disabled">이론강의
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">이론·실습병행
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">실험·실습·실기					
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+			</tr>
+			<tr>
+				<th>학문특성</th>
+				<td></td>
+				<th>기타특성</th>				
+				<td colspan="2"></td>
+			</tr>
+			
+			<tr class="displayOn">
+				<th rowspan="3" colspan="2">교수학습<br>방법</th>
+				<th colspan="2">표준 교과목운영 <br>기준</th>
+				<td colspan="3" style="line-height: 1.0em">
+					<input type="checkbox" disabled="disabled">강의
+					<input type="checkbox" disabled="disabled" style="margin-left: 30px;">발표<br>
+					<input type="checkbox" disabled="disabled">토론·토의
+					<input type="checkbox" disabled="disabled">협력학습<br>
+					<input type="checkbox" disabled="disabled">문제기반학습<br>
+				</td>
+			</tr>
+			<tr class="displayOn">
+				<th colspan="2">학생 자기주도식<br>수업운영</th>
+				<td colspan="3">
+					<input type="checkbox" disabled="disabled">문제기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">프로젝트기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">플립러닝<br>
+					<input type="checkbox" disabled="disabled">K-MOOC<br>
+					<input type="checkbox" disabled="disabled">팀기반학습(TBL)<br>
+					<input type="checkbox" disabled="disabled">블랜디드러닝<br>
+					<input type="checkbox" disabled="disabled">캡스톤디자인<br>
+				</td>
+			</tr>
+			<tr class="displayOn">
+				<th colspan="2">현장 연계 방법</th>
+				<td colspan="3">
+					<input type="checkbox" disabled="disabled">현장전문가초청<br>
+					<input type="checkbox" disabled="disabled">현장탐방
+					<input type="checkbox" disabled="disabled" style="margin-left:20px;">기타<br>
+				</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th rowspan="2" colspan="2">교수학습<br>방법</th>
+				<th colspan="2">표준 교과목운영 기준</th>
+				<th colspan="2">학생 자기주도식 수업운영</th>
+				<th>현장 연계 방법</th>
+			</tr>
+			<tr class="displayOff">
+				<td colspan="2" style="line-height: 1.0em">
+					<input type="checkbox" disabled="disabled">강의<br>
+					<input type="checkbox" disabled="disabled">발표<br>
+					<input type="checkbox" disabled="disabled">토론·토의<br>
+					<input type="checkbox" disabled="disabled">협력학습<br>
+					<input type="checkbox" disabled="disabled">문제기반학습<br>
+				</td>
+				<td colspan="2">
+					<input type="checkbox" disabled="disabled">문제기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">프로젝트기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">플립러닝<br>
+					<input type="checkbox" disabled="disabled">K-MOOC<br>
+					<input type="checkbox" disabled="disabled">팀기반학습(TBL)<br>
+					<input type="checkbox" disabled="disabled">블랜디드러닝<br>
+					<input type="checkbox" disabled="disabled">캡스톤디자인<br>
+				</td>
+				<td>
+					<input type="checkbox" disabled="disabled">현장전문가초청<br>
+					<input type="checkbox" disabled="disabled">현장탐방<br>
+					<input type="checkbox" disabled="disabled">기타<br>
+				</td>
+			</tr>
+			
+			
+			<tr>
+				<th colspan="2">전공능력</th>
+				<td colspan="5"></td>				
+			</tr>
+			<tr>
+				<th colspan="2" rowspan="2">성적평가기준</th>
+				<td colspan="5">
+					상대평가 유형 1
+
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5">※성적평가기준은 최종 수강 인원, 강좌별 특성에 따라 차후 변동될 수 있습니다.</td>
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="3">연락처</th>
+				<th>연구실</th>
+				<td></td>
+				<th>E-Mail</th>
+				<td colspan="2" style="word-break:break-word;"></td>
+				
+			</tr>
+			<tr>
+				<th>휴대전화</th>
+				<td></td>
+				<th>면담가능시간</th>
+				<td colspan="2">매주 수요일 오후 1-2시 (그 외 시간은 사전 약속 후 면담 가능)</td>
+				
+			</tr>
+			<tr>
+				<th>연구일</th>
+				<td></td>
+				<th>관리부서</th>
+				<td colspan="2">
+					교학1팀 (031-280-3410 ~ 3)
+
+				</td>
+				
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="2">교육과정<br>참고사항</th>
+				<th>선수과목</th>
+				<td></td>
+				<th>관련<br>기초과목</th>
+				<td colspan="2"></td>
+			</tr>
+			<tr>
+				<th class="multi-line">동시수강<br>관련과목</th>
+				<td></td>
+				<th>관련<br>고급과목</th>
+				<td colspan="2"></td>
+			</tr>
+			
+			
+			<!-- ------------------------------------------------------------------------  -->
+			<tr class="displayOn">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5"></td>
+			</tr> 
+			
+			<tr class="displayOn">
+				<th colspan="2" rowspan="4">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="4">1. 가족 및 가족복지에 대한 개념을 이해하고 가족복지 정책과 관련 법률 및 지원서비스의 필요성과 역할을 설명할 수 있다.<br>
+2. 가족복지 실천의 주요 관점과 이론을 학습하여 다양한 가족 문제를 분석하고, 실천 과정에서 적용할 수 있는 이론적 기반을 마련할 수 있다.<br>
+3. 다양한 가족 유형을 이해하고, 각 가족의 특성과 복지 지원 방안을 탐색할 수 있다.<br>
+4. 가족복지의 이론과 실제를 종합적으로 적용하여 가족복지 실천 현장에서 효과적으로 개입할 수 있는 역량을 기를 수 있다.</td>
+			</tr>
+			<tr class="displayOn">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="4">본 교과목은 강의식과 토의·토론식을 병행하여 운영할 예정이다. 강의는 매주 주차별 핵심 주제를 중심으로 진행하며, 이를 기반으로 한 사고 확장 및 논의를 유도할 계획이다. 또한, 강의 내용과 연계된 문제 및 논의점을 자유롭게 공유할 수 있는 환경을 조성하여, 학생들이 적극적으로 의견을 교환하고 깊이 있는 이해를 도모할 수 있도록 할 예정이다.</td>				
+			</tr>
+			
+			<tr class="displayOn">
+				<th style="border-right:none">평가방법</th>
+				<td colspan="4" style="padding: 0px; border-bottom:none">
+					<table style="width:100%; border-collapse:collapse; border-width: 0px; font-size: 12px;">
+						<tbody><tr>
+							<th style="border-top:none; border-left:none" width="25%">중간고사</th>
+							<th style="border-top:none" width="25%">기말고사</th>
+							<th style="border-top:none" width="25%">출석</th>
+							<th style="border-top:none; border-right:none" width="25%">과제</th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">30&nbsp;</td>
+							<td style="text-align:center;">30</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;border-right:none">30</td>
+						</tr>
+						<tr>
+							<th style="border-top:none; border-left:none" width="25%">퀴즈</th>
+							<th style="border-top:none" width="25%">토론</th>
+							<th style="border-top:none" width="25%">기타</th>
+							<th style="border-top:none; border-right:none" width="25%"></th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">&nbsp;</td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;border-right:none"></td>
+						</tr>
+						<tr>
+							<th colspan="1" style="border-left:none; border-bottom:none">과제/퀴즈/<br>토론/기타<br>문제 및 주제</th>
+							<td colspan="3" style="border-right:none; border-bottom:none">(1) 개인과제 (10%): 나의 가족을 사회적 맥락에서 분석하고, 가족복지론에서 다루는 가족 기능, 가족 내 역할, 가족 유형 등과 연결하여 설명한다. 가족 복지 정책이 우리 가족에 미친 영향, 가족 내에서 경험한 복지 서비스, 가족의 변화 속에서 느낀 점 등을 고찰하여 작성한다. (과제 수행을 위한 구체적인 가이드라인은 추후 공지 예정)
+
+(2) 조별과제 (20%): 조별로 다양한 가족 유형의 사례 중 하나를 선택하여 해당 가족이 직면한 문제를 분석하고, 이를 해결하기 위한 가족복지 개입 계획을 수립하시오. 개입 계획에는 최신 가족복지 정책 및 제도를 반영하고, 가족복지 실천 관점과 이론을 구체적으로 적용하시오. (유형별 가상의 사례가 제공될 예정이며, 과제 수행을 위한 구체적인 가이드라인은 추후 공지 예정)</td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>		
+				
+			<tr class="displayOn">
+				<th style="line-height: 1.1em">수업운영방식 </th>
+				<td colspan="4">-</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5"></td>
+			</tr> 
+			
+			
+			
+			<tr class="displayOff">
+				<th rowspan="4">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="5">1. 가족 및 가족복지에 대한 개념을 이해하고 가족복지 정책과 관련 법률 및 지원서비스의 필요성과 역할을 설명할 수 있다.<br>
+2. 가족복지 실천의 주요 관점과 이론을 학습하여 다양한 가족 문제를 분석하고, 실천 과정에서 적용할 수 있는 이론적 기반을 마련할 수 있다.<br>
+3. 다양한 가족 유형을 이해하고, 각 가족의 특성과 복지 지원 방안을 탐색할 수 있다.<br>
+4. 가족복지의 이론과 실제를 종합적으로 적용하여 가족복지 실천 현장에서 효과적으로 개입할 수 있는 역량을 기를 수 있다.</td>
+			</tr>
+			<tr class="displayOff">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="5">본 교과목은 강의식과 토의·토론식을 병행하여 운영할 예정이다. 강의는 매주 주차별 핵심 주제를 중심으로 진행하며, 이를 기반으로 한 사고 확장 및 논의를 유도할 계획이다. 또한, 강의 내용과 연계된 문제 및 논의점을 자유롭게 공유할 수 있는 환경을 조성하여, 학생들이 적극적으로 의견을 교환하고 깊이 있는 이해를 도모할 수 있도록 할 예정이다.</td>				
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="border-right:none">평가방법</th>
+				<td colspan="5" style="padding: 0px; border-bottom:none">
+					<table style="width:100%; border-collapse:collapse; border-width: 0px; font-size: 12px;">
+						<tbody><tr>
+							<th style="border-top:none; border-left:none" width="15%">중간고사</th>
+							<th style="border-top:none;" width="15%">기말고사</th>
+							<th style="border-top:none" width="14%">출석</th>
+							<th style="border-top:none" width="14%">과제</th>
+							<th style="border-top:none" width="14%">퀴즈</th>
+							<th style="border-top:none" width="14%">토론</th>
+							<th style="border-top:none; border-right:none" width="14%">기타</th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">30&nbsp;</td>
+							<td style="text-align:center;">30</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;">30</td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;border-right:none"></td>
+						</tr>
+						<tr>
+							<th colspan="2" style="border-left:none; border-bottom:none">과제/퀴즈/토론/기타<br>문제 및 주제</th>
+							<td colspan="5" style="border-right:none; border-bottom:none">(1) 개인과제 (10%): 나의 가족을 사회적 맥락에서 분석하고, 가족복지론에서 다루는 가족 기능, 가족 내 역할, 가족 유형 등과 연결하여 설명한다. 가족 복지 정책이 우리 가족에 미친 영향, 가족 내에서 경험한 복지 서비스, 가족의 변화 속에서 느낀 점 등을 고찰하여 작성한다. (과제 수행을 위한 구체적인 가이드라인은 추후 공지 예정)
+
+(2) 조별과제 (20%): 조별로 다양한 가족 유형의 사례 중 하나를 선택하여 해당 가족이 직면한 문제를 분석하고, 이를 해결하기 위한 가족복지 개입 계획을 수립하시오. 개입 계획에는 최신 가족복지 정책 및 제도를 반영하고, 가족복지 실천 관점과 이론을 구체적으로 적용하시오. (유형별 가상의 사례가 제공될 예정이며, 과제 수행을 위한 구체적인 가이드라인은 추후 공지 예정)</td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="line-height: 1.1em">수업운영방식</th>
+				<td colspan="5">-</td>
+			</tr>
+			
+			<!---------------교재 ---------------------- -->
+			
+			<tr>
+				<th rowspan="2" colspan="2">교재</th>
+				<th class="multi-line">주교재<br>(저자,출판사)</th>
+				<td colspan="4">최정숙 외. (2020). 가족복지론. 학지사</td>
+			</tr>
+			<tr>
+				<th class="multi-line">참고도서<br>(저자,출판사)</th>
+				<td colspan="4">(1) 조흥식 외. (2017). 가족복지학. 학지사<br>
+(2) 김연옥 외. (2022). 가족복지론. 학지사<br>
+</td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">장애학생 수업&gt;<br>지원안내</th>
+				<th class="multi-line">시험시간<br>조정여부</th>
+				<td colspan="4">
+					<input type="checkbox" disabled="disabled">최소1.5배(저시력,뇌병변,기타) &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">최소1.7배(맹인학생)   					
+					
+				</td>
+			</tr>
+			
+			<tr>
+				<th class="multi-line">지원사항</th>
+				<td colspan="4">
+					<input type="checkbox" disabled="disabled">시험대필 제공여부 &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">시험문제 점역지원 여부 &nbsp;&nbsp;
+					<input type="checkbox" disabled="disabled">확대문자 시험지 제공
+				</td>
+			</tr>
+			<tr>
+				<th class="multi-line">기타</th>
+				<td colspan="4">장애 학생의 원활한 학습을 위해 학기 첫 주에 개별 면담을 진행하여 필요 사항을 논의하고, 요청된 수업 지원을 적극적으로 제공할 예정이다. 필요한 경우 추가적인 조정이나 장애학생지원센터의 지원도 최대한 반영할 예정이다.<br></td>
+			</tr>
+			
+			
+			
+			
+		</tbody>
+	</table>
+	
+	
+	<table class="syllabus_week_title">
+		<tbody><tr>
+			<th colspan="5"><span style="font-size: 18px;">주차별 강의내용</span></th>
+		</tr>
+	</tbody></table>
+	<table class="syllabus_week">
+		<colgroup>
+			<col width="5%"> 
+			<col width="32%">
+			<col width="21%">
+			<col width="17%">
+			<col width="17%">
+			<col width="8%">
+		</colgroup>
+			<thead>
+			<tr style="line-height: 1.2em">
+				<th>주차</th>
+				<th>학습주제</th>
+				<th>수업방식/<br>이용기자재</th>
+				<th>교수학습자료</th>
+				<th>과제</th>
+				<th>수업운영<br>방식</th>
+			</tr>
+			</thead>
+		<tbody>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">1</td>
+				<td data-label="학습주제">교과목 및 수업계획 소개, 가족복지론 개관</td>
+				<td data-label="수업방식/이용기자재">강의식</td>
+				<td data-label="교수학습자료">1주차 PPT<br>
+강의계획서</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">2</td>
+				<td data-label="학습주제">가족 및 가족복지에 대한 이해</td>
+				<td data-label="수업방식/이용기자재">강의식, 토의 및 토론</td>
+				<td data-label="교수학습자료">2주차 PPT<br>
+최정숙 외 (2020) 제1장, 제2장<br>
+조흥식 외 (2017) 제1장, 제2장, 제3장</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">3</td>
+				<td data-label="학습주제">가족복지 정책 및 가족복지 관련 법률과 지원서비스</td>
+				<td data-label="수업방식/이용기자재">강의식, 토의 및 토론</td>
+				<td data-label="교수학습자료">3주차 PPT<br>
+최정숙 외 (2020) 제3장<br>
+김연옥 외 (2022) 제3장, 제4장</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">4</td>
+				<td data-label="학습주제">우리나라 및 해외의 가족복지 정책</td>
+				<td data-label="수업방식/이용기자재">강의식, 토의 및 토론</td>
+				<td data-label="교수학습자료">4주차 PPT<br>
+최정숙 외 (2020) 제4장, 제5장<br>
+김연옥 외 (2022) 제3장</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">5</td>
+				<td data-label="학습주제">가족복지 실천 관점 및 이론 I</td>
+				<td data-label="수업방식/이용기자재">강의식, 토의 및 토론</td>
+				<td data-label="교수학습자료">5주차 PPT<br>
+최정숙 외 (2020) 제6장<br>
+김연옥 외 (2022) 제7장<br>
+조흥식 외 (2017) 제4장</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">6</td>
+				<td data-label="학습주제">가족복지 실천 관점 및 이론 II</td>
+				<td data-label="수업방식/이용기자재">강의식, 토의 및 토론</td>
+				<td data-label="교수학습자료">6주차 PPT<br>
+김연옥 외 (2022) 제8장<br>
+조흥식 외 (2017) 제5장</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">7</td>
+				<td data-label="학습주제">가족복지 실천 과정</td>
+				<td data-label="수업방식/이용기자재">강의식, 토의 및 토론</td>
+				<td data-label="교수학습자료">7주차 PPT<br>
+최정숙 외 (2020) 제7장<br>
+김연옥 외 (2022) 제5장, 제6장</td>
+				<td data-label="과제">개인과제 제출 마감일 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">8</td>
+				<td data-label="학습주제">중간고사</td>
+				<td data-label="수업방식/이용기자재">객관식, 단답형 혼합 출제</td>
+				<td data-label="교수학습자료">2~7주차 PPT 자료 및 주교재</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">9</td>
+				<td data-label="학습주제">가족복지 실천 분야 I - 이혼/재혼 가족</td>
+				<td data-label="수업방식/이용기자재">강의식, 조별과제 발표</td>
+				<td data-label="교수학습자료">9주차 PPT<br>
+최정숙 외 (2020) 제8장<br>
+김연옥 외 (2017) 제10장</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">10</td>
+				<td data-label="학습주제">가족복지 실천 분야 II - 폭력·학대 가족 </td>
+				<td data-label="수업방식/이용기자재">강의식, 조별과제 발표</td>
+				<td data-label="교수학습자료">10주차 PPT<br>
+최정숙 외 (2020) 제9장<br>
+김연옥 외 (2022) 제9장</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">11</td>
+				<td data-label="학습주제">가족복지 실천 분야 III - 중독 가족</td>
+				<td data-label="수업방식/이용기자재">강의식, 조별과제 발표</td>
+				<td data-label="교수학습자료">11주차 PPT<br>
+최정숙 외 (2020) 제10장<br>
+조흥식 외 (2017) 제12장</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">12</td>
+				<td data-label="학습주제">가족복지 실천 분야 IV - 다문화 가족</td>
+				<td data-label="수업방식/이용기자재">강의식, 조별과제 발표</td>
+				<td data-label="교수학습자료">12주차 PPT<br>
+최정숙 외 (2020) 제11장<br>
+김연옥 외 (2022) 제12장<br>
+조흥식 외 (2017) 제13장</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">13</td>
+				<td data-label="학습주제">가족복지 실천 분야 V - 1인 가구</td>
+				<td data-label="수업방식/이용기자재">강의식, 조별과제 발표</td>
+				<td data-label="교수학습자료">13주차 PPT <br>
+조흥식 외 (2017) 제14장</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">14</td>
+				<td data-label="학습주제">가족복지 실천 분야 VI - 장애인 가족</td>
+				<td data-label="수업방식/이용기자재">강의식, 조별과제 발표</td>
+				<td data-label="교수학습자료">14주차 PPT<br>
+최정숙 외 (2020) 제12장<br>
+김연옥 외 (2022) 제11장</td>
+				<td data-label="과제">조별과제 최종본 제출 마감일 </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">15</td>
+				<td data-label="학습주제">기말고사</td>
+				<td data-label="수업방식/이용기자재">객관식, 단답형 혼합 출제</td>
+				<td data-label="교수학습자료">9~14주차 PPT 자료 및 주교재</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+
+		</tbody>
+	</table>
+	
+	
+</div>
+
+
+</body></html>

@@ -61,5 +61,7 @@ public class LectureService {
         Optional<Lecture> lecture = lectureRepository.findById(lectureId);
         return lecture.orElseThrow(() -> new RuntimeException("Lecture not found with id: " + lectureId));
     }
-
+    public List<Lecture> findByTitleStartWith(String keyword){
+        return lectureRepository.findByTitleStartWith(keyword);
+    }
 }

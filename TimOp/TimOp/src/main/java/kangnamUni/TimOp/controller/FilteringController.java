@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,8 +47,12 @@ public class FilteringController {
             List<LectureDTO> lectureDTOs = lectures.stream()
                     .map(lecture -> new LectureDTO(
                             lecture.getId(),
+                            lecture.getNum(),
                             lecture.getTitle(),
                             lecture.getProfessor(),
+                            lecture.getCredit(),
+                            lecture.getSyllabus(),
+                            lecture.getGrade(),
                             lecture.getLectureTimes().stream()
                                     .map(lectureTime -> new LectureTimeDTO(lectureTime.getDayOfWeek().toString(), lectureTime.getStartTime(), lectureTime.getEndTime()))
                                     .collect(Collectors.toList()) // ✅ `List<LectureTimeDTO>` 변환 후 저장
@@ -80,8 +85,12 @@ public class FilteringController {
             List<LectureDTO> lectureDTOs = lectures.stream()
                     .map(lecture -> new LectureDTO(
                             lecture.getId(),
+                            lecture.getNum(),
                             lecture.getTitle(),
                             lecture.getProfessor(),
+                            lecture.getCredit(),
+                            lecture.getSyllabus(),
+                            lecture.getGrade(),
                             lecture.getLectureTimes().stream()
                                     .map(lectureTime -> new LectureTimeDTO(
                                             lectureTime.getDayOfWeek().toString(),

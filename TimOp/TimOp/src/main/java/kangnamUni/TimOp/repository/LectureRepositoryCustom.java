@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface LectureRepositoryCustom {
     List<Lecture> findLectures(LectureFilterDTO filterDTO);
+    List<Lecture> findByTitleStartWith(String keyword);
 }
