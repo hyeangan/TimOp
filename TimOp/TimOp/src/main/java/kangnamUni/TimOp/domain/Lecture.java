@@ -34,6 +34,8 @@ public class Lecture {
     private String semester;
     private String liberalArts;
 
+    @OneToMany(mappedBy = "lecture", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CartLecture> cartLectures = new ArrayList<>();
     @ManyToMany(mappedBy = "lectures") // Timetable이 주인이므로 mappedBy 사용
     private List<Timetable> timetables = new ArrayList<>();
 

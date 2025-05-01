@@ -1,14 +1,20 @@
 package kangnamUni.TimOp.controller;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.transaction.Transactional;
+import kangnamUni.TimOp.Service.CartService;
 import kangnamUni.TimOp.Service.LectureService;
 import kangnamUni.TimOp.Service.MemberService;
 import kangnamUni.TimOp.Service.TimetableService;
 import kangnamUni.TimOp.domain.*;
 import kangnamUni.TimOp.dto.*;
+import kangnamUni.TimOp.repository.CartRepository;
 import kangnamUni.TimOp.repository.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,6 +23,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 @Slf4j
@@ -30,17 +37,15 @@ public class HomeController {
     private LectureService lectureService;
     @Autowired
     private TimetableService timetableService;
+    @Autowired
+    private CartService cartService;
+
 
     @GetMapping("/home")
     public String home(Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null && auth.isAuthenticated()) {
-            /*
-            MemberDetails memberDetails = (MemberDetails) auth.getPrincipal();
-            Member member = memberDetails.getMember();
-            model.addAttribute("member", member);
-            List<Timetable> timetables = timetableService.findByMemberId(member.getId());
-             */
+
             return "home";
         }
         return"home";
@@ -50,6 +55,16 @@ public class HomeController {
     public String frontPage(){
         return "front";
     }
+    @GetMapping("/lectures")
+    public ResponseEntity<?> autoComplete(@RequestParam("keyword") String keyword){
+        List<Lecture> lectures = lectureService.findByTitleStartWith(keyword);
+        List<LectureDTO> lectureDTOs = new ArrayList<>();
+        for (Lecture lecture : lectures) {
+            lectureDTOs.add(new LectureDTO(lecture.getTitle()));
+        }
+        return ResponseEntity.ok(lectureDTOs);
+    }
+
 
     //section1 tab2에 시간표에 저장된 강의 리스트 보내기
     @GetMapping("/timetables/{timetableName}/lectures")
@@ -131,21 +146,35 @@ public class HomeController {
         // 🔴 인증 실패: 403 Forbidden
         return ResponseEntity.status(403).build();
     }
+
     @GetMapping("/timetables")
     @ResponseBody
     public ResponseEntity<List<TimetableDTO>> getAllTimetables() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null && auth.isAuthenticated()
                 && auth.getPrincipal() instanceof MemberDetails memberDetails) {
-            return ResponseEntity.ok(timetableService.getAllTimetablesInfo());
-
+            Long memberId = memberDetails.getMember().getId();
+            Member member = memberRepository.findById(memberId)
+                    .orElseThrow(() -> new RuntimeException("회원 정보 없음"));
+            try{
+                List<Timetable> timetables = member.getTimetables();
+                List<TimetableDTO> timetableDTOs = new ArrayList<>();
+                for (Timetable timetable : timetables) {
+                    timetableDTOs.add(timetableService.convertTimetableDTO(timetable));
+                }
+                return ResponseEntity.ok(timetableDTOs);
+            }catch(Exception e) {
+                log.info(e.getMessage());
+                return ResponseEntity.notFound().build();
+            }
         }
         return ResponseEntity.status(403).build();
     }
 
     //시간표 추가
+    @Transactional
     @PostMapping("/timetables")
-    public ResponseEntity<?> addTimetable(@RequestBody TimetableRequestDTO request, Model model, HttpSession session) {
+    public ResponseEntity<?> addTimetable(@RequestBody TimetableRequestDTO request) {
 
         String timetableName = request.getName();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -155,7 +184,6 @@ public class HomeController {
 
         if(timetableService.existsByName(timetableName, member.getId())){
             //예외처리 알림 추가해
-            model.addAttribute("member", member);
             List<Timetable> timetables = timetableService.findByMemberId(member.getId());
 
             return ResponseEntity.badRequest().build();
@@ -174,6 +202,117 @@ public class HomeController {
         timetableService.deleteTimetableForMember(member.getId(), name);
 
         return ResponseEntity.noContent().build(); // 204 No Content 반환
+    }
+    @Autowired
+    private ResourceLoader resourceLoader;
+    @GetMapping("/lectures/{lectureId}/syllabus")
+    public ResponseEntity<?> getSyllabus(@PathVariable("lectureId") Long lectureId){
+        Lecture lecture = lectureService.findById(lectureId);
+        String syllabus = lecture.getSyllabus();
+
+        String location = String.format("classpath:static/%s.html", syllabus);
+
+        Resource html = resourceLoader.getResource(location);
+        if (!html.exists()) {
+            return ResponseEntity.notFound().build();
+        }
+        // 2) 파일이 없으면 404
+        return ResponseEntity.ok().contentType(MediaType.TEXT_HTML)
+                .body(html);
+    }
+    @GetMapping("members/me")
+    public ResponseEntity<?> getLoginMemberProfile(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        MemberDetails memberDetails = (MemberDetails) auth.getPrincipal();
+        MemberDTO memberDTO = new MemberDTO(memberDetails.getMember().getName());
+        return ResponseEntity.ok(memberDTO);
+    }
+    @Transactional
+    @GetMapping("/cart/lectures")
+    public ResponseEntity<?> getCartLectures() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        MemberDetails memberDetails = (MemberDetails) auth.getPrincipal();
+
+        Member member = memberService.findById(memberDetails.getMember().getId()); // 영속 상태
+        Cart cart = cartService.findById(member.getCart().getId());                // 영속 상태
+
+        List<CartLecture> cartLectureList = cart.getCartLectures();
+        List<Lecture> lectures = new ArrayList<>();
+        for (CartLecture cartLecture : cartLectureList) {
+            lectures.add(cartLecture.getLecture());
+        }
+
+        List<LectureDTO> lectureDTOs = lectures.stream()
+                .map(lec -> new LectureDTO(
+                        lec.getId(),
+                        lec.getNum(),
+                        lec.getTitle(),
+                        lec.getProfessor(),
+                        lec.getCredit(),
+                        lec.getSyllabus(),
+                        lec.getGrade(),
+                        lec.getLectureTimes().stream()
+                                .map(lectureTime -> new LectureTimeDTO(
+                                        lectureTime.getDayOfWeek().toString(),
+                                        lectureTime.getStartTime(),
+                                        lectureTime.getEndTime()))
+                                .collect(Collectors.toList())
+                ))
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(lectureDTOs);
+    }
+
+    @PostMapping("/cart/lectures/{lectureId}")
+    @Transactional
+    public ResponseEntity<?> addLectureToCart(@PathVariable("lectureId") Long lectureId){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        MemberDetails memberDetails = (MemberDetails) auth.getPrincipal();
+
+        Member member = memberService.findById(memberDetails.getMember().getId());
+
+        Lecture lecture = lectureService.findById(lectureId);
+        List<CartLecture> cartLectures = member.getCart().getCartLectures();
+        for (CartLecture cartLecture : cartLectures) {
+            if(cartLecture.getLecture().equals(lecture)){
+                return ResponseEntity.badRequest().build();
+            }
+        }
+        member.getCart().addLecture(lecture);
+        List<CartLecture> cartLecturesList = member.getCart().getCartLectures();
+        List<Lecture> lectures = new ArrayList<>();
+        for (CartLecture cartLecture : cartLecturesList) {
+            lectures.add(cartLecture.getLecture());
+        }
+        List<LectureDTO> lectureDTOs = lectures.stream()
+                .map(lec -> new LectureDTO(
+                        lec.getId(),
+                        lec.getNum(),
+                        lec.getTitle(),
+                        lec.getProfessor(),
+                        lec.getCredit(),
+                        lec.getSyllabus(),
+                        lec.getGrade(),
+                        lec.getLectureTimes().stream()
+                                .map(lectureTime -> new LectureTimeDTO(
+                                        lectureTime.getDayOfWeek().toString(),
+                                        lectureTime.getStartTime(),
+                                        lectureTime.getEndTime()))
+                                .collect(Collectors.toList())
+                ))
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(lectureDTOs);
+    }
+    @DeleteMapping("/cart/lectures/{lectureId}")
+    @Transactional
+    public ResponseEntity<?> deleteLectureToCart(@PathVariable("lectureId") Long lectureId){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        MemberDetails memberDetails = (MemberDetails) auth.getPrincipal();
+
+        Member member = memberService.findById(memberDetails.getMember().getId());
+        Lecture lecture = lectureService.findById(lectureId);
+        member.getCart().removeLecture(lecture);
+        return ResponseEntity.ok().build();
     }
 
     private static class ErrorResponse {

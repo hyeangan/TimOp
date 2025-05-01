@@ -16,6 +16,7 @@ public class LectureFilterDTO {
     private List<Integer> grade;
     private List<Integer> credit;
     private List<String> liberalArts;
+    private String timetableName;
 
     private String availability; //custom, empty
     private List<String> days;

@@ -3,15 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <title>로그인</title>
+    <style>
+        /* 화면 전체를 flex 컨테이너로 만들어 중앙 정렬 */
+        body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;       /* 뷰포트 높이 100% */
+          margin: 0;
+          background: #f0f2f5; /* 은은한 배경색 */
+          font-family: Arial, sans-serif;
+        }
+
+        /* 로그인 박스 스타일 */
+        #loginForm {
+          background: #fff;
+          padding: 2rem;           /* 내부 여백 */
+          border-radius: 8px;      /* 둥근 모서리 */
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+          width: 300px;
+        }
+
+        #loginForm h2 {
+          text-align: center;
+          margin-bottom: 1.5rem;
+        }
+
+        #loginForm label {
+          display: block;
+          margin-bottom: 0.5rem;
+          font-weight: bold;
+          font-size: 0.9rem;
+        }
+
+        #loginForm input {
+          width: 100%;
+          padding: 0.5rem;
+          margin-bottom: 1rem;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 1rem;
+        }
+
+        #loginForm button {
+          width: 100%;
+          padding: 0.6rem;
+          background: #4a90e2;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          font-size: 1rem;
+          cursor: pointer;
+        }
+
+        #loginForm button:hover {
+          background: #357abd;
+        }
+    </style>
 </head>
 <body>
-<h2>로그인</h2>
 <form id="loginForm">
+    <h2>로그인</h2>
     <label for="studentId">아이디:</label>
-    <input type="text" id="studentId" required><br><br>
+    <input type="text" id="studentId" required>
 
     <label for="password">비밀번호:</label>
-    <input type="password" id="password" required><br><br>
+    <input type="password" id="password" required>
 
     <button type="submit">로그인</button>
 </form>
@@ -37,23 +94,12 @@
         const authHeader = response.headers.get("Authorization");
 
         if (authHeader && authHeader.startsWith("Bearer ")) {
-          const token = authHeader.split(" ")[1]; // 또는 .replace("Bearer ", "")
+          const token = authHeader.split(" ")[1];
           localStorage.setItem("accessToken", token);
         } else {
           alert("인증 토큰이 없습니다.");
         }
-
-        location.href = "/home";
-
-        /*
-        fetch("/home", {
-          method: "GET",
-          headers: {
-            "Authorization": localStorage.getItem("token")
-          }
-        });
-        */
-
+        window.location.replace("/home");
       } catch (err) {
         alert("로그인에 실패했습니다.");
         console.error(err);

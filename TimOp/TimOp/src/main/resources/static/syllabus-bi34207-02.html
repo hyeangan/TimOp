@@ -1,0 +1,661 @@
+<html><head>
+<base target="_blank">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+	.syllabus, .syllabus_week{width:800px; border-width: 2px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:10px; table-layout: fixed;} 
+	.syllabus_sub {width:600px; border-width: 1px; border-collapse: collapse; border-color: black; border-style: solid; font-size: 12px; line-height: 24px; min-height: 24px; margin-top:3px;margin-bottom:3px; k-layout: fixed;}
+	tr{min-height: 22px; }
+	th{border: 1px black solid; text-align: center; font-weight: bold; background-color: #EFEFEF}
+	th.no_topLine{border-top:0px black solid;}
+	th.no_botLine{border-bottom:0px black solid;}
+	td{border: 1px black solid; text-align: left; padding-left: 3px; min-height: 22px; vertical-align: middle; background-color: #FFFFFF}
+	td p{min-height: 22px;}
+	td pre{margin:auto; min-height:1px;}
+	
+	.multi-line {line-height:1.3em;padding-top:4px}
+	.majorDiv {width:800px;}
+	.syllabus_week {margin-top:5px;}
+	.syllabus_week_title {border: 1px solid gray;width:800px;height:40px;margin-top:20px;}
+	
+	
+	@media screen and (max-width: 768px) { 	
+		.syllabus, .syllabus_week, .majorDiv, .syllabus_week_title {width: 100%;}
+		.displayOff {display:none;}
+ 		.syllabus_week thead {display:none;} 
+ 		.syllabus_week, .syllabus_week tbody, .syllabus_week tr, .syllabus_week td {display: block;} 
+  		.syllabus_week tbody tr td {text-align:left;padding-left: 50%;position:relative;border-top:none;border-left:none;border-right:none; }  
+  		.syllabus_week tbody tr td nth-child(1) {text-align: left;}
+  		.syllabus_week tbody tr {border-top:1px soild black;}  
+ 		.syllabus_week td:before {content:attr(data-label); position:absolute; left: 0%;width: 50%;padding-left: 15px;text-align: left;}  
+/*  		.syllabus_week_child5 {border-bottom: 2px solid black;} */
+	}
+			
+	@media screen and (min-width: 769px) { 	
+		.displayOn {display:none;}
+		.syllabus_week_child1 {text-align: center;}
+	}
+	
+</style>
+<title>강의계획서 보기</title>
+
+<script type="text/javascript" src="../function/common.js"></script>
+<script type="text/javascript" src="../function/sortTable.js"></script>
+<script>
+	function goPrint(){
+		
+		var src = '';
+		if(isCompatibleIE()){
+			src = "../rdreport/r_designer_cs.jsp?repo_val1=2025&repo_val2=1&repo_val3=BI34207&repo_val4=02&repo_val5=109599&repo_path=../sbr/sbr3072.mrd";
+		}else{
+			src = "https://app.kangnam.ac.kr/knumis/rdreport/r_designer_cs.jsp?repo_val1=2025&repo_val2=1&repo_val3=BI34207&repo_val4=02&repo_val5=109599&repo_path=../sbr/sbr3072.mrd";
+		}
+
+		openWin('',src,850,630,0,0);
+
+		self.close();
+	}
+</script>
+</head>
+
+<body>
+
+
+<div style="font-size: 12px; text-align:center;magin-left:10px; height:12px; margin-bottom:10px;margin-top:10px">
+	최초작성일 : 2025/03/05 , 최종수정일 : 2025/03/05
+</div>
+
+<div align="center" style="margin-top: 10px;">
+	<table class="syllabus">
+		<colgroup>
+			<col width="10%">
+			<col width="7%">
+			<col width="10%">
+			<col width="20%">
+			<col width="16%">
+			<col width="8%">
+			<col width="21%">
+		</colgroup>
+		
+		<tbody>
+			<tr>
+				<th colspan="7" style="height:50px;"><span style="font-size: 24px;">강 의 계 획 서</span></th>
+			</tr>
+			<tr>
+				<th colspan="2">년 도</th>
+				<td colspan="2">2025</td>
+				<th>학 기</th>
+				<td colspan="2">1 학기</td>
+			</tr>
+			<tr>
+				<th rowspan="2">교과목명</th>
+				<th>한글</th>
+				<td colspan="2">구기지도Ⅰ </td>
+				<th rowspan="2">담당교수</th>
+				<td rowspan="2" colspan="2">김새주</td>
+			</tr>
+			<tr>
+				<th>영문</th>
+				<td colspan="2">Method of Ball SportsⅠ</td>
+			</tr>
+			<tr>
+				<th colspan="2">학수번호-분반</th>
+				<td colspan="2">BI34207 - 02</td>
+				<th>강의요일교시</th>
+				<td colspan="2">(주)수1ab2ab3ab</td>
+			</tr>
+			<tr>
+				<th colspan="2">학점<br>(시간수)</th>
+				<td colspan="2">2(3)</td>
+				<th>강의실</th>
+				<td colspan="2">목203</td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">개설(이수)구분</th>
+				<th>교양</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:15px">계열교양<br>
+					<input type="checkbox" disabled="disabled">일반교양
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">균형교양: 
+				</td>
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">기초교양
+					<input type="checkbox" disabled="disabled" style="margin-left:12px">계열교양
+					<input type="checkbox" disabled="disabled" style="margin-left:12px">일반교양
+					<input type="checkbox" disabled="disabled" style="margin-left:12px">균형교양: 
+				</td>
+			</tr>
+			<tr>
+				<th>전공</th>
+				<td class="displayOn" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공탐색
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">전공기초<br>
+					<input type="checkbox" checked="" disabled="disabled">전공선택 ( 4 ) 학년
+					<input type="checkbox" disabled="disabled">전공필수 ( &nbsp; ) 학년					
+				</td>				
+				<td class="displayOff" colspan="4">
+					<input type="checkbox" disabled="disabled">학부기초
+					<input type="checkbox" disabled="disabled" style="margin-left:12px">전공탐색
+					<input type="checkbox" disabled="disabled" style="margin-left:12px">전공기초
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:12px">전공선택 ( 4 ) 학년
+					<input type="checkbox" disabled="disabled" style="margin-left:12px">전공필수 ( &nbsp; ) 학년					
+				</td>	
+			</tr>
+			<tr>
+				<th>일반선택</th>
+				<td class="displayOn" colspan="2">
+					<input type="checkbox" disabled="disabled">교직<br>
+					<input type="checkbox" disabled="disabled">자유선택
+				</td>
+				<td class="displayOff" colspan="2">
+					<input type="checkbox" disabled="disabled">교직
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">자유선택
+				</td>
+				<td colspan="2">학부(과) : 스포츠복지전공 </td>
+			</tr>
+		
+			<tr>
+				<th rowspan="2" colspan="2">강좌특성</th>
+				<td class="displayOn" colspan="5">
+					<input type="checkbox" disabled="disabled">이론강의
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:76px">실험·실습·실기<br>
+					<input type="checkbox" disabled="disabled">이론/실험·실습병행
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+				<td class="displayOff" colspan="5">
+					<input type="checkbox" disabled="disabled">이론강의
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">이론·실습병행
+					<input type="checkbox" checked="" disabled="disabled" style="margin-left:20px">실험·실습·실기					
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">패스
+					<input type="checkbox" disabled="disabled" style="margin-left:20px">팀티칭
+				</td>
+			</tr>
+			<tr>
+				<th>학문특성</th>
+				<td></td>
+				<th>기타특성</th>				
+				<td colspan="2"></td>
+			</tr>
+			
+			<tr class="displayOn">
+				<th rowspan="3" colspan="2">교수학습<br>방법</th>
+				<th colspan="2">표준 교과목운영 <br>기준</th>
+				<td colspan="3" style="line-height: 1.0em">
+					<input type="checkbox" disabled="disabled">강의
+					<input type="checkbox" disabled="disabled" style="margin-left: 30px;">발표<br>
+					<input type="checkbox" disabled="disabled">토론·토의
+					<input type="checkbox" disabled="disabled">협력학습<br>
+					<input type="checkbox" disabled="disabled">문제기반학습<br>
+				</td>
+			</tr>
+			<tr class="displayOn">
+				<th colspan="2">학생 자기주도식<br>수업운영</th>
+				<td colspan="3">
+					<input type="checkbox" checked="" disabled="disabled">문제기반학습(PBL)<br>
+					<input type="checkbox" checked="" disabled="disabled">프로젝트기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">플립러닝<br>
+					<input type="checkbox" disabled="disabled">K-MOOC<br>
+					<input type="checkbox" checked="" disabled="disabled">팀기반학습(TBL)<br>
+					<input type="checkbox" disabled="disabled">블랜디드러닝<br>
+					<input type="checkbox" disabled="disabled">캡스톤디자인<br>
+				</td>
+			</tr>
+			<tr class="displayOn">
+				<th colspan="2">현장 연계 방법</th>
+				<td colspan="3">
+					<input type="checkbox" disabled="disabled">현장전문가초청<br>
+					<input type="checkbox" disabled="disabled">현장탐방
+					<input type="checkbox" disabled="disabled" style="margin-left:20px;">기타<br>
+				</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th rowspan="2" colspan="2">교수학습<br>방법</th>
+				<th colspan="2">표준 교과목운영 기준</th>
+				<th colspan="2">학생 자기주도식 수업운영</th>
+				<th>현장 연계 방법</th>
+			</tr>
+			<tr class="displayOff">
+				<td colspan="2" style="line-height: 1.0em">
+					<input type="checkbox" disabled="disabled">강의<br>
+					<input type="checkbox" disabled="disabled">발표<br>
+					<input type="checkbox" disabled="disabled">토론·토의<br>
+					<input type="checkbox" disabled="disabled">협력학습<br>
+					<input type="checkbox" disabled="disabled">문제기반학습<br>
+				</td>
+				<td colspan="2">
+					<input type="checkbox" checked="" disabled="disabled">문제기반학습(PBL)<br>
+					<input type="checkbox" checked="" disabled="disabled">프로젝트기반학습(PBL)<br>
+					<input type="checkbox" disabled="disabled">플립러닝<br>
+					<input type="checkbox" disabled="disabled">K-MOOC<br>
+					<input type="checkbox" checked="" disabled="disabled">팀기반학습(TBL)<br>
+					<input type="checkbox" disabled="disabled">블랜디드러닝<br>
+					<input type="checkbox" disabled="disabled">캡스톤디자인<br>
+				</td>
+				<td>
+					<input type="checkbox" disabled="disabled">현장전문가초청<br>
+					<input type="checkbox" disabled="disabled">현장탐방<br>
+					<input type="checkbox" disabled="disabled">기타<br>
+				</td>
+			</tr>
+			
+			
+			<tr>
+				<th colspan="2">전공능력</th>
+				<td colspan="5"></td>				
+			</tr>
+			<tr>
+				<th colspan="2" rowspan="2">성적평가기준</th>
+				<td colspan="5">
+					상대평가 유형 1
+
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5">※성적평가기준은 최종 수강 인원, 강좌별 특성에 따라 차후 변동될 수 있습니다.</td>
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="3">연락처</th>
+				<th>연구실</th>
+				<td></td>
+				<th>E-Mail</th>
+				<td colspan="2" style="word-break:break-word;"></td>
+				
+			</tr>
+			<tr>
+				<th>휴대전화</th>
+				<td></td>
+				<th>면담가능시간</th>
+				<td colspan="2">수요일 오후 13:00~15:00</td>
+				
+			</tr>
+			<tr>
+				<th>연구일</th>
+				<td></td>
+				<th>관리부서</th>
+				<td colspan="2">
+					교학1팀 (031-280-3410 ~ 3)
+
+				</td>
+				
+			</tr>
+			
+			<tr>
+				<th colspan="2" rowspan="2">교육과정<br>참고사항</th>
+				<th>선수과목</th>
+				<td>기초체력</td>
+				<th>관련<br>기초과목</th>
+				<td colspan="2">육상</td>
+			</tr>
+			<tr>
+				<th class="multi-line">동시수강<br>관련과목</th>
+				<td>농구</td>
+				<th>관련<br>고급과목</th>
+				<td colspan="2">배구</td>
+			</tr>
+			
+			
+			<!-- ------------------------------------------------------------------------  -->
+			<tr class="displayOn">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5"></td>
+			</tr> 
+			
+			<tr class="displayOn">
+				<th colspan="2" rowspan="4">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="4">배구는 구기 스포츠 종목 중 하나이며 생활체육 스포츠와 프로스포츠로 각광을 받고 발전하고 있는 사회적 스포츠 종목이다. 신체적 속성은 체력증진 및 신체능력을 향상 시킬 수 있고, 유희적 속성에서는 남녀노소 누구나 참여할 수 있고 참여하는 즐거움을 통해 건강한 스포츠 문화를 조성한다. 경기적인 속성은 배구 기술 습득을 통해 볼에 대한 판단력과 예상하는 추측력, 집중력의 정신적인 면이 긍정적인 모습으로 연결된다.  </td>
+			</tr>
+			<tr class="displayOn">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="4">배구 역사와 변화 대한 기본 이론에 대해 이해한다. 현대 스포츠에서 배구가 지닌 장점의 기본 기술을 자세히 배우고 경기 수행에 필요한 규칙과 훈련 방법 및 심리적인 관리 능력까지 배운다. 
+팀 스포츠의 장점을 활용하여 팀윅에 필요한 시스템을 응용한 기술을 배운다. (전술훈련. 포메이션)
+</td>				
+			</tr>
+			
+			<tr class="displayOn">
+				<th style="border-right:none">평가방법</th>
+				<td colspan="4" style="padding: 0px; border-bottom:none">
+					<table style="width:100%; border-collapse:collapse; border-width: 0px; font-size: 12px;">
+						<tbody><tr>
+							<th style="border-top:none; border-left:none" width="25%">중간고사</th>
+							<th style="border-top:none" width="25%">기말고사</th>
+							<th style="border-top:none" width="25%">출석</th>
+							<th style="border-top:none; border-right:none" width="25%">과제</th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">30&nbsp;</td>
+							<td style="text-align:center;">40</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;border-right:none">10</td>
+						</tr>
+						<tr>
+							<th style="border-top:none; border-left:none" width="25%">퀴즈</th>
+							<th style="border-top:none" width="25%">토론</th>
+							<th style="border-top:none" width="25%">기타</th>
+							<th style="border-top:none; border-right:none" width="25%"></th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">&nbsp;</td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;border-right:none"></td>
+						</tr>
+						<tr>
+							<th colspan="1" style="border-left:none; border-bottom:none">과제/퀴즈/<br>토론/기타<br>문제 및 주제</th>
+							<td colspan="3" style="border-right:none; border-bottom:none"></td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>		
+				
+			<tr class="displayOn">
+				<th style="line-height: 1.1em">수업운영방식 </th>
+				<td colspan="4">대면</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th colspan="2">교과목<br>개요</th>
+				<td colspan="5"></td>
+			</tr> 
+			
+			
+			
+			<tr class="displayOff">
+				<th rowspan="4">교과목<br>운영</th>
+				<th>수업목표</th>
+				<td colspan="5">배구는 구기 스포츠 종목 중 하나이며 생활체육 스포츠와 프로스포츠로 각광을 받고 발전하고 있는 사회적 스포츠 종목이다. 신체적 속성은 체력증진 및 신체능력을 향상 시킬 수 있고, 유희적 속성에서는 남녀노소 누구나 참여할 수 있고 참여하는 즐거움을 통해 건강한 스포츠 문화를 조성한다. 경기적인 속성은 배구 기술 습득을 통해 볼에 대한 판단력과 예상하는 추측력, 집중력의 정신적인 면이 긍정적인 모습으로 연결된다.  </td>
+			</tr>
+			<tr class="displayOff">
+				<th class="multi-line">교수학습<br>세부운영<br>방법</th>
+				<td colspan="5">배구 역사와 변화 대한 기본 이론에 대해 이해한다. 현대 스포츠에서 배구가 지닌 장점의 기본 기술을 자세히 배우고 경기 수행에 필요한 규칙과 훈련 방법 및 심리적인 관리 능력까지 배운다. 
+팀 스포츠의 장점을 활용하여 팀윅에 필요한 시스템을 응용한 기술을 배운다. (전술훈련. 포메이션)
+</td>				
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="border-right:none">평가방법</th>
+				<td colspan="5" style="padding: 0px; border-bottom:none">
+					<table style="width:100%; border-collapse:collapse; border-width: 0px; font-size: 12px;">
+						<tbody><tr>
+							<th style="border-top:none; border-left:none" width="15%">중간고사</th>
+							<th style="border-top:none;" width="15%">기말고사</th>
+							<th style="border-top:none" width="14%">출석</th>
+							<th style="border-top:none" width="14%">과제</th>
+							<th style="border-top:none" width="14%">퀴즈</th>
+							<th style="border-top:none" width="14%">토론</th>
+							<th style="border-top:none; border-right:none" width="14%">기타</th>
+						</tr>
+						<tr>
+							<td style="text-align:center;border-left:none">30&nbsp;</td>
+							<td style="text-align:center;">40</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;">10</td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;border-right:none">10</td>
+						</tr>
+						<tr>
+							<th colspan="2" style="border-left:none; border-bottom:none">과제/퀴즈/토론/기타<br>문제 및 주제</th>
+							<td colspan="5" style="border-right:none; border-bottom:none"></td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+			
+			<tr class="displayOff">
+				<th style="line-height: 1.1em">수업운영방식</th>
+				<td colspan="5">대면</td>
+			</tr>
+			
+			<!---------------교재 ---------------------- -->
+			
+			<tr>
+				<th rowspan="2" colspan="2">교재</th>
+				<th class="multi-line">주교재<br>(저자,출판사)</th>
+				<td colspan="4">배구K스포츠 체육지도자 <br>
+훈련지도서</td>
+			</tr>
+			<tr>
+				<th class="multi-line">참고도서<br>(저자,출판사)</th>
+				<td colspan="4">배구는 이렇게 하면 된다</td>
+			</tr>			
+			<tr>
+				<th rowspan="3" colspan="2">장애학생 수업&gt;<br>지원안내</th>
+				<th class="multi-line">시험시간<br>조정여부</th>
+				<td colspan="4">
+					<input type="checkbox" checked="" disabled="disabled">최소1.5배(저시력,뇌병변,기타) &nbsp;&nbsp;
+					<input type="checkbox" checked="" disabled="disabled">최소1.7배(맹인학생)   					
+					
+				</td>
+			</tr>
+			
+			<tr>
+				<th class="multi-line">지원사항</th>
+				<td colspan="4">
+					<input type="checkbox" checked="" disabled="disabled">시험대필 제공여부 &nbsp;&nbsp;
+					<input type="checkbox" checked="" disabled="disabled">시험문제 점역지원 여부 &nbsp;&nbsp;
+					<input type="checkbox" checked="" disabled="disabled">확대문자 시험지 제공
+				</td>
+			</tr>
+			<tr>
+				<th class="multi-line">기타</th>
+				<td colspan="4"><br></td>
+			</tr>
+			
+			
+			
+			
+		</tbody>
+	</table>
+	
+	
+	<table class="syllabus_week_title">
+		<tbody><tr>
+			<th colspan="5"><span style="font-size: 18px;">주차별 강의내용</span></th>
+		</tr>
+	</tbody></table>
+	<table class="syllabus_week">
+		<colgroup>
+			<col width="5%"> 
+			<col width="32%">
+			<col width="21%">
+			<col width="17%">
+			<col width="17%">
+			<col width="8%">
+		</colgroup>
+			<thead>
+			<tr style="line-height: 1.2em">
+				<th>주차</th>
+				<th>학습주제</th>
+				<th>수업방식/<br>이용기자재</th>
+				<th>교수학습자료</th>
+				<th>과제</th>
+				<th>수업운영<br>방식</th>
+			</tr>
+			</thead>
+		<tbody>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">1</td>
+				<td data-label="학습주제">오리엔테이션 및 배구 이론</td>
+				<td data-label="수업방식/이용기자재">배구는 어떤 스포츠인가</td>
+				<td data-label="교수학습자료">이론수업 <br>
+질의 응답</td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">2</td>
+				<td data-label="학습주제">배구 기본 기술<br>
+<br>
+-언더핸드 패스 손모양<br>
+-언더핸드패스,오버핸드패스자세<br>
+-1인,2인,언더핸드패스,오버핸드  -패스, 3인 연결 혼합패스<br>
+-종합 패스 미니경기</td>
+				<td data-label="수업방식/이용기자재">언더, 오버 패스에 대한<br>
+ 이해와 기본동작에 필요한 관절의 기본 구성원리및 근력과 관계</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">3</td>
+				<td data-label="학습주제">토스 동작 <br>
+-오버토스 기본자세 <br>
+-토스의 손 모양 및 자세의 각도<br>
+-볼 위치선정 위한 다양한 방법<br>
+-볼 컨트롤에 필요한 적응력<br>
+-언더토스의 자세 및 공에 대한 컨트롤 및 위치선정 </td>
+				<td data-label="수업방식/이용기자재">토스에 대한 정확한 동작과 자세</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">4</td>
+				<td data-label="학습주제">응용패스<br>
+-2인 1조 기본 연결 패스<br>
+-라인패스, 어텍라인 패스<br>
+-3인 연결 패스 수비<br>
+-3인 수비(전술 조직 훈련)</td>
+				<td data-label="수업방식/이용기자재">토스와 패스의 연결</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">5</td>
+				<td data-label="학습주제">블로킹의 기본자세<br>
+-블로킹 손모양, 자세 및위치선정<br>
+-포지션 별 블로킹 스텝<br>
+-블로킹 타이밍 <br>
+-서브와 서브 리시브 설명</td>
+				<td data-label="수업방식/이용기자재">블로킹 기본동작</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">6</td>
+				<td data-label="학습주제">다양한 서브 기술<br>
+-오버핸드서브,플로터서브,언더핸드서브, 스파이크서브 동작설명<br>
+-서브 종류에 따른 손 모양, 서브 스텝<br>
+-서브 동작에 필요한 자세교정 <br>
+-거리의 활용한 다양한 서브방법</td>
+				<td data-label="수업방식/이용기자재">서브 기술에 중요한 요소</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">7</td>
+				<td data-label="학습주제">서브와 리시브<br>
+-자신에게 적합한 서브 선정<br>
+-서브 성공률을 높이는 방법<br>
+-서브 리시브 동작, 위치 선정<br>
+-2인, 3인 서브 리시브 <br>
+-서브 리시브 토스 연결 </td>
+				<td data-label="수업방식/이용기자재">서브의 종류의 장단점</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">8</td>
+				<td data-label="학습주제">중간고사</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">9</td>
+				<td data-label="학습주제">리시브 기술 <br>
+-오버핸드, 언더핸드 리시브 <br>
+-리시브 6인 포지션<br>
+-리시브 동작의 주의점 볼컨트롤, 리시브 후 연결 동작</td>
+				<td data-label="수업방식/이용기자재">리시브 기본 개념 동작 자세</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">10</td>
+				<td data-label="학습주제">스파이크의 기술<br>
+-스파이크에 필요한 기본 체력,스파이크의 기술<br>
+-스파이크에 필요한 기본 체력<br>
+</td>
+				<td data-label="수업방식/이용기자재">기초동작</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">11</td>
+				<td data-label="학습주제">스파이크 종류<br>
+-스텝 타이밍, 필요한 자세,<br>
+-포지션별 (레프트, 센터, 라이트,A퀵) 스파이크 </td>
+				<td data-label="수업방식/이용기자재">스파이크 단계별 동작</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">12</td>
+				<td data-label="학습주제">패스, 토스, 서브, 리시브 경기</td>
+				<td data-label="수업방식/이용기자재">배구 리시브 경기의 즐거움</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">13</td>
+				<td data-label="학습주제">응용 패스, 토스, 서브 리시브 경기, 블로킹 연습</td>
+				<td data-label="수업방식/이용기자재">경기에 필요한 다양한 훈련 방법</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">14</td>
+				<td data-label="학습주제">미니배구 경기, 배구 경기규칙 소개 </td>
+				<td data-label="수업방식/이용기자재">배구 종합기술 응용 경기 및 심판법</td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+			
+			<tr>
+				<td data-label="주차" class="syllabus_week_child1" style="font-weight: bold;background-color: #EFEFEF">15</td>
+				<td data-label="학습주제">기말고사</td>
+				<td data-label="수업방식/이용기자재"></td>
+				<td data-label="교수학습자료"></td>
+				<td data-label="과제"> </td>
+				<td data-label="강의형태" class="syllabus_week_child6">대면</td>
+			</tr>
+
+		</tbody>
+	</table>
+	
+	
+</div>
+
+
+</body></html>

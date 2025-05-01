@@ -102,7 +102,19 @@ public class TimetableService {
         if (timetable.getLectures().contains(lecture)) {
             throw new RuntimeException("Lecture is already in the timetable.");
         }
-
+        List<LectureTime> lectureTimes = lecture.getLectureTimes();
+        //시간 중복 확인
+        for (Lecture timetableLecture : timetable.getLectures()) {
+            for (LectureTime lectureTime : timetableLecture.getLectureTimes()) {
+                for (LectureTime time : lectureTimes) {
+                    if(lectureTime.getDayOfWeek() == time.getDayOfWeek() &&
+                    time.getStartTime().isBefore(lectureTime.getEndTime())&&
+                    lectureTime.getStartTime().isBefore(time.getEndTime())){
+                        throw new IllegalArgumentException("시간대 중복");
+                    }
+                }
+            }
+        }
         // 강의를 시간표에 추가
         timetable.getLectures().add(lecture);
         timetableRepository.save(timetable);  // 시간표 변경 사항 저장
@@ -135,8 +147,12 @@ public class TimetableService {
                         timetable.getLectures().stream()
                                 .map(lecture -> new LectureDTO(
                                         lecture.getId(),
+                                        lecture.getNum(),
                                         lecture.getTitle(),
                                         lecture.getProfessor(),
+                                        lecture.getCredit(),
+                                        lecture.getSyllabus(),
+                                        lecture.getGrade(),
                                         lecture.getLectureTimes().stream()
                                                 .map(lt -> new LectureTimeDTO(
                                                         lt.getDayOfWeek().toString(),
@@ -155,8 +171,12 @@ public class TimetableService {
                 timetable.getLectures().stream()
                         .map(lecture -> new LectureDTO(
                                 lecture.getId(),
+                                lecture.getNum(),
                                 lecture.getTitle(),
                                 lecture.getProfessor(),
+                                lecture.getCredit(),
+                                lecture.getSyllabus(),
+                                lecture.getGrade(),
                                 lecture.getLectureTimes().stream()
                                         .map(lt -> new LectureTimeDTO(
                                                 lt.getDayOfWeek().toString(),
@@ -173,8 +193,12 @@ public class TimetableService {
         List<LectureDTO> lectureDTOs = timetable.getLectures().stream()
                 .map(lecture -> new LectureDTO(
                         lecture.getId(),
+                        lecture.getNum(),
                         lecture.getTitle(),
                         lecture.getProfessor(),
+                        lecture.getCredit(),
+                        lecture.getSyllabus(),
+                        lecture.getGrade(),
                         lecture.getLectureTimes().stream()
                                 .map(lectureTime -> new LectureTimeDTO(lectureTime.getDayOfWeek().toString(),
                                         lectureTime.getStartTime(),

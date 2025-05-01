@@ -32,7 +32,9 @@ public class MemberService {
 
         return memberRepository.save(member);
     }
-
+    public Member findById(Long memberId){
+        return memberRepository.findById(memberId).orElseThrow();
+    }
     public boolean checkStudentIdDuplicate(String studentId) {
         return memberRepository.existsByStudentId(studentId);
     }

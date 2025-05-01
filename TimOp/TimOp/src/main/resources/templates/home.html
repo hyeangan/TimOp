@@ -3,9 +3,36 @@
 <head>
     <title>TimOp</title>
     <style>
-        #title{
-            text-align: center;
+        .preview-block {
+          pointer-events: none;  /* 클릭 방지 */
+          z-index: 5;
         }
+        #memberInfo {
+          position: relative;
+          left: 50px;
+          display: inline-block;           /* 내용 크기만큼만 감싸도록 */
+          background-color: #4a90e2;       /* 메인 테마 컬러 */
+          color: #fff;                     /* 글자색 흰색 */
+          padding: 0.6rem 1rem;            /* 위아래·좌우 여백 */
+          border-radius: 6px;              /* 둥근 모서리 */
+          font-weight: 500;                /* 약간 굵게 */
+          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+          font-size: 1rem;
+          margin: 1rem 0;                  /* 위아래 간격 */
+        }
+
+        #title {
+            text-align: center;
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+            /* 텍스트 그라데이션 */
+            background: linear-gradient(90deg, #ff8c00, #e52e71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            /* 텍스트 그림자 */
+            text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+          }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -171,13 +198,13 @@
 <header>
     <h1 id="title">TimOp</h1>
 </header>
-<!--<div th:text="${member.studentId +'님 환영합니다!'}"></div>-->
+<div id="memberInfo"></div>
+<button id="logoutButton" style="position:relative; left: 50px;">로그아웃</button>
 <div class="container">
     <section class="section" id="section1">
         <div class="tab-container">
             <div class="tab active" data-tab="tab1-1">검색 결과</div>
             <div class="tab" data-tab="tab1-2">시간표</div>
-
             <div class="tab" data-tab="tab1-3">장바구니</div>
         </div>
         <div class="tab-content active" id="tab1-1">
@@ -194,11 +221,11 @@
     <section class="section" id="section2">
         <div>
 
-            <form id="addTimetableForm">
+            <form id="addTimetableForm" style="display: inline-block">
                 <input type="text" name="name" placeholder="새 시간표 이름 입력" required style="display: inline-block; margin-right: 3px;"/>
-                <button type="submit">시간표 추가</button>
+                <button type="submit" >시간표 추가</button>
             </form>
-            <button onclick="deleteActiveTimetable()">시간표 삭제</button>
+            <button onclick="deleteActiveTimetable()" style="display: inline;">시간표 삭제</button>
         </div>
 
         <div class="tab-container" id="stab-container">
@@ -213,82 +240,105 @@
     </section>
     <section class="section">
         <form id="titleSearchForm">
-            <div class="form-group" style="display:inline;" >
+            <div class="form-group" style="position: relative; display: inline-block;">
                 <label for="title">강의 이름으로 검색:</label>
                 <input type="text" id="searchBox" name="title">
+                <ul id="suggestions" style="
+                position: absolute;
+                top: 100%; /* input 아래에 바로 붙게 */
+                left: 45%;
+                width:55%;
+                background: white;
+                border: 1px solid #ccc;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: none;
+                z-index: 10;
+              "></ul>
             </div>
             <div class="form-group"  style="display:inline;" >
                 <button type="submit">검색</button>
             </div>
         </form>
+        <hr><br>
+
         <form id="searchForm">
             <div class="form-group">
                 <label for="categoryDropdown">학부/전공:</label>
                 <select id="categoryDropdown" name="major">
                     <option value=''>----</option>
-                    <Option value='ICT융합공학부 (공과대학)'>	ICT융합공학부 (공과대학)</option>
-                    <Option value='IoT전자공학전공 (ICT공학부)'>	IoT전자공학전공 (ICT공학부)</option>
-                    <Option value='Wel-Tech융합전공 (복지융합대학)'>	Wel-Tech융합전공 (복지융합대학)</option>
-                    <Option value='가상현실전공 (ICT공학부)'>	가상현실전공 (ICT공학부)</option>
-                    <Option value='가상현실전공 (ICT융합공학부)'>	가상현실전공 (ICT융합공학부)</option>
-                    <Option value='건축공학전공 (부동산건설학부)'>	건축공학전공 (부동산건설학부)</option>
-                    <Option value='경영학전공 (글로벌경영학부)'>	경영학전공 (글로벌경영학부)</option>
-                    <Option value='경영학전공(야) (글로벌경영학부(야))'>	경영학전공(야) (글로벌경영학부(야))</option>
-                    <Option value='경제금융전공 (정경학부)'>	경제금융전공 (정경학부)</option>
-                    <Option value='경제금융전공(야) (정경학부(야))'>	경제금융전공(야) (정경학부(야))</option>
-                    <Option value='공공인재학전공 (정경학부)'>	공공인재학전공 (정경학부)</option>
-                    <Option value='공공인재학전공(야) (정경학부(야))'>	공공인재학전공(야) (정경학부(야))</option>
-                    <Option value='교양 (대학)'>	교양 (대학)</option>
-                    <Option value='교양(야) (교양)'>	교양(야) (교양)</option>
-                    <Option value='교육학과 (사범대학)'>	교육학과 (사범대학)</option>
-                    <Option value='국제지역학전공 (글로벌문화학부)'>	국제지역학전공 (글로벌문화학부)</option>
-                    <Option value='국제통상학전공 (글로벌경영학부)'>	국제통상학전공 (글로벌경영학부)</option>
-                    <Option value='글로벌경영학부 (경영관리대학)'>	글로벌경영학부 (경영관리대학)</option>
-                    <Option value='글로벌경영학부(야) (경영관리대학)'>	글로벌경영학부(야) (경영관리대학)</option>
-                    <Option value='글로벌문화학부 (글로벌인재대학)'>	글로벌문화학부 (글로벌인재대학)</option>
-                    <Option value='기독교학과 (글로벌인재대학)'>	기독교학과 (글로벌인재대학)</option>
-                    <Option value='기독교학전공 (글로벌문화학부)'>	기독교학전공 (글로벌문화학부)</option>
-                    <Option value='데이터사이언스전공 (ICT공학부)'>	데이터사이언스전공 (ICT공학부)</option>
-                    <Option value='데이터사이언스전공 (인공지능융합공학부)'>	데이터사이언스전공 (인공지능융합공학부)</option>
-                    <Option value='도시건축융합공학전공 (부동산건설학부)'>	도시건축융합공학전공 (부동산건설학부)</option>
-                    <Option value='도시공학전공 (부동산건설학부)'>	도시공학전공 (부동산건설학부)</option>
-                    <Option value='미술문화복지전공 (복지융합인재학부)'>	미술문화복지전공 (복지융합인재학부)</option>
-                    <Option value='반도체시스템융합전공'>	반도체시스템융합전공 </option>
-                    <Option value='부동산건설학부 (ICT건설공과대학)'>	부동산건설학부 (ICT건설공과대학)</option>
-                    <Option value='부동산학전공 (ICT건설공과대학>부동산건설학부)'>	부동산학전공 (ICT건설공과대학>부동산건설학부)</option>
-                    <Option value='사회복지학부 (복지융합대학)'>	사회복지학부 (복지융합대학)</option>
-                    <Option value='사회복지학부(야) (복지융합대학)'>	사회복지학부(야) (복지융합대학)</option>
-                    <Option value='사회사업학전공 (사회복지학부)'>	사회사업학전공 (사회복지학부)</option>
-                    <Option value='사회사업학전공(야) (사회복지학부(야))'>	사회사업학전공(야) (사회복지학부(야))</option>
-                    <Option value='사회서비스정책학전공 (사회복지학부)'>	사회서비스정책학전공 (사회복지학부)</option>
-                    <Option value='산업경영공학전공 (ICT공학부)'>	산업경영공학전공 (ICT공학부)</option>
-                    <Option value='산업경영공학전공 (인공지능융합공학부)'>	산업경영공학전공 (인공지능융합공학부)</option>
-                    <Option value='산업공학전공 (인공지능융합공학부)'>	산업공학전공 (인공지능융합공학부)</option>
-                    <Option value='세무학전공 (정경학부)'>	세무학전공 (정경학부)</option>
-                    <Option value='세무학전공(야) (정경학부(야))'>	세무학전공(야) (정경학부(야))</option>
-                    <Option value='소프트웨어전공 (ICT공학부)'>	소프트웨어전공 (ICT공학부)</option>
-                    <Option value='소프트웨어전공 (ICT융합공학부)'>	소프트웨어전공 (ICT융합공학부)</option>
-                    <Option value='스마트도시공학전공 (부동산건설학부)'>	스마트도시공학전공 (부동산건설학부)</option>
-                    <Option value='스포츠복지전공 (복지융합인재학부)'>	스포츠복지전공 (복지융합인재학부)</option>
-                    <Option value='스포츠복지전공 (예체능학부)'>	스포츠복지전공 (예체능학부)</option>
-                    <Option value='스포츠복지학과 (복지융합대학)'>	스포츠복지학과 (복지융합대학)</option>
-                    <Option value='실버산업학과 (복지융합대학)'>	실버산업학과 (복지융합대학)</option>
-                    <Option value='유니버설비주얼디자인전공 (복지융합인재학부)'>	유니버설비주얼디자인전공 (복지융합인재학부)</option>
-                    <Option value='유니버설아트디자인전공 (예체능학부)'>	유니버설아트디자인전공 (예체능학부)</option>
-                    <Option value='유니버설아트디자인학과 (복지융합대학)'>	유니버설아트디자인학과 (복지융합대학)</option>
-                    <Option value='유아교육과 (사범대학)'>	유아교육과 (사범대학)</option>
-                    <Option value='음악학과 (복지융합대학)'>	음악학과 (복지융합대학)</option>
-                    <Option value='음악학전공 (예체능학부)'>	음악학전공 (예체능학부)</option>
-                    <Option value='인공지능전공 (인공지능융합공학부)'>	인공지능융합공학부 (공과대학)</option>
-                    <Option value='5451'>	인공지능전공 (인공지능융합공학부)</option>
-                    <Option value='전자공학전공 (ICT융합공학부)'>	전자공학전공 (ICT융합공학부)</option>
-                    <Option value='정경학부 (경영관리대학)'>	정경학부 (경영관리대학)</option>
-                    <Option value='정경학부(야) (경영관리대학)'>	정경학부(야) (경영관리대학)</option>
-                    <Option value='중국지역학전공 (글로벌문화학부)'>	중국지역학전공 (글로벌문화학부)</option>
-                    <Option value='중등특수교육과 (사범대학)'>	중등특수교육과 (사범대학)</option>
-                    <Option value='초등특수교육과 (사범대학)'>	초등특수교육과 (사범대학)</option>
-                    <Option value='한국어문학전공 (글로벌문화학부)'>	한국어문학전공 (글로벌문화학부)</option>
-                    <Option value='한영문화콘텐츠전공 (글로벌문화학부)'>	한영문화콘텐츠전공 (글로벌문화학부)</option>
+                    <option value="ICT융합공학부 (공과대학)">	ICT융합공학부 (공과대학)</option>
+                    <option value="Wel-Tech융합전공 (복지융합대학)">	Wel-Tech융합전공 (복지융합대학)</option>
+                    <option value="가상현실전공 (ICT융합공학부)">	가상현실전공 (ICT융합공학부)</option>
+                    <option value="건축공학전공 (부동산건설학부)">	건축공학전공 (부동산건설학부)</option>
+                    <option value="경영학전공 (글로벌경영학부)">	경영학전공 (글로벌경영학부)</option>
+                    <option value="경영학전공(야) (글로벌경영학부(야))">	경영학전공(야) (글로벌경영학부(야))</option>
+                    <option value="경제금융전공 (정경학부)">	경제금융전공 (정경학부)</option>
+                    <option value="경제금융전공(야) (정경학부(야))">	경제금융전공(야) (정경학부(야))</option>
+                    <option value="공공인재학전공 (정경학부)">	공공인재학전공 (정경학부)</option>
+                    <option value="공공인재학전공(야) (정경학부(야))">	공공인재학전공(야) (정경학부(야))</option>
+                    <option value="교양 (대학)">	교양 (대학)</option>
+                    <option value="교양(야) (교양)">	교양(야) (교양)</option>
+                    <option value="교육학과 (사범대학)">	교육학과 (사범대학)</option>
+                    <option value="국제지역학과 ">	국제지역학과 </option>
+                    <option value="국제지역학전공 (글로벌문화학부)">	국제지역학전공 (글로벌문화학부)</option>
+                    <option value="국제통상학전공 (글로벌경영학부)">	국제통상학전공 (글로벌경영학부)</option>
+                    <option value="글로벌경영학부 (경영관리대학)">	글로벌경영학부 (경영관리대학)</option>
+                    <option value="글로벌경영학부(야) (경영관리대학)">	글로벌경영학부(야) (경영관리대학)</option>
+                    <option value="글로벌문화콘텐츠대학 (대학)">	글로벌문화콘텐츠대학 (대학)</option>
+                    <option value="글로벌문화학부 (글로벌인재대학)">	글로벌문화학부 (글로벌인재대학)</option>
+                    <option value="기독교커뮤니케이션학과 ">	기독교커뮤니케이션학과 </option>
+                    <option value="기독교학과 (글로벌인재대학)">	기독교학과 (글로벌인재대학)</option>
+                    <option value="기독교학전공 (글로벌문화학부)">	기독교학전공 (글로벌문화학부)</option>
+                    <option value="데이터사이언스전공 (인공지능융합공학부)">	데이터사이언스전공 (인공지능융합공학부)</option>
+                    <option value="도시건축융합공학전공 (부동산건설학부)">	도시건축융합공학전공 (부동산건설학부)</option>
+                    <option value="디자인학과 ">	디자인학과 </option>
+                    <option value="문화콘텐츠전공 (글로벌문화학부)">	문화콘텐츠전공 (글로벌문화학부)</option>
+                    <option value="문화콘텐츠학과 ">	문화콘텐츠학과 </option>
+                    <option value="반도체시스템융합전공 ">	반도체시스템융합전공 </option>
+                    <option value="법행정세무학부 (경영관리대학)">	법행정세무학부 (경영관리대학)</option>
+                    <option value="법행정세무학부(야) (경영관리대학)">	법행정세무학부(야) (경영관리대학)</option>
+                    <option value="복지융합대학 (대학)">	복지융합대학 (대학)</option>
+                    <option value="부동산건설학부 (ICT건설공과대학)">	부동산건설학부 (ICT건설공과대학)</option>
+                    <option value="부동산학전공 (ICT건설공과대학>부동산건설학부)">	부동산학전공 (ICT건설공과대학>부동산건설학부)</option>
+                    <option value="사회복지학부 (복지융합대학)">	사회복지학부 (복지융합대학)</option>
+                    <option value="사회복지학부(야) (복지융합대학)">	사회복지학부(야) (복지융합대학)</option>
+                    <option value="사회사업학전공 (사회복지학부)">	사회사업학전공 (사회복지학부)</option>
+                    <option value="사회사업학전공(야) (사회복지학부(야))">	사회사업학전공(야) (사회복지학부(야))</option>
+                    <option value="사회서비스정책학전공 (사회복지학부)">	사회서비스정책학전공 (사회복지학부)</option>
+                    <option value="산업경영공학전공 (인공지능융합공학부)">	산업경영공학전공 (인공지능융합공학부)</option>
+                    <option value="산업공학전공 (인공지능융합공학부)">	산업공학전공 (인공지능융합공학부)</option>
+                    <option value="상경학부 (경영관리대학)">	상경학부 (경영관리대학)</option>
+                    <option value="상경학부(야) (경영관리대학)">	상경학부(야) (경영관리대학)</option>
+                    <option value="세무학전공 (정경학부)">	세무학전공 (정경학부)</option>
+                    <option value="세무학전공(야) (정경학부(야))">	세무학전공(야) (정경학부(야))</option>
+                    <option value="소프트웨어전공 (ICT융합공학부)">	소프트웨어전공 (ICT융합공학부)</option>
+                    <option value="스마트도시공학전공 (부동산건설학부)">	스마트도시공학전공 (부동산건설학부)</option>
+                    <option value="스포츠복지전공 (예체능학부)">	스포츠복지전공 (예체능학부)</option>
+                    <option value="스포츠복지학과 (복지융합대학)">	스포츠복지학과 (복지융합대학)</option>
+                    <option value="시니어비즈니스학과 ">	시니어비즈니스학과 </option>
+                    <option value="실버산업학과 (복지융합대학)">	실버산업학과 (복지융합대학)</option>
+                    <option value="유니버설아트디자인전공 (예체능학부)">	유니버설아트디자인전공 (예체능학부)</option>
+                    <option value="유니버설아트디자인학과 (복지융합대학)">	유니버설아트디자인학과 (복지융합대학)</option>
+                    <option value="유아교육과 (사범대학)">	유아교육과 (사범대학)</option>
+                    <option value="음악학과 (복지융합대학)">	음악학과 (복지융합대학)</option>
+                    <option value="음악학전공 (예체능학부)">	음악학전공 (예체능학부)</option>
+                    <option value="인공지능융합공학부 (공과대학)">	인공지능융합공학부 (공과대학)</option>
+                    <option value="인공지능전공 (인공지능융합공학부)">	인공지능전공 (인공지능융합공학부)</option>
+                    <option value="자유전공학부 (부총장직속)">	자유전공학부 (부총장직속)</option>
+                    <option value="자유전공학부(야) (부총장직속)">	자유전공학부(야) (부총장직속)</option>
+                    <option value="전자공학전공 (ICT융합공학부)">	전자공학전공 (ICT융합공학부)</option>
+                    <option value="전자반도체공학부 (공과대학)">	전자반도체공학부 (공과대학)</option>
+                    <option value="정경학부 (경영관리대학)">	정경학부 (경영관리대학)</option>
+                    <option value="정경학부(야) (경영관리대학)">	정경학부(야) (경영관리대학)</option>
+                    <option value="중국지역학전공 (글로벌문화학부)">	중국지역학전공 (글로벌문화학부)</option>
+                    <option value="중국콘텐츠비즈니스학과 ">	중국콘텐츠비즈니스학과 </option>
+                    <option value="중등특수교육과 (사범대학)">	중등특수교육과 (사범대학)</option>
+                    <option value="체육학과 ">	체육학과 </option>
+                    <option value="초등특수교육과 (사범대학)">	초등특수교육과 (사범대학)</option>
+                    <option value="컴퓨터공학부 (공과대학)">	컴퓨터공학부 (공과대학)</option>
+                    <option value="한영문화콘텐츠전공 (글로벌문화학부)">	한영문화콘텐츠전공 (글로벌문화학부)</option>
                 </select>
             </div>
             <div class="form-group">
@@ -325,10 +375,19 @@
             <div class="form-group">
                 <fieldset>
                     <legend>시간대 검색</legend>
-                    <label><input type="radio" name="availability" value="empty"> 빈 시간대 검색</label>
-                    <label><input type="radio" name="availability" value="custom"> 시간대 직접 검색</label>
-                    <button type="button" id="openTimePicker" disabled>시간대 선택창</button>
-
+                    <label>
+                        <input type="checkbox" id="timeSearchCheckbox"> 시간대 검색
+                    </label>
+                    <br>
+                    <label>
+                        <input type="radio" name="availability" value="empty" id="emptyTime" disabled>
+                        빈 시간대 검색
+                    </label>
+                    <label>
+                        <input type="radio" name="availability" value="custom" id="customTime" disabled>
+                        시간대 직접 선택하기
+                    </label>
+                    <button type="button" id="openTimePicker" disabled>선택창 열기</button>
                 </fieldset>
             </div>
             <div>
@@ -363,6 +422,40 @@
 
 <script>
     document.getElementById('searchForm').addEventListener('submit', async function(event) {
+        const activeTab = document.querySelector('.stab.active');
+        if (activeTab) {
+            const timetableName = activeTab.textContent.trim();
+
+            const form = document.getElementById("searchForm");
+
+            // 기존 timetableName input이 있으면 제거 (중복 방지)
+            const existingInput = form.querySelector("input[name='timetableName']");
+            if (existingInput) {
+                existingInput.remove();
+            }
+
+            // 새로운 hidden input 생성
+            const hidden = document.createElement("input");
+            hidden.type = "hidden";
+            hidden.name = "timetableName";
+            hidden.value = timetableName;
+
+            // form에 추가
+            form.appendChild(hidden);
+        }
+
+        const checkbox = document.getElementById("timeSearchCheckbox");
+        const availabilityRadios = document.querySelectorAll('input[name="availability"]');
+
+        const isTimeSearchChecked = checkbox.checked;
+        const selectedAvailability = [...availabilityRadios].find(r => r.checked)?.value;
+        const isCustomMode = (selectedAvailability === "custom");
+
+        if (!isTimeSearchChecked || !isCustomMode) {
+            this.querySelectorAll("input[name='days'], input[name='startTimes'], input[name='endTimes']")
+                .forEach(e => e.remove());
+        }
+
         event.preventDefault(); // 기본 폼 제출 방지
 
         const form = event.target;
@@ -377,11 +470,12 @@
         }
 
         const url = `/search/condition?${params.toString()}`;
-
+        console.log("url", url);
         try {
             const response = await fetch(url, {
                 method: 'GET',
                 headers: { "Content-Type": "application/json",
+                'Cache-Control': 'no-store',
                 "Authorization": "Bearer " + localStorage.getItem("accessToken")}
             });
 
@@ -485,7 +579,8 @@
         setupTabEvents('section1');
         setupTabEvents('section2');
         getActiveTimetableName();
-
+        fetchUserProfile();
+        renderCart();
         fetchTimetables();
     });
 
@@ -535,7 +630,8 @@
     function fetchTimetables() {
         fetch('/timetables', {method: "GET",
           headers: {
-            "Authorization": "Bearer " + localStorage.getItem("accessToken")
+            "Authorization": "Bearer " + localStorage.getItem("accessToken"),
+            'Cache-Control': 'no-store',
           }}).then(response => response.json())
             .then(data => {
                 timetables = data;
@@ -576,6 +672,7 @@
                  {  method: "GET",
                     headers: {
                       "Content-Type": "application/json",
+                      'Cache-Control': 'no-store',
                       "Authorization": "Bearer " + localStorage.getItem("accessToken"),
                     }})
                     .then(response => response.json())
@@ -736,6 +833,7 @@ function getTimetableLectures() {
     fetch('/timetables/' + encodeURIComponent(timetableName)+ '/lectures', {
         method: 'GET',
         headers: {
+        'Cache-Control': 'no-store',
         "Authorization": "Bearer " + localStorage.getItem("accessToken")}
     })
     .then(response => response.json())
@@ -820,6 +918,7 @@ function getTimetableLectures() {
         fetch(`/search?title=${encodeURIComponent(searchBox.value)}`, {
             method: 'GET',
             headers: {
+                'Cache-Control': 'no-store',
                 'Accept': 'application/json',
                 "Authorization": "Bearer " + localStorage.getItem("accessToken"),
             }
@@ -846,19 +945,72 @@ function getTimetableLectures() {
         list.classList.add("scrollable-list");
 
         lectures.forEach(lecture => {
+            console.log("검색결과 강의 =", lectures);
             const listItem = document.createElement('li');
-            listItem.innerHTML = `
-                <strong>${lecture.title}</strong> - ${lecture.instructor}
-                <br> 교수: ${lecture.professor}
+            let innerHtml = `
+                <strong>${lecture.title}</strong>
+                <br>
+                교수: ${lecture.professor}<br>
+                시간:
             `;
+            lecture.lectureTimes.forEach(lectureTime => {
+                innerHtml += `${lectureTime.dayOfWeek}요일 ${lectureTime.startTime} ~ ${lectureTime.endTime} `;
+            });
+            innerHtml += `<br>${lecture.grade}학년  ${lecture.credit}학점`;
+            listItem.innerHTML = innerHtml.trim();
+
+            const syllabusButton = document.createElement('button');
+            syllabusButton.textContent = '강의계획서 보기';
+            syllabusButton.addEventListener('click', function(){
+                openSyllabus(lecture.id);
+            });
+
             const applyButton = document.createElement('button');
             applyButton.textContent = '시간표에 강의 추가';
             applyButton.style.marginLeft = '10px';
+            applyButton.style.display = 'inline-block';
             applyButton.addEventListener('click', function(){
                 applyLecture(lecture.id);
             });
-            list.appendChild(applyButton);
+            applyButton.addEventListener('mouseover', () => {
+              showPreviewBlock(lecture);
+            });
+
+            applyButton.addEventListener('mouseout', () => {
+              removePreviewBlock();
+            });
+
+            const addCartButton = document.createElement('button');
+            addCartButton.textContent = '장바구니에 저장';
+            addCartButton.style.marginLeft = '10px';
+            addCartButton.style.display = 'inline-block';
+            addCartButton.addEventListener('click', async () => {
+
+              try {
+                const response = await fetch(`/cart/lectures/${lecture.id}`, {
+                  method: 'POST',
+                  headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+                  },
+                });
+                if (!response.ok) {
+                  const error = await response.text();
+                  throw new Error(`장바구니 추가 실패: ${error}`);
+                }
+                //const result = await response.json();
+                //console.log('장바구니에 저장 성공:', result);
+                renderCart();
+              } catch (err) {
+                console.error(err);
+                alert('장바구니 담기 중 오류가 발생했습니다.');
+              }
+            });
+
+
             list.appendChild(listItem);
+            list.appendChild(syllabusButton);
+            list.appendChild(addCartButton);
+            list.appendChild(applyButton);
         });
 
         resultDiv.appendChild(list);
@@ -891,6 +1043,7 @@ function getTimetableLectures() {
     let isDragging = false;
     let dragStart = null;
     let isErasing = false;
+    let selectedTimeSlots = [];
 
     const days = ["월", "화", "수", "목", "금"];
 
@@ -923,6 +1076,10 @@ function getTimetableLectures() {
                 const cell = document.createElement("td");
                 cell.dataset.day = day;
                 cell.dataset.hour = h;
+
+                if (selectedTimeSlots.some(slot => slot.day === day && slot.hour === h)) {
+                    cell.classList.add("selected");
+                }
 
                 cell.addEventListener("mousedown", () => {
                     isDragging = true;
@@ -979,6 +1136,16 @@ function getTimetableLectures() {
         const rangeList = document.getElementById("rangeList");
         rangeList.innerHTML = "";
         const selected = {};
+
+
+        selectedTimeSlots = [];
+        document.querySelectorAll("#timeGrid td.selected").forEach(cell => {
+            selectedTimeSlots.push({
+                day: cell.dataset.day,
+                hour: parseInt(cell.dataset.hour)
+            });
+        });
+        console.log("selectedTimeSlots=", selectedTimeSlots);
 
         document.querySelectorAll("#timeGrid td.selected").forEach(cell => {
             const day = cell.dataset.day;
@@ -1048,6 +1215,262 @@ function getTimetableLectures() {
         alert("시간표 추가 실패!");
       }
     });
+    const checkbox = document.getElementById("timeSearchCheckbox");
+    const emptyRadio = document.getElementById("emptyTime");
+    const customRadio = document.getElementById("customTime");
+    const timeButton = document.getElementById("openTimePicker");
+
+    checkbox.addEventListener("change", function () {
+        const enabled = this.checked;
+
+        // 체크박스가 체크되면 라디오 버튼 활성화, 아니면 전부 비활성화
+        emptyRadio.disabled = !enabled;
+        customRadio.disabled = !enabled;
+        timeButton.disabled = true; // 무조건 버튼은 초기 상태에선 비활성화
+
+        // 라디오 선택 상태 초기화도 하고 싶으면 아래 라인도 추가
+        if (!enabled) {
+            emptyRadio.checked = false;
+            customRadio.checked = false;
+        }
+    });
+
+    // 라디오 중 "시간대 직접 선택"이 눌리면 버튼 활성화
+    customRadio.addEventListener("change", function () {
+        if (this.checked && !this.disabled) {
+            timeButton.disabled = false;
+        }
+    });
+
+    // "빈 시간대 검색" 선택 시 버튼은 비활성화 유지
+    emptyRadio.addEventListener("change", function () {
+        if (this.checked && !this.disabled) {
+            timeButton.disabled = true;
+        }
+    });
+    function openSyllabus(lectureId) {
+      const token = localStorage.getItem('accessToken');
+      fetch(`/lectures/${lectureId}/syllabus`, {
+        headers: { 'Authorization': 'Bearer ' + localStorage.getItem('accessToken'),
+            'Cache-Control': 'no-store',
+         }
+      })
+      .then(res => {
+        if (!res.ok) throw new Error('인증 실패');
+        return res.text();
+      })
+      .then(html => {
+        const w = window.open('', '_blank');
+        w.document.write(html);
+        w.document.close();
+      })
+      .catch(err => {
+        alert('강의계획서를 불러오지 못했습니다: ' + err.message);
+      });
+    }
+
+    let memberProfile  = null;
+
+    function fetchUserProfile() {
+      return fetch('/members/me', {
+        headers: { 'Authorization': 'Bearer ' + localStorage.getItem('accessToken') ,'Cache-Control': 'no-store',}
+      })
+      .then(res => {
+        if (!res.ok) throw new Error('프로필 로드 실패');
+        return res.json();
+      })
+      .then(profile => {
+        memberProfile = profile;
+        renderProfile();
+      });
+    }
+    function renderProfile() {
+      const memberInfoDiv = document.getElementById('memberInfo');
+      memberInfoDiv.textContent = `${memberProfile.name}님 환영합니다`;
+    }
+    document.getElementById('searchBox').addEventListener('keyup', function() {
+      const query = this.value;
+      if (query.length === 0) {
+        document.getElementById('suggestions').innerHTML = '';
+        return;
+      }
+
+      fetch(`/lectures?keyword=${query}`,{
+            method: 'GET',
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + localStorage.getItem("accessToken"),
+              'Cache-Control': 'no-store',
+            }})
+        .then(response => response.json())
+        .then(lectures => {
+          const suggestionList = document.getElementById('suggestions');
+          suggestionList.innerHTML = '';
+          lectures.forEach(lecture => {
+            const li = document.createElement('li');
+            li.textContent = lecture.title;
+            li.style.padding = '5px';
+            li.style.cursor = 'pointer';
+            li.addEventListener('click', () => {
+              searchBox.value = lecture.title;  // 선택하면 입력창에 들어감
+              suggestionList.style.display = 'none';  // 목록 숨기기
+            });
+            suggestionList.appendChild(li);
+          });
+          suggestionList.style.display = 'block';
+
+        });
+
+    });
+    function showPreviewBlock(lecture) {
+      const days = { "월": 1, "화": 2, "수": 3, "목": 4, "금": 5 };
+      const startHour = 9;
+
+      const activeTab = document.querySelector('.stab-content.active');
+      if (!activeTab) return;
+
+      const container = activeTab.querySelector(".lecture-container");
+      const table = activeTab.querySelector(".timetable");
+      const headerCells = table.querySelectorAll("thead th");
+      const tbody = table.querySelector("tbody");
+
+      const theadHeight = table.querySelector("thead").offsetHeight;
+      const columnWidth = headerCells[1].offsetWidth;
+      const totalHours = tbody.querySelectorAll("tr").length;
+      const hourHeight = tbody.offsetHeight / totalHours;
+
+      lecture.lectureTimes.forEach(lt => {
+        const dayIndex = days[lt.dayOfWeek];
+        if (dayIndex === undefined) return;
+
+        const { hour: startHourVal, minute: startMinuteVal } = parseTime(lt.startTime);
+        const { hour: endHourVal, minute: endMinuteVal } = parseTime(lt.endTime);
+
+        const startOffset = theadHeight + ((startHourVal - startHour) * hourHeight) + (startMinuteVal / 60 * hourHeight);
+        const duration = (endHourVal * 60 + endMinuteVal) - (startHourVal * 60 + startMinuteVal);
+        const blockHeight = (duration / 60) * hourHeight;
+        const timeColumnWidth = headerCells[0].offsetWidth;
+
+        const previewBlock = document.createElement("div");
+        previewBlock.classList.add("lecture-block");
+        previewBlock.classList.add("preview-block");
+        previewBlock.style.top = `${startOffset}px`;
+        previewBlock.style.height = `${blockHeight}px`;
+        previewBlock.style.left = `${timeColumnWidth + (dayIndex - 1) * columnWidth}px`;
+        previewBlock.style.width = `${columnWidth - 10}px`;
+        previewBlock.style.backgroundColor = "#4aa8d8"; // 흐리게
+        previewBlock.style.opacity = "0.6";             // 반투명
+        previewBlock.textContent = lecture.title;
+
+        container.appendChild(previewBlock);
+      });
+    }
+    function removePreviewBlock() {
+      const previews = document.querySelectorAll('.preview-block');
+      previews.forEach(p => p.remove());
+    }
+
+    async function logout() {
+      try {
+        await fetch('/logout', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+          }
+        });
+      } catch (err) {
+        console.warn('서버 로그아웃 중 오류:', err);
+      } finally {
+
+        localStorage.removeItem('accessToken');
+        window.location.href = '/login';
+      }
+    }
+    // 로그아웃 버튼에 연결
+    document.getElementById('logoutButton')
+            .addEventListener('click', logout);
+
+    function renderCart() {
+        const resultDiv = document.getElementById('tab1-3');
+        resultDiv.innerHTML = '';
+
+        fetch('/cart/lectures', {
+            method: "GET",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("accessToken"),
+                'Cache-Control': 'no-store',
+            }
+        })
+        .then(response => response.json())
+        .then(lectures => {
+            console.log("받은 lectures:", lectures);
+            if (!lectures || lectures.length === 0) {
+                resultDiv.innerHTML = '<p>장바구니 없음</p>';
+                return;
+            }
+
+            const list = document.createElement('ul');
+            list.classList.add("scrollable-list");
+
+            lectures.forEach(lecture => {
+                const listItem = document.createElement('li');
+                let innerHtml = `
+                    <strong>${lecture.title}</strong>
+                    <br>
+                    교수: ${lecture.professor}<br>
+                    시간:
+                `;
+                lecture.lectureTimes.forEach(lectureTime => {
+                    innerHtml += `${lectureTime.dayOfWeek}요일 ${lectureTime.startTime} ~ ${lectureTime.endTime} `;
+                });
+                innerHtml += `<br>${lecture.grade}학년  ${lecture.credit}학점`;
+                listItem.innerHTML = innerHtml.trim();
+
+                const syllabusButton = document.createElement('button');
+                syllabusButton.textContent = '강의계획서 보기';
+                syllabusButton.addEventListener('click', function(){
+                    openSyllabus(lecture.id);
+                });
+
+                const applyButton = document.createElement('button');
+                applyButton.textContent = '시간표에 강의 추가';
+                applyButton.style.marginLeft = '10px';
+                applyButton.addEventListener('click', function(){
+                    applyLecture(lecture.id);
+                });
+                applyButton.addEventListener('mouseover', () => showPreviewBlock(lecture));
+                applyButton.addEventListener('mouseout', () => removePreviewBlock());
+
+                const addCartButton = document.createElement('button');
+                addCartButton.textContent = '장바구니에서 삭제';
+                addCartButton.style.marginLeft = '10px';
+                addCartButton.addEventListener('click', async () => {
+                    try {
+                        const response = await fetch(`/cart/lectures/${lecture.id}`, {
+                            method: 'DELETE',
+                            headers: {
+                                'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+                            },
+                        });
+                        if (!response.ok) throw new Error(await response.text());
+                        renderCart();
+                    } catch (err) {
+                        console.error(err);
+                    }
+                });
+
+                list.appendChild(listItem);
+                list.appendChild(syllabusButton);
+                list.appendChild(addCartButton);
+                list.appendChild(applyButton);
+            });
+
+            resultDiv.appendChild(list);
+        })
+        .catch(error => console.error("renderCart 오류:", error));
+    }
+
+
 </script>
 
 </body>
