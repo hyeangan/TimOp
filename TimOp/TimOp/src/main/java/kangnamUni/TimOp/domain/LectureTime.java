@@ -14,13 +14,15 @@ public class LectureTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(length = 20)
     private String time;
 
-    @ManyToOne //자식관계
-    @JoinColumn(name = "lecture_id", nullable = false) //FK 설정
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "lecture_id", nullable = false)
     private Lecture lecture;
 
     @Enumerated(EnumType.STRING)
+    @Column(length = 10)
     private DayOfWeekEnum dayOfWeek; // "월", "화", "수", "목", "금"
 
     private LocalTime startTime;  // 시작 시간 (09:00)

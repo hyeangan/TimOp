@@ -5,7 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name="cart_lectures")
+@Table(
+        name = "cart_lectures",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"cart_id", "lecture_id"})
+)
 @Getter
 @Setter
 public class CartLecture {
@@ -14,11 +17,11 @@ public class CartLecture {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cart_id")
+    @JoinColumn(name = "cart_id", nullable = false)
     private Cart cart;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lecture_id")
+    @JoinColumn(name = "lecture_id", nullable = false)
     private Lecture lecture;
     protected CartLecture() {}
     public CartLecture(Lecture lecture, Cart cart){

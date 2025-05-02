@@ -10,46 +10,67 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "lectures")
 @Getter
 @Setter
-@Slf4j
 public class Lecture {
-    //학수번호 분반 과목명 담당교수 학점 시수 강의시간
-    //ND01603 12 컴퓨터프로그래밍 백남진 3 3 (주)목1ab2ab3ab
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String num; //학수번호
-    private String division_class;
-    private String title;
+    @Column(nullable = false, length = 20)
+    private String num; // 학수번호
+
+    @Column(name = "division_class", nullable = false, length = 10)
+    private String divisionClass; // 분반
+
+    @Column(nullable = false, length = 30)
+    private String title; // 과목명
+
+    @Column(length = 20)
     private String professor;
+
+    @Column(nullable = false)
     private int credit; //학점
-    private String progress_time; //시수
-    //private String time; 스크래퍼 수정
-    private String syllabus;
+
+    @Column(nullable = false, length = 20)
+    private String progressTime; // 시수 표현 문자열
+
+    @Column(length = 100)
+    private String syllabus; // syllabus 파일명 or URL
+
+    @Column(length = 50)
     private String major;
+
+    @Column(length = 20)
     private int grade;
+
+    @Column(nullable = false)
     private int year;
-    private String semester;
-    private String liberalArts;
+
+    @Column(nullable = false, length = 20)
+    private String semester; // ex: 1학기, 2학기
+
+    @Column(length = 30)
+    private String liberalArts; // 교양 구분 (선택)
 
     @OneToMany(mappedBy = "lecture", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CartLecture> cartLectures = new ArrayList<>();
-    @ManyToMany(mappedBy = "lectures") // Timetable이 주인이므로 mappedBy 사용
+
+    @ManyToMany(mappedBy = "lectures")
     private List<Timetable> timetables = new ArrayList<>();
 
-
     @OneToMany(mappedBy = "lecture", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<LectureTime> lectureTimes = new ArrayList<>(); // 여러 개의 시간 블록을 가질 수 있음
-    public Lecture() {
-    }
+    private List<LectureTime> lectureTimes = new ArrayList<>();
+
     public void addLectureTime(LectureTime lectureTime){
         lectureTimes.add(lectureTime);
         lectureTime.setLecture(this);
     }
+
     public void removeLectureTime(LectureTime lectureTime) {
         lectureTimes.remove(lectureTime);
-        lectureTime.setLecture(null); // 관계 해제
+        lectureTime.setLecture(null);
     }
 }
