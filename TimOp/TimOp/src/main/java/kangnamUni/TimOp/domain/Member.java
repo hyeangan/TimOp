@@ -1,6 +1,4 @@
 package kangnamUni.TimOp.domain;
-
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -15,16 +13,21 @@ import java.util.List;
 @Getter
 @Setter
 @Slf4j
+@Table(name = "members")
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique=true)
+    @Column(unique=true, nullable = false, length =20)
     private String studentId;
+    @Column(nullable = false, length =255)
     private String password;
+    @Column(nullable = false, length=20)
     private String name;
+    @Column(nullable = false, length =50)
     private String major;
-    private String role;
+    @Column(nullable = false, length=20)
+    private String role = "USER";
 
     @OneToOne(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private Cart cart;

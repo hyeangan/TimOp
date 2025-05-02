@@ -11,13 +11,14 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Table(name = "timetables")
 public class Timetable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "member_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id", nullable = false)
     @JsonBackReference
     private Member member;
 
@@ -30,6 +31,7 @@ public class Timetable {
     )
     private List<Lecture> lectures = new ArrayList<>();
 
+    @Column(nullable = false, length = 50)
     private String name;
 
 }
