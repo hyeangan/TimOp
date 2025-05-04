@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -22,7 +24,8 @@ import java.util.*;
 //강남대학교 강의 스크래핑
 //전공, 학년을 선택하고 조회해서 (개설 과목별 학수번호 분반 과목명 담당교수 학점 시수 강의시간) + 강의 계획서(HTML) 자동 수집
 
-//@Service
+@Component
+@Scope("prototype") //WebScraper는 요청마다 Selenium WebDriver 열어야하니까 새 인스턴스 만들어야함 호출시마다 생성
 @Slf4j
 public class WebScraper {
     String url = "https://app.kangnam.ac.kr/knumis/sbr/sbr1010.jsp";
@@ -30,8 +33,7 @@ public class WebScraper {
     private WebDriver driver;
     private String parentHandle;
     private final LectureService lectureService;
-    int currentYear = 2025;
-    String currentSemester = "1학기";
+
     @Autowired
     public WebScraper(LectureService lectureService) throws InterruptedException{
         this.lectureService = lectureService;
@@ -39,15 +41,43 @@ public class WebScraper {
         /*
         나중에 1프레임에 다음년도 다음학기 조회 눌러서 이상없으면 scrape(다음년도 학기) 실행 -> 현재 년도 현재 학기 변수로 관리하고(이상없어서 스크랩 했으면 학기변경)
          */
-        scrape(currentYear, currentSemester);
     }
     int grade = 0; //학년 데이터 수집을 위한 변수
     String major = null;
     String liberalArts = null;
+    //1학기 / 하계학기 / 2학기 / 동계학기
     public void scrape(int year, String semester) throws InterruptedException{
-        // 년도 학기 설정하는 로직 추가
 
-        driver.switchTo().frame(1);
+        navigateFrame(0);
+
+        // 1. 연도 입력
+        WebElement yearInput = driver.findElement(By.name("schl_year"));
+        yearInput.clear(); // 기존 값 지우기
+        yearInput.sendKeys(String.valueOf(year));
+
+        // 2. 학기 선택
+        WebElement semesterSelect = driver.findElement(By.name("schl_smst"));
+        Select semesterDropdown = new Select(semesterSelect);
+
+        // 학기 문자열 → value 매핑
+        Map<String, String> semesterMap = Map.of(
+                "1학기", "1",
+                "2학기", "2",
+                "하계학기", "3",
+                "동계학기", "4"
+        );
+
+        String value = semesterMap.getOrDefault(semester, "1"); // 기본: 1학기
+        semesterDropdown.selectByValue(value);
+        log.info("scrape");
+        WebElement searchButton = driver.findElement(
+                By.xpath("//*[@id=\"search_top\"]/table/tbody/tr/td[2]/table/tbody/tr/td[3]/div[2]/div[2]")
+        );
+        searchButton.click();
+
+        log.info("scrape");
+        navigateFrame(1);
+        log.info("scrape");
         driver.findElement(By.id("tab2")).click(); //학부/전공 탭 클릭
         Select dropdown = new Select(driver.findElement(By.name("dept_code1"))); //Select -> HTML select태그를 다루기위한 클래스
         //학부 전공에 옵션을 가져와서 텍스트를 추출한 후 추출한 텍스트로 도롭다운 메뉴 컨트롤
@@ -193,8 +223,8 @@ public class WebScraper {
                 }
 
                 lecture.setProfessor(lectureInfo.get(3));
-                lecture.setDivision_class(lectureInfo.get(1));
-                lecture.setProgress_time(lectureInfo.get(5));
+                lecture.setDivisionClass(lectureInfo.get(1));
+                lecture.setProgressTime(lectureInfo.get(5));
                 lecture.setSyllabus(syllabusName);
                 lecture.setMajor(major);
                 lecture.setGrade(grade);
