@@ -18,7 +18,7 @@ public class MemberDetails implements UserDetails {
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(member.getRole()));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + member.getRole()));
     }
     @Override
     public String getPassword() {

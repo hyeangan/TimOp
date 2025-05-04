@@ -28,7 +28,7 @@ public class MemberService {
         member.setPassword(bCryptPasswordEncoder.encode(joinMemberDTO.getPassword()));
         member.setName(joinMemberDTO.getName());
         member.setMajor(joinMemberDTO.getMajor());
-        member.setRole("ROLE_MEMBER");
+        member.setRole("USER");
 
         return memberRepository.save(member);
     }

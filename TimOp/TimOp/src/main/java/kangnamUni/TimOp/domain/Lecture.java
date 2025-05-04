@@ -25,7 +25,7 @@ public class Lecture {
     @Column(name = "division_class", nullable = false, length = 10)
     private String divisionClass; // 분반
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 80)
     private String title; // 과목명
 
     @Column(length = 20)

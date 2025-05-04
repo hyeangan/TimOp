@@ -469,7 +469,7 @@
             }
         }
 
-        const url = `/search/condition?${params.toString()}`;
+        const url = `lectures/search/condition?${params.toString()}`;
         console.log("url", url);
         try {
             const response = await fetch(url, {
@@ -915,7 +915,7 @@ function getTimetableLectures() {
 
         const searchBox = document.getElementById('searchBox');
 
-        fetch(`/search?title=${encodeURIComponent(searchBox.value)}`, {
+        fetch(`/lectures/search?title=${encodeURIComponent(searchBox.value)}`, {
             method: 'GET',
             headers: {
                 'Cache-Control': 'no-store',
@@ -1019,7 +1019,7 @@ function getTimetableLectures() {
     function applyLecture(lectureId) {
         const activeTab = document.querySelector(".stab.active");
         const timetableName = activeTab.textContent.trim();
-        fetch(`/timetables/lectures?id=${encodeURIComponent(lectureId)}&timetableName=${encodeURIComponent(timetableName)}`, {
+        fetch(`/timetables/${timetableName}/lectures/${lectureId}`, {
             method: 'POST',
             headers: { 'Accept': 'application/json',
              "Authorization": "Bearer " + localStorage.getItem("accessToken")}
