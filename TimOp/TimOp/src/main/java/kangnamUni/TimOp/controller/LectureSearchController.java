@@ -3,6 +3,7 @@ package kangnamUni.TimOp.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import kangnamUni.TimOp.Service.LectureService;
 import kangnamUni.TimOp.Service.TimetableService;
@@ -22,6 +23,7 @@ import java.util.stream.Collectors;
 @Tag(name = "검색", description = "강의 필터린 관련 API")
 @Slf4j
 @RestController
+@SecurityRequirement(name = "JWT")
 public class LectureSearchController {
     private final LectureService lectureService;
     private final TimetableService timetableService;

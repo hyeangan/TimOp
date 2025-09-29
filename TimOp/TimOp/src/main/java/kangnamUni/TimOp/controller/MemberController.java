@@ -2,6 +2,7 @@ package kangnamUni.TimOp.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import kangnamUni.TimOp.dto.MemberDTO;
 import kangnamUni.TimOp.dto.MemberDetails;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "회원", description = "로그인 회원 관련 API")
 @RestController
+@SecurityRequirement(name = "JWT")
 public class MemberController {
     @Operation(
             summary = "로그인 사용자 정보 조회",

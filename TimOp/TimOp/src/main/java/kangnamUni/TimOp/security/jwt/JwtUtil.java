@@ -53,6 +53,7 @@ public class JwtUtil {
     //토큰에서 username 추출
     public String extractUsername(String token) {
         //secretKey로???????????????
+        System.out.println("username : " + jwtParser.parseSignedClaims(token).getPayload().getSubject());
         return jwtParser.parseSignedClaims(token) //JWT 파싱 서버의 secretKey로 서명 검증-> 유효하면 Jws<Claims> 객체 반환
                         .getPayload().getSubject();
     }
@@ -71,6 +72,7 @@ public class JwtUtil {
 
     //토큰 유효성 검사 (서명, 만료 등 포함)
     public boolean validateToken(String token) {
+        System.out.println("token" + token);
         try {
             jwtParser.parseSignedClaims(token); //??
             return true;

@@ -24,7 +24,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         this.jwtUtil = jwtUtil;
         this.memberDetailsService = memberDetailsService;
     }
-
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        String p = request.getRequestURI();
+        return p.startsWith("/auth/login/")
+                || p.startsWith("/auth/callback/")
+                || p.equals("/") || p.equals("/home") || p.equals("/login") || p.equals("/join")
+                || p.startsWith("/swagger-ui/") || p.startsWith("/v3/api-docs/") || p.startsWith("/webjars/")
+                || p.equals("/error"); // ⬅️ 추가
+    }
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String requestHeader = request.getHeader("Authorization");
@@ -37,9 +45,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
             return;
         }
-        String username = jwtUtil.extractUsername(token);//
-        if(username != null && SecurityContextHolder.getContext().getAuthentication() == null){
-            UserDetails userDetails = memberDetailsService.loadUserByUsername(username);
+        String pkId = jwtUtil.extractUsername(token);//sub 값이고 pk
+        if(pkId != null && SecurityContextHolder.getContext().getAuthentication() == null){
+            UserDetails userDetails = memberDetailsService.loadUserByUsername(pkId);
             UsernamePasswordAuthenticationToken authentication =
                     new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);

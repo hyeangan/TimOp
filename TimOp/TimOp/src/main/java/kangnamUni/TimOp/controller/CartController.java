@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import kangnamUni.TimOp.Service.CartService;
@@ -27,6 +28,7 @@ import java.util.stream.Collectors;
 
 @Tag(name = "장바구니", description = "장바구니 관련 API")
 @RestController
+@SecurityRequirement(name = "JWT")
 public class CartController {
     private final MemberService memberService;
     private final CartService cartService;

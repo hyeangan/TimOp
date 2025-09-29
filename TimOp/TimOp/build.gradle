@@ -54,6 +54,8 @@ dependencies {
 	//기본 경로: http://localhost:8080/swagger-ui/index.html
 	//OpenAPI JSON 경로: http://localhost:8080/v3/api-docs
 
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation group: 'com.nimbusds', name: 'nimbus-jose-jwt', version: '9.37.4'
 
 }
 

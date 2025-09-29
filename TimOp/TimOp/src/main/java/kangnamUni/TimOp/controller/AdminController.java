@@ -3,6 +3,7 @@ package kangnamUni.TimOp.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import kangnamUni.TimOp.Service.WebScraper;
 import org.springframework.context.ApplicationContext;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Set;
 
 @Tag(name = "관리자", description = "관리자용 웹 스캐리핑 실행 API")
+@SecurityRequirement(name = "JWT")
 @RestController
 public class AdminController {
     private final ApplicationContext context;

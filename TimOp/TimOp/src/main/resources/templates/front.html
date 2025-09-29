@@ -4,14 +4,22 @@
     <title>Main Page</title>
     <style>
         body {
-          display: flex;                /* 기본 flex-direction: row */
-          justify-content: center;      /* 가로 중앙 정렬 */
-          align-items: center;          /* 세로 중앙 정렬 */
+          display: flex;
+          flex-direction: column;  /* 세로 배치 */
+          justify-content: center;
+          align-items: center;
           height: 100vh;
           margin: 0;
           background: #fafafa;
-          gap: 1rem;                    /* 요소 사이 1rem 간격 */
           font-family: Arial, sans-serif;
+          gap: 2rem;               /* 섹션 사이 간격 */
+        }
+
+        /* 상단 헤더 */
+        .header {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
         }
 
         h1 {
@@ -20,7 +28,7 @@
           color: #333;
         }
 
-        button {
+        .header button {
           padding: 0.6rem 1.2rem;
           border: none;
           border-radius: 4px;
@@ -29,14 +37,68 @@
           cursor: pointer;
           transition: background 0.2s;
         }
-        button:hover {
+        .header button:hover {
           background: #357abd;
+        }
+
+        /* 소셜 로그인 버튼 그룹 */
+        .social-login {
+          display: flex;
+          gap: 10px;
+        }
+
+        .btn-kakao {
+          background-color: #FEE500;
+          color: #000000;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 16px;
+          border-radius: 4px;
+          font-weight: bold;
+          text-decoration: none;
+        }
+        .btn-kakao img {
+          width: 18px;
+          height: 18px;
+        }
+
+        .btn-google {
+          background-color: #ffffff;
+          border: 1px solid #dadce0;
+          color: #3c4043;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 16px;
+          border-radius: 4px;
+          font-weight: 500;
+          text-decoration: none;
+        }
+        .btn-google img {
+          width: 18px;
+          height: 18px;
         }
     </style>
 </head>
 <body>
-<h1>TimOp</h1>
-<button onclick="location.href='/login'">로그인</button>
-<button onclick="location.href='/join'">회원가입</button>
+<!-- 상단 헤더 -->
+<div class="header">
+    <h1>TimOp</h1>
+    <button onclick="location.href='/login'">로그인</button>
+    <button onclick="location.href='/join'">회원가입</button>
+</div>
+
+<!-- 소셜 로그인 -->
+<div class="social-login">
+    <a href="/auth/login/google" class="btn-google">
+        <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google" />
+        구글 계정으로 로그인
+    </a>
+    <a href="/auth/login/kakao" class="btn-kakao">
+        <img src="https://developers.kakao.com/tool/resource/static/img/button/login/full/ko/kakao_login_medium_narrow.png" alt="Kakao" />
+        카카오 계정으로 로그인
+    </a>
+</div>
 </body>
 </html>
