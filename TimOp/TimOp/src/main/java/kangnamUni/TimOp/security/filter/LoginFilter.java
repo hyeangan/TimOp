@@ -5,10 +5,14 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import kangnamUni.TimOp.Service.MemberService;
+import kangnamUni.TimOp.domain.Member;
 import kangnamUni.TimOp.dto.LoginRequestDTO;
+import kangnamUni.TimOp.repository.MemberRepository;
 import kangnamUni.TimOp.security.jwt.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -19,15 +23,19 @@ import java.io.IOException;
 public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final AuthenticationManager authenticationManager;
-
-    public LoginFilter(AuthenticationManager authenticationManager){
+    public LoginFilter(AuthenticationManager authenticationManager
+                       ){
         this.authenticationManager = authenticationManager;
+
     }
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try{
             //JSON -> Object
             LoginRequestDTO loginRequest = objectMapper.readValue(request.getInputStream(), LoginRequestDTO.class);
+            if (loginRequest.getStudentId() == null || loginRequest.getPassword() == null) {
+                throw new AuthenticationServiceException("Invalid login payload");
+            }
             UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                     loginRequest.getStudentId(), loginRequest.getPassword());
             return authenticationManager.authenticate(authToken);

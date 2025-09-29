@@ -18,11 +18,17 @@ public class MemberDetailsService implements UserDetailsService {
         this.memberRepository = memberRepository;
     }
     @Override
-    public UserDetails loadUserByUsername(String studentId) throws UsernameNotFoundException {
-        Member member = memberRepository.findByStudentId(studentId);
-        if(member != null){
-            return new MemberDetails(member);
+    public UserDetails loadUserByUsername(String pkId) throws UsernameNotFoundException {
+        Long memberId;
+        try {
+            memberId = Long.valueOf(pkId);
+        } catch (NumberFormatException e) {
+            throw new UsernameNotFoundException("Invalid user id format: " + pkId);
         }
-        return null;
+
+        Member member = memberRepository.findById(memberId)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with id: " + pkId));
+
+        return new MemberDetails(member);
     }
 }

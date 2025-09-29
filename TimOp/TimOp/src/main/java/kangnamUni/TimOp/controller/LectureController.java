@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import kangnamUni.TimOp.Service.LectureService;
 import kangnamUni.TimOp.domain.Lecture;
@@ -22,6 +23,7 @@ import java.util.List;
 @Tag(name = "강의", description = "강의 조회 및 강의계획서 API")
 @RestController
 @RequestMapping("/lectures")
+@SecurityRequirement(name = "JWT")
 public class LectureController {
 
     private final ResourceLoader resourceLoader;

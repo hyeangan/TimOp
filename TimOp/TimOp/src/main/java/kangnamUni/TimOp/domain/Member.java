@@ -18,16 +18,19 @@ public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique=true, nullable = false, length =20)
+    @Column(unique=true, nullable = true, length =20)
     private String studentId;
-    @Column(nullable = false, length =255)
+    @Column(nullable = true, length =255)
     private String password;
-    @Column(nullable = false, length=20)
+    @Column(nullable = true, length=20)
     private String name;
-    @Column(nullable = false, length =50)
+    @Column(nullable = true, length =50)
     private String major;
-    @Column(nullable = false, length=20)
+    @Column(nullable = true, length=20)
     private String role = "USER";
+
+    @Column(unique = true, nullable = true)
+    private String email;
 
     @OneToOne(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private Cart cart;

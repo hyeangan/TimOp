@@ -25,10 +25,11 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
                                         HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
         MemberDetails memberDetails = (MemberDetails) authentication.getPrincipal();
-        String username = memberDetails.getUsername();
+        String id = String.valueOf(memberDetails.getMember().getId());
+        //String username = memberDetails.getUsername();
         String role = memberDetails.getMember().getRole();
 
-        String token = jwtUtil.generateToken(username, role);
+        String token = jwtUtil.generateToken(id, role);
 
         response.addHeader("Authorization", "Bearer " + token);
 

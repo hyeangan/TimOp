@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
@@ -29,6 +30,7 @@ import java.util.List;
 @Tag(name = "시간표", description = "시간표 관리 API")
 @RestController
 @Slf4j
+@SecurityRequirement(name = "JWT")
 public class TimetableController {
     private final TimetableService timetableService;
     private final MemberService memberService;

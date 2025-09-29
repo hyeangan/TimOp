@@ -1,6 +1,8 @@
 package kangnamUni.TimOp.security.config;
 
 import jakarta.servlet.http.HttpServletResponse;
+import kangnamUni.TimOp.Service.MemberService;
+import kangnamUni.TimOp.repository.MemberRepository;
 import kangnamUni.TimOp.security.filter.LoginFilter;
 import kangnamUni.TimOp.security.handler.LoginFailureHandler;
 import kangnamUni.TimOp.security.handler.LoginSuccessHandler;
@@ -29,17 +31,20 @@ public class SecurityConfig {
     private final LoginFailureHandler loginFailureHandler;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
+
     @Autowired
     SecurityConfig( AuthenticationConfiguration authenticationConfiguration,
                     LoginSuccessHandler loginSuccessHandler,
                     LoginFailureHandler loginFailureHandler,
                     JwtAuthenticationFilter jwtAuthenticationFilter
+
                     )
     {
         this.authenticationConfiguration = authenticationConfiguration;
         this.loginSuccessHandler = loginSuccessHandler;
         this.loginFailureHandler = loginFailureHandler;
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+
     }
     //비밀번호 암호화(해싱) 도구
     @Bean
@@ -73,11 +78,14 @@ public class SecurityConfig {
                 .httpBasic(AbstractHttpConfigurer::disable) //브라우저 지원 로그인 방식 비활성화
                 //경로별 인가
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/join", "/login", "/home",
+                        .requestMatchers("/", "/join", "/login", "/home"
+                                ,"/auth/login/**",
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
-                                "/webjars/**").permitAll()
+                                "/webjars/**"
+                                ,"/auth/callback/**","/error"
+                                ).permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/member").hasRole("MEMBER")
                         .anyRequest().authenticated()
